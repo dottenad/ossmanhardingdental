@@ -52,7 +52,3 @@ Thumbs.db
 
 # Turbopack
 .turbo
-
-# Optional: uncomment to keep env example but ignore local overrides
-# .env
-# !.env.example
