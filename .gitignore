@@ -47,3 +47,12 @@ next-env.d.ts
 .DS_Store
 Thumbs.db
 
+# Cursor / IDE
+.cursor/
+
+# Turbopack
+.turbo
+
+# Optional: uncomment to keep env example but ignore local overrides
+# .env
+# !.env.example
