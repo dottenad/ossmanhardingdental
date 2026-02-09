@@ -1,0 +1,316 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --foreground: 15 23 42;
+        --background: 255 255 255;
+    }
+
+    * {
+        border-color: rgb(229 231 235);
+    }
+
+    body {
+        background-color: white;
+        color: rgb(15 23 42);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        font-feature-settings: "rlig" 1, "calt" 1;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-weight: 700;
+        letter-spacing: -0.025em;
+    }
+
+    h1 {
+        font-size: 2.25rem;
+    }
+
+    @media (min-width: 768px) {
+        h1 {
+            font-size: 3rem;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        h1 {
+            font-size: 3.75rem;
+        }
+    }
+
+    h2 {
+        font-size: 1.875rem;
+    }
+
+    @media (min-width: 768px) {
+        h2 {
+            font-size: 2.25rem;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        h2 {
+            font-size: 3rem;
+        }
+    }
+
+    h3 {
+        font-size: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+        h3 {
+            font-size: 1.875rem;
+        }
+    }
+}
+
+@layer utilities {
+    .text-balance {
+        text-wrap: balance;
+    }
+
+    .gradient-text {
+        background: linear-gradient(to right, rgb(91 138 114), rgb(74 107 90));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+
+    .glass-effect {
+        background-color: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .card-hover {
+        transition: all 0.3s ease;
+    }
+
+    .card-hover:hover {
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+            0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        transform: translateY(-4px);
+    }
+
+    /* Screen reader only - visually hidden but accessible to assistive tech */
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+    }
+
+    .sr-only:focus,
+    .focus\:not-sr-only:focus {
+        position: static;
+        width: auto;
+        height: auto;
+        padding: inherit;
+        margin: inherit;
+        overflow: visible;
+        clip: auto;
+        white-space: normal;
+    }
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Accessible focus indicators - visible for keyboard navigation */
+*:focus-visible {
+    outline: 2px solid rgb(59 130 246);
+    outline-offset: 2px;
+}
+
+/* Form inputs - custom focus styles */
+textarea:focus-visible,
+input[type="text"]:focus-visible,
+input[type="email"]:focus-visible,
+input[type="tel"]:focus-visible,
+select:focus-visible {
+    outline: 2px solid rgb(59 130 246);
+    outline-offset: 2px;
+    border-color: rgb(59 130 246);
+}
+
+/* Ensure checkboxes work properly and are consistently sized */
+input[type="checkbox"] {
+    -webkit-appearance: checkbox;
+    appearance: checkbox;
+    cursor: pointer;
+    width: 20px !important;
+    height: 20px !important;
+    min-width: 20px !important;
+    min-height: 20px !important;
+    max-width: 20px !important;
+    max-height: 20px !important;
+    flex-shrink: 0;
+}
+
+input[type="checkbox"]:focus-visible {
+    outline: 2px solid rgb(59 130 246);
+    outline-offset: 2px;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: rgb(243 244 246);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgb(96 165 250);
+    border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(59 130 246);
+}
+
+/* Grid pattern background */
+.bg-grid-pattern {
+    background-image: linear-gradient(
+            to right,
+            rgba(255, 255, 255, 0.1) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0.1) 1px,
+            transparent 1px
+        );
+    background-size: 40px 40px;
+}
+
+/* Blog prose styling - layout and spacing only, colors handled by page context */
+.prose {
+    max-width: none;
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 1em;
+    line-height: 1.2;
+}
+
+.prose h1:not(:first-child),
+.prose h2:not(:first-child),
+.prose h3:not(:first-child),
+.prose h4:not(:first-child),
+.prose h5:not(:first-child),
+.prose h6:not(:first-child) {
+    margin-top: 2em;
+}
+
+.prose h1 {
+    font-size: 2.25em;
+}
+
+.prose h2 {
+    font-size: 1.875em;
+}
+
+.prose h3 {
+    font-size: 1.5em;
+}
+
+.prose p {
+    margin-top: 1.25em;
+    margin-bottom: 1.25em;
+    line-height: 1.75;
+}
+
+.prose a {
+    text-decoration: underline;
+    transition: text-decoration-color 0.2s;
+}
+
+.prose strong {
+    font-weight: 600;
+}
+
+.prose ul,
+.prose ol {
+    margin-top: 1.25em;
+    margin-bottom: 1.25em;
+    padding-left: 1.625em;
+}
+
+.prose li {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.prose code {
+    padding: 0.125em 0.375em;
+    border-radius: 0.25em;
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.prose pre {
+    border-radius: 0.5em;
+    padding: 1em;
+    overflow-x: auto;
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+}
+
+.prose pre code {
+    background-color: transparent;
+    padding: 0;
+    font-weight: 400;
+}
+
+.prose blockquote {
+    border-left: 0.25em solid;
+    padding-left: 1em;
+    margin: 1.5em 0;
+    font-style: italic;
+}
+
+.prose img {
+    margin-top: 2em;
+    margin-bottom: 2em;
+    border-radius: 0.5em;
+}
+
+/* Figures in prose: no margin on figure or img so images sit flush */
+.prose figure {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.prose figure img {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.prose hr {
+    margin-top: 3em;
+    margin-bottom: 3em;
+}
