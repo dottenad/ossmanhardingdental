@@ -452,7 +452,17 @@ export const businessConfig: BusinessConfig = {
     },
 };
 
-export const industryConfig = {
+/** Shape of a single industry's config (used so industryConfig can be indexed by Industry). */
+export type IndustryConfigEntry = {
+    name: string;
+    services: string[];
+    allServices: string[];
+    keywords: string[];
+    description: string;
+    servicePageImages: Record<string, string>;
+};
+
+const _industryConfig = {
     fencing: {
         name: "Custom Fencing Services",
         services: [
@@ -516,4 +526,7 @@ export const industryConfig = {
                 "/images/service-images/fence-gate-installation.jpg",
         },
     },
-};
+} as const;
+
+export const industryConfig =
+    _industryConfig as unknown as Record<Industry, IndustryConfigEntry>;
