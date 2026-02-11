@@ -18,7 +18,7 @@ import {
 
 export const metadata: Metadata = generateSEOMetadata(
     {
-        title: `Frequently Asked Questions - ${businessConfig.name}`,
+        title: "Frequently Asked Questions",
         description: `Get answers to common questions about ${businessConfig.name}'s custom fencing services. Learn about our process, materials, warranties, and more.`,
         url: `${businessConfig.website}/faq`,
     },

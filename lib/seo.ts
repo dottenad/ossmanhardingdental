@@ -29,7 +29,9 @@ export function generateMetadata(
 
     const siteName = businessConfig.name;
     const defaultDescription = businessConfig.description;
-    const defaultTitle = `${title || siteName} | ${businessConfig.tagline}`;
+    const pageTitle = title || siteName;
+    const defaultTitle =
+        pageTitle === siteName ? siteName : `${pageTitle} | ${siteName}`;
     const metaDescription = description || defaultDescription;
     const siteUrl = url || businessConfig.website;
     const ogImage = image || `${businessConfig.website}/og-image.jpg`;

@@ -64,7 +64,7 @@ export function generateMetadata({ params }: PageProps): Metadata {
 
     return generateSEOMetadata(
         {
-            title: `${serviceName} - ${businessConfig.name}`,
+            title: serviceName,
             description: `Professional ${serviceName.toLowerCase()} services by ${
                 businessConfig.name
             }. ${industry.description}`,

@@ -142,11 +142,15 @@ export default function AboutPage() {
                                             <p className="text-gray-700 text-sm leading-relaxed !mt-2">
                                                 5-year workmanship warranty on
                                                 all standard fence
-                                                installations. We offer an
-                                                extended 10-year warranty on our
-                                                premium package ensuring the
-                                                best durability and longest
-                                                lifespan.
+                                                installations. Add our premium
+                                                warranty to extend coverage to
+                                                10 years. The premium package
+                                                includes Post-on-Pipe
+                                                construction (wood post above
+                                                ground on a galvanized pipe set
+                                                in concrete), which prevents
+                                                post rot and can double the
+                                                lifespan of your fence.
                                             </p>
                                         </div>
                                         <div className="flex flex-col pt-5 px-5 pb-4 bg-primary-50 rounded-xl border border-primary-200">

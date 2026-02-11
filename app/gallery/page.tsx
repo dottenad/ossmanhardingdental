@@ -21,7 +21,7 @@ export const metadata: Metadata = generateSEOMetadata(
         description: `View our gallery of completed fence projects from ${businessConfig.name}. Privacy, wood, vinyl, and chain link installations across the Puget Sound.`,
         url: `${businessConfig.website}/gallery`,
     },
-    businessConfig
+    businessConfig,
 );
 
 export default function GalleryPage() {
@@ -33,11 +33,11 @@ export default function GalleryPage() {
     const webPageSchema = generateWebPageSchema(
         "Gallery",
         `${businessConfig.website}/gallery`,
-        `View our gallery of completed fence projects from ${businessConfig.name}. Privacy, wood, vinyl, and chain link installations across the Puget Sound.`
+        `View our gallery of completed fence projects from ${businessConfig.name}. Privacy, wood, vinyl, and chain link installations across the Puget Sound.`,
     );
     const galleryPageSchema = generateGalleryPageSchema(
         businessConfig,
-        projects
+        projects,
     );
 
     return (

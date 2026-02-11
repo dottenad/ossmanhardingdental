@@ -225,64 +225,131 @@ export const businessConfig: BusinessConfig = {
         "/about": "/images/service-images/privacy-fence-installation.jpg",
         "/contact": "/images/service-images/privacy-fence-installation.jpg",
         "/reviews": "/images/service-images/privacy-fence-installation.jpg",
-        "/service-areas": "/images/service-images/privacy-fence-installation.jpg",
+        "/service-areas":
+            "/images/service-images/privacy-fence-installation.jpg",
         "/gallery": "/images/service-images/privacy-fence-installation.jpg",
         "/terms": "/images/service-images/privacy-fence-installation.jpg",
         "/privacy": "/images/service-images/privacy-fence-installation.jpg",
     },
     // Font configuration - choose from Google Fonts
     font: "Inter",
-    // Gallery of completed projects/work
+    // Gallery of completed projects/work (from public/images/gallery)
     gallery: [
         {
-            id: "tacoma-privacy-fence",
-            name: "Tacoma Residential",
-            projectType: "Privacy Fence Installation",
-            location: {
-                city: "Tacoma",
-                state: "Washington",
-            },
+            id: "cedar-fence-install-gig-harbor",
+            name: "Gig Harbor Cedar Fence Install",
+            projectType: "Cedar Fence Installation",
+            location: { city: "Gig Harbor", state: "Washington" },
             description:
-                "Custom privacy fence installation with cedar posts and panels. Professional installation with proper post depth and spacing for durability and aesthetic appeal.",
+                "4' horizontal cedar fence in Gig Harbor with clear cedar fence boards, premium 2x6 top cap, and stained with a semi-transparent oil based stain.",
             images: [
-                "/images/gallery/fence.jpg",
-                "/images/gallery/fence.jpg",
-                "/images/gallery/fence.jpg",
+                "/images/gallery/cedar-fence-install-gig-harbor/cedar-fence-install-gig-harbor-1.jpg",
+                "/images/gallery/cedar-fence-install-gig-harbor/cedar-fence-install-gig-harbor-2.jpg",
+                "/images/gallery/cedar-fence-install-gig-harbor/cedar-fence-install-gig-harbor-3.jpg",
+                "/images/gallery/cedar-fence-install-gig-harbor/cedar-fence-install-gig-harbor-4.jpg",
+                "/images/gallery/cedar-fence-install-gig-harbor/cedar-fence-install-gig-harbor-5.jpg",
+                "/images/gallery/cedar-fence-install-gig-harbor/cedar-fence-install-gig-harbor-6.jpg",
+                "/images/gallery/cedar-fence-install-gig-harbor/cedar-fence-install-gig-harbor-7.jpg",
             ],
-            featuredImage: "/images/fence.jpg",
-            date: "2024-01-15",
+            featuredImage:
+                "/images/gallery/cedar-fence-install-gig-harbor/cedar-fence-install-gig-harbor-1.jpg",
         },
         {
-            id: "port-orchard-wood-fence",
-            name: "Port Orchard Property",
-            projectType: "Wood Fence Installation",
-            location: {
-                city: "Port Orchard",
-                state: "Washington",
-            },
+            id: "cedar-fence-repair-port-orchard",
+            name: "Port Orchard Cedar Fence Repair",
+            projectType: "Cedar Fence Repair",
+            location: { city: "Port Orchard", state: "Washington" },
             description:
-                "Beautiful wood fence installation with decorative post caps and gate. Quality materials and expert craftsmanship for a long-lasting, attractive fence.",
-            images: ["/images/gallery/fence.jpg", "/images/gallery/fence.jpg"],
-            featuredImage: "/images/fence.jpg",
-            date: "2024-02-20",
+                "Cedar fence repair in Port Orchard including new double gate. Style of cedar fence is 6' modified full panel.",
+            images: [
+                "/images/gallery/cedar-fence-repair-port-orchard/cedar-fence-repair-port-orchard-1.jpg",
+                "/images/gallery/cedar-fence-repair-port-orchard/cedar-fence-repair-port-orchard-2.jpg",
+                "/images/gallery/cedar-fence-repair-port-orchard/cedar-fence-repair-port-orchard-3.jpg",
+            ],
+            featuredImage:
+                "/images/gallery/cedar-fence-repair-port-orchard/cedar-fence-repair-port-orchard-1.jpg",
         },
         {
-            id: "olympia-vinyl-fence",
-            name: "Olympia Home",
-            projectType: "Vinyl Fence Installation",
-            location: {
-                city: "Olympia",
-                state: "Washington",
-            },
+            id: "cedar-fence-replacement-gig-harbor",
+            name: "Gig Harbor Cedar Fence Replacement",
+            projectType: "Cedar Fence Replacement",
+            location: { city: "Gig Harbor", state: "Washington" },
             description:
-                "Low-maintenance vinyl fence installation perfect for busy homeowners. Durable, weather-resistant, and attractive with minimal upkeep required.",
+                "Fence replacement in Gig Harbor. We did a full panel style cedar fence with continuous 2x6 pressure treated top cap.",
             images: [
-                "/images/gallery/fence.jpg",
-                "/images/gallery/fence.jpg",
-                "/images/gallery/fence.jpg",
+                "/images/gallery/cedar-fence-replacement-gig-harbor/cedar-fence-replacement-gig-harbor-1.jpg",
+                "/images/gallery/cedar-fence-replacement-gig-harbor/cedar-fence-replacement-gig-harbor-2.jpg",
+                "/images/gallery/cedar-fence-replacement-gig-harbor/cedar-fence-replacement-gig-harbor-3.jpg",
+                "/images/gallery/cedar-fence-replacement-gig-harbor/cedar-fence-replacement-gig-harbor-4.jpg",
+                "/images/gallery/cedar-fence-replacement-gig-harbor/cedar-fence-replacement-gig-harbor-5.jpg",
             ],
-            featuredImage: "/images/fence.jpg",
-            date: "2024-03-10",
+            featuredImage:
+                "/images/gallery/cedar-fence-replacement-gig-harbor/cedar-fence-replacement-gig-harbor-1.jpg",
+        },
+        {
+            id: "cedar-fence-replacement-tacoma",
+            name: "Tacoma Cedar Fence Replacement",
+            projectType: "Cedar Fence Replacement",
+            location: { city: "Tacoma", state: "Washington" },
+            description:
+                "Fence panel replacement in Tacoma. We kept the original 6x6 posts and built new 6' full panel style cedar fence with arched gate. And finished off with an oil based semi-transparent stain.",
+            images: [
+                "/images/gallery/cedar-fence-replacement-tacoma/cedar-fence-replacement-tacoma-1.jpg",
+                "/images/gallery/cedar-fence-replacement-tacoma/cedar-fence-replacement-tacoma-2.jpg",
+                "/images/gallery/cedar-fence-replacement-tacoma/cedar-fence-replacement-tacoma-3.jpg",
+                "/images/gallery/cedar-fence-replacement-tacoma/cedar-fence-replacement-tacoma-4.jpg",
+                "/images/gallery/cedar-fence-replacement-tacoma/cedar-fence-replacement-tacoma-5.jpg",
+                "/images/gallery/cedar-fence-replacement-tacoma/cedar-fence-replacement-tacoma-6.jpg",
+            ],
+            featuredImage:
+                "/images/gallery/cedar-fence-replacement-tacoma/cedar-fence-replacement-tacoma-1.jpg",
+        },
+        {
+            id: "fence-replacement-tacoma",
+            name: "Tacoma Fence Replacement",
+            projectType: "Fence Replacement",
+            location: { city: "Tacoma", state: "Washington" },
+            description:
+                "This was a fence replacement from chain-link to our 6' horizontal style cedar fence. Job was located in Tacoma. Pressure treated jumbo 4x4 posts, clear cedar fence boards, and premium 2x6 top cap.",
+            images: [
+                "/images/gallery/fence-replacement-tacoma/fence-replacement-tacoma-1.jpg",
+                "/images/gallery/fence-replacement-tacoma/fence-replacement-tacoma-2.jpg",
+                "/images/gallery/fence-replacement-tacoma/fence-replacement-tacoma-3.jpg",
+                "/images/gallery/fence-replacement-tacoma/fence-replacement-tacoma-4.jpg",
+                "/images/gallery/fence-replacement-tacoma/fence-replacement-tacoma-5.jpg",
+                "/images/gallery/fence-replacement-tacoma/fence-replacement-tacoma-6.jpg",
+            ],
+            featuredImage:
+                "/images/gallery/fence-replacement-tacoma/fence-replacement-tacoma-1.jpg",
+        },
+        {
+            id: "fence-staining-bremerton",
+            name: "Bremerton Fence Staining",
+            projectType: "Fence Staining",
+            location: { city: "Bremerton", state: "Washington" },
+            description:
+                "This was just a fence staining job we completed on an existing fence in Bremerton. We used an oil based semi-transparent stain.",
+            images: [
+                "/images/gallery/fence-staining-bremerton/fence-staining-bremerton-1.jpg",
+                "/images/gallery/fence-staining-bremerton/fence-staining-bremerton-2.jpg",
+                "/images/gallery/fence-staining-bremerton/fence-staining-bremerton-3.jpg",
+            ],
+            featuredImage:
+                "/images/gallery/fence-staining-bremerton/fence-staining-bremerton-1.jpg",
+        },
+        {
+            id: "gate-replacement-tacoma",
+            name: "Tacoma Gate Replacement",
+            projectType: "Gate Replacement",
+            location: { city: "Tacoma", state: "Washington" },
+            description:
+                "Double fence gate replacement in Tacoma for a 14' wide double gate. Custom sized black steel gate frame with natural wood slats.",
+            images: [
+                "/images/gallery/gate-replacement-tacoma/gate-replacement-tacoma-1.jpg",
+                "/images/gallery/gate-replacement-tacoma/gate-replacement-tacoma-2.jpg",
+            ],
+            featuredImage:
+                "/images/gallery/gate-replacement-tacoma/gate-replacement-tacoma-1.jpg",
         },
     ],
     reviews: [
@@ -363,7 +430,7 @@ export const businessConfig: BusinessConfig = {
         },
         {
             question: "Do you offer a warranty?",
-            answer: "Yes—we stand behind our work with a satisfaction guarantee. Warranty terms vary by fence type and materials used, and we'll outline them clearly in your estimate.",
+            answer: "Every fence comes with a 5-year warranty. You can add a premium warranty to your project to extend coverage to 10 years.",
         },
         {
             question: "Do you repair existing fences?",
@@ -436,13 +503,17 @@ export const industryConfig = {
             "Professional custom fencing services including installation, repair, and maintenance. Expert craftsmanship for residential and commercial properties. Licensed and insured.",
         /** Image path per service slug for service page content (e.g. under intro paragraph) */
         servicePageImages: {
-            "privacy-fence-installation": "/images/service-images/privacy-fence-installation.jpg",
-            "wood-fence-installation": "/images/service-images/wood-fence-installation.jpg",
-            "vinyl-fence-installation": "/images/service-images/vinyl-fence-installation.jpg",
+            "privacy-fence-installation":
+                "/images/service-images/privacy-fence-installation.jpg",
+            "wood-fence-installation":
+                "/images/service-images/wood-fence-installation.jpg",
+            "vinyl-fence-installation":
+                "/images/service-images/vinyl-fence-installation.jpg",
             "chain-link-fence-installation":
                 "/images/service-images/chain-link-fence-installation.jpg",
             "fence-repair": "/images/service-images/fence-repair.jpg",
-            "gate-installation": "/images/service-images/fence-gate-installation.jpg",
+            "gate-installation":
+                "/images/service-images/fence-gate-installation.jpg",
         },
     },
 };

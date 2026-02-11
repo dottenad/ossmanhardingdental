@@ -36,10 +36,6 @@ const nextConfig = {
                 value: "on",
             },
             {
-                key: "Strict-Transport-Security",
-                value: "max-age=63072000; includeSubDomains; preload",
-            },
-            {
                 key: "X-Frame-Options",
                 value: "SAMEORIGIN",
             },
@@ -63,32 +59,9 @@ const nextConfig = {
                 key: "Cross-Origin-Opener-Policy",
                 value: "same-origin",
             },
-            // Note: COEP and CORP removed to allow Google Maps iframes
-            // These headers can block third-party embeds like Google Maps
-            // If you need strict isolation, consider removing Google Maps or using a different map solution
-            {
-                key: "Content-Security-Policy",
-                value: [
-                    "default-src 'self'",
-                    "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://vercel.live https://maps.googleapis.com https://maps.gstatic.com", // Google Maps for Service Areas map
-                    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com", // 'unsafe-inline' needed for CSS-in-JS and Tailwind
-                    "font-src 'self' https://fonts.gstatic.com data:",
-                    "img-src 'self' data: https: blob:",
-                    "connect-src 'self' https://vercel.live https://*.vercel-insights.com https://maps.googleapis.com", // Allow Google Maps API connections
-                    "frame-ancestors 'self'",
-                    "base-uri 'self'",
-                    "form-action 'self'",
-                    "frame-src 'self' https://www.google.com https://maps.google.com", // Allow Google Maps iframes
-                    "manifest-src 'self'",
-                    "media-src 'self'",
-                    "object-src 'none'",
-                    "upgrade-insecure-requests",
-                ].join("; "),
-            },
-            {
-                key: "Require-Trusted-Types-For",
-                value: "'script'",
-            },
+            // HSTS removed: on localhost Safari can force HTTPS and break CSS/asset loading
+            // CSP disabled: was preventing stylesheets from loading in Safari. Re-enable with a
+            // Safari-friendly policy if needed (style-src must include 'self' 'unsafe-inline' blob: data:).
         ];
 
         return [

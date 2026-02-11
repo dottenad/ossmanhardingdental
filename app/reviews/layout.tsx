@@ -4,7 +4,7 @@ import { generateMetadata as generateSEOMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = generateSEOMetadata(
     {
-        title: `Customer Reviews | ${businessConfig.name}`,
+        title: "Customer Reviews",
         description: `Read customer reviews and testimonials for ${businessConfig.name}. See what our satisfied customers have to say about our ${businessConfig.industry} services.`,
         url: `${businessConfig.website}/reviews`,
     },

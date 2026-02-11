@@ -44,6 +44,12 @@ export default function RootLayout({
     return (
         <html lang="en">
             <head>
+                {/* Fallback critical CSS so Safari shows something if the main stylesheet fails to load */}
+                <style
+                    dangerouslySetInnerHTML={{
+                        __html: `body{background:#fff;color:#111;font-family:system-ui,-apple-system,sans-serif;margin:0;}a{color:inherit;}img{max-width:100%;height:auto;}`,
+                    }}
+                />
                 {/* Preconnect to important origins for faster loading */}
                 <link
                     rel="preconnect"

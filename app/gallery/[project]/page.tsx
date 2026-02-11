@@ -81,7 +81,7 @@ export async function generateMetadata({
             description: metaDescription,
             url: `${businessConfig.website}/gallery/${projectSlug}`,
         },
-        businessConfig
+        businessConfig,
     );
 }
 
@@ -109,7 +109,7 @@ export default function GalleryProjectPage({ params }: PageProps) {
     const webPageSchema = generateWebPageSchema(
         projectTitle,
         `${businessConfig.website}/gallery/${projectSlug}`,
-        project.description
+        project.description,
     );
     const projectSchema = generateGalleryProjectSchema(project, businessConfig);
 

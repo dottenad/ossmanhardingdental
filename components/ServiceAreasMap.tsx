@@ -7,6 +7,24 @@ const GEOJSON_URL = "/geo/pierce-kitsap-counties.geojson";
 const MAP_CENTER = { lat: 47.35, lng: -122.6 };
 const DEFAULT_ZOOM = 9;
 
+type GoogleMaps = {
+    maps: {
+        Map: new (el: HTMLElement, opts: object) => { getDiv: () => HTMLElement };
+        LatLngBounds: new () => { extend: (ll: unknown) => void; isEmpty: () => boolean };
+        Data: new () => {
+            setStyle: (s: object) => void;
+            addListener: (n: string, f: () => void) => void;
+            forEach: (f: (feat: { getGeometry: () => { forEachLatLng: (f: (ll: unknown) => void) => void } }) => void) => void;
+            loadGeoJson: (u: string) => void;
+            setMap: (m: unknown) => void;
+        };
+        event: { trigger: (instance: unknown, eventName: string) => void };
+    };
+};
+
+function getGoogle(): GoogleMaps | undefined {
+    return (window as { google?: GoogleMaps }).google;
+}
 
 export function ServiceAreasMap({
     apiKey,
@@ -18,12 +36,54 @@ export function ServiceAreasMap({
 }) {
     const mapRef = useRef<HTMLDivElement>(null);
     const [scriptLoaded, setScriptLoaded] = useState(false);
+    const [containerReady, setContainerReady] = useState(false);
     const [error, setError] = useState<string | null>(null);
-    const mapInstanceRef = useRef<unknown>(null);
+    const mapInstanceRef = useRef<InstanceType<GoogleMaps["maps"]["Map"]> | null>(null);
+
+    // If the Google Maps script was already loaded by another component or on a previous page,
+    // make sure we still initialize the map even if the <Script> onLoad doesn't fire again.
+    useEffect(() => {
+        if (!apiKey) return;
+        const g = getGoogle();
+        if (g?.maps?.Map) {
+            setScriptLoaded(true);
+        }
+    }, [apiKey]);
+
+    // Fallback: sometimes Script onLoad doesn't fire on first load (e.g. cached script).
+    // Re-check for window.google after a short delay so we don't depend solely on onLoad.
+    useEffect(() => {
+        if (!apiKey || scriptLoaded) return;
+        const t = setTimeout(() => {
+            if (getGoogle()?.maps?.Map) setScriptLoaded(true);
+        }, 500);
+        return () => clearTimeout(t);
+    }, [apiKey, scriptLoaded]);
+
+    // Only init the map when the container has non-zero size (avoids blank map when off-screen).
+    // Also trigger map resize when the container later gets size so the map repaints.
+    useEffect(() => {
+        const el = mapRef.current;
+        if (!el) return;
+        const ro = new ResizeObserver((entries) => {
+            const { width, height } = entries[0]?.contentRect ?? {};
+            if (width > 0 && height > 0) {
+                setContainerReady(true);
+                const g = getGoogle();
+                const map = mapInstanceRef.current;
+                if (g && map) {
+                    g.maps.event.trigger(map, "resize");
+                }
+            }
+        });
+        ro.observe(el);
+        if (el.clientWidth > 0 && el.clientHeight > 0) setContainerReady(true);
+        return () => ro.disconnect();
+    }, []);
 
     useEffect(() => {
-        if (!apiKey || !scriptLoaded || !mapRef.current) return;
-        const g = (window as { google?: { maps: { Map: new (el: HTMLElement, opts: object) => unknown; LatLngBounds: new () => { extend: (ll: unknown) => void; isEmpty: () => boolean }; Data: new () => { setStyle: (s: object) => void; addListener: (n: string, f: () => void) => void; forEach: (f: (feat: { getGeometry: () => { forEachLatLng: (f: (ll: unknown) => void) => void } }) => void) => void; loadGeoJson: (u: string) => void; setMap: (m: unknown) => void } } } }).google;
+        if (!apiKey || !scriptLoaded || !containerReady || !mapRef.current) return;
+        const g = getGoogle();
         if (!g?.maps?.Map) {
             setError("Google Maps failed to load");
             return;
@@ -80,7 +140,7 @@ export function ServiceAreasMap({
         } catch (e) {
             setError(e instanceof Error ? e.message : "Map error");
         }
-    }, [apiKey, scriptLoaded]);
+    }, [apiKey, scriptLoaded, containerReady]);
 
     if (!apiKey) {
         return null;
