@@ -9,7 +9,13 @@ const DEFAULT_ZOOM = 9;
 
 type GoogleMaps = {
     maps: {
-        Map: new (el: HTMLElement, opts: object) => { getDiv: () => HTMLElement };
+        Map: new (el: HTMLElement, opts: object) => {
+            getDiv: () => HTMLElement;
+            fitBounds: (
+                bounds: { isEmpty: () => boolean },
+                padding?: { top?: number; right?: number; bottom?: number; left?: number }
+            ) => void;
+        };
         LatLngBounds: new () => { extend: (ll: unknown) => void; isEmpty: () => boolean };
         Data: new () => {
             setStyle: (s: object) => void;
