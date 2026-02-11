@@ -14,7 +14,7 @@ export interface SEOProps {
 
 export function generateMetadata(
     props: SEOProps,
-    businessConfig: BusinessConfig
+    businessConfig: BusinessConfig,
 ): Metadata {
     const {
         title,
@@ -86,7 +86,7 @@ export function generateMetadata(
             creator:
                 businessConfig.socialMedia.twitter?.replace(
                     "https://twitter.com/",
-                    "@"
+                    "@",
                 ) || undefined,
         },
         alternates: {
