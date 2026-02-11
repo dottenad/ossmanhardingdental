@@ -1,54 +1,30 @@
 version: 1
 frontend:
-  phases:
-    preBuild:
-      commands:
-        - npm ci
-    build:
-      commands:
-        - npm run build
-    postBuild:
-      commands:
-        # Prepare Next.js standalone (static + public for the server)
-        - cp -r .next/static .next/standalone/.next/
-        - cp -r public .next/standalone/
-        # Amplify deployment spec: compute (Node server)
-        - mkdir -p .amplify-hosting/compute/default
-        - cp -r .next/standalone/* .amplify-hosting/compute/default/
-        # Amplify deployment spec: static assets (CDN)
-        - mkdir -p .amplify-hosting/static/_next/static
-        - cp -r .next/static/. .amplify-hosting/static/_next/static/
-        - cp -r public/. .amplify-hosting/static/
-        # Deploy manifest (required for SSR/compute)
-        - |
-          echo '{
-            "version": 1,
-            "routes": [
-              { "path": "/_next/static/*", "target": { "kind": "Static", "cacheControl": "public, max-age=31536000, immutable" } },
-              { "path": "/*.*", "target": { "kind": "Static" }, "fallback": { "kind": "Compute", "src": "default" } },
-              { "path": "/*", "target": { "kind": "Compute", "src": "default" } }
-            ],
-            "computeResources": [{ "name": "default", "runtime": "nodejs20.x", "entrypoint": "server.js" }],
-            "framework": { "name": "next", "version": "14.2.18" }
-          }' > .amplify-hosting/deploy-manifest.json
-  artifacts:
-    baseDirectory: .amplify-hosting
-    files:
-      - '**/*'
-  cache:
-    paths:
-      - node_modules/**/*
-      - .next/cache/**/*
+    phases:
+        preBuild:
+            commands:
+                - npm ci
+        build:
+            commands:
+                - npm run build
+    artifacts:
+        baseDirectory: .next
+        files:
+            - "**/*"
+    cache:
+        paths:
+            - node_modules/**/*
+            - .next/cache/**/*
 customHeaders:
-  - pattern: '/images/**'
-    headers:
-      - key: 'Cache-Control'
-        value: 'public, max-age=31536000, immutable'
-  - pattern: '/_next/image/**'
-    headers:
-      - key: 'Cache-Control'
-        value: 'public, max-age=31536000, immutable'
-  - pattern: '/_next/static/**'
-    headers:
-      - key: 'Cache-Control'
-        value: 'public, max-age=31536000, immutable'
+    - pattern: "/images/**"
+      headers:
+          - key: "Cache-Control"
+            value: "public, max-age=31536000, immutable"
+    - pattern: "/_next/image/**"
+      headers:
+          - key: "Cache-Control"
+            value: "public, max-age=31536000, immutable"
+    - pattern: "/_next/static/**"
+      headers:
+          - key: "Cache-Control"
+            value: "public, max-age=31536000, immutable"

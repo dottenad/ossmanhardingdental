@@ -24,8 +24,7 @@ const nextConfig = {
         contentSecurityPolicy:
             "default-src 'self'; script-src 'none'; sandbox;",
     },
-    // Enable static exports for better SEO
-    output: "standalone",
+    // Omit "standalone" so Amplify's default Next.js SSR deploy can use .next and generate required-server-files.json
     // Optimize JavaScript for modern browsers (SWC minification is default in Next.js 13+)
     swcMinify: true,
     async headers() {
