@@ -161,7 +161,6 @@ export async function createClientAndJobOrRequest(
         input: {
             clientId,
             title: requestTitle,
-            source: "WEBSITE",
         },
     });
 
