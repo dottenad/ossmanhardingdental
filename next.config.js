@@ -7,6 +7,8 @@ const nextConfig = {
         JOBBER_CLIENT_SECRET: process.env.JOBBER_CLIENT_SECRET,
         JOBBER_REDIRECT_URI: process.env.JOBBER_REDIRECT_URI,
         JOBBER_OAUTH_APP_URL: process.env.JOBBER_OAUTH_APP_URL,
+        JOBBER_ACCESS_TOKEN: process.env.JOBBER_ACCESS_TOKEN,
+        JOBBER_REFRESH_TOKEN: process.env.JOBBER_REFRESH_TOKEN,
     },
     // Optimize JavaScript output - target modern browsers
     compiler: {
