@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { Resend } from "resend";
-
-const TO_EMAIL = "soundcustomfences@gmail.com";
-const FROM_EMAIL = process.env.RESEND_FROM || "Sound Custom Fences <onboarding@resend.dev>";
+import { getAccessToken } from "@/lib/jobber-auth";
+import { createClientAndJobOrRequest } from "@/lib/jobber-quote";
 
 export interface ContactRequestBody {
     firstName: string;
@@ -15,33 +13,14 @@ export interface ContactRequestBody {
     textConsent?: boolean;
 }
 
-function buildSubmissionHtml(body: ContactRequestBody): string {
-    const lines = [
-        `Name: ${body.firstName.trim()} ${body.lastName.trim()}`,
-        `Email: ${body.email.trim()}`,
-        `Phone: ${body.phone.trim()}`,
-        body.service?.trim() ? `Service: ${body.service.trim()}` : null,
-        body.message?.trim() ? `Message:\n${body.message.trim()}` : null,
-        body.marketingConsent ? "Marketing consent: Yes" : null,
-        body.textConsent ? "Text consent: Yes" : null,
-    ].filter(Boolean);
-    const text = lines.join("\n");
-    return `<pre style="font-family:sans-serif;white-space:pre-wrap;">${escapeHtml(text)}</pre>`;
-}
-
-function escapeHtml(s: string): string {
-    return s
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;");
-}
-
 export async function POST(request: NextRequest) {
-    const apiKey = process.env.RESEND_API_KEY;
-    if (!apiKey) {
+    const accessToken = await getAccessToken();
+    if (!accessToken) {
         return NextResponse.json(
-            { error: "Email is not configured (missing RESEND_API_KEY)." },
+            {
+                error:
+                    "Contact form is not configured. Set up Jobber (JOBBER_ACCESS_TOKEN or OAuth at /api/jobber/oauth).",
+            },
             { status: 503 }
         );
     }
@@ -64,52 +43,28 @@ export async function POST(request: NextRequest) {
         );
     }
 
-    const resend = new Resend(apiKey);
+    const result = await createClientAndJobOrRequest(accessToken, {
+        firstName,
+        lastName,
+        email,
+        phone,
+        service,
+        message,
+    });
 
-    try {
-        // 1) Send submission to company
-        const { error: err1 } = await resend.emails.send({
-            from: FROM_EMAIL,
-            to: [TO_EMAIL],
-            replyTo: email.trim(),
-            subject: `Quote request from ${firstName.trim()} ${lastName.trim()}`,
-            html: buildSubmissionHtml(body),
-        });
-
-        if (err1) {
-            console.error("Resend (to company):", err1);
-            return NextResponse.json(
-                { error: "Failed to send your message. Please try again or call us." },
-                { status: 502 }
-            );
-        }
-
-        // 2) Send confirmation to the person who submitted
-        const { error: err2 } = await resend.emails.send({
-            from: FROM_EMAIL,
-            to: [email.trim()],
-            subject: "We received your request – Sound Custom Fences",
-            html: `
-                <p>Thank you for your email. We have received your quote request and will reach out to you soon.</p>
-                <p>If you have any questions in the meantime, feel free to call us at (253) 448-3434.</p>
-                <p>— Sound Custom Fences</p>
-            `,
-        });
-
-        if (err2) {
-            console.error("Resend (confirmation to user):", err2);
-            // Submission was already received by company; still return success
-        }
-
-        return NextResponse.json({
-            success: true,
-            message: "Your request has been received. We'll be in touch soon.",
-        });
-    } catch (err) {
-        console.error("Contact API error:", err);
+    if (!result.success) {
+        const isClientError =
+            result.error.includes("userErrors") ||
+            result.error.includes("client") ||
+            result.error.includes("request");
         return NextResponse.json(
-            { error: "Something went wrong. Please try again or call us." },
-            { status: 500 }
+            { error: result.error },
+            { status: isClientError ? 400 : 502 }
         );
     }
+
+    return NextResponse.json({
+        success: true,
+        message: "Your request has been received. We'll be in touch soon.",
+    });
 }
