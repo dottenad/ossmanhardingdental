@@ -247,7 +247,11 @@ export function Footer() {
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
                         <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
                             <p className="text-gray-100 text-sm">
-                                &copy; {currentYear} {businessConfig.name}. All
+                                &copy;{" "}
+                                <span suppressHydrationWarning>
+                                    {currentYear}
+                                </span>{" "}
+                                {businessConfig.name}. All
                                 rights reserved.
                             </p>
                             <div className="flex gap-6 text-sm text-gray-100">
