@@ -456,6 +456,13 @@ export const businessConfig: BusinessConfig = {
     },
 };
 
+/** Optional expanded content for service pages (what the service is, what's included, process). */
+export type ServicePageContent = {
+    whatIs: string;
+    whatWeOffer: string[];
+    process?: string;
+};
+
 /** Shape of a single industry's config (used so industryConfig can be indexed by Industry). */
 export type IndustryConfigEntry = {
     name: string;
@@ -464,6 +471,7 @@ export type IndustryConfigEntry = {
     keywords: string[];
     description: string;
     servicePageImages: Record<string, string>;
+    servicePageContent?: Record<string, ServicePageContent>;
 };
 
 const _industryConfig = {
@@ -531,6 +539,100 @@ const _industryConfig = {
             "fence-staining": "/images/service-images/fence-staining.jpg",
             "gate-installation":
                 "/images/service-images/fence-gate-installation.jpg",
+        },
+        /** Expanded content for each service page (appears below the main image). */
+        servicePageContent: {
+            "privacy-fence-installation": {
+                whatIs: "A privacy fence is a solid or semi-solid barrier that gives you seclusion from neighbors and street traffic while defining your property line. We install wood, vinyl, and composite privacy fences in a range of heights and styles, from classic vertical board to horizontal modern designs. Proper installation—including sturdy posts, level rails, and consistent spacing—ensures your fence looks great and lasts for years.",
+                whatWeOffer: [
+                    "Full design consultation and layout",
+                    "Wood, vinyl, and composite privacy options",
+                    "Standard and custom heights (typically 4–8 feet)",
+                    "Post setting with proper footing for stability",
+                    "Gates and hardware to match your fence",
+                    "Clean, professional finish and cleanup",
+                ],
+                process:
+                    "We start with a free estimate and site visit to discuss height, material, and style. Once you approve the plan, we schedule the install and handle permits if needed. Installation typically takes one to a few days depending on length and terrain. We leave your yard clean and walk you through care tips so your fence stays in top shape.",
+            },
+            "wood-fence-installation": {
+                whatIs: "Wood fencing offers natural beauty and versatility: cedar, pressure-treated pine, and other species can be built into privacy panels, picket fences, post-and-rail, or custom designs. Wood can be stained or painted to match your home and is well-suited to the Pacific Northwest when properly maintained. We build wood fences with quality lumber and durable construction so they withstand weather and wear.",
+                whatWeOffer: [
+                    "Cedar, pressure-treated, and other wood species",
+                    "Privacy, picket, post-and-rail, and custom styles",
+                    "Staining or paint-ready installation",
+                    "Sturdy post and rail construction",
+                    "Gates and decorative options",
+                    "Recommendations for ongoing maintenance",
+                ],
+                process:
+                    "After a free site visit and estimate, we finalize the style, height, and wood type. We set posts with appropriate footings, install rails and pickets or panels, and add gates as needed. You can choose to stain or paint later or have it done as part of the project. We’ll explain how often to reseal or restain to protect your investment.",
+            },
+            "vinyl-fence-installation": {
+                whatIs: "Vinyl (PVC) fencing is a low-maintenance alternative to wood: it doesn’t rot, warp, or need painting, and it resists insects and moisture. It’s available in white, tan, and wood-look styles and works well for privacy, pool enclosures, and decorative borders. We install quality vinyl systems with rigid posts and panels so your fence stays straight and attractive for decades.",
+                whatWeOffer: [
+                    "Privacy, semi-privacy, and picket vinyl styles",
+                    "White, tan, and wood-grain finishes",
+                    "UV-resistant, won’t rot or warp",
+                    "No painting or staining required",
+                    "Gates and matching hardware",
+                    "Long-term durability with minimal upkeep",
+                ],
+                process:
+                    "We measure your property and help you choose a vinyl style and color. Installation uses set posts and preassembled or panel sections, with gates fitted to match. There’s no need for ongoing stain or paint—occasional washing is usually enough. We’ll provide care tips and warranty information so you know what to expect.",
+            },
+            "chain-link-fence-installation": {
+                whatIs: "Chain link fencing is a durable, cost-effective option for securing yards, pets, and commercial property. Galvanized or vinyl-coated chain link resists rust and comes in various heights and gauges. It’s ideal for defining boundaries, enclosing pools or dog runs, and securing storage or equipment areas without blocking light or views.",
+                whatWeOffer: [
+                    "Residential and commercial chain link",
+                    "Galvanized and vinyl-coated options",
+                    "Various heights and gauges to suit your needs",
+                    "Gates (single and double) with latches",
+                    "Proper post setting and tensioning",
+                    "Optional privacy slats or screening",
+                ],
+                process:
+                    "We assess your site and recommend height, gauge, and coating. Posts are set and the mesh is hung and tensioned for a tight, professional look. Gates are installed with secure latches. The job is typically completed in one to two days. We can also add privacy slats later if you want more screening.",
+            },
+            "fence-repair": {
+                whatIs: "Fence repair keeps your existing fence safe, functional, and looking good. We fix leaning or fallen posts, replace broken or rotted boards and panels, repair or replace gates and hardware, and address damage from weather, age, or impact. Whether it’s a small fix or a larger section replacement, we match materials and style when possible so the repair blends in.",
+                whatWeOffer: [
+                    "Post replacement and straightening",
+                    "Board, panel, and picket replacement",
+                    "Gate repair and hardware replacement",
+                    "Rail and bracket repairs",
+                    "Damage assessment and honest recommendations",
+                    "Repair vs. replace guidance",
+                ],
+                process:
+                    "We inspect your fence and provide a clear estimate for the repairs needed. For larger jobs we may recommend replacing a section rather than patching. We source matching materials when available and complete the work with minimal disruption. You’ll know exactly what we’re doing and what it will cost before we start.",
+            },
+            "fence-staining": {
+                whatIs: "Fence staining and sealing protects wood from moisture, UV, and rot while enhancing its color and grain. We clean and prepare the surface, then apply quality stain or sealant—opaque, semi-transparent, or clear—so your fence looks great and lasts longer. Staining is one of the best ways to extend the life of a wood fence in the Pacific Northwest.",
+                whatWeOffer: [
+                    "Cleaning and prep (power wash, brightening if needed)",
+                    "Opaque, semi-transparent, and clear stain options",
+                    "Oil-based and water-based products",
+                    "One or two coats depending on condition and look",
+                    "Sealant to repel moisture and UV",
+                    "Recommendations for re-stain intervals",
+                ],
+                process:
+                    "We evaluate your fence’s condition and recommend a stain type and color. Surfaces are cleaned and allowed to dry before application. Staining is done in good weather so the product cures properly. We’ll tell you how long the stain should last and when to plan the next refresh so your fence stays protected.",
+            },
+            "gate-installation": {
+                whatIs: "A well-built gate provides secure, easy access to your yard while matching your fence in style and material. We install single and double gates for driveways, walkways, and pool areas—in wood, vinyl, or metal—with heavy-duty hinges and latches that hold up to daily use. Proper sizing and framing prevent sagging and ensure smooth operation for years.",
+                whatWeOffer: [
+                    "Single and double gate design and installation",
+                    "Wood, vinyl, and metal gate options",
+                    "Heavy-duty hinges and latches",
+                    "Driveway, pedestrian, and pool gates",
+                    "Custom sizing to fit your opening",
+                    "Repair and replacement of existing gates",
+                ],
+                process:
+                    "We measure the opening and discuss how you’ll use the gate (vehicles, pedestrians, pets). We then build or order a gate that fits and install it with robust hardware. For double gates we ensure proper alignment and latching. You’ll get a gate that opens and closes smoothly and matches your fence.",
+            },
         },
     },
 } as const;

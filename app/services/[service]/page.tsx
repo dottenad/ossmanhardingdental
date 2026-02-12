@@ -147,10 +147,11 @@ export default function ServicePage({ params }: PageProps) {
                                     <p className="text-xl text-gray-700 mb-6 leading-relaxed">
                                         {businessConfig.name} provides expert{" "}
                                         {serviceName.toLowerCase()} services for
-                                        residential and commercial properties.
-                                        Our experienced team is committed to
-                                        delivering high-quality workmanship and
-                                        exceptional customer service.
+                                        residential and commercial properties
+                                        across the Puget Sound. Our experienced
+                                        team is committed to high-quality
+                                        workmanship and exceptional customer
+                                        service.
                                     </p>
                                     {industryConfig[
                                         businessConfig.industry
@@ -174,10 +175,98 @@ export default function ServicePage({ params }: PageProps) {
                                             </div>
                                         </div>
                                     )}
+
+                                    {/* Expanded service content (what it is, what we offer, process) */}
+                                    {(
+                                        industryConfig[businessConfig.industry]
+                                            .servicePageContent ?? {}
+                                    )[params.service] ? (
+                                        <>
+                                            <h3 className="text-2xl font-bold mt-10 mb-3 text-gray-900">
+                                                What is {serviceName}?
+                                            </h3>
+                                            <p className="text-gray-700 mb-8 leading-relaxed">
+                                                {
+                                                    (
+                                                        industryConfig[
+                                                            businessConfig
+                                                                .industry
+                                                        ].servicePageContent ??
+                                                        {}
+                                                    )[params.service]
+                                                        ?.whatIs
+                                                }
+                                            </p>
+                                            <h3 className="text-2xl font-bold mt-10 mb-3 text-gray-900">
+                                                What We Offer
+                                            </h3>
+                                            <ul className="space-y-2 text-gray-700 mb-8 list-none pl-0">
+                                                {(
+                                                    (
+                                                        industryConfig[
+                                                            businessConfig
+                                                                .industry
+                                                        ].servicePageContent ??
+                                                        {}
+                                                    )[params.service]
+                                                        ?.whatWeOffer ?? []
+                                                ).map((item, i) => (
+                                                    <li
+                                                        key={i}
+                                                        className="flex items-start"
+                                                    >
+                                                        <span className="text-primary-600 mr-2 font-bold shrink-0">
+                                                            ✓
+                                                        </span>
+                                                        <span>{item}</span>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                            {(
+                                                industryConfig[
+                                                    businessConfig.industry
+                                                ].servicePageContent ?? {}
+                                            )[params.service]?.process && (
+                                                <>
+                                                    <h3 className="text-2xl font-bold mt-10 mb-3 text-gray-900">
+                                                        What to Expect
+                                                    </h3>
+                                                    <p className="text-gray-700 mb-8 leading-relaxed">
+                                                        {
+                                                            (
+                                                                industryConfig[
+                                                                    businessConfig
+                                                                        .industry
+                                                                ].servicePageContent ??
+                                                                {}
+                                                            )[params.service]
+                                                                ?.process
+                                                        }
+                                                    </p>
+                                                </>
+                                            )}
+                                        </>
+                                    ) : (
+                                        <p className="text-gray-700 mb-8 leading-relaxed">
+                                            We tailor every project to your
+                                            property and goals. From initial
+                                            consultation to final cleanup, we
+                                            work with you to ensure the result
+                                            meets your expectations. Contact us
+                                            for a free estimate and to discuss
+                                            how we can help with your{" "}
+                                            {serviceName.toLowerCase()} needs.
+                                        </p>
+                                    )}
+
+                                    <h3 className="text-2xl font-bold mt-10 mb-3 text-gray-900">
+                                        Where We Serve
+                                    </h3>
                                     <p className="text-gray-700 mb-6 leading-relaxed">
-                                        We serve{" "}
+                                        We provide {serviceName.toLowerCase()}{" "}
+                                        throughout{" "}
                                         {businessConfig.serviceAreas.length}{" "}
-                                        service areas including{" "}
+                                        communities, including{" "}
                                         {businessConfig.serviceAreas
                                             .slice(0, 3)
                                             .map((area, index) => {
