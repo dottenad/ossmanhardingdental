@@ -55,14 +55,23 @@ export async function getAccessToken(): Promise<string | null> {
     return creds.access_token;
 }
 
+export type ExchangeResult =
+    | { ok: true; credentials: JobberCredentials }
+    | { ok: false; error: string };
+
 /** Exchange authorization code for tokens. Used by OAuth callback. */
 export async function exchangeCodeForTokens(
     code: string,
     redirectUri: string
-): Promise<JobberCredentials | null> {
+): Promise<ExchangeResult> {
     const clientId = process.env.JOBBER_CLIENT_ID;
     const clientSecret = process.env.JOBBER_CLIENT_SECRET;
-    if (!clientId || !clientSecret) return null;
+    if (!clientId || !clientSecret) {
+        return {
+            ok: false,
+            error: "JOBBER_CLIENT_ID or JOBBER_CLIENT_SECRET is missing in this environment.",
+        };
+    }
 
     const body = new URLSearchParams({
         client_id: clientId,
@@ -78,22 +87,39 @@ export async function exchangeCodeForTokens(
         body: body.toString(),
     });
 
-    if (!res.ok) return null;
     const data = (await res.json()) as {
         access_token?: string;
         refresh_token?: string;
         expires_in?: number;
+        error?: string;
+        error_description?: string;
     };
-    if (!data.access_token) return null;
+
+    if (!res.ok) {
+        const msg =
+            data.error_description ||
+            data.error ||
+            `Jobber returned ${res.status}. Check client id, secret, and that redirect_uri matches exactly.`;
+        return { ok: false, error: msg };
+    }
+    if (!data.access_token) {
+        return {
+            ok: false,
+            error: data.error_description || data.error || "No access_token in response.",
+        };
+    }
 
     const expires_at = data.expires_in
         ? Date.now() + data.expires_in * 1000
         : undefined;
 
     return {
-        access_token: data.access_token,
-        refresh_token: data.refresh_token || "",
-        expires_at,
+        ok: true,
+        credentials: {
+            access_token: data.access_token,
+            refresh_token: data.refresh_token || "",
+            expires_at,
+        },
     };
 }
 

@@ -46,14 +46,14 @@ export async function GET(request: NextRequest) {
         );
     }
 
-    const credentials = await exchangeCodeForTokens(code, redirectUri);
-    if (!credentials) {
+    const result = await exchangeCodeForTokens(code, redirectUri);
+    if (!result.ok) {
         return NextResponse.redirect(
-            `${baseUrl}/api/jobber/oauth/done?success=0&message=${encodeURIComponent("Failed to exchange code for tokens. Check JOBBER_CLIENT_ID and JOBBER_CLIENT_SECRET.")}`
+            `${baseUrl}/api/jobber/oauth/done?success=0&message=${encodeURIComponent(result.error)}`
         );
     }
 
-    const saved = saveJobberCredentials(credentials);
+    const saved = saveJobberCredentials(result.credentials);
 
     return NextResponse.redirect(
         `${baseUrl}/api/jobber/oauth/done?success=1&saved=${saved ? "1" : "0"}`
