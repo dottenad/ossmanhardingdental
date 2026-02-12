@@ -196,6 +196,10 @@ export const businessConfig: BusinessConfig = {
                     href: "/services/fence-repair",
                 },
                 {
+                    label: "Fence Staining",
+                    href: "/services/fence-staining",
+                },
+                {
                     label: "Gate Installation",
                     href: "/services/gate-installation",
                 },
@@ -479,6 +483,7 @@ const _industryConfig = {
             "Vinyl Fence Installation",
             "Chain Link Fence Installation",
             "Fence Repair",
+            "Fence Staining",
             "Gate Installation",
             "Fence Maintenance",
             "Fence Replacement",
@@ -499,6 +504,7 @@ const _industryConfig = {
             "fencing",
             "fence installation",
             "fence repair",
+            "fence staining",
             "privacy fence",
             "wood fence",
             "vinyl fence",
@@ -522,6 +528,7 @@ const _industryConfig = {
             "chain-link-fence-installation":
                 "/images/service-images/chain-link-fence-installation.jpg",
             "fence-repair": "/images/service-images/fence-repair.jpg",
+            "fence-staining": "/images/service-images/fence-staining.jpg",
             "gate-installation":
                 "/images/service-images/fence-gate-installation.jpg",
         },
