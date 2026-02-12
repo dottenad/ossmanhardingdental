@@ -6,6 +6,9 @@ frontend:
                 - npm ci
         build:
             commands:
+                # Amplify does not inject Console env vars into the Next.js serverless runtime.
+                # Write them to .env.production so API routes (e.g. Jobber OAuth) can read them.
+                - env | grep -E '^JOBBER_' >> .env.production || true
                 - npm run build
     artifacts:
         baseDirectory: .next

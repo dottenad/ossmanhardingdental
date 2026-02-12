@@ -1,6 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     reactStrictMode: true,
+    // Expose Amplify Console env vars to SSR/API routes (Amplify does not inject them into Lambda by default).
+    env: {
+        JOBBER_CLIENT_ID: process.env.JOBBER_CLIENT_ID,
+        JOBBER_CLIENT_SECRET: process.env.JOBBER_CLIENT_SECRET,
+        JOBBER_REDIRECT_URI: process.env.JOBBER_REDIRECT_URI,
+        JOBBER_OAUTH_APP_URL: process.env.JOBBER_OAUTH_APP_URL,
+    },
     // Optimize JavaScript output - target modern browsers
     compiler: {
         removeConsole: process.env.NODE_ENV === "production",
