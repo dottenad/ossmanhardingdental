@@ -18,10 +18,11 @@ export async function GET(request: NextRequest) {
     const state = request.nextUrl.searchParams.get("state");
     const errorParam = request.nextUrl.searchParams.get("error");
 
+    // Prefer the request origin so the "done" redirect stays on the same host (avoids redirecting to localhost when env was set for local dev).
     const baseUrl =
+        request.nextUrl.origin ||
         process.env.JOBBER_OAUTH_APP_URL ||
-        process.env.NEXT_PUBLIC_APP_URL ||
-        request.nextUrl.origin;
+        process.env.NEXT_PUBLIC_APP_URL;
     // Must match the redirect_uri used in the authorize step (and in Jobber Developer Center).
     const redirectUri =
         process.env.JOBBER_REDIRECT_URI ||
