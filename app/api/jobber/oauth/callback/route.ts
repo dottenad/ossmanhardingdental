@@ -55,7 +55,19 @@ export async function GET(request: NextRequest) {
 
     const saved = saveJobberCredentials(result.credentials);
 
-    return NextResponse.redirect(
-        `${baseUrl}/api/jobber/oauth/done?success=1&saved=${saved ? "1" : "0"}`
-    );
+    // On serverless (e.g. Amplify), the file isn't persisted. Pass tokens via a short-lived
+    // cookie so the done page can show them once for copying into Amplify env vars.
+    const cookiePayload = Buffer.from(
+        JSON.stringify({
+            access_token: result.credentials.access_token,
+            refresh_token: result.credentials.refresh_token,
+        }),
+        "utf-8"
+    ).toString("base64url");
+    const cookieValue = `jobber_copy=${cookiePayload}; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=120`;
+
+    const doneUrl = `${baseUrl}/api/jobber/oauth/done?success=1&saved=${saved ? "1" : "0"}`;
+    return NextResponse.redirect(doneUrl, {
+        headers: { "Set-Cookie": cookieValue },
+    });
 }
