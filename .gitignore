@@ -29,6 +29,9 @@ yarn-error.log*
 .env*.local
 .env
 
+# Jobber OAuth tokens (written by /api/jobber/oauth/callback)
+.jobber-credentials.json
+
 # vercel
 .vercel
 

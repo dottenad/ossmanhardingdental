@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { getAccessToken } from "@/lib/jobber-auth";
 
 const JOBBER_GRAPHQL_URL = "https://api.getjobber.com/api/graphql";
 const JOBBER_API_VERSION = "2023-11-15"; // Override with JOBBER_API_VERSION env; see https://developer.getjobber.com/docs/using_jobbers_api/api_versioning
@@ -51,10 +52,13 @@ async function jobberGraphQL<T>(
 }
 
 export async function POST(request: NextRequest) {
-    const accessToken = process.env.JOBBER_ACCESS_TOKEN;
+    const accessToken = await getAccessToken();
     if (!accessToken) {
         return NextResponse.json(
-            { error: "Jobber integration is not configured (missing JOBBER_ACCESS_TOKEN)." },
+            {
+                error:
+                    "Jobber integration is not configured. Set JOBBER_ACCESS_TOKEN in env, or complete OAuth at /api/jobber/oauth.",
+            },
             { status: 503 }
         );
     }
