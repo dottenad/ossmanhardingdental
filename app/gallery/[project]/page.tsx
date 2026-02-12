@@ -124,6 +124,7 @@ export default function GalleryProjectPage({ params }: PageProps) {
                     backgroundImage={project.featuredImage}
                     title={project.name}
                     subtitle={project.projectType}
+                    priority
                 />
                 <Breadcrumb
                     items={[
@@ -163,7 +164,7 @@ export default function GalleryProjectPage({ params }: PageProps) {
                             </div>
                         </div>
 
-                        {/* Image Gallery */}
+                        {/* Image Gallery - first 3 images priority for faster LCP */}
                         {project.images && project.images.length > 0 && (
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                                 {project.images.map((image, index) => (
@@ -183,6 +184,7 @@ export default function GalleryProjectPage({ params }: PageProps) {
                                             fill
                                             className="object-cover"
                                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                            priority={index < 3}
                                         />
                                     </div>
                                 ))}

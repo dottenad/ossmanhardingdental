@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode, useMemo, useEffect } from "react";
+import { ReactNode, useMemo } from "react";
 import Image from "next/image";
 
 interface HeroProps {
@@ -37,23 +37,6 @@ export function Hero({
         [backgroundImage]
     );
 
-    // Preload the image when priority is true for faster LCP
-    useEffect(() => {
-        if (priority && normalizedImage) {
-            const link = document.createElement("link");
-            link.rel = "preload";
-            link.as = "image";
-            link.href = normalizedImage;
-            link.setAttribute("fetchpriority", "high");
-            document.head.appendChild(link);
-
-            return () => {
-                // Cleanup: remove the preload link when component unmounts
-                document.head.removeChild(link);
-            };
-        }
-    }, [priority, normalizedImage]);
-
     // Use the normalized image path as a key to force re-render on navigation
     // This ensures the image reloads when navigating from other pages
 
@@ -66,8 +49,8 @@ export function Hero({
                     : "bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800"
             } ${className}`}
         >
-            {/* Background Image - use next/image for LCP optimization when priority is true */}
-            {normalizedImage && priority ? (
+            {/* Background Image - always use next/image so images are optimized (resized, WebP/AVIF) */}
+            {normalizedImage ? (
                 <div className="absolute inset-0 z-0">
                     <Image
                         src={normalizedImage}
@@ -80,16 +63,6 @@ export function Hero({
                         quality={85}
                     />
                 </div>
-            ) : normalizedImage ? (
-                <div
-                    className="absolute inset-0"
-                    style={{
-                        backgroundImage: `url(${normalizedImage})`,
-                        backgroundSize: "cover",
-                        backgroundPosition: "center",
-                        backgroundRepeat: "no-repeat",
-                    }}
-                />
             ) : null}
             {/* Dark overlays for text readability */}
             {normalizedImage && (

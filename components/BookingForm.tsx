@@ -32,7 +32,8 @@ export function BookingForm({ singleColumn = false }: BookingFormProps) {
         setSubmitError(null);
 
         try {
-            const res = await fetch("/api/contact", {
+            // Single endpoint for all "Request a Quote" forms (home, contact, services, etc.) – creates client + job/request in Jobber.
+            const res = await fetch("/api/jobber/quote", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({

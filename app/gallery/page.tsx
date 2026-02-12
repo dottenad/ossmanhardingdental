@@ -69,7 +69,7 @@ export default function GalleryPage() {
                             <div className="lg:col-span-2">
                                 {projects.length > 0 ? (
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                        {projects.map((project) => {
+                                        {projects.map((project, projectIndex) => {
                                             // Generate slug from city + project type
                                             const city =
                                                 project.location?.city
@@ -106,6 +106,7 @@ export default function GalleryPage() {
                                                             fill
                                                             className="object-cover group-hover:scale-105 transition-transform duration-300"
                                                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                                            priority={projectIndex < 3}
                                                         />
                                                         {/* Project Type Badge */}
                                                         <div className="absolute top-4 left-4">
