@@ -18,8 +18,16 @@ export async function GET(request: NextRequest) {
     const state = request.nextUrl.searchParams.get("state");
     const errorParam = request.nextUrl.searchParams.get("error");
 
-    // Prefer the request origin so the "done" redirect stays on the same host (avoids redirecting to localhost when env was set for local dev).
+    // On Amplify (and other serverless/proxy setups), request.nextUrl.origin can be wrong (e.g. localhost).
+    // Prefer the host the client actually used by reading x-forwarded-* headers.
+    const forwardedHost = request.headers.get("x-forwarded-host");
+    const forwardedProto = request.headers.get("x-forwarded-proto");
+    const originFromHeaders =
+        forwardedHost && forwardedProto
+            ? `${forwardedProto}://${forwardedHost}`
+            : null;
     const baseUrl =
+        originFromHeaders ||
         request.nextUrl.origin ||
         process.env.JOBBER_OAUTH_APP_URL ||
         process.env.NEXT_PUBLIC_APP_URL;
