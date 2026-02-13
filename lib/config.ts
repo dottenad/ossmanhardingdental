@@ -483,6 +483,7 @@ const _industryConfig = {
             "Vinyl Fence Installation",
             "Chain Link Fence Installation",
             "Fence Repair",
+            "Fence Staining",
             "Gate Installation",
         ],
         allServices: [

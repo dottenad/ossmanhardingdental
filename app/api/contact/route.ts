@@ -9,6 +9,7 @@ export interface ContactRequestBody {
     phone: string;
     service: string;
     message: string;
+    howDidYouHearAboutUs?: string;
     marketingConsent?: boolean;
     textConsent?: boolean;
 }
@@ -35,7 +36,7 @@ export async function POST(request: NextRequest) {
         );
     }
 
-    const { firstName, lastName, email, phone, service, message } = body;
+    const { firstName, lastName, email, phone, service, message, howDidYouHearAboutUs } = body;
     if (!firstName?.trim() || !lastName?.trim() || !email?.trim() || !phone?.trim()) {
         return NextResponse.json(
             { error: "Missing required fields: firstName, lastName, email, phone." },
@@ -50,6 +51,7 @@ export async function POST(request: NextRequest) {
         phone,
         service,
         message,
+        howDidYouHearAboutUs,
     });
 
     const refreshToken = process.env.JOBBER_REFRESH_TOKEN;
@@ -67,6 +69,7 @@ export async function POST(request: NextRequest) {
                 phone,
                 service,
                 message,
+                howDidYouHearAboutUs,
             });
         }
     }

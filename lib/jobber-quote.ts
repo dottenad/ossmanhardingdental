@@ -13,6 +13,7 @@ export interface JobberFormPayload {
     phone: string;
     service?: string;
     message?: string;
+    howDidYouHearAboutUs?: string;
 }
 
 export type CreateInJobberResult =
@@ -60,7 +61,7 @@ export async function createClientAndJobOrRequest(
     accessToken: string,
     payload: JobberFormPayload
 ): Promise<CreateInJobberResult> {
-    const { firstName, lastName, email, phone, service, message } = payload;
+    const { firstName, lastName, email, phone, service, message, howDidYouHearAboutUs } = payload;
     const clientMutation = `
       mutation ClientCreate($input: ClientCreateInput!) {
         clientCreate(input: $input) {
@@ -106,9 +107,14 @@ export async function createClientAndJobOrRequest(
     }
 
     const jobTitle = service?.trim() || "Quote / contact request";
-    const instructions = [message?.trim(), `Contact: ${firstName} ${lastName}, ${email}, ${phone}`]
-        .filter(Boolean)
-        .join("\n\n");
+    const instructionsParts = [
+        message?.trim(),
+        `Contact: ${firstName} ${lastName}, ${email}, ${phone}`,
+        howDidYouHearAboutUs?.trim()
+            ? `How did you hear about us: ${howDidYouHearAboutUs.trim()}`
+            : "",
+    ].filter(Boolean);
+    const instructions = instructionsParts.join("\n\n");
 
     const jobMutation = `
       mutation JobCreate($input: JobCreateInput!) {
@@ -143,7 +149,11 @@ export async function createClientAndJobOrRequest(
         };
     }
 
-    const requestTitle = [service, message].filter(Boolean).join(" — ").slice(0, 200) || "Quote / contact request";
+    const requestTitleParts = [service, message].filter(Boolean);
+    if (howDidYouHearAboutUs?.trim()) {
+        requestTitleParts.push(`Heard via: ${howDidYouHearAboutUs.trim()}`);
+    }
+    const requestTitle = requestTitleParts.join(" — ").slice(0, 200) || "Quote / contact request";
     const requestMutation = `
       mutation RequestCreate($input: RequestCreateInput!) {
         requestCreate(input: $input) {

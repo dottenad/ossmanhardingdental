@@ -34,7 +34,13 @@ export function generateMetadata(
         pageTitle === siteName ? siteName : `${pageTitle} | ${siteName}`;
     const metaDescription = description || defaultDescription;
     const siteUrl = url || businessConfig.website;
-    const ogImage = image || `${businessConfig.website}/og-image.jpg`;
+    // Use an image that exists (hero or default); avoid /og-image.jpg which may not be present
+    const defaultImagePath =
+        businessConfig.heroImage ||
+        "/images/service-images/privacy-fence-installation.jpg";
+    const ogImage = image
+        ? (image.startsWith("http") ? image : `${businessConfig.website}${image}`)
+        : `${businessConfig.website}${defaultImagePath}`;
 
     // Combine industry keywords with provided keywords
     const industryKeywords = industryConfig[businessConfig.industry].keywords;
