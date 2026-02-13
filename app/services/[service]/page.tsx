@@ -53,12 +53,12 @@ function findServiceBySlug(slug: string) {
     });
 }
 
-/** Personable, service-specific description that promotes the business. */
+/** Personable, service-specific sub-headline for hero and meta description. */
 function getServiceShortDescription(
     _serviceSlug: string,
     serviceName: string
 ): string {
-    return `${businessConfig.name} would love to help with your ${serviceName.toLowerCase()}. We're licensed, insured, and here when you're ready for a free estimate.`;
+    return `Learn more about our ${serviceName} service. We are fencing experts and would love to discuss your ${serviceName} project.`;
 }
 
 export function generateMetadata({ params }: PageProps): Metadata {

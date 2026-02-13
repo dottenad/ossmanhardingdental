@@ -33,6 +33,11 @@ export async function generateStaticParams() {
     });
 }
 
+/** Personable, area-specific sub-headline for hero and meta description. */
+function getServiceAreaShortDescription(cityName: string): string {
+    return `Learn more about the services we provide in ${cityName}. We are fencing experts, and would love to discuss your fencing project in ${cityName}.`;
+}
+
 export function generateMetadata({ params }: PageProps): Metadata {
     // Find matching area by comparing city name only (before comma)
     const matchingArea = businessConfig.serviceAreas.find((area) => {
@@ -45,20 +50,17 @@ export function generateMetadata({ params }: PageProps): Metadata {
     }
 
     const cityName = matchingArea.split(",")[0].trim();
-
     const industry = industryConfig[businessConfig.industry];
 
     return generateSEOMetadata(
         {
-            title: `${industry.name} in ${cityName}`,
-            description: `Professional ${industry.name.toLowerCase()} in ${cityName}. ${
-                industry.description
-            }`,
+            title: `Fencing Services in ${cityName}`,
+            description: getServiceAreaShortDescription(cityName),
             keywords: [
                 ...industry.keywords,
                 cityName,
                 matchingArea,
-                `${industry.name} ${cityName}`,
+                `Fencing Services ${cityName}`,
             ],
             url: `${businessConfig.website}/service-areas/${params.area}`,
         },
@@ -114,10 +116,8 @@ export default function ServiceAreaPage({ params }: PageProps) {
             <main id="main-content" className="flex-grow">
                 <Hero
                     backgroundImage={heroImage}
-                    title={`${industry.name} in ${cityName}`}
-                    subtitle={`Professional ${industry.name.toLowerCase()} services in ${cityName}. ${
-                        industry.description
-                    }`}
+                    title={`Fencing Services in ${cityName}`}
+                    subtitle={getServiceAreaShortDescription(cityName)}
                 />
                 {/* Breadcrumb */}
                 <Breadcrumb
@@ -231,7 +231,7 @@ export default function ServiceAreaPage({ params }: PageProps) {
                                                 <div className="w-full aspect-video rounded-lg overflow-hidden shadow-lg relative">
                                                     <Image
                                                         src={pageImage}
-                                                        alt={`${cityName} ${industry.name} - ${businessConfig.name}`}
+                                                        alt={`Fencing Services in ${cityName} - ${businessConfig.name}`}
                                                         fill
                                                         className="object-cover"
                                                         sizes="(max-width: 1024px) 100vw, 66vw"
@@ -247,10 +247,7 @@ export default function ServiceAreaPage({ params }: PageProps) {
                                     <div className="prose prose-lg max-w-none">
                                         {/* Main Heading */}
                                         <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
-                                            {cityName} {industry.name}:{" "}
-                                            {businessConfig.name} {cityName}{" "}
-                                            {industry.name.split(" ")[0]}{" "}
-                                            Services
+                                            Fencing Services in {cityName} — {businessConfig.name}
                                         </h2>
 
                                         {/* Introduction Paragraph */}
@@ -402,8 +399,8 @@ export default function ServiceAreaPage({ params }: PageProps) {
                                         <div className="bg-button-50 p-8 rounded-lg mb-8 border border-primary-200">
                                             <h2 className="text-3xl font-bold mb-4 text-gray-900">
                                                 Our Commitment to Quality and
-                                                Integrity as your {cityName}{" "}
-                                                {industry.name.split(" ")[0]}
+                                                Integrity as Your Trusted
+                                                Fencing Partner in {cityName}
                                             </h2>
                                             <p className="text-lg text-gray-700 mb-4 leading-relaxed">
                                                 At {businessConfig.name},
