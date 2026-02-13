@@ -296,7 +296,7 @@ export const businessConfig: BusinessConfig = {
             projectType: "Cedar Fence Replacement",
             location: { city: "Tacoma", state: "Washington" },
             description:
-                "Fence panel replacement in Tacoma. We kept the original 6x6 posts and built new 6' full panel style cedar fence with arched gate. And finished off with an oil based semi-transparent stain.",
+                "This was a fence replacement from chain-link to our 6' horizontal style cedar fence. Job was located in Tacoma. Pressure treated jumbo 4x4 posts, clear cedar fence boards, and premium 2x6 top cap. ",
             images: [
                 "/images/gallery/cedar-fence-replacement-tacoma/cedar-fence-replacement-tacoma-1.jpg",
                 "/images/gallery/cedar-fence-replacement-tacoma/cedar-fence-replacement-tacoma-2.jpg",
@@ -314,7 +314,7 @@ export const businessConfig: BusinessConfig = {
             projectType: "Fence Replacement",
             location: { city: "Tacoma", state: "Washington" },
             description:
-                "This was a fence replacement from chain-link to our 6' horizontal style cedar fence. Job was located in Tacoma. Pressure treated jumbo 4x4 posts, clear cedar fence boards, and premium 2x6 top cap.",
+                "Fence panel replacement in Tacoma. We kept the original 6x6 posts and built new 6' full panel style cedar fence with arched gate. And finished off with an oil based semi-transparent stain.",
             images: [
                 "/images/gallery/fence-replacement-tacoma/fence-replacement-tacoma-1.jpg",
                 "/images/gallery/fence-replacement-tacoma/fence-replacement-tacoma-2.jpg",

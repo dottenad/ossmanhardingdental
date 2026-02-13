@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getAccessToken } from "@/lib/jobber-auth";
+import { getAccessToken, refreshJobberToken } from "@/lib/jobber-auth";
 import { createClientAndJobOrRequest } from "@/lib/jobber-quote";
 
 export interface ContactRequestBody {
@@ -43,7 +43,7 @@ export async function POST(request: NextRequest) {
         );
     }
 
-    const result = await createClientAndJobOrRequest(accessToken, {
+    let result = await createClientAndJobOrRequest(accessToken, {
         firstName,
         lastName,
         email,
@@ -51,6 +51,25 @@ export async function POST(request: NextRequest) {
         service,
         message,
     });
+
+    const refreshToken = process.env.JOBBER_REFRESH_TOKEN;
+    if (
+        !result.success &&
+        (result.error === "Unauthorized" || result.error.toLowerCase().includes("unauthorized")) &&
+        refreshToken
+    ) {
+        const refreshed = await refreshJobberToken(refreshToken);
+        if (refreshed?.access_token) {
+            result = await createClientAndJobOrRequest(refreshed.access_token, {
+                firstName,
+                lastName,
+                email,
+                phone,
+                service,
+                message,
+            });
+        }
+    }
 
     if (!result.success) {
         const isClientError =
