@@ -43,7 +43,7 @@ export const metadata: Metadata = {
 
 export default function Home() {
     const industry = industryConfig[businessConfig.industry];
-    const services = industry.services;
+    const services = industry.services.slice(0, 6);
 
     const breadcrumbSchema = generateBreadcrumbSchema([
         { name: "Home", url: businessConfig.website },

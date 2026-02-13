@@ -109,6 +109,9 @@ export default function ServiceAreaPage({ params }: PageProps) {
         businessConfig.pageHeroImages?.[heroImageKey] ||
         businessConfig.pageHeroImages?.["/service-areas"];
 
+    // Location-relevant content (landmarks, local copy) for this area
+    const localContent = businessConfig.serviceAreaLocalContent?.[areaSlug];
+
     return (
         <div className="min-h-screen flex flex-col">
             <Header />
@@ -282,7 +285,7 @@ export default function ServiceAreaPage({ params }: PageProps) {
                                                     daily life are compromised.
                                                 </>
                                             ) : industry.name ===
-                                              "Custom Fencing Services" ? (
+                                              "Fencing Services" ? (
                                                 <>
                                                     A well-built fence provides
                                                     privacy, security, and
@@ -329,6 +332,12 @@ export default function ServiceAreaPage({ params }: PageProps) {
                                             )}
                                         </p>
 
+                                        {localContent?.intro && (
+                                            <p className="text-xl text-gray-700 mb-6 leading-relaxed">
+                                                {localContent.intro}
+                                            </p>
+                                        )}
+
                                         <p className="text-lg text-gray-700 mb-6 leading-relaxed">
                                             That&apos;s why we at{" "}
                                             {businessConfig.name} are dedicated
@@ -345,34 +354,23 @@ export default function ServiceAreaPage({ params }: PageProps) {
                                         <p className="text-lg text-gray-700 mb-6 leading-relaxed">
                                             {businessConfig.name} has been a
                                             trusted name in {cityName}{" "}
-                                            {industry.name.toLowerCase()} since
-                                            serving the communities of{" "}
-                                            {businessConfig.serviceAreas
-                                                .length > 0
-                                                ? businessConfig.serviceAreas
-                                                      .map((area) => {
-                                                          const state =
-                                                              area
-                                                                  .split(",")[1]
-                                                                  ?.trim() ||
-                                                              businessConfig
-                                                                  .address
-                                                                  .state;
-                                                          return state;
-                                                      })
-                                                      .filter(
-                                                          (
-                                                              value,
-                                                              index,
-                                                              self
-                                                          ) =>
-                                                              self.indexOf(
-                                                                  value
-                                                              ) === index
-                                                      )
-                                                      .join(" and ")
-                                                : businessConfig.address
-                                                      .state}{" "}
+                                            {industry.name.toLowerCase()},
+                                            serving communities throughout{" "}
+                                            {(() => {
+                                                const stateAbbr =
+                                                    businessConfig.serviceAreas
+                                                        .length > 0
+                                                        ? businessConfig.serviceAreas
+                                                              .map((area) =>
+                                                                  area.split(",")[1]?.trim()
+                                                              )
+                                                              .filter(Boolean)[0] ||
+                                                              businessConfig.address.state
+                                                        : businessConfig.address.state;
+                                                return stateAbbr === "WA"
+                                                    ? "Washington"
+                                                    : stateAbbr;
+                                            })()}{" "}
                                             with dedication and expertise. With
                                             our home offices{" "}
                                             {businessConfig.address.city ===
@@ -384,6 +382,9 @@ export default function ServiceAreaPage({ params }: PageProps) {
                                                 : cityName}
                                             , we are proud to live and work in
                                             this community.
+                                            {localContent?.community && (
+                                                <> {localContent.community}</>
+                                            )}
                                         </p>
 
                                         <p className="text-lg text-gray-700 mb-6 leading-relaxed">
@@ -443,13 +444,21 @@ export default function ServiceAreaPage({ params }: PageProps) {
                                                       "Plumbing Services"
                                                     ? " Water, Rooter, Drain Cleaning, and More"
                                                     : industry.name ===
-                                                      "Custom Fencing Services"
+                                                      "Fencing Services"
                                                     ? " Privacy, Security, and More"
                                                     : industry.name ===
                                                       "Painting & Coating Services"
                                                     ? " Prep, Painting, and More"
                                                     : " Installation, Repair, and More"}
                                             </h2>
+                                            {localContent?.landmarks?.length ? (
+                                                <p className="text-lg text-gray-700 mb-4 leading-relaxed">
+                                                    From {localContent.landmarks.slice(0, 2).join(" and ")}
+                                                    {localContent.landmarks.length > 2
+                                                        ? ` to ${localContent.landmarks[2]}`
+                                                        : ""} and throughout {cityName}, we're ready to help with your next project.
+                                                </p>
+                                            ) : null}
                                             <p className="text-lg text-gray-700 mb-4 leading-relaxed">
                                                 Our team is well-rounded and
                                                 capable of addressing a wide
@@ -463,7 +472,7 @@ export default function ServiceAreaPage({ params }: PageProps) {
                                                       "Plumbing Services"
                                                     ? "faucets, water heaters, showers, sump pumps, garbage disposals, drains, gas lines, sewers, and more"
                                                     : industry.name ===
-                                                      "Custom Fencing Services"
+                                                      "Fencing Services"
                                                     ? "wood fences, vinyl fences, chain link fences, privacy fences, gates, and more"
                                                     : industry.name ===
                                                       "Painting & Coating Services"
@@ -489,7 +498,7 @@ export default function ServiceAreaPage({ params }: PageProps) {
                                                 "Plumbing Services"
                                                     ? "s"
                                                     : industry.name ===
-                                                      "Custom Fencing Services"
+                                                      "Fencing Services"
                                                     ? " contractors"
                                                     : industry.name ===
                                                       "Painting & Coating Services"

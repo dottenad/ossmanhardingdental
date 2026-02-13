@@ -141,8 +141,10 @@ export default function CityServicePage({ params }: PageProps) {
 
     const serviceSchema = generateServiceSchema(serviceName, businessConfig);
 
-    // Primary image for this service: config map or /images/service-images/{service-slug}.jpg
+    // Primary image: area+service specific (e.g. gig-harbor/residential-fence-installation) → service default → fallback
+    const areaServiceKey = `${params.area}/${params.service}`;
     const serviceImagePath =
+        businessConfig.serviceAreaPageImages?.[areaServiceKey] ??
         industry.servicePageImages?.[params.service] ??
         `/images/service-images/${params.service}.jpg`;
 

@@ -58,6 +58,8 @@ export interface BusinessConfig {
     gallery?: GalleryProject[]; // Optional gallery of completed projects/work
     faqs?: FAQ[]; // Optional frequently asked questions
     faqImage?: FAQImage; // Optional image for FAQ section
+    /** Per-area local content (landmarks, intro/community copy) for service area pages. Keys = area slug. */
+    serviceAreaLocalContent?: Record<string, ServiceAreaLocalContent>;
 }
 
 export interface Review {
@@ -96,6 +98,16 @@ export interface FAQ {
 export interface FAQImage {
     src: string; // Path to FAQ section image
     alt?: string; // Alt text for the image
+}
+
+/** Location-specific content for service area pages (landmarks, local references) for SEO and local relevance. Keys are area slugs (e.g. "tacoma", "port-orchard"). */
+export interface ServiceAreaLocalContent {
+    /** Local landmarks and places to mention (e.g. "Tacoma Dome", "Point Defiance Park"). */
+    landmarks: string[];
+    /** Optional intro sentence inserted after the first paragraph; mention city and landmarks. */
+    intro?: string;
+    /** Optional sentence for the "we serve this community" paragraph. */
+    community?: string;
 }
 
 // Service areas list (extracted for reuse in navigation)
@@ -143,6 +155,64 @@ export const businessConfig: BusinessConfig = {
         // Uncomment and add city-service specific images as needed:
         // "tacoma/wood-fence": "/images/tacoma-wood-fence.jpg",
         // "port-orchard/privacy-fence": "/images/port-orchard-privacy-fence.jpg",
+    },
+    // Location-relevant content per service area (landmarks, local copy) for SEO
+    serviceAreaLocalContent: {
+        tacoma: {
+            landmarks: ["Tacoma Dome", "Point Defiance Park", "Museum of Glass", "Ruston Way", "Stadium District"],
+            intro: "From neighborhoods near the Tacoma Dome and Point Defiance Park to the Stadium District and Ruston Way waterfront, Tacoma homeowners and businesses rely on us for quality fencing, repairs, and staining.",
+            community: "Whether you're near the Museum of Glass or elsewhere in Tacoma, we're your local fencing team.",
+        },
+        "port-orchard": {
+            landmarks: ["Sinclair Inlet", "downtown Port Orchard", "Kitsap County"],
+            intro: "As the Kitsap County seat, Port Orchard has a strong sense of community—and we're proud to serve homeowners along Sinclair Inlet and throughout downtown Port Orchard with reliable fencing and gate installation.",
+            community: "From waterfront properties to homes across Port Orchard, we bring the same quality and care to every job.",
+        },
+        bremerton: {
+            landmarks: ["Puget Sound Naval Shipyard", "USS Turner Joy", "Bremerton Boardwalk", "Manette Bridge"],
+            intro: "Bremerton's rich naval heritage and vibrant waterfront—from the Puget Sound Naval Shipyard to the Bremerton Boardwalk and Manette Bridge area—deserve fencing that matches the character of the community.",
+            community: "Whether you're near the USS Turner Joy or elsewhere in Bremerton, we're here to help with your fence project.",
+        },
+        silverdale: {
+            landmarks: ["Kitsap Mall", "Clear Creek Trail", "Dyes Inlet", "Silverdale waterfront"],
+            intro: "Silverdale's mix of shopping, trails, and waterfront—from Kitsap Mall to Clear Creek Trail and Dyes Inlet—means diverse properties and fencing needs; we serve them all with the same attention to detail.",
+            community: "From the Silverdale waterfront to neighborhoods throughout the area, we're your local fencing experts.",
+        },
+        poulsbo: {
+            landmarks: ["Liberty Bay", "downtown Poulsbo", "Little Norway", "waterfront"],
+            intro: "Poulsbo's distinctive character—Liberty Bay, downtown Little Norway, and the waterfront—calls for fencing that complements the landscape. We've been helping Poulsbo residents with privacy, wood, and vinyl fences for years.",
+            community: "Whether you're on Liberty Bay or elsewhere in Poulsbo, we're committed to quality and clear communication.",
+        },
+        "bainbridge-island": {
+            landmarks: ["Winslow", "Bloedel Reserve", "Bainbridge Island ferry", "Eagle Harbor"],
+            intro: "From Winslow to the Bloedel Reserve and neighborhoods near Eagle Harbor, Bainbridge Island homeowners expect quality—and we deliver fencing, gates, and staining that stand up to Pacific Northwest weather.",
+            community: "Whether you're near the Bainbridge Island ferry terminal or elsewhere on the island, we're your local fencing team.",
+        },
+        "gig-harbor": {
+            landmarks: ["Gig Harbor waterfront", "Narrows Bridge", "downtown Gig Harbor", "maritime history"],
+            intro: "Gig Harbor's waterfront and maritime history, from the Narrows Bridge view to downtown Gig Harbor, inspire pride in property—and we help protect and beautify it with quality fences, gates, and staining.",
+            community: "From the Gig Harbor waterfront to neighborhoods throughout the peninsula, we're here for your fencing needs.",
+        },
+        longbranch: {
+            landmarks: ["Longbranch peninsula", "waterfront", "Key Peninsula"],
+            intro: "Longbranch and the Key Peninsula offer peaceful, waterfront living; we serve homeowners here with the same quality fencing and gate work we bring to the rest of Kitsap and Pierce County.",
+            community: "Whether you're on the Longbranch waterfront or elsewhere on the peninsula, we're just a call away.",
+        },
+        "university-place": {
+            landmarks: ["Chambers Bay", "University Place", "Puget Sound"],
+            intro: "University Place's mix of residential and scenic spots—including Chambers Bay and views of Puget Sound—means varied fencing needs. We serve UP with wood, vinyl, chain link, and custom fence installation and repair.",
+            community: "From Chambers Bay area to neighborhoods throughout University Place, we're your local fencing partner.",
+        },
+        puyallup: {
+            landmarks: ["Washington State Fair", "Puyallup River", "downtown Puyallup", "South Hill"],
+            intro: "From downtown Puyallup and the Washington State Fair area to South Hill and homes along the Puyallup River, we provide fencing that stands up to busy family life and Pacific Northwest weather.",
+            community: "Whether you're near the fairgrounds or elsewhere in Puyallup, we're here to help with your fence project.",
+        },
+        lakewood: {
+            landmarks: ["Joint Base Lewis-McChord", "American Lake", "Tillicum", "Lakewood Towne Center"],
+            intro: "Lakewood's diverse community—from neighborhoods near Joint Base Lewis-McChord and American Lake to Tillicum and Lakewood Towne Center—relies on us for dependable fencing, gates, and repairs.",
+            community: "Whether you're near American Lake or elsewhere in Lakewood, we're your local fencing experts.",
+        },
     },
     industry: "fencing",
     socialMedia: {
@@ -452,7 +522,7 @@ export const businessConfig: BusinessConfig = {
     // FAQ section image (optional)
     faqImage: {
         src: "/images/fence.jpg",
-        alt: "Custom Fencing Services",
+        alt: "Fencing Services",
     },
 };
 
@@ -476,7 +546,7 @@ export type IndustryConfigEntry = {
 
 const _industryConfig = {
     fencing: {
-        name: "Custom Fencing Services",
+        name: "Fencing Services",
         services: [
             "Privacy Fence Installation",
             "Wood Fence Installation",
@@ -540,6 +610,8 @@ const _industryConfig = {
             "fence-staining": "/images/service-images/fence-staining.jpg",
             "gate-installation":
                 "/images/service-images/fence-gate-installation.jpg",
+            "residential-fence-installation":
+                "/images/gallery/cedar-fence-install-gig-harbor/cedar-fence-install-gig-harbor-1.jpg",
         },
         /** Expanded content for each service page (appears below the main image). */
         servicePageContent: {
