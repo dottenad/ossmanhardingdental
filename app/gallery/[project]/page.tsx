@@ -125,6 +125,7 @@ export default function GalleryProjectPage({ params }: PageProps) {
                     title={project.name}
                     subtitle={project.projectType}
                     priority
+                    unoptimized
                 />
                 <Breadcrumb
                     items={[
@@ -185,6 +186,7 @@ export default function GalleryProjectPage({ params }: PageProps) {
                                             className="object-cover"
                                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                             priority={index < 3}
+                                            unoptimized
                                         />
                                     </div>
                                 ))}

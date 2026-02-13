@@ -118,7 +118,7 @@ export const businessConfig: BusinessConfig = {
     name: "Sound Custom Fences",
     tagline: "Built With Pride, Backed By Service",
     description:
-        "Professional custom fencing services throughout the Puget Sound region. Expert installation, repair, and maintenance of privacy fences, wood fences, vinyl fences, chain link, and specialty fencing for residential and commercial properties.",
+        "Proud firefighter-owned business providing top-quality new fence construction, replacements, and staining/painting services in Kitsap and Pierce County",
     phone: "+1-253-448-3434", // (253) 448-3434
     email: "soundcustomfences@gmail.com",
     address: {
@@ -637,5 +637,7 @@ const _industryConfig = {
     },
 } as const;
 
-export const industryConfig =
-    _industryConfig as unknown as Record<Industry, IndustryConfigEntry>;
+export const industryConfig = _industryConfig as unknown as Record<
+    Industry,
+    IndustryConfigEntry
+>;

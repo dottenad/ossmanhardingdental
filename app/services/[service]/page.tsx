@@ -53,6 +53,14 @@ function findServiceBySlug(slug: string) {
     });
 }
 
+/** Personable, service-specific description that promotes the business. */
+function getServiceShortDescription(
+    _serviceSlug: string,
+    serviceName: string
+): string {
+    return `${businessConfig.name} would love to help with your ${serviceName.toLowerCase()}. We're licensed, insured, and here when you're ready for a free estimate.`;
+}
+
 export function generateMetadata({ params }: PageProps): Metadata {
     const serviceName = findServiceBySlug(params.service);
 
@@ -61,13 +69,12 @@ export function generateMetadata({ params }: PageProps): Metadata {
     }
 
     const industry = industryConfig[businessConfig.industry];
+    const description = getServiceShortDescription(params.service, serviceName);
 
     return generateSEOMetadata(
         {
             title: serviceName,
-            description: `Professional ${serviceName.toLowerCase()} services by ${
-                businessConfig.name
-            }. ${industry.description}`,
+            description,
             keywords: [
                 ...industry.keywords,
                 serviceName,
@@ -119,9 +126,7 @@ export default function ServicePage({ params }: PageProps) {
                 <Hero
                     backgroundImage={serviceHeroImage}
                     title={serviceName}
-                    subtitle={`Professional ${serviceName.toLowerCase()} services by ${
-                        businessConfig.name
-                    }. ${industry.description}`}
+                    subtitle={getServiceShortDescription(params.service, serviceName)}
                 />
                 {/* Breadcrumb */}
                 <Breadcrumb

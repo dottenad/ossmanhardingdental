@@ -64,7 +64,7 @@ export default function AboutPage() {
                                         <figure className="max-w-sm p-0 !mt-0 !mb-0 w-fit">
                                             <div className="rounded-2xl overflow-hidden shadow-medium p-0 block">
                                                 <Image
-                                                    src="/images/about-owner.png"
+                                                    src="/images/andrew-duppenthaler.jpg"
                                                     alt="Andrew Duppenthaler with a quality wood fence installation"
                                                     width={400}
                                                     height={267}

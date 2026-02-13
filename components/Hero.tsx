@@ -10,6 +10,8 @@ interface HeroProps {
     children?: ReactNode;
     className?: string;
     priority?: boolean; // For LCP optimization on home page
+    /** Skip Next.js image optimization (e.g. for gallery hero so it loads static from CDN) */
+    unoptimized?: boolean;
 }
 
 // Normalize image path - ensure it starts with / for public folder assets
@@ -30,6 +32,7 @@ export function Hero({
     children,
     className = "",
     priority = false,
+    unoptimized = false,
 }: HeroProps) {
     // Normalize the image path and memoize it
     const normalizedImage = useMemo(
@@ -61,6 +64,7 @@ export function Hero({
                         sizes="100vw"
                         fetchPriority={priority ? "high" : "auto"}
                         quality={85}
+                        unoptimized={unoptimized}
                     />
                 </div>
             ) : null}
