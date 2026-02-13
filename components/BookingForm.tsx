@@ -235,7 +235,7 @@ export function BookingForm({ singleColumn = false }: BookingFormProps) {
                     </select>
                 </div>
 
-                <div className={singleColumn ? "" : "sm:col-span-2"}>
+                <div>
                     <label htmlFor="howDidYouHearAboutUs" className="sr-only">
                         How did you hear about us?
                     </label>
