@@ -512,7 +512,7 @@ export const businessConfig: BusinessConfig = {
         },
         {
             question: "What areas do you serve?",
-            answer: "We proudly serve communities throughout the Puget Sound region, including Port Orchard, Tacoma, Olympia, Lacey, Puyallup, Lakewood, and surrounding areas. Contact us to confirm we service your specific location.",
+            answer: "We proudly serve communities throughout the Puget Sound region, including Port Orchard, Bremerton, Silverdale, Poulsbo, Bainbridge Island, Gig Harbor, Tacoma, University Place, Puyallup, Lakewood, and surrounding areas in Kitsap and Pierce County. Contact us to confirm we service your specific location.",
         },
         {
             question: "How do I maintain my fence?",
