@@ -41,6 +41,7 @@ export default function AboutPage() {
                     backgroundImage={businessConfig.pageHeroImages?.["/about"]}
                     title={`About ${businessConfig.name}`}
                     subtitle="Your smile, our passion"
+                    priority={true}
                 />
                 {/* Breadcrumb */}
                 <Breadcrumb

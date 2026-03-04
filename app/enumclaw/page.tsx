@@ -75,6 +75,7 @@ export default function EnumclawPage() {
                     backgroundImage={businessConfig.pageHeroImages?.[`/${LOCATION.slug}`] || businessConfig.heroImage}
                     title={`${LOCATION.name} Dental Office`}
                     subtitle={`Comprehensive dental care for the whole family in ${LOCATION.name}`}
+                    priority={true}
                 />
                 <Breadcrumb
                     items={[

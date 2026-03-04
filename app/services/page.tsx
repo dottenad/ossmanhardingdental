@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { businessConfig, industryConfig } from "@/lib/config";
 import { generateMetadata as generateSEOMetadata } from "@/lib/seo";
@@ -47,6 +48,7 @@ export default function ServicesPage() {
                         businessConfig.pageHeroImages?.["/services"]
                     }
                     title={`Our ${industry.name}`}
+                    priority={true}
                 >
                     <div className="text-center">
                         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
@@ -114,11 +116,14 @@ export default function ServicesPage() {
                                         className="group bg-white rounded-xl border border-gray-200 overflow-hidden hover:border-primary-300 hover:shadow-lg transition-all"
                                     >
                                         {serviceImage && (
-                                            <div className="h-40 bg-gray-100 overflow-hidden">
-                                                <img
+                                            <div className="h-40 bg-gray-100 overflow-hidden relative">
+                                                <Image
                                                     src={serviceImage}
                                                     alt={service}
-                                                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                                    fill
+                                                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                                                    loading={index < 3 ? "eager" : "lazy"}
                                                 />
                                             </div>
                                         )}
