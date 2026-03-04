@@ -1,10 +1,10 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { businessConfig, industryConfig } from "@/lib/config";
 import { generateMetadata as generateSEOMetadata } from "@/lib/seo";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { ServiceCard } from "@/components/ServiceCard";
 import { StructuredData } from "@/components/StructuredData";
 import { Hero } from "@/components/Hero";
 import { Breadcrumb } from "@/components/Breadcrumb";
@@ -98,10 +98,41 @@ export default function ServicesPage() {
                 {/* Services Grid */}
                 <section className="py-20 px-4 bg-gradient-to-b from-white to-gray-50">
                     <div className="max-w-7xl mx-auto">
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-                            {services.map((service, index) => (
-                                <ServiceCard key={index} service={service} />
-                            ))}
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+                            {services.map((service, index) => {
+                                const serviceSlug = service
+                                    .toLowerCase()
+                                    .replace(/\s+/g, "-")
+                                    .replace(/[^a-z0-9-]/g, "")
+                                    .replace(/-+/g, "-");
+                                const serviceImage = industry.servicePageImages?.[serviceSlug];
+
+                                return (
+                                    <Link
+                                        key={index}
+                                        href={`/services/${serviceSlug}`}
+                                        className="group bg-white rounded-xl border border-gray-200 overflow-hidden hover:border-primary-300 hover:shadow-lg transition-all"
+                                    >
+                                        {serviceImage && (
+                                            <div className="h-40 bg-gray-100 overflow-hidden">
+                                                <img
+                                                    src={serviceImage}
+                                                    alt={service}
+                                                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                                />
+                                            </div>
+                                        )}
+                                        <div className="p-4">
+                                            <div className="flex items-center justify-between">
+                                                <h3 className="font-semibold text-gray-900 group-hover:text-primary-600 transition-colors">
+                                                    {service}
+                                                </h3>
+                                                <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-primary-600 group-hover:translate-x-1 transition-all" />
+                                            </div>
+                                        </div>
+                                    </Link>
+                                );
+                            })}
                         </div>
 
                         {/* Why Choose Section */}

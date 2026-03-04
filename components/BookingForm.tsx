@@ -231,8 +231,9 @@ export function BookingForm({ singleColumn = false }: BookingFormProps) {
                         placeholder="Select a date"
                         value={formData.preferredDate}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:border-button-600 focus:ring-0 text-sm font-semibold text-gray-900 placeholder-gray-400"
+                        className="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:border-button-600 focus:ring-0 text-sm font-semibold text-gray-900 placeholder-gray-400 bg-white appearance-none"
                         aria-required="true"
+                        style={{ colorScheme: 'light' }}
                     />
                 </div>
 

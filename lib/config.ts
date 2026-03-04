@@ -162,7 +162,7 @@ export const geoServiceAreas: GeoServiceArea[] = [
         communityType: "master-planned community",
         communityContent: "As one of the fastest-growing communities in the Pacific Northwest, Tehaleh attracts young families and active adults seeking a vibrant, connected lifestyle. The community's emphasis on health and wellness aligns perfectly with our approach to preventive dental care. Whether you're grabbing coffee at Caffé D'Arte after dropping kids at school or enjoying a weekend hike on the community trails, maintaining your family's oral health shouldn't be a hassle. Our Bonney Lake office was designed with Tehaleh families in mind—modern amenities, early morning appointments, and a welcoming environment for patients of all ages.",
         whyChooseUs: [
-            "Closest dental office to Tehaleh—just 5 minutes away",
+            "Conveniently located right here in Tehaleh",
             "Early 7 AM appointments perfect for busy Tehaleh families",
             "Sedation options for patients with dental anxiety",
             "Same-day emergency appointments available",
@@ -461,7 +461,7 @@ export const businessConfig: BusinessConfig = {
                 },
                 {
                     label: "Clear Aligners/Invisalign",
-                    href: "/services/clear-aligners",
+                    href: "/services/clear-alignersinvisalign",
                 },
                 {
                     label: "Teeth Whitening",
@@ -605,7 +605,7 @@ export const businessConfig: BusinessConfig = {
         "/services/dental-exams-cleanings": "/images/service-images/dental-exam.jpg",
         "/services/cosmetic-dentistry": "/images/service-images/cosmetic-dentistry.jpg",
         "/services/dental-implants": "/images/service-images/dental-implants.jpg",
-        "/services/clear-aligners": "/images/service-images/clear-aligners.jpg",
+        "/services/clear-alignersinvisalign": "/images/service-images/clear-aligners.jpg",
         "/services/teeth-whitening": "/images/service-images/teeth-whitening.jpg",
         "/services/oral-surgery": "/images/service-images/oral-surgery.jpg",
         "/services/sedation-dentistry": "/images/service-images/sedation-dentistry.jpg",
@@ -808,7 +808,7 @@ const _industryConfig = {
             "dental-exams-cleanings": "/images/service-images/dental-exam.jpg",
             "cosmetic-dentistry": "/images/service-images/cosmetic-dentistry.jpg",
             "dental-implants": "/images/service-images/dental-implants.jpg",
-            "clear-aligners": "/images/service-images/clear-aligners.jpg",
+            "clear-alignersinvisalign": "/images/service-images/clear-aligners.jpg",
             "teeth-whitening": "/images/service-images/teeth-whitening.jpg",
             "oral-surgery": "/images/service-images/oral-surgery.jpg",
             "sedation-dentistry": "/images/service-images/sedation-dentistry.jpg",
@@ -862,7 +862,7 @@ const _industryConfig = {
                 ],
                 process: "Your implant journey begins with a thorough evaluation including 3D imaging to assess bone structure. We'll discuss all options and create a personalized treatment plan. The implant is placed during a minor surgical procedure, often with sedation. After a healing period of 3-6 months, your custom crown is attached. We provide comprehensive aftercare instructions and follow-up visits.",
             },
-            "clear-aligners": {
+            "clear-alignersinvisalign": {
                 whatIs: "Clear aligners like Invisalign and SureSmile offer a virtually invisible way to straighten teeth. These custom-made, removable aligners gradually shift your teeth into proper alignment without the need for metal brackets and wires. They're ideal for adults and teens who want to improve their smile discreetly.",
                 whatWeOffer: [
                     "Invisalign clear aligners",

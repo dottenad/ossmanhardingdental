@@ -95,38 +95,38 @@ export default function SchedulingPage() {
                                         <h3 className="text-2xl font-bold text-gray-900 mb-6">
                                             What to Expect at Your First Visit
                                         </h3>
-                                        <div className="space-y-4">
-                                            <div className="flex gap-4 p-4 bg-gray-50 rounded-lg">
+                                        <div className="space-y-3">
+                                            <div className="flex items-start gap-4 px-4 py-3 bg-gray-50 rounded-lg">
                                                 <div className="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center flex-shrink-0">
                                                     <span className="text-primary-600 font-bold">1</span>
                                                 </div>
-                                                <div>
-                                                    <h4 className="font-semibold text-gray-900">Warm Welcome</h4>
-                                                    <p className="text-gray-600 mt-1">
+                                                <div className="pt-2">
+                                                    <h4 className="font-semibold text-gray-900 leading-none">Warm Welcome</h4>
+                                                    <p className="text-gray-600 mt-2">
                                                         Our friendly team will greet you and help you get settled. We&apos;ll review
                                                         your paperwork and answer any questions.
                                                     </p>
                                                 </div>
                                             </div>
-                                            <div className="flex gap-4 p-4 bg-gray-50 rounded-lg">
+                                            <div className="flex items-start gap-4 px-4 py-3 bg-gray-50 rounded-lg">
                                                 <div className="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center flex-shrink-0">
                                                     <span className="text-primary-600 font-bold">2</span>
                                                 </div>
-                                                <div>
-                                                    <h4 className="font-semibold text-gray-900">Comprehensive Exam</h4>
-                                                    <p className="text-gray-600 mt-1">
+                                                <div className="pt-2">
+                                                    <h4 className="font-semibold text-gray-900 leading-none">Comprehensive Exam</h4>
+                                                    <p className="text-gray-600 mt-2">
                                                         Your dentist will perform a thorough examination of your teeth, gums, and
                                                         overall oral health, including digital X-rays if needed.
                                                     </p>
                                                 </div>
                                             </div>
-                                            <div className="flex gap-4 p-4 bg-gray-50 rounded-lg">
+                                            <div className="flex items-start gap-4 px-4 py-3 bg-gray-50 rounded-lg">
                                                 <div className="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center flex-shrink-0">
                                                     <span className="text-primary-600 font-bold">3</span>
                                                 </div>
-                                                <div>
-                                                    <h4 className="font-semibold text-gray-900">Personalized Treatment Plan</h4>
-                                                    <p className="text-gray-600 mt-1">
+                                                <div className="pt-2">
+                                                    <h4 className="font-semibold text-gray-900 leading-none">Personalized Treatment Plan</h4>
+                                                    <p className="text-gray-600 mt-2">
                                                         We&apos;ll discuss our findings and create a customized treatment plan
                                                         based on your needs and goals.
                                                     </p>
@@ -187,44 +187,45 @@ export default function SchedulingPage() {
                                         </div>
                                     </div>
 
-                                    {/* Office Hours */}
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                        <div className="bg-white border border-gray-200 rounded-xl p-6">
-                                            <div className="flex items-center gap-3 mb-4">
-                                                <Clock className="w-6 h-6 text-primary-600" />
-                                                <h4 className="text-xl font-bold text-gray-900">Enumclaw Hours</h4>
-                                            </div>
-                                            <ul className="space-y-2 text-gray-600">
-                                                <li className="flex justify-between">
-                                                    <span>Monday - Wednesday</span>
-                                                    <span className="font-semibold">7:00 AM - 4:00 PM</span>
-                                                </li>
-                                                <li className="flex justify-between">
-                                                    <span>Thursday</span>
-                                                    <span className="font-semibold">7:00 AM - 2:00 PM</span>
-                                                </li>
-                                                <li className="flex justify-between">
-                                                    <span>Friday - Sunday</span>
-                                                    <span className="text-gray-400">Closed</span>
-                                                </li>
-                                            </ul>
+                                </div>
+
+                                {/* Office Hours - Outside prose to prevent style conflicts */}
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
+                                    <div className="bg-white border border-gray-200 rounded-xl p-6">
+                                        <div className="flex items-center gap-3 mb-4">
+                                            <Clock className="w-6 h-6 text-primary-600 flex-shrink-0" />
+                                            <h4 className="text-xl font-bold text-gray-900">Enumclaw Hours</h4>
                                         </div>
-                                        <div className="bg-white border border-gray-200 rounded-xl p-6">
-                                            <div className="flex items-center gap-3 mb-4">
-                                                <Clock className="w-6 h-6 text-primary-600" />
-                                                <h4 className="text-xl font-bold text-gray-900">Bonney Lake Hours</h4>
-                                            </div>
-                                            <ul className="space-y-2 text-gray-600">
-                                                <li className="flex justify-between">
-                                                    <span>Monday - Thursday</span>
-                                                    <span className="font-semibold">7:00 AM - 4:00 PM</span>
-                                                </li>
-                                                <li className="flex justify-between">
-                                                    <span>Friday - Sunday</span>
-                                                    <span className="text-gray-400">Closed</span>
-                                                </li>
-                                            </ul>
+                                        <ul className="space-y-2 text-gray-600">
+                                            <li className="flex justify-between">
+                                                <span>Monday - Wednesday</span>
+                                                <span className="font-semibold">7:00 AM - 4:00 PM</span>
+                                            </li>
+                                            <li className="flex justify-between">
+                                                <span>Thursday</span>
+                                                <span className="font-semibold">7:00 AM - 2:00 PM</span>
+                                            </li>
+                                            <li className="flex justify-between">
+                                                <span>Friday - Sunday</span>
+                                                <span className="text-gray-400">Closed</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div className="bg-white border border-gray-200 rounded-xl p-6">
+                                        <div className="flex items-center gap-3 mb-4">
+                                            <Clock className="w-6 h-6 text-primary-600 flex-shrink-0" />
+                                            <h4 className="text-xl font-bold text-gray-900">Bonney Lake Hours</h4>
                                         </div>
+                                        <ul className="space-y-2 text-gray-600">
+                                            <li className="flex justify-between">
+                                                <span>Monday - Thursday</span>
+                                                <span className="font-semibold">7:00 AM - 4:00 PM</span>
+                                            </li>
+                                            <li className="flex justify-between">
+                                                <span>Friday - Sunday</span>
+                                                <span className="text-gray-400">Closed</span>
+                                            </li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
