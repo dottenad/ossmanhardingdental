@@ -9,7 +9,8 @@ function getProjectSlug(project: GalleryProject): string {
     const projectTypeSlug = project.projectType
         .toLowerCase()
         .replace(/\s+/g, "-")
-        .replace(/[^a-z0-9-]/g, "");
+        .replace(/[^a-z0-9-]/g, "")
+        .replace(/-+/g, "-");
     return `${city}-${projectTypeSlug}`;
 }
 

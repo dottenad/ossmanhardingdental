@@ -1,6 +1,6 @@
 /**
  * Shared Jobber logic: create client + job (or request) from form data.
- * Used by /api/contact and /api/jobber/quote.
+ * Used by /api/appointments and /api/jobber/quote.
  */
 
 const JOBBER_GRAPHQL_URL = "https://api.getjobber.com/api/graphql";
@@ -106,7 +106,7 @@ export async function createClientAndJobOrRequest(
         return { success: false, error: "Jobber did not return a client id." };
     }
 
-    const jobTitle = service?.trim() || "Quote / contact request";
+    const jobTitle = service?.trim() || "Appointment request";
     const instructionsParts = [
         message?.trim(),
         `Contact: ${firstName} ${lastName}, ${email}, ${phone}`,
@@ -153,7 +153,7 @@ export async function createClientAndJobOrRequest(
     if (howDidYouHearAboutUs?.trim()) {
         requestTitleParts.push(`Heard via: ${howDidYouHearAboutUs.trim()}`);
     }
-    const requestTitle = requestTitleParts.join(" — ").slice(0, 200) || "Quote / contact request";
+    const requestTitle = requestTitleParts.join(" — ").slice(0, 200) || "Appointment request";
     const requestMutation = `
       mutation RequestCreate($input: RequestCreateInput!) {
         requestCreate(input: $input) {

@@ -90,7 +90,7 @@ export default function PrivacyPage() {
                                 voluntarily provide to us when you:
                             </p>
                             <ul className="list-disc pl-6 mb-6 text-gray-700 space-y-2">
-                                <li>Request a quote or service</li>
+                                <li>Schedule an appointment or request services</li>
                                 <li>
                                     Contact us via phone, email, or our website
                                 </li>
@@ -326,11 +326,6 @@ export default function PrivacyPage() {
                             <div className="bg-gray-50 p-6 rounded-lg mb-6">
                                 <p className="text-gray-700 mb-2">
                                     <strong>{businessConfig.name}</strong>
-                                </p>
-                                <p className="text-gray-700 mb-2">
-                                    {businessConfig.address.city},{" "}
-                                    {businessConfig.address.state}{" "}
-                                    {businessConfig.address.zipCode}
                                 </p>
                                 <p className="text-gray-700 mb-2">
                                     Phone:{" "}

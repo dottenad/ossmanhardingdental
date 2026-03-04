@@ -19,7 +19,7 @@ import {
 export const metadata: Metadata = generateSEOMetadata(
     {
         title: "Frequently Asked Questions",
-        description: `Get answers to common questions about ${businessConfig.name}'s custom fencing services. Learn about our process, materials, warranties, and more.`,
+        description: `Get answers to common questions about ${businessConfig.name}'s dental services. Learn about our process, insurance, appointments, and more.`,
         url: `${businessConfig.website}/faq`,
     },
     businessConfig
@@ -34,7 +34,7 @@ export default function FAQPage() {
     const webPageSchema = generateWebPageSchema(
         `Frequently Asked Questions - ${businessConfig.name}`,
         `${businessConfig.website}/faq`,
-        `Get answers to common questions about ${businessConfig.name}'s custom fencing services.`
+        `Get answers to common questions about ${businessConfig.name}'s dental services.`
     );
     const faqSchema = faqs.length > 0 ? generateFAQPageSchema(faqs) : null;
 
@@ -54,7 +54,7 @@ export default function FAQPage() {
                         businessConfig.heroImage
                     }
                     title="Frequently Asked Questions"
-                    subtitle="Get answers to common questions about our custom fencing services"
+                    subtitle="Get answers to common questions about our dental services"
                 />
                 <Breadcrumb
                     items={[
@@ -76,8 +76,8 @@ export default function FAQPage() {
                                             </h1>
                                             <p className="text-xl text-gray-600">
                                                 Find answers to the most common
-                                                questions about our custom
-                                                fencing services, our process,
+                                                questions about our dental
+                                                services, insurance, appointments,
                                                 and more.
                                             </p>
                                         </div>
@@ -110,7 +110,7 @@ export default function FAQPage() {
                                             FAQs are coming soon. Please check
                                             back later or{" "}
                                             <a
-                                                href="/contact"
+                                                href="/appointments"
                                                 className="text-button-600 hover:text-button-700 font-semibold underline"
                                             >
                                                 contact us

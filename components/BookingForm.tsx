@@ -23,12 +23,20 @@ export function BookingForm({ singleColumn = false }: BookingFormProps) {
         lastName: "",
         email: "",
         phone: "",
+        preferredDate: "",
+        preferredTime: "",
         service: "",
         message: "",
         howDidYouHearAboutUs: "" as string,
         marketingConsent: false,
         textConsent: false,
     });
+
+    const PREFERRED_TIME_OPTIONS = [
+        "Morning",
+        "Afternoon",
+        "No Preference",
+    ] as const;
     const [submitStatus, setSubmitStatus] = useState<SubmitStatus>("idle");
     const [submitError, setSubmitError] = useState<string | null>(null);
 
@@ -41,7 +49,7 @@ export function BookingForm({ singleColumn = false }: BookingFormProps) {
         setSubmitError(null);
 
         try {
-            // Single endpoint for all "Request a Quote" forms (home, contact, services, etc.) – creates client + job/request in Jobber.
+            // Single endpoint for appointment booking forms
             const res = await fetch("/api/jobber/quote", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -50,6 +58,8 @@ export function BookingForm({ singleColumn = false }: BookingFormProps) {
                     lastName: formData.lastName,
                     email: formData.email,
                     phone: formData.phone,
+                    preferredDate: formData.preferredDate,
+                    preferredTime: formData.preferredTime,
                     service: formData.service,
                     message: formData.message,
                     howDidYouHearAboutUs: formData.howDidYouHearAboutUs || undefined,
@@ -71,6 +81,8 @@ export function BookingForm({ singleColumn = false }: BookingFormProps) {
                 lastName: "",
                 email: "",
                 phone: "",
+                preferredDate: "",
+                preferredTime: "",
                 service: "",
                 message: "",
                 howDidYouHearAboutUs: "",
@@ -109,12 +121,12 @@ export function BookingForm({ singleColumn = false }: BookingFormProps) {
         <form
             onSubmit={handleSubmit}
             className="bg-white rounded-lg p-6 shadow-lg border border-black/10"
-            aria-label="Request Quote Form"
+            aria-label="Book Appointment Form"
             method="POST"
             action="#"
         >
             <h2 className="text-2xl font-bold text-button-600 mb-6 text-center tracking-tight">
-                Request a Quote
+                Schedule an Appointment
             </h2>
 
             {submitStatus === "success" && (
@@ -140,76 +152,121 @@ export function BookingForm({ singleColumn = false }: BookingFormProps) {
                 }`}
             >
                 <div>
-                    <label htmlFor="firstName" className="sr-only">
-                        First Name
+                    <label htmlFor="firstName" className="block text-xs font-medium text-gray-500 mb-1">
+                        First Name <span className="text-red-500">*</span>
                     </label>
                     <input
                         type="text"
                         id="firstName"
                         name="firstName"
                         required
-                        placeholder="First Name*"
+                        placeholder="First Name"
                         value={formData.firstName}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:border-button-600 focus:ring-0  text-sm font-semibold text-gray-900 placeholder-gray-500"
+                        className="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:border-button-600 focus:ring-0 text-sm font-semibold text-gray-900 placeholder-gray-400"
                         aria-required="true"
                     />
                 </div>
 
                 <div>
-                    <label htmlFor="lastName" className="sr-only">
-                        Last Name
+                    <label htmlFor="lastName" className="block text-xs font-medium text-gray-500 mb-1">
+                        Last Name <span className="text-red-500">*</span>
                     </label>
                     <input
                         type="text"
                         id="lastName"
                         name="lastName"
                         required
-                        placeholder="Last Name*"
+                        placeholder="Last Name"
                         value={formData.lastName}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:border-button-600 focus:ring-0  text-sm font-semibold text-gray-900 placeholder-gray-500"
+                        className="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:border-button-600 focus:ring-0 text-sm font-semibold text-gray-900 placeholder-gray-400"
                         aria-required="true"
                     />
                 </div>
 
                 <div>
-                    <label htmlFor="email" className="sr-only">
-                        Email
+                    <label htmlFor="email" className="block text-xs font-medium text-gray-500 mb-1">
+                        Email <span className="text-red-500">*</span>
                     </label>
                     <input
                         type="email"
                         id="email"
                         name="email"
                         required
-                        placeholder="Email*"
+                        placeholder="Email"
                         value={formData.email}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:border-button-600 focus:ring-0  text-sm font-semibold text-gray-900 placeholder-gray-500"
+                        className="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:border-button-600 focus:ring-0 text-sm font-semibold text-gray-900 placeholder-gray-400"
                         aria-required="true"
                     />
                 </div>
 
                 <div>
-                    <label htmlFor="phone" className="sr-only">
-                        Phone
+                    <label htmlFor="phone" className="block text-xs font-medium text-gray-500 mb-1">
+                        Phone <span className="text-red-500">*</span>
                     </label>
                     <input
                         type="tel"
                         id="phone"
                         name="phone"
                         required
-                        placeholder="Phone*"
+                        placeholder="Phone"
                         value={formData.phone}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:border-button-600 focus:ring-0  text-sm font-semibold text-gray-900 placeholder-gray-500"
+                        className="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:border-button-600 focus:ring-0 text-sm font-semibold text-gray-900 placeholder-gray-400"
                         aria-required="true"
                     />
                 </div>
 
                 <div>
-                    <label htmlFor="service" className="sr-only">
-                        Service Requested
+                    <label htmlFor="preferredDate" className="block text-xs font-medium text-gray-500 mb-1">
+                        Preferred Date <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                        type="date"
+                        id="preferredDate"
+                        name="preferredDate"
+                        required
+                        placeholder="Select a date"
+                        value={formData.preferredDate}
+                        onChange={handleChange}
+                        className="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:border-button-600 focus:ring-0 text-sm font-semibold text-gray-900 placeholder-gray-400"
+                        aria-required="true"
+                    />
+                </div>
+
+                <div>
+                    <label htmlFor="preferredTime" className="block text-xs font-medium text-gray-500 mb-1">
+                        Preferred Time <span className="text-red-500">*</span>
+                    </label>
+                    <select
+                        id="preferredTime"
+                        name="preferredTime"
+                        required
+                        value={formData.preferredTime}
+                        onChange={handleChange}
+                        className={`w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:border-button-600 focus:ring-0 text-sm font-semibold appearance-none bg-white bg-[url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%236b7280%22%20stroke-width%3D%222%22%3E%3Cpath%20d%3D%22M6%209l6%206%206-6%22%2F%3E%3C%2Fsvg%3E')] bg-[length:20px] bg-[right_12px_center] bg-no-repeat pr-10 ${
+                            formData.preferredTime === ""
+                                ? "text-gray-500"
+                                : "text-gray-900"
+                        }`}
+                        aria-required="true"
+                    >
+                        <option value="" className="text-gray-500">
+                            Select a time
+                        </option>
+                        {PREFERRED_TIME_OPTIONS.map((option) => (
+                            <option key={option} value={option}>
+                                {option}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+
+                <div>
+                    <label htmlFor="service" className="block text-xs font-medium text-gray-500 mb-1">
+                        Service Requested <span className="text-red-500">*</span>
                     </label>
                     <select
                         id="service"
@@ -225,7 +282,7 @@ export function BookingForm({ singleColumn = false }: BookingFormProps) {
                         aria-required="true"
                     >
                         <option value="" className="text-gray-500">
-                            Service Requested*
+                            Select a service
                         </option>
                         {services.map((service, index) => (
                             <option key={index} value={service}>
@@ -236,7 +293,7 @@ export function BookingForm({ singleColumn = false }: BookingFormProps) {
                 </div>
 
                 <div>
-                    <label htmlFor="howDidYouHearAboutUs" className="sr-only">
+                    <label htmlFor="howDidYouHearAboutUs" className="block text-xs font-medium text-gray-500 mb-1">
                         How did you hear about us?
                     </label>
                     <select
@@ -251,7 +308,7 @@ export function BookingForm({ singleColumn = false }: BookingFormProps) {
                         }`}
                     >
                         <option value="" className="text-gray-500">
-                            How did you hear about us?
+                            Select an option
                         </option>
                         {HEAR_ABOUT_OPTIONS.map((option) => (
                             <option key={option} value={option}>
@@ -262,17 +319,17 @@ export function BookingForm({ singleColumn = false }: BookingFormProps) {
                 </div>
 
                 <div className={singleColumn ? "" : "sm:col-span-2"}>
-                    <label htmlFor="message" className="sr-only">
+                    <label htmlFor="message" className="block text-xs font-medium text-gray-500 mb-1">
                         Tell Us More
                     </label>
                     <textarea
                         id="message"
                         name="message"
-                        placeholder="Tell Us More"
+                        placeholder="Any additional details or questions..."
                         value={formData.message}
                         onChange={handleChange}
                         rows={3}
-                        className="w-full px-4 py-3 border border-gray-300 rounded outline-none focus:outline-none focus:border-button-600 focus:ring-0 focus-visible:ring-0  text-sm font-semibold text-gray-900 placeholder-gray-500 resize-none"
+                        className="w-full px-4 py-3 border border-gray-300 rounded outline-none focus:outline-none focus:border-button-600 focus:ring-0 focus-visible:ring-0 text-sm font-semibold text-gray-900 placeholder-gray-400 resize-none"
                         style={{ outline: "none" }}
                         onFocus={(e) => {
                             e.target.style.outline = "none";
@@ -357,7 +414,7 @@ export function BookingForm({ singleColumn = false }: BookingFormProps) {
                 disabled={submitStatus === "submitting"}
                 className="w-full bg-button-600 hover:bg-button-700 disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none text-white font-bold py-4 px-6 rounded-lg transition-all duration-300 transform hover:scale-[1.02]  tracking-wide shadow-md hover:shadow-lg"
             >
-                {submitStatus === "submitting" ? "Sending…" : "SEND"}
+                {submitStatus === "submitting" ? "Scheduling…" : "SCHEDULE"}
             </button>
         </form>
     );

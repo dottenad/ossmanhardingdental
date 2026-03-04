@@ -18,7 +18,7 @@ import {
 export const metadata: Metadata = generateSEOMetadata(
     {
         title: "Gallery",
-        description: `View our gallery of completed fence projects from ${businessConfig.name}. Privacy, wood, vinyl, and chain link installations across the Puget Sound.`,
+        description: `View our gallery showcasing ${businessConfig.name}'s exceptional dental care and beautiful smile transformations.`,
         url: `${businessConfig.website}/gallery`,
     },
     businessConfig,
@@ -33,7 +33,7 @@ export default function GalleryPage() {
     const webPageSchema = generateWebPageSchema(
         "Gallery",
         `${businessConfig.website}/gallery`,
-        `View our gallery of completed fence projects from ${businessConfig.name}. Privacy, wood, vinyl, and chain link installations across the Puget Sound.`,
+        `View our gallery showcasing ${businessConfig.name}'s exceptional dental care and beautiful smile transformations.`,
     );
     const galleryPageSchema = generateGalleryPageSchema(
         businessConfig,
@@ -80,7 +80,8 @@ export default function GalleryPage() {
                                                 project.projectType
                                                     .toLowerCase()
                                                     .replace(/\s+/g, "-")
-                                                    .replace(/[^a-z0-9-]/g, "");
+                                                    .replace(/[^a-z0-9-]/g, "")
+                                                    .replace(/-+/g, "-");
                                             const projectSlug = `${city}-${projectTypeSlug}`;
                                             return (
                                                 <Link

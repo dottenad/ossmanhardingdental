@@ -2,17 +2,14 @@ import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { Hammer } from "lucide-react";
 import { businessConfig, industryConfig } from "@/lib/config";
 import { generateMetadata as generateSEOMetadata } from "@/lib/seo";
-import { formatPhoneDisplay, formatPhoneLink } from "@/lib/phone";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { StructuredData } from "@/components/StructuredData";
 import { Hero } from "@/components/Hero";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { BookingForm } from "@/components/BookingForm";
-import { ServiceAreaCard } from "@/components/ServiceAreaCard";
 import {
     generateBreadcrumbSchema,
     generateServiceSchema,
@@ -58,7 +55,7 @@ function getServiceShortDescription(
     _serviceSlug: string,
     serviceName: string
 ): string {
-    return `Learn more about our ${serviceName} service. We are fencing experts and would love to discuss your ${serviceName} project.`;
+    return `Learn more about our ${serviceName} service. Our experienced dental team is here to provide exceptional care.`;
 }
 
 export function generateMetadata({ params }: PageProps): Metadata {
@@ -152,11 +149,10 @@ export default function ServicePage({ params }: PageProps) {
                                     <p className="text-xl text-gray-700 mb-6 leading-relaxed">
                                         {businessConfig.name} provides expert{" "}
                                         {serviceName.toLowerCase()} services for
-                                        residential and commercial properties
-                                        across the Puget Sound. Our experienced
-                                        team is committed to high-quality
-                                        workmanship and exceptional customer
-                                        service.
+                                        patients of all ages at our Enumclaw and
+                                        Bonney Lake locations. Our experienced
+                                        dental team is committed to exceptional
+                                        care and your comfort.
                                     </p>
                                     {industryConfig[
                                         businessConfig.industry
@@ -253,72 +249,38 @@ export default function ServicePage({ params }: PageProps) {
                                         </>
                                     ) : (
                                         <p className="text-gray-700 mb-8 leading-relaxed">
-                                            We tailor every project to your
-                                            property and goals. From initial
-                                            consultation to final cleanup, we
-                                            work with you to ensure the result
-                                            meets your expectations. Contact us
-                                            for a free estimate and to discuss
-                                            how we can help with your{" "}
+                                            We personalize every treatment plan
+                                            to your specific needs and goals.
+                                            From your initial consultation through
+                                            completion of care, we work with you
+                                            to achieve the best possible results.
+                                            Contact us to schedule an appointment
+                                            and discuss your{" "}
                                             {serviceName.toLowerCase()} needs.
                                         </p>
                                     )}
 
                                     <h3 className="text-2xl font-bold mt-10 mb-3 text-gray-900">
-                                        Where We Serve
+                                        Our Locations
                                     </h3>
                                     <p className="text-gray-700 mb-6 leading-relaxed">
                                         We provide {serviceName.toLowerCase()}{" "}
-                                        throughout{" "}
-                                        {businessConfig.serviceAreas.length}{" "}
-                                        communities, including{" "}
-                                        {businessConfig.serviceAreas
-                                            .slice(0, 3)
-                                            .map((area, index) => {
-                                                const cityName = area
-                                                    .split(",")[0]
-                                                    .trim();
-                                                const areaSlug = cityName
-                                                    .toLowerCase()
-                                                    .replace(/\s+/g, "-");
-                                                const serviceSlug = serviceName
-                                                    .toLowerCase()
-                                                    .replace(/\s+/g, "-")
-                                                    .replace(/[^a-z0-9-]/g, "")
-                                                    .replace(/-+/g, "-");
-                                                return (
-                                                    <span key={area}>
-                                                        {index > 0 &&
-                                                            (index === 2
-                                                                ? ", and "
-                                                                : ", ")}
-                                                        <Link
-                                                            href={`/service-areas/${areaSlug}/${serviceSlug}`}
-                                                            className="text-primary-600 hover:text-primary-700 hover:underline font-semibold"
-                                                        >
-                                                            {cityName}
-                                                        </Link>
-                                                    </span>
-                                                );
-                                            })}
-                                        {businessConfig.serviceAreas.length >
-                                            3 && (
-                                                <>
-                                                    , and{" "}
-                                                    <Link
-                                                        href="/service-areas"
-                                                        className="text-primary-600 hover:text-primary-700 hover:underline font-semibold"
-                                                    >
-                                                        {
-                                                            businessConfig
-                                                                .serviceAreas
-                                                                .length - 3
-                                                        }{" "}
-                                                        more areas
-                                                    </Link>
-                                                </>
-                                            )}
-                                        .
+                                        at our{" "}
+                                        <Link
+                                            href="/enumclaw"
+                                            className="text-primary-600 hover:text-primary-700 hover:underline font-semibold"
+                                        >
+                                            Enumclaw
+                                        </Link>{" "}
+                                        and{" "}
+                                        <Link
+                                            href="/bonney-lake"
+                                            className="text-primary-600 hover:text-primary-700 hover:underline font-semibold"
+                                        >
+                                            Bonney Lake
+                                        </Link>{" "}
+                                        offices, serving patients throughout the
+                                        surrounding communities.
                                     </p>
 
                                     <div className="bg-button-50 p-6 rounded-lg mb-8 border border-primary-200">
@@ -331,8 +293,7 @@ export default function ServicePage({ params }: PageProps) {
                                                     ✓
                                                 </span>
                                                 <span>
-                                                    Licensed and insured
-                                                    professionals
+                                                    Experienced dental professionals
                                                 </span>
                                             </li>
                                             <li className="flex items-start">
@@ -340,8 +301,7 @@ export default function ServicePage({ params }: PageProps) {
                                                     ✓
                                                 </span>
                                                 <span>
-                                                    Years of experience in{" "}
-                                                    {serviceName.toLowerCase()}
+                                                    Advanced technology and techniques
                                                 </span>
                                             </li>
                                             <li className="flex items-start">
@@ -349,8 +309,7 @@ export default function ServicePage({ params }: PageProps) {
                                                     ✓
                                                 </span>
                                                 <span>
-                                                    Professional service you can
-                                                    trust
+                                                    Gentle, patient-centered care
                                                 </span>
                                             </li>
                                             <li className="flex items-start">
@@ -358,8 +317,7 @@ export default function ServicePage({ params }: PageProps) {
                                                     ✓
                                                 </span>
                                                 <span>
-                                                    Competitive pricing with
-                                                    free estimates
+                                                    Most insurance plans accepted
                                                 </span>
                                             </li>
                                             <li className="flex items-start">
@@ -367,7 +325,7 @@ export default function ServicePage({ params }: PageProps) {
                                                     ✓
                                                 </span>
                                                 <span>
-                                                    Satisfaction guaranteed
+                                                    Two convenient locations
                                                 </span>
                                             </li>
                                         </ul>
@@ -406,9 +364,11 @@ export default function ServicePage({ params }: PageProps) {
                                                             href={`/services/${relatedSlug}`}
                                                             className="group relative bg-white p-6 rounded-xl text-center border border-primary-200 hover:border-primary-400 hover:shadow-soft transition-all !no-underline"
                                                         >
-                                                            {/* Work Icon */}
+                                                            {/* Tooth Icon */}
                                                             <div className="flex items-center justify-center mb-3">
-                                                                <Hammer className="w-6 h-6 text-button-600" />
+                                                                <svg className="w-6 h-6 text-button-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                                                                    <path d="M7 4c-1.5 0-3 1-3 3.5 0 2 1 3.5 1.5 5 .5 2 1 5 2 7.5.5 1 1 2 2 2 .5 0 1-.5 1.5-1.5.5-1.5 1-2.5 2-2.5s1.5 1 2 2.5c.5 1 1 1.5 1.5 1.5 1 0 1.5-1 2-2 1-2.5 1.5-5.5 2-7.5.5-1.5 1.5-3 1.5-5 0-2.5-1.5-3.5-3-3.5-1.5 0-2.5.5-3.5 1.5-.5.5-1.5 1-2.5 1s-2-.5-2.5-1C9.5 4.5 8.5 4 7 4z"/>
+                                                                </svg>
                                                             </div>
                                                             {/* Service Name */}
                                                             <p className="font-bold !m-0 text-gray-900 group-hover:text-primary-600 transition-colors">
@@ -432,31 +392,6 @@ export default function ServicePage({ params }: PageProps) {
                     </div>
                 </section>
 
-                {/* Service Areas Section */}
-                <section className="py-12 px-4 bg-gray-50">
-                    <div className="max-w-7xl mx-auto">
-                        <h2 className="text-2xl font-bold mb-6 text-center text-gray-900">
-                            We Provide {serviceName} in These Areas
-                        </h2>
-                        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                            {businessConfig.serviceAreas
-                                .slice(0, 12)
-                                .map((area, index) => (
-                                    <ServiceAreaCard key={index} area={area} />
-                                ))}
-                        </div>
-                        {businessConfig.serviceAreas.length > 12 && (
-                            <div className="text-center mt-6">
-                                <Link
-                                    href="/service-areas"
-                                    className="text-primary-600 hover:text-primary-700 font-semibold hover:underline"
-                                >
-                                    View All Service Areas →
-                                </Link>
-                            </div>
-                        )}
-                    </div>
-                </section>
             </main>
             <Footer />
         </div>

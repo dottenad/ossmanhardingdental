@@ -8,6 +8,7 @@ import { getFont } from "@/lib/fonts";
 import {
     generateLocalBusinessSchema,
     generateOrganizationSchema,
+    generateSecondaryLocationSchema,
 } from "@/lib/structured-data";
 
 const font = getFont(businessConfig.font);
@@ -22,8 +23,8 @@ export const metadata: Metadata = {
     ),
     metadataBase: new URL(businessConfig.website),
     icons: {
-        icon: businessConfig.logo || "/images/logo.png",
-        apple: businessConfig.logo || "/images/logo.png",
+        icon: "/icon.png",
+        apple: "/apple-icon.png",
     },
 };
 
@@ -40,6 +41,7 @@ export default function RootLayout({
 }) {
     const localBusinessSchema = generateLocalBusinessSchema(businessConfig);
     const organizationSchema = generateOrganizationSchema(businessConfig);
+    const secondaryLocationSchema = generateSecondaryLocationSchema(businessConfig);
 
     return (
         <html lang="en">
@@ -77,7 +79,7 @@ export default function RootLayout({
                     </>
                 )}
                 <StructuredData
-                    data={[localBusinessSchema, organizationSchema]}
+                    data={[localBusinessSchema, organizationSchema, secondaryLocationSchema].filter(Boolean)}
                 />
                 {/* Trusted Types Policy - must be loaded before any scripts */}
                 <script

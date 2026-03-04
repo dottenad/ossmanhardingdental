@@ -3,20 +3,25 @@ import { MapPin } from "lucide-react";
 
 interface ServiceAreaCardProps {
     area: string;
+    serviceSlug?: string;
     className?: string;
 }
 
 export function ServiceAreaCard({
     area,
+    serviceSlug,
     className = "",
 }: ServiceAreaCardProps) {
     // Extract just the city name (before comma) for URL
     const cityName = area.split(",")[0].trim();
     const areaSlug = cityName.toLowerCase().replace(/\s+/g, "-");
 
+    // If serviceSlug is provided, link to location/service page
+    const href = serviceSlug ? `/${areaSlug}/${serviceSlug}` : `/${areaSlug}`;
+
     return (
         <Link
-            href={`/service-areas/${areaSlug}`}
+            href={href}
             className={`group relative bg-white p-6 rounded-xl text-center border border-primary-200 hover:border-primary-400 hover:shadow-soft transition-all !no-underline ${className}`}
         >
             {/* Location Pin Icon */}

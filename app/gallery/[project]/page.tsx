@@ -1,6 +1,5 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
 import { notFound } from "next/navigation";
 import { businessConfig } from "@/lib/config";
 import { generateMetadata as generateSEOMetadata } from "@/lib/seo";
@@ -9,6 +8,7 @@ import { Footer } from "@/components/Footer";
 import { StructuredData } from "@/components/StructuredData";
 import { Hero } from "@/components/Hero";
 import { Breadcrumb } from "@/components/Breadcrumb";
+import { GalleryGrid } from "@/components/GalleryGrid";
 import {
     generateBreadcrumbSchema,
     generateWebPageSchema,
@@ -31,7 +31,8 @@ function generateProjectSlug(project: {
     const projectTypeSlug = project.projectType
         .toLowerCase()
         .replace(/\s+/g, "-")
-        .replace(/[^a-z0-9-]/g, "");
+        .replace(/[^a-z0-9-]/g, "")
+        .replace(/-+/g, "-");
     return `${city}-${projectTypeSlug}`;
 }
 
@@ -165,32 +166,14 @@ export default function GalleryProjectPage({ params }: PageProps) {
                             </div>
                         </div>
 
-                        {/* Image Gallery - first 3 images priority for faster LCP */}
+                        {/* Image Gallery with Lightbox */}
                         {project.images && project.images.length > 0 && (
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                                {project.images.map((image, index) => (
-                                    <div
-                                        key={index}
-                                        className="relative aspect-square overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow"
-                                    >
-                                        <Image
-                                            src={image}
-                                            alt={`${project.name} - ${
-                                                project.projectType
-                                            } - Image ${index + 1}${
-                                                locationText
-                                                    ? ` in ${locationText}`
-                                                    : ""
-                                            }`}
-                                            fill
-                                            className="object-cover"
-                                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                            priority={index < 3}
-                                            unoptimized
-                                        />
-                                    </div>
-                                ))}
-                            </div>
+                            <GalleryGrid
+                                images={project.images}
+                                projectName={project.name}
+                                projectType={project.projectType}
+                                locationText={locationText}
+                            />
                         )}
 
                         {/* Back to Gallery Link */}

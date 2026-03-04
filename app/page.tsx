@@ -7,10 +7,12 @@ import { Footer } from "@/components/Footer";
 import { ServiceCard } from "@/components/ServiceCard";
 import { CTA } from "@/components/CTA";
 import { BookingForm } from "@/components/BookingForm";
+import { HomeHeroCTA } from "@/components/HomeHeroCTA";
 import { ReviewsCarousel } from "@/components/ReviewsCarousel";
 import { Hero } from "@/components/Hero";
 import { ServiceAreaCard } from "@/components/ServiceAreaCard";
 import { ServiceAreasMap } from "@/components/ServiceAreasMap";
+import { OfficeLocationsMap } from "@/components/OfficeLocationsMap";
 import { FeaturedProjects } from "@/components/FeaturedProjects";
 import { StructuredData } from "@/components/StructuredData";
 import { FAQ } from "@/components/FAQ";
@@ -71,9 +73,11 @@ export default function Home() {
                 {/* Hero Section */}
                 <Hero
                     backgroundImage={businessConfig.heroImage}
+                    mobileBackgroundImage="/images/bonney-lake/building/office-3.jpg"
                     title={businessConfig.name}
                     subtitle={businessConfig.tagline}
                     priority={true}
+                    compact={true}
                 >
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
                         {/* Left Half - Hero Content */}
@@ -183,7 +187,7 @@ export default function Home() {
                                 .
                             </p>
                             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center mb-8">
-                                <CTA variant="hero" />
+                                <HomeHeroCTA />
                             </div>
                             <div className="flex flex-wrap justify-center lg:justify-start gap-6 text-sm text-primary-200">
                                 <div className="flex items-center gap-2">
@@ -198,7 +202,7 @@ export default function Home() {
                                             clipRule="evenodd"
                                         />
                                     </svg>
-                                    <span>Licensed & Insured</span>
+                                    <span>Experienced Team</span>
                                 </div>
                                 <div className="flex items-center gap-2">
                                     <svg
@@ -212,7 +216,7 @@ export default function Home() {
                                             clipRule="evenodd"
                                         />
                                     </svg>
-                                    <span>Satisfaction Guaranteed</span>
+                                    <span>Your Comfort Matters</span>
                                 </div>
                                 <div className="flex items-center gap-2">
                                     <svg
@@ -222,14 +226,14 @@ export default function Home() {
                                     >
                                         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                                     </svg>
-                                    <span>Quality Craftsmanship</span>
+                                    <span>Gentle, Personalized Care</span>
                                 </div>
                             </div>
                         </div>
 
                         {/* Right Half - Booking Form */}
                         <div className="flex justify-center lg:justify-end">
-                            <div className="w-full max-w-lg">
+                            <div id="booking-form" className="w-full max-w-lg rounded-lg">
                                 <BookingForm />
                             </div>
                         </div>
@@ -280,63 +284,122 @@ export default function Home() {
                 {/* Featured Projects */}
                 <FeaturedProjects />
 
-                {/* Service Areas */}
+                {/* Locations */}
                 <section className="py-12 px-4 bg-white">
                     <div className="max-w-7xl mx-auto">
                         <div className="text-center mb-12">
                             <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
-                                Service Areas
+                                Our Locations
                             </h2>
                             <p className="text-xl text-gray-600">
-                                Proudly serving Pierce and Kitsap counties
+                                Two convenient offices serving King and Pierce counties
                             </p>
                         </div>
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-                            {/* Left 50% - Embedded Google Map (Pierce & Kitsap counties) or fallback image */}
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+                            {/* Left - Map showing both locations */}
                             <div className="order-2 lg:order-1">
-                                {businessConfig.googleMapsApiKey ? (
-                                    <ServiceAreasMap
+                                <div className="w-full aspect-[4/3] rounded-xl overflow-hidden shadow-lg border border-gray-200">
+                                    <OfficeLocationsMap
                                         apiKey={businessConfig.googleMapsApiKey}
+                                        className="w-full h-full"
                                     />
-                                ) : businessConfig.serviceAreaMapImage ? (
-                                    <div className="w-full aspect-square rounded-lg overflow-hidden shadow-lg relative">
-                                        <Image
-                                            src={
-                                                businessConfig.serviceAreaMapImage
-                                            }
-                                            alt={`Service Areas Map - ${businessConfig.name}`}
-                                            fill
-                                            className="object-cover"
-                                            sizes="(max-width: 1024px) 100vw, 50vw"
-                                        />
-                                    </div>
-                                ) : (
-                                    <div className="w-full aspect-square rounded-lg overflow-hidden shadow-lg bg-gray-200 flex items-center justify-center">
-                                        <p className="text-gray-500 text-center px-4">
-                                            Add a Google Maps API key in config
-                                            for the service areas map, or a
-                                            service area map image
-                                            <br />
-                                            <span className="text-sm">
-                                                (googleMapsApiKey or
-                                                serviceAreaMapImage)
-                                            </span>
-                                        </p>
-                                    </div>
-                                )}
+                                </div>
                             </div>
 
-                            {/* Right 50% - Service Areas List */}
-                            <div className="order-1 lg:order-2">
-                                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-2 gap-4">
-                                    {businessConfig.serviceAreas.map(
-                                        (area, index) => (
-                                            <ServiceAreaCard
-                                                key={index}
-                                                area={area}
+                            {/* Right - Location Details */}
+                            <div className="order-1 lg:order-2 space-y-6">
+                                <p className="text-gray-700 leading-relaxed text-lg mt-0">
+                                    With two convenient locations in the foothills of Mount Rainier,
+                                    quality dental care is always close to home. Our Enumclaw office
+                                    has been serving the community since 2001, and our new Bonney Lake
+                                    location in Tehaleh opened in 2024 to better serve our growing patient family.
+                                </p>
+
+                                {/* Enumclaw */}
+                                <div className="bg-primary-50 rounded-xl border border-primary-100 overflow-hidden">
+                                    <div className="flex flex-col sm:flex-row">
+                                        <div className="sm:w-1/3 relative">
+                                            <Image
+                                                src="/images/enumclaw/exterior-main.jpg"
+                                                alt="Enumclaw Dental Office"
+                                                width={400}
+                                                height={300}
+                                                className="w-full h-48 sm:h-full object-cover"
                                             />
-                                        ),
-                                    )}
+                                        </div>
+                                        <div className="sm:w-2/3 p-6">
+                                            <h3 className="text-xl font-bold text-gray-900 mb-2">Enumclaw</h3>
+                                            <p className="text-gray-700 mb-1">1705 Cole St., Enumclaw, WA 98022</p>
+                                            <p className="text-gray-600 text-sm mb-3">Mon-Thu: 7:00 AM - 4:00 PM</p>
+                                            <Link
+                                                href="/appointments"
+                                                className="inline-flex items-center justify-center px-4 py-2 text-sm font-semibold text-white bg-button-600 rounded-lg hover:bg-button-700 transition-colors mb-3"
+                                            >
+                                                Schedule an Appointment
+                                            </Link>
+                                            <div className="flex flex-wrap gap-3">
+                                                <Link href="/enumclaw" className="text-primary-600 hover:text-primary-700 font-semibold text-sm">
+                                                    Office Info →
+                                                </Link>
+                                                <Link href="/enumclaw/team" className="text-primary-600 hover:text-primary-700 font-semibold text-sm">
+                                                    Meet the Team →
+                                                </Link>
+                                                <Link href="/enumclaw/gallery" className="text-primary-600 hover:text-primary-700 font-semibold text-sm">
+                                                    Office Gallery →
+                                                </Link>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Bonney Lake */}
+                                <div className="bg-primary-50 rounded-xl border border-primary-100 overflow-hidden">
+                                    <div className="flex flex-col sm:flex-row">
+                                        <div className="sm:w-1/3 relative">
+                                            <Image
+                                                src="/images/bonney-lake/exterior-main.jpg"
+                                                alt="Bonney Lake Dental Office"
+                                                width={400}
+                                                height={300}
+                                                className="w-full h-48 sm:h-full object-cover"
+                                            />
+                                        </div>
+                                        <div className="sm:w-2/3 p-6">
+                                            <h3 className="text-xl font-bold text-gray-900 mb-2">Bonney Lake</h3>
+                                            <p className="text-gray-700 mb-1">19034 141st Street Ct E, Bonney Lake, WA 98391</p>
+                                            <p className="text-gray-600 text-sm mb-3">Mon-Thu: 7:00 AM - 4:00 PM</p>
+                                            <Link
+                                                href="/appointments"
+                                                className="inline-flex items-center justify-center px-4 py-2 text-sm font-semibold text-white bg-button-600 rounded-lg hover:bg-button-700 transition-colors mb-3"
+                                            >
+                                                Schedule an Appointment
+                                            </Link>
+                                            <div className="flex flex-wrap gap-3">
+                                                <Link href="/bonney-lake" className="text-primary-600 hover:text-primary-700 font-semibold text-sm">
+                                                    Office Info →
+                                                </Link>
+                                                <Link href="/bonney-lake/team" className="text-primary-600 hover:text-primary-700 font-semibold text-sm">
+                                                    Meet the Team →
+                                                </Link>
+                                                <Link href="/bonney-lake/gallery" className="text-primary-600 hover:text-primary-700 font-semibold text-sm">
+                                                    Office Gallery →
+                                                </Link>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Areas We Serve Link */}
+                                <div className="text-center pt-4">
+                                    <Link
+                                        href="/areas-we-serve"
+                                        className="inline-flex items-center text-primary-600 hover:text-primary-700 font-semibold"
+                                    >
+                                        View all areas we serve
+                                        <svg className="w-5 h-5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                        </svg>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
@@ -373,12 +436,12 @@ export default function Home() {
                                     </svg>
                                 </div>
                                 <h3 className="text-2xl font-bold mb-4 text-gray-900">
-                                    Licensed & Insured
+                                    Experienced Dentists
                                 </h3>
                                 <p className="text-gray-600 leading-relaxed">
-                                    Fully licensed and insured for your complete
-                                    peace of mind. We&apos;re committed to
-                                    protecting you and your property.
+                                    Our team of skilled dentists brings years of
+                                    experience and advanced training to provide
+                                    exceptional care for your entire family.
                                 </p>
                             </div>
                             <div className="text-center p-8 bg-white rounded-2xl shadow-soft hover:shadow-medium transition-all duration-300 transform hover:-translate-y-1">
@@ -398,13 +461,13 @@ export default function Home() {
                                     </svg>
                                 </div>
                                 <h3 className="text-2xl font-bold mb-4 text-gray-900">
-                                    Satisfaction Guaranteed
+                                    Gentle, Compassionate Care
                                 </h3>
                                 <p className="text-gray-600 leading-relaxed">
-                                    We stand behind our work with a satisfaction
-                                    guarantee. Your happiness is our top
-                                    priority, and we won&apos;t rest until
-                                    you&apos;re completely satisfied.
+                                    Your comfort is our priority. We provide
+                                    gentle, patient-centered care in a relaxing
+                                    environment, with sedation options available
+                                    for anxious patients.
                                 </p>
                             </div>
                             <div className="text-center p-8 bg-white rounded-2xl shadow-soft hover:shadow-medium transition-all duration-300 transform hover:-translate-y-1">
@@ -424,13 +487,12 @@ export default function Home() {
                                     </svg>
                                 </div>
                                 <h3 className="text-2xl font-bold mb-4 text-gray-900">
-                                    Quality Craftsmanship
+                                    Gentle, Personalized Care
                                 </h3>
                                 <p className="text-gray-600 leading-relaxed">
-                                    Thorough prep, premium paints and coatings,
-                                    and proven techniques. Every finish is built
-                                    to last with attention to detail and clean
-                                    lines.
+                                    We take the time to understand your needs
+                                    and concerns, providing comfortable treatment
+                                    with a gentle touch and personalized attention.
                                 </p>
                             </div>
                         </div>
@@ -490,7 +552,7 @@ export default function Home() {
                                 </h2>
                                 <p className="text-xl text-gray-600">
                                     Get answers to common questions about our
-                                    painting and coating services
+                                    dental services
                                 </p>
                             </div>
                             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
@@ -544,7 +606,7 @@ export default function Home() {
                             Ready to Get Started?
                         </h2>
                         <p className="text-xl md:text-2xl mb-10 text-white/90">
-                            Contact us today for a free, no-obligation estimate
+                            Contact us today to schedule your appointment
                         </p>
                         <CTA variant="section" />
                         <div className="mt-12 flex flex-wrap justify-center gap-8 text-white/80">
@@ -560,7 +622,7 @@ export default function Home() {
                                         clipRule="evenodd"
                                     />
                                 </svg>
-                                <span>Free Estimates</span>
+                                <span>New Patients Welcome</span>
                             </div>
                             <div className="flex items-center gap-2">
                                 <svg
@@ -574,7 +636,7 @@ export default function Home() {
                                         clipRule="evenodd"
                                     />
                                 </svg>
-                                <span>Quality Craftsmanship</span>
+                                <span>Gentle, Personalized Care</span>
                             </div>
                             <div className="flex items-center gap-2">
                                 <svg
@@ -588,7 +650,7 @@ export default function Home() {
                                         clipRule="evenodd"
                                     />
                                 </svg>
-                                <span>100% Satisfaction</span>
+                                <span>Two Convenient Locations</span>
                             </div>
                         </div>
                     </div>

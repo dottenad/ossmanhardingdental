@@ -25,7 +25,7 @@ export const metadata: Metadata = generateSEOMetadata(
 
 export default function ServicesPage() {
     const industry = industryConfig[businessConfig.industry];
-    const services = industry.services;
+    const services = industry.allServices || industry.services;
 
     const breadcrumbSchema = generateBreadcrumbSchema([
         { name: "Home", url: businessConfig.website },
@@ -67,7 +67,7 @@ export default function ServicesPage() {
                                         <span key={area}>
                                             {index > 0 && " and "}
                                             <Link
-                                                href={`/service-areas/${areaSlug}`}
+                                                href={`/${areaSlug}`}
                                                 className="text-white hover:text-primary-100 underline font-semibold"
                                             >
                                                 {cityName}
@@ -77,7 +77,7 @@ export default function ServicesPage() {
                                 })}
                             .{" "}
                             <Link
-                                href="/contact"
+                                href="/appointments"
                                 className="text-white hover:text-primary-100 underline font-semibold"
                             >
                                 Contact us
@@ -128,11 +128,11 @@ export default function ServicesPage() {
                                     </div>
                                     <div>
                                         <h3 className="font-semibold text-gray-900 mb-1">
-                                            Licensed and insured professionals
+                                            Experienced dental professionals
                                         </h3>
                                         <p className="text-gray-600 text-sm">
-                                            Fully certified and protected for
-                                            your peace of mind
+                                            Skilled team with advanced training
+                                            for your peace of mind
                                         </p>
                                     </div>
                                 </div>
@@ -154,10 +154,10 @@ export default function ServicesPage() {
                                     </div>
                                     <div>
                                         <h3 className="font-semibold text-gray-900 mb-1">
-                                            Professional Service
+                                            Advanced Technology
                                         </h3>
                                         <p className="text-gray-600 text-sm">
-                                            Quality workmanship you can trust
+                                            Modern equipment for precise, comfortable care
                                         </p>
                                     </div>
                                 </div>
@@ -179,12 +179,11 @@ export default function ServicesPage() {
                                     </div>
                                     <div>
                                         <h3 className="font-semibold text-gray-900 mb-1">
-                                            Competitive pricing and free
-                                            estimates
+                                            Insurance friendly with flexible
+                                            payment options
                                         </h3>
                                         <p className="text-gray-600 text-sm">
-                                            Transparent pricing with no hidden
-                                            fees
+                                            Most insurance plans accepted
                                         </p>
                                     </div>
                                 </div>
@@ -231,11 +230,10 @@ export default function ServicesPage() {
                                     </div>
                                     <div>
                                         <h3 className="font-semibold text-gray-900 mb-1">
-                                            Satisfaction guaranteed
+                                            Gentle, compassionate care
                                         </h3>
                                         <p className="text-gray-600 text-sm">
-                                            We stand behind our work with a
-                                            satisfaction guarantee
+                                            Your comfort is always our priority
                                         </p>
                                     </div>
                                 </div>

@@ -123,14 +123,26 @@ export function Header() {
                                     className="flex items-center gap-2 hover:opacity-80 transition-opacity"
                                 >
                                     {businessConfig.logo ? (
-                                        <Image
-                                            src={businessConfig.logo}
-                                            alt={businessConfig.name}
-                                            width={180}
-                                            height={50}
-                                            className="h-14 w-auto object-contain"
-                                            priority
-                                        />
+                                        <>
+                                            {/* Mobile logo */}
+                                            <Image
+                                                src="/images/logo_min.png"
+                                                alt={businessConfig.name}
+                                                width={50}
+                                                height={50}
+                                                className="h-12 w-auto object-contain md:hidden"
+                                                priority
+                                            />
+                                            {/* Desktop logo */}
+                                            <Image
+                                                src={businessConfig.logo}
+                                                alt={businessConfig.name}
+                                                width={180}
+                                                height={50}
+                                                className="h-14 w-auto object-contain hidden md:block"
+                                                priority
+                                            />
+                                        </>
                                     ) : (
                                         <div className="flex flex-col">
                                             <span className="text-2xl font-bold bg-gradient-to-r from-primary-600 to-primary-800 bg-clip-text text-transparent">
@@ -146,11 +158,11 @@ export function Header() {
                             {/* Large screen buttons - show only on large screens, right-aligned */}
                             <div className="hidden lg:flex items-center gap-3 ml-auto">
                                 <Link
-                                    href="/contact"
+                                    href="/appointments"
                                     className="bg-button-600 hover:bg-button-700 text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-lg font-semibold text-sm sm:text-base transition-all shadow-md hover:shadow-lg flex items-center gap-2"
                                 >
                                     <Calendar className="w-4 h-4 sm:w-5 sm:h-5" />
-                                    <span>Request Quote</span>
+                                    <span>Schedule Appointment</span>
                                 </Link>
                                 <a
                                     href={`tel:${formatPhoneLink(
@@ -167,7 +179,7 @@ export function Header() {
                                 {/* Medium screen buttons - show only on medium */}
                                 <div className="hidden md:flex lg:hidden items-center gap-3">
                                     <Link
-                                        href="/contact"
+                                        href="/appointments"
                                         className="bg-button-600 hover:bg-button-700 text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-lg font-semibold text-sm sm:text-base transition-all shadow-md hover:shadow-lg flex items-center gap-2"
                                     >
                                         <svg
@@ -183,7 +195,7 @@ export function Header() {
                                                 d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
                                             />
                                         </svg>
-                                        <span>Request Quote</span>
+                                        <span>Schedule Appointment</span>
                                     </Link>
                                     <a
                                         href={`tel:${formatPhoneLink(
@@ -212,9 +224,9 @@ export function Header() {
                                 {/* Miniature buttons - only on small screens */}
                                 <div className="md:hidden flex items-center gap-2">
                                     <Link
-                                        href="/contact"
+                                        href="/appointments"
                                         className="flex flex-col items-center gap-1 bg-button-600 hover:bg-button-700 text-white py-2 px-4 rounded-lg transition-all flex-shrink-0"
-                                        aria-label="Request Quote"
+                                        aria-label="Schedule Appointment"
                                     >
                                         <svg
                                             className="w-5 h-5"
@@ -230,7 +242,7 @@ export function Header() {
                                             />
                                         </svg>
                                         <span className="text-xs font-medium">
-                                            Quote
+                                            Book
                                         </span>
                                     </Link>
                                     <a
@@ -298,11 +310,11 @@ export function Header() {
                                     { label: "Services", href: "/services" },
                                     { label: "About Us", href: "/about" },
                                     {
-                                        label: "Service Areas",
-                                        href: "/service-areas",
+                                        label: "Locations",
+                                        href: "/locations",
                                     },
                                     { label: "Gallery", href: "/gallery" },
-                                    { label: "Contact Us", href: "/contact" },
+                                    { label: "Appointments", href: "/appointments" },
                                 ]
                             ).map((item, index) => (
                                 <div
@@ -466,7 +478,7 @@ export function Header() {
                                                                     openSubDropdown ===
                                                                         childIndex && (
                                                                         <div
-                                                                            className="absolute left-[calc(100%-1px)] top-0 pl-1 bg-transparent min-w-[200px] z-50"
+                                                                            className="absolute left-[calc(100%-1px)] -top-2 pl-1 bg-transparent min-w-[200px] z-50"
                                                                             onMouseEnter={() => {
                                                                                 setOpenSubDropdown(
                                                                                     childIndex,
@@ -524,13 +536,13 @@ export function Header() {
                                 { label: "Services", href: "/services" },
                                 { label: "About Us", href: "/about" },
                                 {
-                                    label: "Service Areas",
-                                    href: "/service-areas",
+                                    label: "Locations",
+                                    href: "/locations",
                                 },
                                 { label: "Reviews", href: "/reviews" },
                                 { label: "Gallery", href: "/gallery" },
                                 { label: "FAQ", href: "/faq" },
-                                { label: "Contact Us", href: "/contact" },
+                                { label: "Appointments", href: "/appointments" },
                             ]
                         }
                         onClose={() => setMobileMenuOpen(false)}

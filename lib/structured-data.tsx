@@ -32,6 +32,10 @@ export function generateLocalBusinessSchema(businessConfig: BusinessConfig) {
             "@type": "HousePainter",
             serviceType: "Painting & Coating Services",
         },
+        dental: {
+            "@type": "Dentist",
+            serviceType: "Dental Services",
+        },
     };
 
     return {
@@ -65,15 +69,15 @@ export function generateLocalBusinessSchema(businessConfig: BusinessConfig) {
         openingHoursSpecification: [
             {
                 "@type": "OpeningHoursSpecification",
-                dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-                opens: "08:00",
-                closes: "18:00",
+                dayOfWeek: ["Monday", "Tuesday", "Wednesday"],
+                opens: "07:00",
+                closes: "16:00",
             },
             {
                 "@type": "OpeningHoursSpecification",
-                dayOfWeek: "Saturday",
-                opens: "09:00",
-                closes: "16:00",
+                dayOfWeek: "Thursday",
+                opens: "07:00",
+                closes: "14:00",
             },
         ],
         sameAs: Object.values(businessConfig.socialMedia).filter(
@@ -121,6 +125,52 @@ export function generateLocalBusinessSchema(businessConfig: BusinessConfig) {
     };
 }
 
+export function generateSecondaryLocationSchema(businessConfig: BusinessConfig) {
+    if (!businessConfig.secondaryAddress) {
+        return null;
+    }
+
+    const { secondaryAddress, phone, email, website, name, description, industry } = businessConfig;
+    const industryInfo = {
+        hvac: { "@type": "HVACBusiness" },
+        plumbing: { "@type": "Plumber" },
+        roofing: { "@type": "RoofingContractor" },
+        fencing: { "@type": "LocalBusiness" },
+        painting: { "@type": "HousePainter" },
+        dental: { "@type": "Dentist" },
+    };
+
+    return {
+        "@context": "https://schema.org",
+        ...industryInfo[industry],
+        name: `${name} - ${secondaryAddress.name}`,
+        description,
+        url: `${website}/bonney-lake`,
+        telephone: secondaryAddress.phone || phone,
+        email,
+        address: {
+            "@type": "PostalAddress",
+            streetAddress: secondaryAddress.street,
+            addressLocality: secondaryAddress.city,
+            addressRegion: secondaryAddress.state,
+            postalCode: secondaryAddress.zipCode,
+            addressCountry: "US",
+        },
+        openingHoursSpecification: [
+            {
+                "@type": "OpeningHoursSpecification",
+                dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday"],
+                opens: "07:00",
+                closes: "16:00",
+            },
+        ],
+        image: businessConfig.logo?.startsWith("http")
+            ? businessConfig.logo
+            : `${website}${businessConfig.logo || "/images/logo.png"}`,
+        sameAs: Object.values(businessConfig.socialMedia).filter(Boolean) as string[],
+    };
+}
+
 export function generateOrganizationSchema(businessConfig: BusinessConfig) {
     const logoPath = businessConfig.logo || "/images/logo.png";
     const logoUrl = logoPath.startsWith("http")
@@ -153,13 +203,24 @@ export function generateServiceSchema(
     serviceName: string,
     businessConfig: BusinessConfig
 ) {
+    const providerTypes: Record<string, string> = {
+        hvac: "HVACBusiness",
+        plumbing: "Plumber",
+        roofing: "RoofingContractor",
+        fencing: "LocalBusiness",
+        painting: "HousePainter",
+        dental: "Dentist",
+    };
+
     return {
         "@context": "https://schema.org",
         "@type": "Service",
         serviceType: serviceName,
         provider: {
-            "@type": "LocalBusiness",
+            "@type": providerTypes[businessConfig.industry] || "LocalBusiness",
             name: businessConfig.name,
+            telephone: businessConfig.phone,
+            url: businessConfig.website,
         },
         areaServed: businessConfig.serviceAreas.map((area) => ({
             "@type": "City",
@@ -237,9 +298,9 @@ export function generateContactPageSchema(businessConfig: BusinessConfig) {
     return {
         "@context": "https://schema.org",
         "@type": "ContactPage",
-        name: "Contact Us",
-        description: `Contact ${businessConfig.name} for a free estimate on your fence project.`,
-        url: `${businessConfig.website}/contact`,
+        name: "Schedule an Appointment",
+        description: `Schedule your dental appointment at ${businessConfig.name}. We have convenient locations in Enumclaw and Bonney Lake.`,
+        url: `${businessConfig.website}/appointments`,
         mainEntity: {
             "@type": "LocalBusiness",
             name: businessConfig.name,
@@ -268,7 +329,7 @@ export function generateAboutPageSchema(businessConfig: BusinessConfig) {
         "@context": "https://schema.org",
         "@type": "AboutPage",
         name: `About ${businessConfig.name}`,
-        description: `Learn more about ${businessConfig.name} and our commitment to quality custom fencing service.`,
+        description: `Learn more about ${businessConfig.name} and our commitment to exceptional dental care.`,
         url: `${businessConfig.website}/about`,
         mainEntity: {
             "@type": "Organization",
@@ -302,7 +363,7 @@ export function generateGalleryPageSchema(
         "@context": "https://schema.org",
         "@type": "CollectionPage",
         name: `Gallery - ${businessConfig.name}`,
-        description: `View our completed projects and work gallery showcasing ${businessConfig.name}'s quality craftsmanship and service excellence.`,
+        description: `View our gallery showcasing ${businessConfig.name}'s exceptional dental care and beautiful smile transformations.`,
         url: `${businessConfig.website}/gallery`,
         mainEntity: {
             "@type": "ItemList",

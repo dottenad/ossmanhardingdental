@@ -226,50 +226,49 @@ export default function ReviewsPage() {
                                             </div>
                                         )}
 
-                                        <div className="text-center">
-                                            {businessConfig.googleReviewFormUrl ? (
-                                                <a
-                                                    href={businessConfig.googleReviewFormUrl}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    className="inline-flex items-center px-6 py-3 bg-primary-600 text-white font-semibold rounded-lg transition-all hover:bg-primary-700"
+                                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                                            <a
+                                                href="https://g.page/r/CQD6lRG2iGp2EBM/review"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="inline-flex items-center justify-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg transition-all hover:bg-blue-700"
+                                            >
+                                                Leave a Review - Enumclaw
+                                                <svg
+                                                    className="w-5 h-5 ml-2"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    viewBox="0 0 24 24"
                                                 >
-                                                    Leave a Review
-                                                    <svg
-                                                        className="w-5 h-5 ml-2"
-                                                        fill="none"
-                                                        stroke="currentColor"
-                                                        viewBox="0 0 24 24"
-                                                    >
-                                                        <path
-                                                            strokeLinecap="round"
-                                                            strokeLinejoin="round"
-                                                            strokeWidth={2}
-                                                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                                                        />
-                                                    </svg>
-                                                </a>
-                                            ) : (
-                                                <Link
-                                                    href="/contact"
-                                                    className="inline-flex items-center px-6 py-3 bg-primary-600 text-white font-semibold rounded-lg transition-all hover:bg-primary-700"
+                                                    <path
+                                                        strokeLinecap="round"
+                                                        strokeLinejoin="round"
+                                                        strokeWidth={2}
+                                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                                                    />
+                                                </svg>
+                                            </a>
+                                            <a
+                                                href="https://g.page/r/CXkAJAwWBfmJEBM/review"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="inline-flex items-center justify-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg transition-all hover:bg-blue-700"
+                                            >
+                                                Leave a Review - Bonney Lake
+                                                <svg
+                                                    className="w-5 h-5 ml-2"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    viewBox="0 0 24 24"
                                                 >
-                                                    Leave a Review
-                                                    <svg
-                                                        className="w-5 h-5 ml-2"
-                                                        fill="none"
-                                                        stroke="currentColor"
-                                                        viewBox="0 0 24 24"
-                                                    >
-                                                        <path
-                                                            strokeLinecap="round"
-                                                            strokeLinejoin="round"
-                                                            strokeWidth={2}
-                                                            d="M13 7l5 5m0 0l-5 5m5-5H6"
-                                                        />
-                                                    </svg>
-                                                </Link>
-                                            )}
+                                                    <path
+                                                        strokeLinecap="round"
+                                                        strokeLinejoin="round"
+                                                        strokeWidth={2}
+                                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                                                    />
+                                                </svg>
+                                            </a>
                                         </div>
                                     </>
                                 ) : (
@@ -278,7 +277,7 @@ export default function ReviewsPage() {
                                             No reviews available yet.
                                         </p>
                                         <Link
-                                            href="/contact"
+                                            href="/appointments"
                                             className="inline-flex items-center px-6 py-3 bg-primary-600 text-white font-semibold rounded-lg transition-all hover:bg-primary-700"
                                         >
                                             Contact Us

@@ -34,10 +34,11 @@ export function generateMetadata(
         pageTitle === siteName ? siteName : `${pageTitle} | ${siteName}`;
     const metaDescription = description || defaultDescription;
     const siteUrl = url || businessConfig.website;
-    // Use an image that exists (hero or default); avoid /og-image.jpg which may not be present
+    // Use an image that exists (hero or default)
     const defaultImagePath =
         businessConfig.heroImage ||
-        "/images/service-images/privacy-fence-installation.jpg";
+        businessConfig.logo ||
+        "/images/logo.png";
     const ogImage = image
         ? (image.startsWith("http") ? image : `${businessConfig.website}${image}`)
         : `${businessConfig.website}${defaultImagePath}`;

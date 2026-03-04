@@ -92,40 +92,40 @@ export default function TermsPage() {
                             </h2>
                             <p className="text-gray-700 mb-6 leading-relaxed">
                                 {businessConfig.name} provides professional
-                                painting and protective coating services for
-                                residential and commercial properties. We offer
-                                consultation, surface preparation, application,
-                                and finishing services within our service areas.
-                                Service availability may vary based on location
-                                and project requirements.
+                                dental care services including general dentistry,
+                                cosmetic dentistry, oral surgery, and preventive
+                                care. We offer comprehensive dental services at
+                                our Enumclaw and Bonney Lake locations. Service
+                                availability may vary based on location and
+                                treatment requirements.
                             </p>
 
                             <h2 className="text-3xl font-bold mt-12 mb-6 text-gray-900">
-                                3. Service Requests and Quotes
+                                3. Appointments and Services
                             </h2>
                             <p className="text-gray-700 mb-4 leading-relaxed">
-                                When you request a quote or schedule services:
+                                When you schedule an appointment or request services:
                             </p>
                             <ul className="list-disc pl-6 mb-6 text-gray-700 space-y-2">
                                 <li>
-                                    All quotes are estimates and subject to
-                                    change based on final project scope
+                                    Treatment plans and cost estimates are subject to
+                                    change based on clinical findings
                                 </li>
                                 <li>
-                                    Quotes are valid for a specified period
-                                    (typically 30 days) unless otherwise stated
+                                    We require 24-48 hours notice for appointment
+                                    cancellations or rescheduling
                                 </li>
                                 <li>
-                                    Final pricing will be provided in a written
-                                    contract or agreement
+                                    Treatment costs will be discussed and agreed upon
+                                    before procedures begin
                                 </li>
                                 <li>
                                     You agree to provide accurate and complete
-                                    information for accurate quotes
+                                    health and insurance information
                                 </li>
                                 <li>
-                                    We reserve the right to decline service
-                                    requests at our discretion
+                                    We reserve the right to reschedule appointments
+                                    when necessary
                                 </li>
                             </ul>
 
@@ -138,12 +138,12 @@ export default function TermsPage() {
                             </p>
                             <ul className="list-disc pl-6 mb-6 text-gray-700 space-y-2">
                                 <li>
-                                    Deposits may be required to secure your
-                                    project date
+                                    Payment is due at the time of service
+                                    unless other arrangements are made
                                 </li>
                                 <li>
-                                    Final payment is typically due upon
-                                    completion of work
+                                    Insurance claims will be filed on your
+                                    behalf when applicable
                                 </li>
                                 <li>
                                     We accept various payment methods as
@@ -160,76 +160,74 @@ export default function TermsPage() {
                             </ul>
 
                             <h2 className="text-3xl font-bold mt-12 mb-6 text-gray-900">
-                                5. Workmanship and Warranties
+                                5. Treatment Quality and Guarantees
                             </h2>
                             <p className="text-gray-700 mb-4 leading-relaxed">
-                                We stand behind our work and offer the
+                                We stand behind our dental work and offer the
                                 following:
                             </p>
                             <ul className="list-disc pl-6 mb-6 text-gray-700 space-y-2">
                                 <li>
-                                    Workmanship warranties as specified in your
-                                    service agreement
+                                    Quality guarantees on restorative work as
+                                    discussed with your provider
                                 </li>
                                 <li>
-                                    Manufacturer warranties on materials (terms
-                                    vary by product)
+                                    Manufacturer warranties on dental materials
+                                    and prosthetics where applicable
                                 </li>
                                 <li>
-                                    We will repair or replace work that fails
-                                    due to our workmanship within the warranty
-                                    period
+                                    We will address any concerns about treatment
+                                    outcomes within a reasonable timeframe
                                 </li>
                                 <li>
-                                    Warranties do not cover damage caused by
-                                    acts of nature, accidents, or improper use
+                                    Guarantees may not apply if post-treatment
+                                    instructions are not followed
                                 </li>
                                 <li>
-                                    Warranty claims must be reported in writing
-                                    within the warranty period
+                                    Please contact our office promptly if you
+                                    experience any issues with your dental work
                                 </li>
                             </ul>
 
                             <h2 className="text-3xl font-bold mt-12 mb-6 text-gray-900">
-                                6. Property Access and Site Conditions
+                                6. Patient Responsibilities
                             </h2>
                             <p className="text-gray-700 mb-4 leading-relaxed">
-                                You agree to:
+                                As a patient, you agree to:
                             </p>
                             <ul className="list-disc pl-6 mb-6 text-gray-700 space-y-2">
                                 <li>
-                                    Provide safe and unobstructed access to the
-                                    work site
+                                    Provide accurate and complete medical and
+                                    dental history
                                 </li>
                                 <li>
-                                    Notify us of any underground utilities,
-                                    property lines, or restrictions
+                                    Inform us of any changes to your health
+                                    status or medications
                                 </li>
                                 <li>
-                                    Obtain necessary permits and approvals
-                                    (unless otherwise agreed)
+                                    Follow pre-treatment and post-treatment
+                                    instructions provided by our team
                                 </li>
                                 <li>
-                                    Ensure property is free from hazards that
-                                    could affect our work
+                                    Arrive on time for scheduled appointments
                                 </li>
                                 <li>
-                                    Grant us reasonable access during normal
-                                    business hours
+                                    Maintain good oral hygiene as recommended
+                                    by your dental provider
                                 </li>
                             </ul>
 
                             <h2 className="text-3xl font-bold mt-12 mb-6 text-gray-900">
-                                7. Permits and Approvals
+                                7. Consent and Treatment Authorization
                             </h2>
                             <p className="text-gray-700 mb-6 leading-relaxed">
-                                Local permits and approvals may be required for
-                                certain projects. Unless specified in your
-                                contract, it is your responsibility to obtain
-                                necessary permits and approvals from local
-                                authorities, homeowner associations, or other
-                                governing bodies. We can assist with permit
-                                applications for an additional fee if requested.
+                                Before receiving treatment, you will be asked
+                                to provide informed consent. Our team will
+                                explain the proposed treatment, alternatives,
+                                risks, and expected outcomes. You have the
+                                right to ask questions and to refuse treatment
+                                at any time. For minors, a parent or legal
+                                guardian must provide consent for treatment.
                             </p>
 
                             <h2 className="text-3xl font-bold mt-12 mb-6 text-gray-900">
@@ -240,24 +238,20 @@ export default function TermsPage() {
                             </p>
                             <ul className="list-disc pl-6 mb-6 text-gray-700 space-y-2">
                                 <li>
-                                    You may cancel service requests before work
-                                    begins, subject to any cancellation fees
-                                    specified in your agreement
+                                    Please provide at least 24-48 hours notice
+                                    for appointment cancellations
                                 </li>
                                 <li>
-                                    Cancellation after work has commenced will
-                                    be charged for work completed and materials
-                                    ordered
+                                    Missed appointments without notice may
+                                    result in a cancellation fee
                                 </li>
                                 <li>
-                                    Refunds, if applicable, will be processed
-                                    according to the terms of your service
-                                    agreement
+                                    Refunds for prepaid services, if applicable,
+                                    will be processed on a case-by-case basis
                                 </li>
                                 <li>
-                                    We reserve the right to cancel services due
-                                    to unsafe conditions, inability to access
-                                    property, or other circumstances beyond our
+                                    We reserve the right to reschedule appointments
+                                    due to emergencies or circumstances beyond our
                                     control
                                 </li>
                             </ul>
@@ -276,15 +270,15 @@ export default function TermsPage() {
                             </p>
 
                             <h2 className="text-3xl font-bold mt-12 mb-6 text-gray-900">
-                                10. Insurance
+                                10. Insurance and Billing
                             </h2>
                             <p className="text-gray-700 mb-6 leading-relaxed">
-                                {businessConfig.name} maintains general
-                                liability insurance as required by law. We are
-                                licensed and insured. Proof of insurance is
-                                available upon request. We recommend that you
-                                maintain appropriate property insurance for your
-                                protection.
+                                {businessConfig.name} accepts most major dental
+                                insurance plans. We will work with your insurance
+                                provider to maximize your benefits. Please bring
+                                your insurance information to your appointment.
+                                Payment is due at the time of service for any
+                                amounts not covered by insurance.
                             </p>
 
                             <h2 className="text-3xl font-bold mt-12 mb-6 text-gray-900">
@@ -399,11 +393,6 @@ export default function TermsPage() {
                             <div className="bg-gray-50 p-6 rounded-lg mb-6">
                                 <p className="text-gray-700 mb-2">
                                     <strong>{businessConfig.name}</strong>
-                                </p>
-                                <p className="text-gray-700 mb-2">
-                                    {businessConfig.address.city},{" "}
-                                    {businessConfig.address.state}{" "}
-                                    {businessConfig.address.zipCode}
                                 </p>
                                 <p className="text-gray-700 mb-2">
                                     Phone:{" "}
