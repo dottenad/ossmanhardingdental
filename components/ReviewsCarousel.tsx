@@ -161,7 +161,7 @@ export function ReviewsCarousel({ reviews }: ReviewsCarouselProps) {
                                             {review.service}
                                         </p>
                                     )}
-                                    <p className="text-sm text-gray-600 mt-1">
+                                    <p className="text-sm text-gray-600 mt-1" suppressHydrationWarning>
                                         {new Date(
                                             review.date
                                         ).toLocaleDateString("en-US", {

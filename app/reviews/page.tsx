@@ -120,7 +120,7 @@ export default function ReviewsPage() {
                                                                     }
                                                                 </p>
                                                             )}
-                                                            <p className="text-sm text-gray-500 mt-1">
+                                                            <p className="text-sm text-gray-500 mt-1" suppressHydrationWarning>
                                                                 {new Date(
                                                                     review.date
                                                                 ).toLocaleDateString(

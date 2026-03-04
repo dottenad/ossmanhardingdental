@@ -52,31 +52,9 @@ export default function RootLayout({
                         __html: `body{background:#fff;color:#111;font-family:system-ui,-apple-system,sans-serif;margin:0;}a{color:inherit;}img{max-width:100%;height:auto;}`,
                     }}
                 />
-                {/* Preconnect to important origins for faster loading */}
-                <link
-                    rel="preconnect"
-                    href="https://fonts.googleapis.com"
-                    crossOrigin="anonymous"
-                />
-                <link
-                    rel="preconnect"
-                    href="https://fonts.gstatic.com"
-                    crossOrigin="anonymous"
-                />
-                <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-                <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+                {/* DNS prefetch for Google Maps (loaded lazily when scrolled into view) */}
                 {businessConfig.googleMapsApiKey && (
-                    <>
-                        <link
-                            rel="preconnect"
-                            href="https://maps.googleapis.com"
-                            crossOrigin="anonymous"
-                        />
-                        <link
-                            rel="dns-prefetch"
-                            href="https://maps.googleapis.com"
-                        />
-                    </>
+                    <link rel="dns-prefetch" href="https://maps.googleapis.com" />
                 )}
                 <StructuredData
                     data={[localBusinessSchema, organizationSchema, secondaryLocationSchema].filter(Boolean)}

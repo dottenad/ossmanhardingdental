@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import Script from "next/script";
 
 // Office locations for Ossman Harding Dental
@@ -55,25 +55,45 @@ export function OfficeLocationsMap({
     const [scriptLoaded, setScriptLoaded] = useState(false);
     const [containerReady, setContainerReady] = useState(false);
     const [error, setError] = useState<string | null>(null);
+    const [isInView, setIsInView] = useState(false);
     const mapInstanceRef = useRef<GoogleMap | null>(null);
+
+    // Lazy load: only start loading when map is in viewport
+    useEffect(() => {
+        const el = mapRef.current;
+        if (!el) return;
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                if (entries[0]?.isIntersecting) {
+                    setIsInView(true);
+                    observer.disconnect();
+                }
+            },
+            { rootMargin: "200px" } // Start loading 200px before visible
+        );
+
+        observer.observe(el);
+        return () => observer.disconnect();
+    }, []);
 
     // Check if Google Maps script was already loaded
     useEffect(() => {
-        if (!apiKey) return;
+        if (!apiKey || !isInView) return;
         const g = getGoogle();
         if (g?.maps?.Map) {
             setScriptLoaded(true);
         }
-    }, [apiKey]);
+    }, [apiKey, isInView]);
 
     // Fallback check for cached script
     useEffect(() => {
-        if (!apiKey || scriptLoaded) return;
+        if (!apiKey || scriptLoaded || !isInView) return;
         const t = setTimeout(() => {
             if (getGoogle()?.maps?.Map) setScriptLoaded(true);
         }, 500);
         return () => clearTimeout(t);
-    }, [apiKey, scriptLoaded]);
+    }, [apiKey, scriptLoaded, isInView]);
 
     // Watch for container size
     useEffect(() => {
@@ -184,20 +204,29 @@ export function OfficeLocationsMap({
 
     return (
         <>
-            <Script
-                src={`https://maps.googleapis.com/maps/api/js?key=${apiKey}`}
-                strategy="afterInteractive"
-                onLoad={() => setScriptLoaded(true)}
-                onError={() => setError("Google Maps script failed to load")}
-            />
+            {isInView && (
+                <Script
+                    src={`https://maps.googleapis.com/maps/api/js?key=${apiKey}`}
+                    strategy="afterInteractive"
+                    onLoad={() => setScriptLoaded(true)}
+                    onError={() => setError("Google Maps script failed to load")}
+                />
+            )}
             <div
                 ref={mapRef}
+                role="application"
+                aria-label="Office locations map"
                 className={
                     className ??
                     "w-full h-full rounded-lg overflow-hidden shadow-lg bg-gray-200"
                 }
-                aria-label="Office locations map"
-            />
+            >
+                {!isInView && (
+                    <div className="w-full h-full flex items-center justify-center bg-gray-100">
+                        <span className="text-gray-400">Loading map...</span>
+                    </div>
+                )}
+            </div>
             {error && (
                 <p className="mt-2 text-sm text-red-600 text-center" role="alert">
                     {error}
