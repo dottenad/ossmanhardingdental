@@ -4,6 +4,7 @@ import { businessConfig } from "@/lib/config";
 import { generateMetadata as generateSEOMetadata } from "@/lib/seo";
 import { StructuredData } from "@/components/StructuredData";
 import { SkipLink } from "@/components/SkipLink";
+import { Analytics } from "@/components/Analytics";
 import { getFont } from "@/lib/fonts";
 import {
     generateLocalBusinessSchema,
@@ -79,6 +80,7 @@ export default function RootLayout({
                 />
             </head>
             <body className={`${(font as any).variable || ""} font-sans`}>
+                <Analytics />
                 <SkipLink />
                 {children}
             </body>

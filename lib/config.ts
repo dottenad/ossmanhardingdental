@@ -52,6 +52,8 @@ export interface BusinessConfig {
         colorDark?: string; // Optional darker shade for gradient in hex format (e.g., "#dc2626"). Defaults to primary-900 if not provided
     };
     googleMapsApiKey?: string; // Optional: used for Service Areas map (Pierce & Kitsap outlined) and footer map
+    googleAnalyticsId?: string; // Optional: Google Analytics 4 Measurement ID (e.g., "G-XXXXXXXXXX")
+    hotjarId?: number; // Optional: Hotjar Site ID (e.g., 1234567)
     showFooterMap?: boolean; // Show Google Maps embed above footer (defaults to true if address is provided)
     serviceAreaMapImage?: string; // Optional image path for service area map on home page (e.g., "/images/service-areas-map.jpg")
     serviceAreaPageImages?: {
@@ -355,6 +357,14 @@ export const businessConfig: BusinessConfig = {
     googleMapsApiKey:
         typeof process !== "undefined"
             ? process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY
+            : undefined,
+    googleAnalyticsId:
+        typeof process !== "undefined"
+            ? process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID
+            : undefined,
+    hotjarId:
+        typeof process !== "undefined" && process.env.NEXT_PUBLIC_HOTJAR_ID
+            ? parseInt(process.env.NEXT_PUBLIC_HOTJAR_ID, 10)
             : undefined,
     serviceAreaPageImages: {
         default: "/images/service-images/dental-office.jpg",
