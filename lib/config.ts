@@ -603,8 +603,7 @@ export const businessConfig: BusinessConfig = {
         "/new-patients/insurance": "/images/service-images/cosmetic-dentistry.jpg",
         "/new-patients/payment-options": "/images/service-images/cosmetic-dentistry.jpg",
         "/areas-we-serve": "/images/rainier.jpg",
-        // Office locations - using exterior images
-        "/locations": "/images/hero-dental.jpg",
+        // Office location sub-pages - using exterior images
         "/locations/enumclaw": "/images/enumclaw/building/office-7.jpg",
         "/locations/enumclaw/gallery": "/images/enumclaw/building/office-7.jpg",
         "/locations/enumclaw/team": "/images/enumclaw/building/office-7.jpg",
