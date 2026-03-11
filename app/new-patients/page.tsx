@@ -60,11 +60,11 @@ export default function NewPatientsPage() {
                             We have two amazing locations with incredible teams to serve your dental needs:
                         </p>
                         <p className="text-lg text-gray-700 mb-8">
-                            <Link href="/enumclaw" className="text-primary-600 hover:text-primary-700 font-semibold hover:underline">
+                            <Link href="/locations/enumclaw" className="text-primary-600 hover:text-primary-700 font-semibold hover:underline">
                                 Enumclaw
                             </Link>
                             {" "}and{" "}
-                            <Link href="/bonney-lake" className="text-primary-600 hover:text-primary-700 font-semibold hover:underline">
+                            <Link href="/locations/bonney-lake" className="text-primary-600 hover:text-primary-700 font-semibold hover:underline">
                                 Bonney Lake
                             </Link>
                             {" "}(Tehaleh)

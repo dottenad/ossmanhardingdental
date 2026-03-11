@@ -278,13 +278,13 @@ export default function BonneyLakeTeamPage() {
                         {/* Back Links */}
                         <div className="flex gap-4 mt-8">
                             <Link
-                                href={`/${LOCATION.slug}`}
+                                href={`/locations/${LOCATION.slug}`}
                                 className="text-primary-600 hover:text-primary-700 font-semibold"
                             >
                                 ← Back to {LOCATION.name} Office
                             </Link>
                             <Link
-                                href="/enumclaw/team"
+                                href="/locations/enumclaw/team"
                                 className="text-primary-600 hover:text-primary-700 font-semibold"
                             >
                                 Meet our Enumclaw Team →

@@ -48,7 +48,7 @@ export const metadata: Metadata = generateSEOMetadata(
             "cosmetic dentistry",
             "dental implants",
         ],
-        url: `${businessConfig.website}/${LOCATION.slug}`,
+        url: `${businessConfig.website}/locations/${LOCATION.slug}`,
     },
     businessConfig
 );
@@ -58,9 +58,10 @@ export default function EnumclawPage() {
 
     const breadcrumbSchema = generateBreadcrumbSchema([
         { name: "Home", url: businessConfig.website },
+        { name: "Locations", url: `${businessConfig.website}/locations` },
         {
             name: `${LOCATION.name} Office`,
-            url: `${businessConfig.website}/${LOCATION.slug}`,
+            url: `${businessConfig.website}/locations/${LOCATION.slug}`,
         },
     ]);
 
@@ -72,7 +73,7 @@ export default function EnumclawPage() {
             <StructuredData data={[breadcrumbSchema, localBusinessSchema]} />
             <main id="main-content" className="flex-grow">
                 <Hero
-                    backgroundImage={businessConfig.pageHeroImages?.[`/${LOCATION.slug}`] || businessConfig.heroImage}
+                    backgroundImage={businessConfig.pageHeroImages?.[`/locations/${LOCATION.slug}`] || businessConfig.heroImage}
                     title={`${LOCATION.name} Dental Office`}
                     subtitle={`Comprehensive dental care for the whole family in ${LOCATION.name}`}
                     priority={true}
@@ -80,7 +81,8 @@ export default function EnumclawPage() {
                 <Breadcrumb
                     items={[
                         { name: "Home", url: "/" },
-                        { name: `${LOCATION.name} Office`, url: `/${LOCATION.slug}` },
+                        { name: "Locations", url: "/locations" },
+                        { name: `${LOCATION.name} Office`, url: `/locations/${LOCATION.slug}` },
                     ]}
                 />
 
@@ -203,7 +205,7 @@ export default function EnumclawPage() {
                                             return (
                                                 <Link
                                                     key={index}
-                                                    href={`/${LOCATION.slug}/services/${serviceSlug}`}
+                                                    href={`/locations/${LOCATION.slug}/services/${serviceSlug}`}
                                                     className="flex items-center gap-3 p-4 bg-gray-50 rounded-lg border border-gray-200 hover:border-primary-300 hover:bg-primary-50 transition-colors"
                                                 >
                                                     <span className="w-2 h-2 bg-primary-600 rounded-full" />
@@ -214,7 +216,7 @@ export default function EnumclawPage() {
                                     </div>
                                     <div className="mt-4">
                                         <Link
-                                            href={`/${LOCATION.slug}/services`}
+                                            href={`/locations/${LOCATION.slug}/services`}
                                             className="text-primary-600 hover:text-primary-700 font-semibold"
                                         >
                                             View all services →
@@ -234,7 +236,7 @@ export default function EnumclawPage() {
                                         your best smile.
                                     </p>
                                     <Link
-                                        href={`/${LOCATION.slug}/team`}
+                                        href={`/locations/${LOCATION.slug}/team`}
                                         className="inline-flex items-center text-primary-600 hover:text-primary-700 font-semibold"
                                     >
                                         Meet our {LOCATION.name} team →
@@ -270,7 +272,7 @@ export default function EnumclawPage() {
                                         </li>
                                     </ul>
                                     <Link
-                                        href={`/${LOCATION.slug}/gallery`}
+                                        href={`/locations/${LOCATION.slug}/gallery`}
                                         className="inline-flex items-center text-primary-600 hover:text-primary-700 font-semibold"
                                     >
                                         View office gallery →
@@ -327,7 +329,7 @@ export default function EnumclawPage() {
                                         We also have an office in Bonney Lake for your convenience.
                                     </p>
                                     <Link
-                                        href="/bonney-lake"
+                                        href="/locations/bonney-lake"
                                         className="text-primary-600 hover:text-primary-700 font-semibold"
                                     >
                                         View Bonney Lake Office →

@@ -229,7 +229,7 @@ export function Footer() {
                             <ul className="space-y-2 text-gray-300">
                                 <li>
                                     <Link
-                                        href="/enumclaw"
+                                        href="/locations/enumclaw"
                                         className="hover:text-primary-400 transition-colors cursor-pointer"
                                     >
                                         Enumclaw
@@ -237,7 +237,7 @@ export function Footer() {
                                 </li>
                                 <li>
                                     <Link
-                                        href="/bonney-lake"
+                                        href="/locations/bonney-lake"
                                         className="hover:text-primary-400 transition-colors cursor-pointer"
                                     >
                                         Bonney Lake

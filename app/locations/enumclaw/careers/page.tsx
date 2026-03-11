@@ -12,18 +12,17 @@ import { Breadcrumb } from "@/components/Breadcrumb";
 import { generateBreadcrumbSchema } from "@/lib/structured-data";
 
 const LOCATION = {
-    name: "Bonney Lake",
-    slug: "bonney-lake",
+    name: "Enumclaw",
+    slug: "enumclaw",
 };
 
 export const metadata: Metadata = generateSEOMetadata(
     {
         title: `Careers in ${LOCATION.name} | Join Our Team | ${businessConfig.name}`,
-        description: `Join the ${businessConfig.name} team in ${LOCATION.name}/Tehaleh! We're hiring dental professionals who share our passion for patient care. View open positions and apply today.`,
+        description: `Join the ${businessConfig.name} team in ${LOCATION.name}! We're hiring dental professionals who share our passion for patient care. View open positions and apply today.`,
         keywords: [
             `${LOCATION.name} dental jobs`,
             `dental careers ${LOCATION.name}`,
-            `Tehaleh dental jobs`,
             `dental hygienist jobs ${LOCATION.name}`,
             `dental assistant jobs`,
             "dental office careers",
@@ -62,7 +61,7 @@ const benefits = [
     },
 ];
 
-export default function BonneyLakeCareersPage() {
+export default function EnumclawCareersPage() {
     const breadcrumbSchema = generateBreadcrumbSchema([
         { name: "Home", url: businessConfig.website },
         { name: `${LOCATION.name} Office`, url: `${businessConfig.website}/${LOCATION.slug}` },
@@ -77,7 +76,7 @@ export default function BonneyLakeCareersPage() {
                 <Hero
                     backgroundImage={businessConfig.pageHeroImages?.[`/${LOCATION.slug}`] || businessConfig.heroImage}
                     title={`Careers in ${LOCATION.name}`}
-                    subtitle="Join our growing team in Tehaleh"
+                    subtitle="Join our team of dental professionals"
                 />
                 <Breadcrumb
                     items={[
@@ -95,14 +94,14 @@ export default function BonneyLakeCareersPage() {
                                 Join the {businessConfig.name} Family
                             </h2>
                             <p className="text-xl text-gray-700 leading-relaxed mb-4">
-                                Our {LOCATION.name} office opened in April 2024 to serve the growing Tehaleh community,
-                                and we&apos;re continuing to expand our team! We&apos;re looking for talented, compassionate
-                                individuals who share our passion for excellent patient care.
+                                We&apos;re always looking for talented, compassionate individuals to join our {LOCATION.name} team.
+                                At {businessConfig.name}, we believe in creating an environment where team members can grow,
+                                thrive, and make a real difference in our patients&apos; lives.
                             </p>
                             <p className="text-lg text-gray-600">
-                                The Ossmans envisioned OHD Tehaleh as a one-stop shop for all dental and esthetic needs—and
-                                we need great people to make that vision a reality. Join us and be part of something special
-                                in this thriving community.
+                                Our practice was established by Dr. Stephen Harding in 2001 and continues to grow under
+                                the leadership of the Ossman family. We&apos;re committed to excellence in patient care
+                                and supporting our team members every step of the way.
                             </p>
                         </div>
 
@@ -131,35 +130,6 @@ export default function BonneyLakeCareersPage() {
                             </div>
                         </div>
 
-                        {/* What Makes Bonney Lake Special */}
-                        <div className="bg-primary-50 p-8 rounded-xl border border-primary-100 mb-12">
-                            <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                                What Makes Our {LOCATION.name} Office Special
-                            </h3>
-                            <ul className="space-y-3 text-gray-700">
-                                <li className="flex items-start gap-2">
-                                    <span className="text-primary-600 font-bold mt-1">✓</span>
-                                    <span>Brand new, state-of-the-art facility opened in 2024</span>
-                                </li>
-                                <li className="flex items-start gap-2">
-                                    <span className="text-primary-600 font-bold mt-1">✓</span>
-                                    <span>Growing community with incredible patients</span>
-                                </li>
-                                <li className="flex items-start gap-2">
-                                    <span className="text-primary-600 font-bold mt-1">✓</span>
-                                    <span>Opportunity to help build and shape the team culture</span>
-                                </li>
-                                <li className="flex items-start gap-2">
-                                    <span className="text-primary-600 font-bold mt-1">✓</span>
-                                    <span>Full-service practice with in-house specialties</span>
-                                </li>
-                                <li className="flex items-start gap-2">
-                                    <span className="text-primary-600 font-bold mt-1">✓</span>
-                                    <span>Beautiful location with stunning Mt. Rainier views</span>
-                                </li>
-                            </ul>
-                        </div>
-
                         {/* Location Info */}
                         <div className="bg-gray-50 p-8 rounded-xl border border-gray-200 mb-12">
                             <div className="flex items-start gap-4 mb-4">
@@ -171,10 +141,10 @@ export default function BonneyLakeCareersPage() {
                                         {LOCATION.name} Office Location
                                     </h3>
                                     <p className="text-gray-700">
-                                        19034 141st Street Ct E, Bonney Lake, WA 98391
+                                        1705 Cole St., Enumclaw, WA 98022
                                     </p>
                                     <p className="text-gray-600 text-sm mt-2">
-                                        Located in the heart of Tehaleh, serving Bonney Lake, Lake Tapps, Sumner, and surrounding communities.
+                                        Our original location in the heart of Enumclaw, serving the community since 2001.
                                     </p>
                                 </div>
                             </div>
@@ -207,13 +177,13 @@ export default function BonneyLakeCareersPage() {
                         {/* Other Location */}
                         <div className="text-center">
                             <p className="text-gray-600 mb-2">
-                                Also hiring at our Enumclaw location!
+                                Also hiring at our Bonney Lake location!
                             </p>
                             <Link
-                                href="/enumclaw/careers"
+                                href="/locations/bonney-lake/careers"
                                 className="text-primary-600 hover:text-primary-700 font-semibold"
                             >
-                                View Enumclaw Careers →
+                                View Bonney Lake Careers →
                             </Link>
                         </div>
                     </div>

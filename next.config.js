@@ -36,6 +36,31 @@ const nextConfig = {
     // Omit "standalone" so Amplify's default Next.js SSR deploy can use .next and generate required-server-files.json
     // Optimize JavaScript for modern browsers (SWC minification is default in Next.js 13+)
     swcMinify: true,
+    async redirects() {
+        return [
+            // Redirect old location URLs to new /locations/ structure
+            {
+                source: '/enumclaw',
+                destination: '/locations/enumclaw',
+                permanent: true,
+            },
+            {
+                source: '/enumclaw/:path*',
+                destination: '/locations/enumclaw/:path*',
+                permanent: true,
+            },
+            {
+                source: '/bonney-lake',
+                destination: '/locations/bonney-lake',
+                permanent: true,
+            },
+            {
+                source: '/bonney-lake/:path*',
+                destination: '/locations/bonney-lake/:path*',
+                permanent: true,
+            },
+        ];
+    },
     async headers() {
         // Security headers for all routes
         const securityHeaders = [

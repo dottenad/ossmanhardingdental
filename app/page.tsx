@@ -338,13 +338,13 @@ export default function Home() {
                                                 Schedule an Appointment
                                             </Link>
                                             <div className="flex flex-wrap gap-3">
-                                                <Link href="/enumclaw" className="text-primary-600 hover:text-primary-700 font-semibold text-sm">
+                                                <Link href="/locations/enumclaw" className="text-primary-600 hover:text-primary-700 font-semibold text-sm">
                                                     Office Info →
                                                 </Link>
-                                                <Link href="/enumclaw/team" className="text-primary-600 hover:text-primary-700 font-semibold text-sm">
+                                                <Link href="/locations/enumclaw/team" className="text-primary-600 hover:text-primary-700 font-semibold text-sm">
                                                     Meet the Team →
                                                 </Link>
-                                                <Link href="/enumclaw/gallery" className="text-primary-600 hover:text-primary-700 font-semibold text-sm">
+                                                <Link href="/locations/enumclaw/gallery" className="text-primary-600 hover:text-primary-700 font-semibold text-sm">
                                                     Office Gallery →
                                                 </Link>
                                             </div>
@@ -375,13 +375,13 @@ export default function Home() {
                                                 Schedule an Appointment
                                             </Link>
                                             <div className="flex flex-wrap gap-3">
-                                                <Link href="/bonney-lake" className="text-primary-600 hover:text-primary-700 font-semibold text-sm">
+                                                <Link href="/locations/bonney-lake" className="text-primary-600 hover:text-primary-700 font-semibold text-sm">
                                                     Office Info →
                                                 </Link>
-                                                <Link href="/bonney-lake/team" className="text-primary-600 hover:text-primary-700 font-semibold text-sm">
+                                                <Link href="/locations/bonney-lake/team" className="text-primary-600 hover:text-primary-700 font-semibold text-sm">
                                                     Meet the Team →
                                                 </Link>
-                                                <Link href="/bonney-lake/gallery" className="text-primary-600 hover:text-primary-700 font-semibold text-sm">
+                                                <Link href="/locations/bonney-lake/gallery" className="text-primary-600 hover:text-primary-700 font-semibold text-sm">
                                                     Office Gallery →
                                                 </Link>
                                             </div>

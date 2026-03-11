@@ -61,11 +61,11 @@ export default function AreasWeServePage() {
                     <div className="max-w-4xl mx-auto text-center">
                         <p className="text-xl text-gray-700 leading-relaxed mb-6">
                             With two convenient office locations in{" "}
-                            <Link href="/enumclaw" className="text-primary-600 hover:text-primary-700 font-semibold hover:underline">
+                            <Link href="/locations/enumclaw" className="text-primary-600 hover:text-primary-700 font-semibold hover:underline">
                                 Enumclaw
                             </Link>
                             {" "}and{" "}
-                            <Link href="/bonney-lake" className="text-primary-600 hover:text-primary-700 font-semibold hover:underline">
+                            <Link href="/locations/bonney-lake" className="text-primary-600 hover:text-primary-700 font-semibold hover:underline">
                                 Bonney Lake
                             </Link>
                             , {businessConfig.name} is proud to serve patients from throughout the Foothills
@@ -82,7 +82,7 @@ export default function AreasWeServePage() {
                     <div className="max-w-6xl mx-auto">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <Link
-                                href="/enumclaw"
+                                href="/locations/enumclaw"
                                 className="bg-white/10 backdrop-blur-sm rounded-xl p-6 hover:bg-white/20 transition-colors group"
                             >
                                 <div className="flex items-center justify-between">
@@ -94,7 +94,7 @@ export default function AreasWeServePage() {
                                 </div>
                             </Link>
                             <Link
-                                href="/bonney-lake"
+                                href="/locations/bonney-lake"
                                 className="bg-white/10 backdrop-blur-sm rounded-xl p-6 hover:bg-white/20 transition-colors group"
                             >
                                 <div className="flex items-center justify-between">

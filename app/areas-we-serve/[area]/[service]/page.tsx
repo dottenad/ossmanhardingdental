@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { Phone, Calendar, MapPin, Clock, ArrowRight } from "lucide-react";
+import { Phone, Calendar, MapPin, Clock, ArrowRight, CheckCircle2 } from "lucide-react";
 import { businessConfig, industryConfig, geoServiceAreas, GeoServiceArea } from "@/lib/config";
 import { generateMetadata as generateSEOMetadata } from "@/lib/seo";
 import { formatPhoneDisplay, formatPhoneLink } from "@/lib/phone";
@@ -80,7 +80,7 @@ export function generateMetadata({ params }: PageProps): Metadata {
 
     return generateSEOMetadata(
         {
-            title: `${serviceName} for ${area.name} Patients | ${area.driveTime} from ${nearestOfficeName}`,
+            title: `${serviceName} for ${area.name} Residents | ${area.driveTime} from ${nearestOfficeName}`,
             description: `${serviceName} for ${area.name}, WA residents at our ${nearestOfficeName} dental office. Just ${area.driveTime} away. Experienced team, gentle care, accepting new patients.`,
             keywords: [
                 ...industry.keywords,
@@ -160,10 +160,9 @@ export default function AreaServicePage({ params }: PageProps) {
 
     const areaServiceSchema = generateAreaServiceSchema(area, serviceName);
 
-    // Get related services (excluding current)
-    const relatedServices = industry.services
-        .filter((s) => s !== serviceName)
-        .slice(0, 4);
+    // Get all services (excluding current)
+    const allServices = industry.allServices || industry.services;
+    const otherServices = allServices.filter((s) => s !== serviceName);
 
     return (
         <div className="min-h-screen flex flex-col">
@@ -172,7 +171,7 @@ export default function AreaServicePage({ params }: PageProps) {
             <main id="main-content" className="flex-grow">
                 <Hero
                     backgroundImage={serviceImage || businessConfig.heroImage}
-                    title={`${serviceName} for ${area.name} Patients`}
+                    title={`${serviceName} for ${area.name} Residents`}
                     subtitle={`Available at our ${nearestOfficeName} office — just ${area.driveTime} away`}
                 />
                 <Breadcrumb
@@ -327,7 +326,7 @@ export default function AreaServicePage({ params }: PageProps) {
                                 {/* Why Choose Us */}
                                 <div className="bg-gray-50 p-8 rounded-xl mb-8">
                                     <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                                        Why {area.name} Patients Choose Us for {serviceName}
+                                        Why {area.name} Residents Choose Us for {serviceName}
                                     </h3>
                                     <ul className="space-y-3">
                                         <li className="flex items-start gap-3">
@@ -353,28 +352,28 @@ export default function AreaServicePage({ params }: PageProps) {
                                     </ul>
                                 </div>
 
-                                {/* Related Services */}
-                                {relatedServices.length > 0 && (
+                                {/* Other Services */}
+                                {otherServices.length > 0 && (
                                     <div className="mb-8">
                                         <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                                            Other Services for {area.name} Patients
+                                            Other Services for {area.name} Residents
                                         </h3>
-                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                            {relatedServices.map((service, index) => {
-                                                const slug = service
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                                            {otherServices.map((service) => {
+                                                const serviceSlug = service
                                                     .toLowerCase()
                                                     .replace(/\s+/g, "-")
                                                     .replace(/[^a-z0-9-]/g, "")
                                                     .replace(/-+/g, "-");
                                                 return (
                                                     <Link
-                                                        key={index}
-                                                        href={`/areas-we-serve/${area.slug}/${slug}`}
-                                                        className="p-4 bg-white border border-gray-200 rounded-lg hover:border-primary-300 hover:shadow-md transition-all"
+                                                        key={service}
+                                                        href={`/areas-we-serve/${area.slug}/${serviceSlug}`}
+                                                        className="flex items-center gap-2 p-3 bg-gray-50 rounded-lg hover:bg-primary-50 hover:border-primary-200 border border-transparent transition-colors group"
                                                     >
-                                                        <span className="font-medium text-gray-900">
-                                                            {service}
-                                                        </span>
+                                                        <CheckCircle2 className="w-5 h-5 text-primary-600 flex-shrink-0" />
+                                                        <span className="text-gray-700 text-sm font-medium group-hover:text-primary-700">{service}</span>
+                                                        <ArrowRight className="w-4 h-4 text-gray-400 ml-auto group-hover:text-primary-600 transition-colors" />
                                                     </Link>
                                                 );
                                             })}

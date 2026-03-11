@@ -212,10 +212,10 @@ export default function ServiceAreaPage({ params }: PageProps) {
                                         </div>
                                     )}
 
-                                    {/* Why Patients Choose Us */}
+                                    {/* Why Residents Choose Us */}
                                     <div className="mb-10">
                                         <h2 className="text-2xl font-bold text-gray-900 mb-6">
-                                            Why {area.name} Patients Choose {businessConfig.name}
+                                            Why {area.name} Residents Choose {businessConfig.name}
                                         </h2>
                                         {area.whyChooseUs && area.whyChooseUs.length > 0 ? (
                                             <div className="space-y-3">
@@ -263,7 +263,7 @@ export default function ServiceAreaPage({ params }: PageProps) {
                                     {/* Services */}
                                     <div className="mb-10">
                                         <h2 className="text-2xl font-bold text-gray-900 mb-6">
-                                            Services Available to {area.name} Patients
+                                            Services Available to {area.name} Residents
                                         </h2>
                                         <p className="text-gray-700 mb-6">
                                             Our {nearestOfficeName} office offers a full range of dental services for patients

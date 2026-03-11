@@ -267,14 +267,14 @@ export default function ServicePage({ params }: PageProps) {
                                         We provide {serviceName.toLowerCase()}{" "}
                                         at our{" "}
                                         <Link
-                                            href="/enumclaw"
+                                            href="/locations/enumclaw"
                                             className="text-primary-600 hover:text-primary-700 hover:underline font-semibold"
                                         >
                                             Enumclaw
                                         </Link>{" "}
                                         and{" "}
                                         <Link
-                                            href="/bonney-lake"
+                                            href="/locations/bonney-lake"
                                             className="text-primary-600 hover:text-primary-700 hover:underline font-semibold"
                                         >
                                             Bonney Lake
