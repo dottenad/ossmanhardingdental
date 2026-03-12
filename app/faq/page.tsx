@@ -5,7 +5,7 @@ import { generateMetadata as generateSEOMetadata } from "@/lib/seo";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { FAQ } from "@/components/FAQ";
-import { BookingForm } from "@/components/BookingForm";
+import { DentrixBooking } from "@/components/DentrixBooking";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { Hero } from "@/components/Hero";
 import { StructuredData } from "@/components/StructuredData";
@@ -121,10 +121,15 @@ export default function FAQPage() {
                                 )}
                             </div>
 
-                            {/* Booking Form - 1/3 width */}
+                            {/* Booking - 1/3 width */}
                             <div className="lg:col-span-1">
                                 <div className="lg:sticky lg:top-[11.5rem]">
-                                    <BookingForm singleColumn={true} />
+                                    <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-200">
+                                        <h3 className="text-xl font-bold text-gray-900 mb-4 text-center">
+                                            Book an Appointment
+                                        </h3>
+                                        <DentrixBooking fullPage={true} />
+                                    </div>
                                 </div>
                             </div>
                         </div>

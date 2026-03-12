@@ -10,7 +10,7 @@ import { Footer } from "@/components/Footer";
 import { StructuredData } from "@/components/StructuredData";
 import { Hero } from "@/components/Hero";
 import { Breadcrumb } from "@/components/Breadcrumb";
-import { BookingForm } from "@/components/BookingForm";
+import { DentrixBooking } from "@/components/DentrixBooking";
 import { generateBreadcrumbSchema } from "@/lib/structured-data";
 
 interface PageProps {
@@ -42,10 +42,16 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
     const nearestOfficeName = area.nearestOffice === "enumclaw" ? "Enumclaw" : "Bonney Lake";
 
+    const isTehaleh = area.slug === "tehaleh";
+
     return generateSEOMetadata(
         {
-            title: `Dentist Serving ${area.name} | ${area.driveTime} from ${nearestOfficeName}`,
-            description: `${businessConfig.name} proudly serves patients from ${area.name}, WA. Our ${nearestOfficeName} office is just ${area.driveTime} away. Schedule your appointment today!`,
+            title: isTehaleh
+                ? `Dentist Serving ${area.name} | Right in Your Neighborhood`
+                : `Dentist Serving ${area.name} | ${area.driveTime} from ${nearestOfficeName}`,
+            description: isTehaleh
+                ? `${businessConfig.name} proudly serves ${area.name} residents. Our Bonney Lake office is right here in the neighborhood. Schedule your appointment today!`
+                : `${businessConfig.name} proudly serves patients from ${area.name}, WA. Our ${nearestOfficeName} office is just ${area.driveTime} away. Schedule your appointment today!`,
             url: `${businessConfig.website}/areas-we-serve/${area.slug}`,
         },
         businessConfig
@@ -117,7 +123,9 @@ export default function ServiceAreaPage({ params }: PageProps) {
                 <Hero
                     backgroundImage={heroImage}
                     title={`Dentist Serving ${area.name}`}
-                    subtitle={`Our ${nearestOfficeName} office is just ${area.driveTime} away`}
+                    subtitle={area.slug === "tehaleh"
+                        ? "Our Bonney Lake Office is right here in the neighborhood"
+                        : `Our ${nearestOfficeName} office is just ${area.driveTime} away`}
                 />
                 {/* Breadcrumb */}
                 <Breadcrumb
@@ -342,10 +350,15 @@ export default function ServiceAreaPage({ params }: PageProps) {
                                 </div>
                             </div>
 
-                            {/* Booking Form - 1/3 width */}
+                            {/* Booking - 1/3 width */}
                             <div className="lg:col-span-1">
                                 <div className="lg:sticky lg:top-[11.5rem]">
-                                    <BookingForm singleColumn={true} />
+                                    <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-200">
+                                        <h3 className="text-xl font-bold text-gray-900 mb-4 text-center">
+                                            Book an Appointment
+                                        </h3>
+                                        <DentrixBooking fullPage={true} />
+                                    </div>
                                 </div>
                             </div>
                         </div>

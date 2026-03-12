@@ -11,7 +11,7 @@ import { Footer } from "@/components/Footer";
 import { StructuredData } from "@/components/StructuredData";
 import { Hero } from "@/components/Hero";
 import { Breadcrumb } from "@/components/Breadcrumb";
-import { BookingForm } from "@/components/BookingForm";
+import { DentrixBooking } from "@/components/DentrixBooking";
 import {
     generateBreadcrumbSchema,
     generateServiceSchema,
@@ -304,7 +304,12 @@ export default function BonneyLakeServicePage({ params }: PageProps) {
                             {/* Sidebar */}
                             <div className="lg:col-span-1">
                                 <div className="lg:sticky lg:top-[11.5rem]">
-                                    <BookingForm singleColumn={true} />
+                                    <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-200">
+                                        <h3 className="text-xl font-bold text-gray-900 mb-4 text-center">
+                                            Book at Bonney Lake
+                                        </h3>
+                                        <DentrixBooking location="bonney-lake" fullPage={true} />
+                                    </div>
                                 </div>
                             </div>
                         </div>

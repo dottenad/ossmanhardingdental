@@ -6,7 +6,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ServiceCard } from "@/components/ServiceCard";
 import { CTA } from "@/components/CTA";
-import { BookingForm } from "@/components/BookingForm";
+import { DentrixBooking } from "@/components/DentrixBooking";
 import { HomeHeroCTA } from "@/components/HomeHeroCTA";
 import { ReviewsCarousel } from "@/components/ReviewsCarousel";
 import { Hero } from "@/components/Hero";
@@ -231,10 +231,13 @@ export default function Home() {
                             </div>
                         </div>
 
-                        {/* Right Half - Booking Form */}
+                        {/* Right Half - Online Booking */}
                         <div className="flex justify-center lg:justify-end">
-                            <div id="booking-form" className="w-full max-w-lg rounded-lg">
-                                <BookingForm />
+                            <div id="booking-form" className="w-full max-w-md bg-white rounded-2xl shadow-2xl p-6">
+                                <h2 className="text-2xl font-bold text-gray-900 mb-4 text-center">
+                                    Schedule an Appointment
+                                </h2>
+                                <DentrixBooking fullPage={true} />
                             </div>
                         </div>
                     </div>

@@ -105,7 +105,7 @@ export function Hero({
                     <div className="absolute inset-0 bg-grid-pattern opacity-10 z-10"></div>
                 </>
             )}
-            <div className={`relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ${compact ? "py-8 md:py-12" : "py-16 md:py-24"}`}>
+            <div className={`relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ${compact ? "py-16 md:py-20" : "py-16 md:py-24"}`}>
                 {children || (
                     <div className="text-center">
                         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
