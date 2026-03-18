@@ -437,7 +437,11 @@ export function Header() {
                                                                         href={
                                                                             child.href
                                                                         }
-                                                                        className="px-4 py-2.5 text-gray-800 hover:bg-button-50 hover:text-primary-700 font-medium uppercase text-sm transition-colors flex items-center justify-between"
+                                                                        className={`px-4 py-2.5 hover:bg-button-50 hover:text-primary-700 font-medium uppercase text-sm transition-colors flex items-center justify-between ${
+                                                                            child.label.includes("→")
+                                                                                ? "text-primary-600"
+                                                                                : "text-gray-800"
+                                                                        }`}
                                                                     >
                                                                         <span>
                                                                             {
@@ -678,7 +682,11 @@ const MobileNavMenu = React.forwardRef<
                                     ) : (
                                         <Link
                                             href={child.href || "#"}
-                                            className="w-full block px-4 py-2 text-gray-600 hover:text-primary-600 hover:bg-gray-50 transition-colors pl-8 text-sm uppercase font-medium"
+                                            className={`w-full block px-4 py-2 hover:text-primary-600 hover:bg-gray-50 transition-colors pl-8 text-sm uppercase font-medium ${
+                                                child.label.includes("→")
+                                                    ? "text-primary-600"
+                                                    : "text-gray-600"
+                                            }`}
                                             onClick={onClose}
                                         >
                                             {child.label}

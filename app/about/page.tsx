@@ -57,10 +57,20 @@ export default function AboutPage() {
                         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                             {/* Main Content - 2/3 width */}
                             <div className="lg:col-span-2">
-                                <div className="prose prose-lg max-w-none">
-                                    {/* About intro */}
-                                    <div className="mb-8">
-                                        <p className="text-xl text-gray-700 mb-6 leading-relaxed">
+                                {/* Doctors Photo with Text Wrap - Outside prose for alignment */}
+                                <div className="mb-8">
+                                    <div className="float-left mr-6 mb-2 w-full md:w-1/2 mt-0 pt-0">
+                                        <Image
+                                            src="/images/doctors.jpg"
+                                            alt="Our Doctors at Ossman Harding Dental"
+                                            width={400}
+                                            height={300}
+                                            className="w-full h-auto rounded-xl shadow-lg"
+                                            sizes="(max-width: 768px) 100vw, 300px"
+                                        />
+                                        <p className="text-center text-gray-600 mt-2 mb-0 text-sm font-medium">Our Doctors</p>
+                                    </div>
+                                    <p className="text-xl text-gray-700 mb-4 leading-relaxed mt-0 pt-0">
                                             At {businessConfig.name}, we believe that great dental
                                             care goes beyond treating teeth—it&apos;s about building
                                             relationships, improving confidence, and enhancing
@@ -68,23 +78,25 @@ export default function AboutPage() {
                                             Bonney Lake, we&apos;re proud to serve families throughout
                                             King and Pierce counties.
                                         </p>
-                                        <p className="text-gray-700 leading-relaxed mb-6">
+                                        <p className="text-gray-700 leading-relaxed mb-4">
                                             Our practice was founded on the principles of
                                             patient-centered care, clinical excellence, and community
                                             service. We combine the latest dental technology with a
                                             warm, welcoming environment where patients of all ages
                                             feel comfortable and cared for.
                                         </p>
-                                        <p className="text-gray-700 leading-relaxed mb-6">
-                                            From routine cleanings and preventive care to advanced
-                                            cosmetic dentistry, dental implants, and oral surgery, our
-                                            experienced team provides comprehensive dental services
-                                            tailored to your unique needs. We take the time to listen,
-                                            educate, and empower our patients to make informed
-                                            decisions about their oral health.
-                                        </p>
-                                    </div>
+                                        <p className="text-gray-700 leading-relaxed">
+                                        From routine cleanings and preventive care to advanced
+                                        cosmetic dentistry, dental implants, and oral surgery, our
+                                        experienced team provides comprehensive dental services
+                                        tailored to your unique needs. We take the time to listen,
+                                        educate, and empower our patients to make informed
+                                        decisions about their oral health.
+                                    </p>
+                                    <div className="clear-both"></div>
+                                </div>
 
+                                <div className="prose prose-lg max-w-none">
                                     {/* Patient Promise */}
                                     <div className="bg-primary-50 p-8 rounded-xl mb-8 text-center border border-primary-100">
                                         <h2 className="text-2xl font-bold mb-4 text-gray-900">Our Patient Promise</h2>
@@ -92,7 +104,7 @@ export default function AboutPage() {
                                             To improve the health, confidence, and quality of life of our patients
                                             through preventative, esthetic, and evidence-based dentistry.
                                         </p>
-                                        <p className="text-gray-600 leading-relaxed">
+                                        <p className="text-gray-700 text-lg leading-relaxed">
                                             We believe in active community involvement and in leaving our
                                             neighborhoods better than we found them.
                                         </p>

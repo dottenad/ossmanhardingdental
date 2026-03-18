@@ -392,7 +392,7 @@ export default function Home() {
                                     </div>
                                 </div>
 
-                                {/* Areas We Serve Link */}
+                                {/* Areas We Serve Link - hidden until Phase 2 rollout
                                 <div className="text-center pt-4">
                                     <Link
                                         href="/areas-we-serve"
@@ -404,6 +404,7 @@ export default function Home() {
                                         </svg>
                                     </Link>
                                 </div>
+                                */}
                             </div>
                         </div>
                     </div>
@@ -485,17 +486,23 @@ export default function Home() {
                                             strokeLinecap="round"
                                             strokeLinejoin="round"
                                             strokeWidth={2}
-                                            d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+                                            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                                        />
+                                        <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth={2}
+                                            d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
                                         />
                                     </svg>
                                 </div>
                                 <h3 className="text-2xl font-bold mb-4 text-gray-900">
-                                    Gentle, Personalized Care
+                                    Two Convenient Locations
                                 </h3>
                                 <p className="text-gray-600 leading-relaxed">
-                                    We take the time to understand your needs
-                                    and concerns, providing comfortable treatment
-                                    with a gentle touch and personalized attention.
+                                    Visit us in Enumclaw or Bonney Lake—two modern
+                                    offices designed for your comfort, serving
+                                    families across King and Pierce counties.
                                 </p>
                             </div>
                         </div>

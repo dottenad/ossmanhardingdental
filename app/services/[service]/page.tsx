@@ -184,7 +184,7 @@ export default function ServicePage({ params }: PageProps) {
                                     )[params.service] ? (
                                         <>
                                             <h3 className="text-2xl font-bold mt-10 mb-3 text-gray-900">
-                                                What is {serviceName}?
+                                                What {serviceName.includes(" & ") ? "are" : "is"} {serviceName}?
                                             </h3>
                                             <p className="text-gray-700 mb-8 leading-relaxed">
                                                 {
@@ -227,7 +227,11 @@ export default function ServicePage({ params }: PageProps) {
                                                 industryConfig[
                                                     businessConfig.industry
                                                 ].servicePageContent ?? {}
-                                            )[params.service]?.process && (
+                                            )[params.service]?.process && !(
+                                                industryConfig[
+                                                    businessConfig.industry
+                                                ].servicePageContent ?? {}
+                                            )[params.service]?.processSteps && (
                                                 <>
                                                     <h3 className="text-2xl font-bold mt-10 mb-3 text-gray-900">
                                                         What to Expect
@@ -246,6 +250,297 @@ export default function ServicePage({ params }: PageProps) {
                                                     </p>
                                                 </>
                                             )}
+
+                                            {/* Detailed Process Steps */}
+                                            {(
+                                                industryConfig[
+                                                    businessConfig.industry
+                                                ].servicePageContent ?? {}
+                                            )[params.service]?.processSteps && (
+                                                <>
+                                                    <h3 className="text-2xl font-bold mt-10 mb-3 text-gray-900">
+                                                        What is the Process?
+                                                    </h3>
+                                                    <ol className="space-y-4 text-gray-700 mb-8 list-none pl-0">
+                                                        {(
+                                                            (
+                                                                industryConfig[
+                                                                    businessConfig
+                                                                        .industry
+                                                                ].servicePageContent ??
+                                                                {}
+                                                            )[params.service]
+                                                                ?.processSteps ?? []
+                                                        ).map((step, i) => (
+                                                            <li
+                                                                key={i}
+                                                                className="flex items-start"
+                                                            >
+                                                                <span className="bg-primary-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mr-3 mt-0.5 shrink-0">
+                                                                    {i + 1}
+                                                                </span>
+                                                                <span>{step}</span>
+                                                            </li>
+                                                        ))}
+                                                    </ol>
+                                                </>
+                                            )}
+
+                                            {/* Why Choose Section */}
+                                            {(
+                                                industryConfig[
+                                                    businessConfig.industry
+                                                ].servicePageContent ?? {}
+                                            )[params.service]?.whyChooseSection && (
+                                                <>
+                                                    <h3 className="text-2xl font-bold mt-10 mb-3 text-gray-900">
+                                                        {
+                                                            (
+                                                                industryConfig[
+                                                                    businessConfig
+                                                                        .industry
+                                                                ].servicePageContent ??
+                                                                {}
+                                                            )[params.service]
+                                                                ?.whyChooseSection?.title
+                                                        }
+                                                    </h3>
+                                                    {(
+                                                        industryConfig[
+                                                            businessConfig.industry
+                                                        ].servicePageContent ?? {}
+                                                    )[params.service]?.whyChooseSection?.intro && (
+                                                        <p className="text-gray-700 mb-4 leading-relaxed font-medium">
+                                                            {
+                                                                (
+                                                                    industryConfig[
+                                                                        businessConfig
+                                                                            .industry
+                                                                    ].servicePageContent ??
+                                                                    {}
+                                                                )[params.service]
+                                                                    ?.whyChooseSection?.intro
+                                                            }
+                                                        </p>
+                                                    )}
+                                                    <ul className="space-y-3 text-gray-700 mb-8 list-none pl-0">
+                                                        {(
+                                                            (
+                                                                industryConfig[
+                                                                    businessConfig
+                                                                        .industry
+                                                                ].servicePageContent ??
+                                                                {}
+                                                            )[params.service]
+                                                                ?.whyChooseSection?.points ?? []
+                                                        ).map((point, i) => (
+                                                            <li
+                                                                key={i}
+                                                                className="flex items-start"
+                                                            >
+                                                                <span className="text-primary-600 mr-2 font-bold shrink-0">
+                                                                    ✓
+                                                                </span>
+                                                                <span>{point}</span>
+                                                            </li>
+                                                        ))}
+                                                    </ul>
+                                                </>
+                                            )}
+
+                                            {/* Insurance Section */}
+                                            {(
+                                                industryConfig[
+                                                    businessConfig.industry
+                                                ].servicePageContent ?? {}
+                                            )[params.service]?.insuranceSection && (
+                                                <div className="bg-green-50 p-6 rounded-lg mb-8 border border-green-200">
+                                                    <h3 className="text-2xl font-bold mb-3 text-gray-900">
+                                                        {
+                                                            (
+                                                                industryConfig[
+                                                                    businessConfig
+                                                                        .industry
+                                                                ].servicePageContent ??
+                                                                {}
+                                                            )[params.service]
+                                                                ?.insuranceSection?.title
+                                                        }
+                                                    </h3>
+                                                    {(
+                                                        industryConfig[
+                                                            businessConfig.industry
+                                                        ].servicePageContent ?? {}
+                                                    )[params.service]?.insuranceSection?.intro && (
+                                                        <p className="text-gray-700 mb-4 leading-relaxed">
+                                                            {
+                                                                (
+                                                                    industryConfig[
+                                                                        businessConfig
+                                                                            .industry
+                                                                    ].servicePageContent ??
+                                                                    {}
+                                                                )[params.service]
+                                                                    ?.insuranceSection?.intro
+                                                            }
+                                                        </p>
+                                                    )}
+                                                    <ul className="space-y-2 text-gray-700 list-none pl-0">
+                                                        {(
+                                                            (
+                                                                industryConfig[
+                                                                    businessConfig
+                                                                        .industry
+                                                                ].servicePageContent ??
+                                                                {}
+                                                            )[params.service]
+                                                                ?.insuranceSection?.points ?? []
+                                                        ).map((point, i) => (
+                                                            <li
+                                                                key={i}
+                                                                className="flex items-start"
+                                                            >
+                                                                <span className="text-green-600 mr-2 font-bold shrink-0">
+                                                                    $
+                                                                </span>
+                                                                <span>{point}</span>
+                                                            </li>
+                                                        ))}
+                                                    </ul>
+                                                    {(
+                                                        industryConfig[
+                                                            businessConfig.industry
+                                                        ].servicePageContent ?? {}
+                                                    )[params.service]?.insuranceSection?.links && (
+                                                        <div className="mt-4 flex flex-wrap gap-3">
+                                                            {(
+                                                                (
+                                                                    industryConfig[
+                                                                        businessConfig.industry
+                                                                    ].servicePageContent ?? {}
+                                                                )[params.service]?.insuranceSection?.links ?? []
+                                                            ).map((link, i) => (
+                                                                <Link
+                                                                    key={i}
+                                                                    href={link.href}
+                                                                    className="inline-flex items-center text-sm font-semibold text-green-700 hover:text-green-800 hover:underline"
+                                                                >
+                                                                    {link.label}
+                                                                    <span className="ml-1">→</span>
+                                                                </Link>
+                                                            ))}
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            )}
+
+                                            {/* Additional Info Section */}
+                                            {(
+                                                industryConfig[
+                                                    businessConfig.industry
+                                                ].servicePageContent ?? {}
+                                            )[params.service]?.additionalInfoSection && (
+                                                <div className="bg-gray-50 p-6 rounded-lg mb-8 border border-gray-200">
+                                                    <h3 className="text-2xl font-bold mb-3 text-gray-900">
+                                                        {
+                                                            (
+                                                                industryConfig[
+                                                                    businessConfig
+                                                                        .industry
+                                                                ].servicePageContent ??
+                                                                {}
+                                                            )[params.service]
+                                                                ?.additionalInfoSection?.title
+                                                        }
+                                                    </h3>
+                                                    {(
+                                                        industryConfig[
+                                                            businessConfig.industry
+                                                        ].servicePageContent ?? {}
+                                                    )[params.service]?.additionalInfoSection?.intro && (
+                                                        <p className="text-gray-700 mb-4 leading-relaxed">
+                                                            {
+                                                                (
+                                                                    industryConfig[
+                                                                        businessConfig
+                                                                            .industry
+                                                                    ].servicePageContent ??
+                                                                    {}
+                                                                )[params.service]
+                                                                    ?.additionalInfoSection?.intro
+                                                            }
+                                                        </p>
+                                                    )}
+                                                    <ul className="space-y-2 text-gray-700 list-none pl-0">
+                                                        {(
+                                                            (
+                                                                industryConfig[
+                                                                    businessConfig
+                                                                        .industry
+                                                                ].servicePageContent ??
+                                                                {}
+                                                            )[params.service]
+                                                                ?.additionalInfoSection?.points ?? []
+                                                        ).map((point, i) => (
+                                                            <li
+                                                                key={i}
+                                                                className="flex items-start"
+                                                            >
+                                                                <span className="text-primary-600 mr-2 font-bold shrink-0">
+                                                                    →
+                                                                </span>
+                                                                <span>{point}</span>
+                                                            </li>
+                                                        ))}
+                                                    </ul>
+                                                </div>
+                                            )}
+
+                                            {/* Service Gallery */}
+                                            {(
+                                                industryConfig[
+                                                    businessConfig.industry
+                                                ].servicePageContent ?? {}
+                                            )[params.service]?.gallery && (
+                                                <div className="mb-8 not-prose">
+                                                    <h3 className="text-2xl font-bold mb-4 text-gray-900">
+                                                        {(
+                                                            industryConfig[
+                                                                businessConfig.industry
+                                                            ].servicePageContent ?? {}
+                                                        )[params.service]?.gallery?.title || "Our Results"}
+                                                    </h3>
+                                                    <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                                                        {(
+                                                            (
+                                                                industryConfig[
+                                                                    businessConfig.industry
+                                                                ].servicePageContent ?? {}
+                                                            )[params.service]?.gallery?.items ?? []
+                                                        ).map((item, i) => (
+                                                            <div
+                                                                key={i}
+                                                                className="relative rounded-xl overflow-hidden leading-[0]"
+                                                            >
+                                                                <Image
+                                                                    src={item.src}
+                                                                    alt={item.alt || item.caption}
+                                                                    width={400}
+                                                                    height={500}
+                                                                    className="w-full h-auto !m-0"
+                                                                    sizes="(max-width: 768px) 50vw, 25vw"
+                                                                />
+                                                                {/* Gradient overlay fading to light gray */}
+                                                                <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-gray-200 via-gray-200/70 to-transparent pointer-events-none" />
+                                                                {/* Caption text */}
+                                                                <p className="absolute inset-x-0 bottom-2 px-2 text-gray-700 text-xs sm:text-sm font-medium text-center leading-tight uppercase tracking-wide !m-0">
+                                                                    {item.caption}
+                                                                </p>
+                                                            </div>
+                                                        ))}
+                                                    </div>
+                                                </div>
+                                            )}
                                         </>
                                     ) : (
                                         <p className="text-gray-700 mb-8 leading-relaxed">
@@ -261,27 +556,36 @@ export default function ServicePage({ params }: PageProps) {
                                     )}
 
                                     <h3 className="text-2xl font-bold mt-10 mb-3 text-gray-900">
-                                        Our Locations
+                                        {serviceName} by Location
                                     </h3>
-                                    <p className="text-gray-700 mb-6 leading-relaxed">
+                                    <p className="text-gray-700 mb-4 leading-relaxed">
                                         We provide {serviceName.toLowerCase()}{" "}
-                                        at our{" "}
-                                        <Link
-                                            href="/locations/enumclaw"
-                                            className="text-primary-600 hover:text-primary-700 hover:underline font-semibold"
-                                        >
-                                            Enumclaw
-                                        </Link>{" "}
-                                        and{" "}
-                                        <Link
-                                            href="/locations/bonney-lake"
-                                            className="text-primary-600 hover:text-primary-700 hover:underline font-semibold"
-                                        >
-                                            Bonney Lake
-                                        </Link>{" "}
-                                        offices, serving patients throughout the
-                                        surrounding communities.
+                                        at both of our offices, serving patients throughout
+                                        King and Pierce counties.
                                     </p>
+                                    <div className="flex flex-wrap gap-3 mb-6">
+                                        <Link
+                                            href={`/locations/enumclaw/services/${params.service}`}
+                                            className="inline-flex items-center px-4 py-2 bg-primary-50 text-primary-700 rounded-lg hover:bg-primary-100 transition-colors font-medium text-sm"
+                                        >
+                                            {serviceName} in Enumclaw
+                                            <span className="ml-1">→</span>
+                                        </Link>
+                                        <Link
+                                            href={`/locations/bonney-lake/services/${params.service}`}
+                                            className="inline-flex items-center px-4 py-2 bg-primary-50 text-primary-700 rounded-lg hover:bg-primary-100 transition-colors font-medium text-sm"
+                                        >
+                                            {serviceName} in Bonney Lake
+                                            <span className="ml-1">→</span>
+                                        </Link>
+                                        <Link
+                                            href={`/areas-we-serve/tehaleh/${params.service}`}
+                                            className="inline-flex items-center px-4 py-2 bg-primary-50 text-primary-700 rounded-lg hover:bg-primary-100 transition-colors font-medium text-sm"
+                                        >
+                                            {serviceName} near Tehaleh
+                                            <span className="ml-1">→</span>
+                                        </Link>
+                                    </div>
 
                                     <div className="bg-button-50 p-6 rounded-lg mb-8 border border-primary-200">
                                         <h3 className="text-2xl font-bold mb-4 text-gray-900">
@@ -337,27 +641,37 @@ export default function ServicePage({ params }: PageProps) {
                                             Related Services
                                         </h3>
                                         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                                            {allServices
-                                                .filter(
-                                                    (s) => s !== serviceName
-                                                )
-                                                .slice(0, 6)
-                                                .map((relatedService) => {
-                                                    const relatedSlug =
-                                                        relatedService
-                                                            .toLowerCase()
-                                                            .replace(
-                                                                /\s+/g,
-                                                                "-"
-                                                            )
-                                                            .replace(
-                                                                /[^a-z0-9-]/g,
-                                                                ""
-                                                            )
-                                                            .replace(
-                                                                /-+/g,
-                                                                "-"
-                                                            );
+                                            {(() => {
+                                                // Check if this service has configured relatedServices
+                                                const serviceContent = (
+                                                    industryConfig[businessConfig.industry]
+                                                        .servicePageContent ?? {}
+                                                )[params.service];
+                                                const configuredRelated = serviceContent?.relatedServices;
+
+                                                // If configured, use those slugs; otherwise fall back to first 6
+                                                const relatedToShow = configuredRelated
+                                                    ? configuredRelated.map((slug) => {
+                                                        // Convert slug back to service name
+                                                        return allServices.find((s) => {
+                                                            const sSlug = s
+                                                                .toLowerCase()
+                                                                .replace(/\s+/g, "-")
+                                                                .replace(/[^a-z0-9-]/g, "")
+                                                                .replace(/-+/g, "-");
+                                                            return sSlug === slug;
+                                                        });
+                                                    }).filter(Boolean) as string[]
+                                                    : allServices
+                                                        .filter((s) => s !== serviceName)
+                                                        .slice(0, 6);
+
+                                                return relatedToShow.map((relatedService) => {
+                                                    const relatedSlug = relatedService
+                                                        .toLowerCase()
+                                                        .replace(/\s+/g, "-")
+                                                        .replace(/[^a-z0-9-]/g, "")
+                                                        .replace(/-+/g, "-");
                                                     return (
                                                         <Link
                                                             key={relatedService}
@@ -376,7 +690,8 @@ export default function ServicePage({ params }: PageProps) {
                                                             </p>
                                                         </Link>
                                                     );
-                                                })}
+                                                });
+                                            })()}
                                         </div>
                                     </div>
                                 </div>

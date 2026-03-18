@@ -193,7 +193,7 @@ export default function BonneyLakePage() {
                                     <ul className="space-y-3 text-gray-700 list-none pl-0">
                                         <li className="flex items-start gap-2">
                                             <span className="text-primary-600 font-bold">•</span>
-                                            <span><strong>Cosmetic Dentistry</strong> – Invisalign, Veneers, and Esthetic Crowns</span>
+                                            <span><strong>Cosmetic Dentistry</strong> – SureSmile Clear Braces, Veneers, and Esthetic Crowns</span>
                                         </li>
                                         <li className="flex items-start gap-2">
                                             <span className="text-primary-600 font-bold">•</span>
@@ -210,7 +210,7 @@ export default function BonneyLakePage() {
                                     </ul>
                                 </div>
 
-                                {/* Services at this location */}
+                                {/* Services at this location - Commented out for Phase 1 rollout (location service pages not yet published)
                                 <div className="mb-8">
                                     <h2 className="text-3xl font-bold text-gray-900 mb-6">
                                         Services Available in {LOCATION.name}
@@ -243,6 +243,7 @@ export default function BonneyLakePage() {
                                         </Link>
                                     </div>
                                 </div>
+                                */}
 
                                 {/* Meet Our Team */}
                                 <div className="mb-8">

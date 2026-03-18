@@ -107,9 +107,10 @@ export function FAQ({ faqs }: FAQProps) {
                             }`}
                             hidden={!isOpen}
                         >
-                            <div className="px-4 pb-5 text-gray-700 leading-relaxed">
-                                {faq.answer}
-                            </div>
+                            <div
+                                className="px-4 pb-5 text-gray-700 leading-relaxed [&_a]:text-primary-600 [&_a]:font-semibold [&_a]:underline hover:[&_a]:text-primary-700"
+                                dangerouslySetInnerHTML={{ __html: faq.answer }}
+                            />
                         </div>
                     </div>
                 );

@@ -111,14 +111,6 @@ export function generateLocalBusinessSchema(businessConfig: BusinessConfig) {
                           bestRating: "5",
                           worstRating: "1",
                       },
-                      ...(review.service
-                          ? {
-                                itemReviewed: {
-                                    "@type": "Service",
-                                    name: review.service,
-                                },
-                            }
-                          : {}),
                   })),
               }
             : {}),

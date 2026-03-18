@@ -1,7 +1,8 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { businessConfig, industryConfig } from "@/lib/config";
+import { notFound } from "next/navigation";
+import { businessConfig, industryConfig, siteConfig } from "@/lib/config";
 import { generateMetadata as generateSEOMetadata } from "@/lib/seo";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -34,6 +35,11 @@ export const metadata: Metadata = generateSEOMetadata(
 );
 
 export default function BonneyLakeServicesPage() {
+    // Return 404 if location services are not published
+    if (!siteConfig.publishLocationServices) {
+        notFound();
+    }
+
     const industry = industryConfig[businessConfig.industry];
     const allServices = industry.allServices || industry.services;
 

@@ -38,7 +38,103 @@ const nextConfig = {
     swcMinify: true,
     async redirects() {
         return [
-            // Redirect old location URLs to new /locations/ structure
+            // ===========================================
+            // Old Wix site → New site redirects
+            // ===========================================
+
+            // Location pages
+            {
+                source: '/bonneylakedentist',
+                destination: '/locations/bonney-lake',
+                permanent: true,
+            },
+            {
+                source: '/enumclawdentist',
+                destination: '/locations/enumclaw',
+                permanent: true,
+            },
+            {
+                source: '/enumclawdentalcareers',
+                destination: '/locations/enumclaw/careers',
+                permanent: true,
+            },
+
+            // Service pages
+            {
+                source: '/services-1',
+                destination: '/services',
+                permanent: true,
+            },
+            {
+                source: '/dentalsleepmedicine',
+                destination: '/services/sleep-medicine',
+                permanent: true,
+            },
+            {
+                source: '/dentalcleaning',
+                destination: '/services/dental-exams-cleanings',
+                permanent: true,
+            },
+            {
+                source: '/enumclawdentalimplants',
+                destination: '/services/dental-implants',
+                permanent: true,
+            },
+            {
+                source: '/enumclawdentalveneers',
+                destination: '/services/veneers-esthetic-crowns',
+                permanent: true,
+            },
+            {
+                source: '/dentalfillingandcrown',
+                destination: '/services/crowns-bridges',
+                permanent: true,
+            },
+            {
+                source: '/cosmeticinjections',
+                destination: '/services/botox-facial-esthetics',
+                permanent: true,
+            },
+
+            // Patient info pages
+            {
+                source: '/payment-plans',
+                destination: '/new-patients/payment-options/payment-plans',
+                permanent: true,
+            },
+            {
+                source: '/insurance-alternatives',
+                destination: '/new-patients/payment-options',
+                permanent: true,
+            },
+            {
+                source: '/newpatient-information',
+                destination: '/new-patients',
+                permanent: true,
+            },
+
+            // Blog (redirect to home since blog is dropped)
+            {
+                source: '/blog',
+                destination: '/',
+                permanent: true,
+            },
+            {
+                source: '/post/:path*',
+                destination: '/',
+                permanent: true,
+            },
+
+            // Emface → Botox/Facial Esthetics (same category)
+            {
+                source: '/emface-exion',
+                destination: '/services/botox-facial-esthetics',
+                permanent: true,
+            },
+
+            // ===========================================
+            // Internal structure redirects
+            // ===========================================
             {
                 source: '/enumclaw',
                 destination: '/locations/enumclaw',

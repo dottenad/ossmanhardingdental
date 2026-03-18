@@ -33,9 +33,10 @@ export default function AreasWeServePage() {
         `${businessConfig.name} serves patients from communities throughout King and Pierce counties.`
     );
 
-    // Group areas by nearest office
-    const enumclawAreas = geoServiceAreas.filter(area => area.nearestOffice === "enumclaw");
-    const bonneyLakeAreas = geoServiceAreas.filter(area => area.nearestOffice === "bonney-lake");
+    // Group published areas by nearest office
+    const publishedAreas = geoServiceAreas.filter(area => area.published !== false);
+    const enumclawAreas = publishedAreas.filter(area => area.nearestOffice === "enumclaw");
+    const bonneyLakeAreas = publishedAreas.filter(area => area.nearestOffice === "bonney-lake");
 
     return (
         <div className="min-h-screen flex flex-col bg-white">
@@ -138,8 +139,17 @@ export default function AreasWeServePage() {
                                                     {area.name}
                                                 </h3>
                                                 <div className="flex items-center gap-2 text-sm text-gray-500 mb-2">
-                                                    <Clock className="w-4 h-4" />
-                                                    <span>{area.driveTime} to Bonney Lake</span>
+                                                    {area.isOfficeLocation ? (
+                                                        <>
+                                                            <MapPin className="w-4 h-4" />
+                                                            <span>{area.locationDescription}</span>
+                                                        </>
+                                                    ) : (
+                                                        <>
+                                                            <Clock className="w-4 h-4" />
+                                                            <span>{area.driveTime} to Bonney Lake</span>
+                                                        </>
+                                                    )}
                                                 </div>
                                                 <p className="text-gray-600 text-sm line-clamp-2">
                                                     {area.description}
@@ -177,8 +187,17 @@ export default function AreasWeServePage() {
                                                     {area.name}
                                                 </h3>
                                                 <div className="flex items-center gap-2 text-sm text-gray-500 mb-2">
-                                                    <Clock className="w-4 h-4" />
-                                                    <span>{area.driveTime} to Enumclaw</span>
+                                                    {area.isOfficeLocation ? (
+                                                        <>
+                                                            <MapPin className="w-4 h-4" />
+                                                            <span>{area.locationDescription}</span>
+                                                        </>
+                                                    ) : (
+                                                        <>
+                                                            <Clock className="w-4 h-4" />
+                                                            <span>{area.driveTime} to Enumclaw</span>
+                                                        </>
+                                                    )}
                                                 </div>
                                                 <p className="text-gray-600 text-sm line-clamp-2">
                                                     {area.description}

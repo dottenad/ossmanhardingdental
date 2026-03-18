@@ -57,7 +57,17 @@ export default function AppointmentsPage() {
                 <section className="py-12 px-4 bg-gradient-to-b from-white to-gray-50">
                     <div className="max-w-6xl mx-auto">
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-start">
-                            {/* Left 50% — Contact Info Cards */}
+                            {/* Left 50% — Dentrix Online Scheduling */}
+                            <div className="lg:sticky lg:top-[11.5rem]">
+                                <div className="bg-white p-6 rounded-2xl shadow-soft border border-gray-200">
+                                    <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
+                                        Book Your Appointment
+                                    </h2>
+                                    <DentrixBooking fullPage={true} />
+                                </div>
+                            </div>
+
+                            {/* Right 50% — Contact Info Cards */}
                             <div className="space-y-6">
                                 {/* Enumclaw Office */}
                                 <div className="bg-white p-8 rounded-2xl shadow-soft border border-gray-200">
@@ -162,16 +172,6 @@ export default function AppointmentsPage() {
                                             </a>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-
-                            {/* Right 50% — Dentrix Online Scheduling */}
-                            <div className="lg:sticky lg:top-[11.5rem]">
-                                <div className="bg-white p-6 rounded-2xl shadow-soft border border-gray-200">
-                                    <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
-                                        Book Your Appointment
-                                    </h2>
-                                    <DentrixBooking fullPage={true} />
                                 </div>
                             </div>
                         </div>

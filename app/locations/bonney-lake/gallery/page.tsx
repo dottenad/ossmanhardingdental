@@ -19,7 +19,6 @@ const officeImages = [
     "/images/bonney-lake/building/exterior-1.jpg",
     "/images/bonney-lake/building/exterior-2.jpg",
     "/images/bonney-lake/building/office-3.jpg",
-    "/images/bonney-lake/building/office-4.jpg",
     "/images/bonney-lake/building/office-17.png",
     // LOBBY - Reception
     "/images/bonney-lake/building/office-15.png",

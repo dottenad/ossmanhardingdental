@@ -26,7 +26,7 @@ We are now so grateful to serve both the Enumclaw and Bonney Lake communities!
 
 I believe in a preventative and evidence-based treatment approach, with a focus on patient education. I measure each treatment decision based on what I would recommend to my own family and I strongly believe in the ties between oral care and the overall health of each patient.
 
-I also have a passion for esthetic dentistry and love to help patients transform their self esteem through Invisalign, Veneers, Botox, Filler and other cosmetic services. It's incredible to see the way that a person's confidence improves when they love their smile! I have completed many advanced trainings for Clear Aligners, Veneers, Botox, Filler and General Restorative Dentistry.
+I also have a passion for esthetic dentistry and love to help patients transform their self esteem through SureSmile Clear Braces, Veneers, Botox, Filler and other cosmetic services. It's incredible to see the way that a person's confidence improves when they love their smile! I have completed many advanced trainings for SureSmile Clear Braces, Veneers, Botox, Filler and General Restorative Dentistry.
 
 My husband and I love to travel, enjoy the outdoors, try new restaurants, and play with our springer-doodle pup.
 

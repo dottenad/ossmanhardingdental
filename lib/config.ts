@@ -137,6 +137,10 @@ export interface GeoServiceArea {
     nearestOffice: "enumclaw" | "bonney-lake";
     /** Approximate drive time to nearest office (e.g., "15 minutes") */
     driveTime: string;
+    /** True if the office is actually located in this area (not just serving it) */
+    isOfficeLocation?: boolean;
+    /** Location description for areas where office is located (e.g., "on the corner of Myrtle and Cole") */
+    locationDescription?: string;
     /** Brief description of why patients from this area choose us */
     description: string;
     /** Local landmarks or notable areas */
@@ -149,13 +153,64 @@ export interface GeoServiceArea {
     whyChooseUs?: string[];
     /** Population or community size descriptor */
     communityType?: string;
+    /** Whether this area's pages should be published (for phased rollout) */
+    published?: boolean;
 }
+
+// Site-wide publishing controls for phased rollout
+export const siteConfig = {
+    /** Whether to publish /locations/[city]/services/[service] pages */
+    publishLocationServices: true,
+};
 
 // Geo-targeted service areas (cities we serve but don't have offices in)
 export const geoServiceAreas: GeoServiceArea[] = [
     {
+        name: "Bonney Lake",
+        slug: "bonney-lake",
+        published: true,
+        nearestOffice: "bonney-lake",
+        driveTime: "0 minutes",
+        isOfficeLocation: true,
+        locationDescription: "Located in Downtown Tehaleh",
+        description: "Our Bonney Lake office is located right in the heart of the community, providing comprehensive dental care for Bonney Lake residents and families.",
+        landmarks: ["Lake Tapps", "Allan Yorke Park", "Victor Falls", "Fennel Creek Trail", "Bonney Lake Town Center"],
+        directionsHint: "on 141st Street Ct E in the Tehaleh community",
+        communityType: "growing city",
+        communityContent: "Bonney Lake has transformed from a quiet lakeside community into one of Pierce County's most vibrant cities. With easy access to Lake Tapps, beautiful parks like Allan Yorke and Victor Falls, and a growing downtown area, Bonney Lake offers the perfect blend of outdoor recreation and suburban convenience. Our Bonney Lake office opened in 2024 to serve this thriving community, bringing the same exceptional care that families in Enumclaw have trusted for over two decades. Whether you're a longtime Bonney Lake resident or just moved to one of the new developments, we're proud to be your neighborhood dental home.",
+        whyChooseUs: [
+            "Conveniently located right here in Bonney Lake",
+            "Brand new, state-of-the-art facility opened in 2024",
+            "Early 7 AM appointments for busy schedules",
+            "Full range of services from cleanings to implants and oral surgery",
+            "Same experienced team trusted by Enumclaw families for 20+ years",
+        ],
+    },
+    {
+        name: "Enumclaw",
+        slug: "enumclaw",
+        published: true,
+        nearestOffice: "enumclaw",
+        driveTime: "0 minutes",
+        isOfficeLocation: true,
+        locationDescription: "Located in Downtown Enumclaw on the corner of Myrtle and Cole",
+        description: "Our original Enumclaw office has served the foothills community since 2001, providing comprehensive dental care with a personal touch.",
+        landmarks: ["Downtown Enumclaw", "Mount Rainier", "White River", "Enumclaw Golf Course", "Mud Mountain Dam", "Flaming Geyser State Park"],
+        directionsHint: "on the corner of Myrtle and Cole",
+        communityType: "small town",
+        communityContent: "Enumclaw sits at the gateway to Mount Rainier, a charming small town where neighbors know each other and community matters. From the historic downtown to the stunning views of 'The Mountain,' Enumclaw offers a quality of life that's hard to find elsewhere. Dr. Harding established our practice here in 2001, and we've been privileged to care for multiple generations of Enumclaw families. Now led by Dr. Ossman, we continue the tradition of personalized, high-quality dental care that our community deserves. Whether you're a farmer from the plateau, a family in town, or an outdoor enthusiast drawn to the foothills lifestyle, we're honored to be your dental home.",
+        whyChooseUs: [
+            "Serving Enumclaw families since 2001",
+            "Multi-generational care—we've treated grandparents, parents, and kids",
+            "Comprehensive services including implants, oral surgery, and IV sedation",
+            "Small-town values with big-city capabilities",
+            "Dr. Ossman continues Dr. Harding's legacy of excellence",
+        ],
+    },
+    {
         name: "Tehaleh",
         slug: "tehaleh",
+        published: true,
         nearestOffice: "bonney-lake",
         driveTime: "5 minutes",
         description: "Tehaleh residents enjoy convenient access to our Bonney Lake office, located right in the heart of this master-planned community.",
@@ -174,6 +229,7 @@ export const geoServiceAreas: GeoServiceArea[] = [
     {
         name: "Buckley",
         slug: "buckley",
+        published: false,
         nearestOffice: "enumclaw",
         driveTime: "10 minutes",
         description: "Buckley families have trusted our Enumclaw office for generations, with easy access via Highway 410 through the scenic Foothills corridor.",
@@ -192,6 +248,7 @@ export const geoServiceAreas: GeoServiceArea[] = [
     {
         name: "Puyallup",
         slug: "puyallup",
+        published: false,
         nearestOffice: "bonney-lake",
         driveTime: "15 minutes",
         description: "Puyallup patients choose our Bonney Lake office for its modern facilities, comprehensive services, and escape from the crowded valley traffic.",
@@ -210,6 +267,7 @@ export const geoServiceAreas: GeoServiceArea[] = [
     {
         name: "Sumner",
         slug: "sumner",
+        published: false,
         nearestOffice: "bonney-lake",
         driveTime: "12 minutes",
         description: "Sumner residents appreciate our Bonney Lake office's personalized approach and convenient location just east of the valley.",
@@ -221,13 +279,14 @@ export const geoServiceAreas: GeoServiceArea[] = [
             "Just 12 minutes from downtown Sumner",
             "Personalized care you won't find at big chain practices",
             "Family dentistry for all ages—from first tooth to dentures",
-            "Invisalign and clear aligner specialists",
+            "SureSmile clear braces specialists",
             "Welcoming environment for anxious patients",
         ],
     },
     {
         name: "Lake Tapps",
         slug: "lake-tapps",
+        published: false,
         nearestOffice: "bonney-lake",
         driveTime: "8 minutes",
         description: "Lake Tapps families enjoy the closest dental office to their waterfront community, with comprehensive services for the whole family.",
@@ -246,6 +305,7 @@ export const geoServiceAreas: GeoServiceArea[] = [
     {
         name: "Black Diamond",
         slug: "black-diamond",
+        published: false,
         nearestOffice: "enumclaw",
         driveTime: "15 minutes",
         description: "Black Diamond residents enjoy a scenic drive to our Enumclaw office, where small-town values meet modern dental care.",
@@ -264,6 +324,7 @@ export const geoServiceAreas: GeoServiceArea[] = [
     {
         name: "Auburn",
         slug: "auburn",
+        published: false,
         nearestOffice: "bonney-lake",
         driveTime: "20 minutes",
         description: "Auburn patients discover that our Bonney Lake office offers a welcome alternative to crowded valley dental clinics.",
@@ -282,6 +343,7 @@ export const geoServiceAreas: GeoServiceArea[] = [
     {
         name: "Orting",
         slug: "orting",
+        published: false,
         nearestOffice: "bonney-lake",
         driveTime: "20 minutes",
         description: "Orting families appreciate having comprehensive dental care within easy reach of their charming Foothills community.",
@@ -300,6 +362,7 @@ export const geoServiceAreas: GeoServiceArea[] = [
     {
         name: "Maple Valley",
         slug: "maple-valley",
+        published: false,
         nearestOffice: "enumclaw",
         driveTime: "20 minutes",
         description: "Maple Valley residents enjoy personalized dental care at our Enumclaw office, a pleasant drive through the scenic Foothills.",
@@ -420,7 +483,7 @@ export const businessConfig: BusinessConfig = {
     industry: "dental",
     socialMedia: {
         facebook: "https://www.facebook.com/OssmanHardingDental",
-        instagram: "https://www.instagram.com/ossmanharddental",
+        instagram: "https://www.instagram.com/ossmanhardingdds/",
         googleBusiness:
             "https://www.google.com/maps/place/Ossman+Harding+Dental",
         yelp: "https://www.yelp.com/biz/ossman-harding-dental-enumclaw-4",
@@ -470,8 +533,8 @@ export const businessConfig: BusinessConfig = {
                     href: "/services/dental-implants",
                 },
                 {
-                    label: "Clear Aligners/Invisalign",
-                    href: "/services/clear-alignersinvisalign",
+                    label: "SureSmile Clear Braces",
+                    href: "/services/suresmile-clear-braces",
                 },
                 {
                     label: "Teeth Whitening",
@@ -494,8 +557,8 @@ export const businessConfig: BusinessConfig = {
                     href: "/services/wisdom-teeth-extraction",
                 },
                 {
-                    label: "Veneers & Bonding",
-                    href: "/services/veneers-bonding",
+                    label: "Veneers & Esthetic Crowns",
+                    href: "/services/veneers-esthetic-crowns",
                 },
                 {
                     label: "Crowns & Bridges",
@@ -551,7 +614,7 @@ export const businessConfig: BusinessConfig = {
                     href: "/locations/enumclaw",
                     children: [
                         { label: "Schedule an Appointment", href: "/appointments" },
-                        { label: "Services", href: "/locations/enumclaw/services" },
+                        // { label: "Services", href: "/locations/enumclaw/services" }, // Hidden until Phase 2
                         { label: "Meet Our Team", href: "/locations/enumclaw/team" },
                         { label: "Office Gallery", href: "/locations/enumclaw/gallery" },
                         { label: "Careers", href: "/locations/enumclaw/careers" },
@@ -562,7 +625,7 @@ export const businessConfig: BusinessConfig = {
                     href: "/locations/bonney-lake",
                     children: [
                         { label: "Schedule an Appointment", href: "/appointments" },
-                        { label: "Services", href: "/locations/bonney-lake/services" },
+                        // { label: "Services", href: "/locations/bonney-lake/services" }, // Hidden until Phase 2
                         { label: "Meet Our Team", href: "/locations/bonney-lake/team" },
                         { label: "Office Gallery", href: "/locations/bonney-lake/gallery" },
                         { label: "Careers", href: "/locations/bonney-lake/careers" },
@@ -574,15 +637,9 @@ export const businessConfig: BusinessConfig = {
             label: "Areas We Serve",
             href: "/areas-we-serve",
             children: [
+                { label: "Bonney Lake", href: "/areas-we-serve/bonney-lake" },
+                { label: "Enumclaw", href: "/areas-we-serve/enumclaw" },
                 { label: "Tehaleh", href: "/areas-we-serve/tehaleh" },
-                { label: "Buckley", href: "/areas-we-serve/buckley" },
-                { label: "Puyallup", href: "/areas-we-serve/puyallup" },
-                { label: "Sumner", href: "/areas-we-serve/sumner" },
-                { label: "Lake Tapps", href: "/areas-we-serve/lake-tapps" },
-                { label: "Black Diamond", href: "/areas-we-serve/black-diamond" },
-                { label: "Auburn", href: "/areas-we-serve/auburn" },
-                { label: "Orting", href: "/areas-we-serve/orting" },
-                { label: "Maple Valley", href: "/areas-we-serve/maple-valley" },
             ],
         },
         { label: "Reviews", href: "/reviews" },
@@ -616,13 +673,13 @@ export const businessConfig: BusinessConfig = {
         "/services/dental-exams-cleanings": "/images/service-images/dental-exam.jpg",
         "/services/cosmetic-dentistry": "/images/service-images/cosmetic-dentistry.jpg",
         "/services/dental-implants": "/images/service-images/dental-implants.jpg",
-        "/services/clear-alignersinvisalign": "/images/service-images/clear-aligners.jpg",
+        "/services/suresmile-clear-braces": "/images/service-images/clear-aligners.jpg",
         "/services/teeth-whitening": "/images/service-images/teeth-whitening.jpg",
         "/services/oral-surgery": "/images/service-images/oral-surgery.jpg",
         "/services/sedation-dentistry": "/images/service-images/sedation-dentistry.jpg",
         "/services/sleep-medicine": "/images/service-images/sleep-medicine.jpg",
         "/services/wisdom-teeth-extraction": "/images/service-images/wisdom-teeth.jpg",
-        "/services/veneers-bonding": "/images/service-images/veneers.jpg",
+        "/services/veneers-esthetic-crowns": "/images/service-images/veneers.jpg",
         "/services/crowns-bridges": "/images/service-images/crowns.jpg",
         "/services/restorative-dentistry": "/images/service-images/crowns.jpg",
         "/services/emergency-dental-care": "/images/service-images/emergency-dental.jpg",
@@ -671,9 +728,9 @@ export const businessConfig: BusinessConfig = {
         {
             author: "Robert H.",
             rating: 5,
-            text: "The Invisalign treatment here was seamless. Dr. Ossman created a perfect plan and my teeth are now perfectly straight. Worth every penny!",
+            text: "The SureSmile clear braces treatment here was seamless. Dr. Ossman created a perfect plan and my teeth are now perfectly straight. Worth every penny!",
             date: "2024-08-30",
-            service: "Clear Aligners/Invisalign",
+            service: "SureSmile Clear Braces",
         },
         {
             author: "Amanda C.",
@@ -693,11 +750,11 @@ export const businessConfig: BusinessConfig = {
     faqs: [
         {
             question: "Do you see kids?",
-            answer: "We would love to see your kids! We enjoy treating patients of all ages and create a comfortable, positive dental experience for young patients. We also hope to bring on a pediatric specialist in the near future.",
+            answer: "We would love to see your kids! We enjoy treating patients of all ages and create a comfortable, positive dental experience for young patients.",
         },
         {
             question: "Do you do all dental procedures including specialties?",
-            answer: "Our vision is to have all specialties under one roof so patients never have to leave for their dental care. We currently provide cosmetic dentistry, orthodontics (clear aligners/Invisalign), Botox and fillers, dental implants, IV sedation dentistry, wisdom teeth removal, oral surgery, and more. The only specialty we currently refer out is molar root canals.",
+            answer: "Our vision is to have all specialties under one roof so patients never have to leave for their dental care. We currently provide cosmetic dentistry, orthodontics (SureSmile clear braces), Botox and fillers, dental implants, IV sedation dentistry, wisdom teeth removal, oral surgery, and more. The only specialty we currently refer out is molar root canals.",
         },
         {
             question: "What insurance do you accept?",
@@ -705,7 +762,7 @@ export const businessConfig: BusinessConfig = {
         },
         {
             question: "What if I don't have dental insurance?",
-            answer: "No problem—we'd still love to see you! We offer preventative care for a low monthly price and a 20% discount on all necessary treatment. Check out our payment options page for more information on how to save money on your dental care.",
+            answer: "No problem—we'd still love to see you! We offer preventative care for a low monthly price and a 20% discount on all necessary treatment. Check out our <a href=\"/new-patients/payment-options\">payment options</a> page for more information on how to save money on your dental care, including our <a href=\"/new-patients/payment-options/payment-plans\">payment plans</a>.",
         },
         {
             question: "Are you accepting new patients?",
@@ -746,11 +803,48 @@ export const businessConfig: BusinessConfig = {
     },
 };
 
+/** Gallery item for service page galleries */
+export interface ServiceGalleryItem {
+    src: string;
+    caption: string;
+    alt?: string;
+}
+
 /** Optional expanded content for service pages (what the service is, what's included, process). */
 export type ServicePageContent = {
+    /** Short marketing description for service cards (1-2 sentences, ~80-100 chars) */
+    cardDescription?: string;
     whatIs: string;
     whatWeOffer: string[];
     process?: string;
+    /** Optional step-by-step process breakdown for detailed service pages */
+    processSteps?: string[];
+    /** Optional "Why choose this" section with title and content */
+    whyChooseSection?: {
+        title: string;
+        intro?: string;
+        points: string[];
+    };
+    /** Optional insurance/payment information section */
+    insuranceSection?: {
+        title: string;
+        intro?: string;
+        points: string[];
+        links?: { label: string; href: string }[];
+    };
+    /** Optional additional info section (uses arrow bullets, not dollar signs) */
+    additionalInfoSection?: {
+        title: string;
+        intro?: string;
+        points: string[];
+    };
+    /** Related service slugs to display on this service page */
+    relatedServices?: string[];
+    /** Optional gallery of work/results for this service */
+    gallery?: {
+        title?: string;
+        items: ServiceGalleryItem[];
+    };
 };
 
 /** Shape of a single industry's config (used so industryConfig can be indexed by Industry). */
@@ -771,7 +865,7 @@ const _industryConfig = {
             "Dental Exams & Cleanings",
             "Cosmetic Dentistry",
             "Dental Implants",
-            "Clear Aligners/Invisalign",
+            "SureSmile Clear Braces",
             "Teeth Whitening",
             "Oral Surgery",
             "Sedation Dentistry",
@@ -780,13 +874,13 @@ const _industryConfig = {
             "Dental Exams & Cleanings",
             "Cosmetic Dentistry",
             "Dental Implants",
-            "Clear Aligners/Invisalign",
+            "SureSmile Clear Braces",
             "Teeth Whitening",
             "Oral Surgery",
             "Sedation Dentistry",
             "Sleep Medicine",
             "Wisdom Teeth Extraction",
-            "Veneers & Bonding",
+            "Veneers & Esthetic Crowns",
             "Crowns & Bridges",
             "Restorative Dentistry",
             "Emergency Dental Care",
@@ -801,8 +895,8 @@ const _industryConfig = {
             "cosmetic dentistry",
             "dental implants",
             "teeth whitening",
-            "invisalign",
-            "clear aligners",
+            "suresmile",
+            "clear braces",
             "oral surgery",
             "sedation dentistry",
             "family dentist",
@@ -819,13 +913,13 @@ const _industryConfig = {
             "dental-exams-cleanings": "/images/service-images/dental-exam.jpg",
             "cosmetic-dentistry": "/images/service-images/cosmetic-dentistry.jpg",
             "dental-implants": "/images/service-images/dental-implants.jpg",
-            "clear-alignersinvisalign": "/images/service-images/clear-aligners.jpg",
+            "suresmile-clear-braces": "/images/service-images/clear-aligners.jpg",
             "teeth-whitening": "/images/service-images/teeth-whitening.jpg",
             "oral-surgery": "/images/service-images/oral-surgery.jpg",
             "sedation-dentistry": "/images/service-images/sedation-dentistry.jpg",
             "sleep-medicine": "/images/service-images/sleep-medicine.jpg",
             "wisdom-teeth-extraction": "/images/service-images/wisdom-teeth.jpg",
-            "veneers-bonding": "/images/service-images/veneers.jpg",
+            "veneers-esthetic-crowns": "/images/service-images/veneers.jpg",
             "crowns-bridges": "/images/service-images/crowns.jpg",
             "restorative-dentistry": "/images/service-images/restorative.jpg",
             "emergency-dental-care": "/images/service-images/emergency-dental.jpg",
@@ -835,19 +929,32 @@ const _industryConfig = {
         },
         servicePageContent: {
             "dental-exams-cleanings": {
-                whatIs: "Regular dental exams and professional cleanings are the foundation of good oral health. During your exam, our dentists thoroughly evaluate your teeth, gums, and overall oral health, checking for cavities, gum disease, and other concerns. Professional cleanings remove plaque and tartar buildup that regular brushing can't address, helping prevent cavities and gum disease.",
+                cardDescription: "Catch problems early with comfortable, thorough exams and cleanings at our Enumclaw and Bonney Lake offices.",
+                whatIs: "At Ossman Harding Dental in Enumclaw and Bonney Lake, we make dental exams and cleanings comfortable and thorough. Our experienced hygienists and dentists use digital X-rays and modern techniques to catch problems early—before they become costly. We're currently accepting new patients at both locations.",
                 whatWeOffer: [
-                    "Comprehensive oral examinations",
-                    "Digital X-rays with minimal radiation",
-                    "Professional teeth cleaning and polishing",
-                    "Oral cancer screening",
-                    "Gum health assessment",
-                    "Personalized oral hygiene recommendations",
-                    "Fluoride treatments when appropriate",
+                    "Comprehensive exams at our Enumclaw and Bonney Lake offices",
+                    "Digital X-rays with minimal radiation exposure",
+                    "Professional cleaning, scaling, and polishing",
+                    "Oral cancer screening included with every exam",
+                    "Periodontal (gum disease) evaluation",
+                    "Deep cleaning (scaling & root planing) when needed",
+                    "Dental sealants for cavity prevention",
+                    "Personalized care plans for your oral health goals",
                 ],
-                process: "Your appointment begins with a review of your dental history and any concerns you may have. We take digital X-rays as needed, then perform a thorough examination of your teeth and gums. After the exam, your hygienist will clean and polish your teeth, removing any buildup. We'll discuss findings and create a personalized care plan for maintaining your oral health.",
+                process: "Your visit begins with a review of your dental history and any concerns. We take digital X-rays as needed, then thoroughly examine your teeth, gums, and mouth for signs of decay, gum disease, or other issues. Your hygienist will professionally clean and polish your teeth, removing plaque and tartar buildup. Before you leave, we'll discuss our findings and create a personalized plan to keep your smile healthy between visits.",
+                additionalInfoSection: {
+                    title: "Accepting New Patients in Enumclaw & Bonney Lake",
+                    intro: "Whether you're new to the area or looking for a new dental home, our team welcomes you. We see patients of all ages and make it easy to get started.",
+                    points: [
+                        "Convenient scheduling at two locations serving King and Pierce counties",
+                        "Most dental insurance plans accepted",
+                        "Payment plans available for uninsured patients",
+                    ],
+                },
+                relatedServices: ["preventive-dentistry", "teeth-whitening", "restorative-dentistry", "cosmetic-dentistry"],
             },
             "cosmetic-dentistry": {
+                cardDescription: "Transform your smile with expert cosmetic care—from subtle enhancements to complete makeovers.",
                 whatIs: "Cosmetic dentistry focuses on improving the appearance of your smile while maintaining optimal oral health. From subtle changes to major repairs, we offer a variety of procedures to help you achieve the smile you've always wanted. Dr. Ossman specializes in creating natural-looking results that enhance your confidence.",
                 whatWeOffer: [
                     "Porcelain veneers for a complete smile transformation",
@@ -859,34 +966,79 @@ const _industryConfig = {
                     "Botox and facial esthetics",
                 ],
                 process: "We start with a comprehensive consultation to understand your goals and evaluate your oral health. Using digital imaging, we can show you potential results before beginning treatment. Together, we'll create a customized treatment plan that fits your timeline and budget. Most cosmetic procedures can be completed in just one or two visits.",
+                relatedServices: ["veneers-esthetic-crowns", "teeth-whitening", "smile-makeovers", "suresmile-clear-braces"],
             },
             "dental-implants": {
-                whatIs: "Dental implants are the gold standard for replacing missing teeth. An implant is a titanium post surgically placed in the jawbone that acts as an artificial tooth root. Once healed, a custom crown is attached, creating a replacement tooth that looks, feels, and functions like a natural tooth. Dr. Zander specializes in implant placement with sedation options for your comfort.",
+                cardDescription: "Replace missing teeth permanently with implants that look, feel, and function like natural teeth.",
+                whatIs: "At Ossman Harding Dental in Enumclaw and Bonney Lake, we place dental implants in-house using computer-guided surgery for precise, long-lasting results. Unlike bridges or dentures, implants replace the entire tooth—from root to crown—so they look, feel, and function like natural teeth. IV sedation is available for a stress-free experience.",
                 whatWeOffer: [
-                    "Single tooth implants",
-                    "Multiple tooth implants",
-                    "Implant-supported bridges",
-                    "Implant-supported dentures",
-                    "Bone grafting when needed",
-                    "IV sedation for comfortable procedures",
-                    "Same-day temporary teeth options",
+                    "Computer-guided implant placement for optimal results",
+                    "Single and multiple tooth implants",
+                    "Implant-supported bridges and dentures",
+                    "Bone grafting performed in-office when needed",
+                    "IV sedation available (often covered 80% by insurance)",
+                    "All treatment completed at our Enumclaw and Bonney Lake offices",
                 ],
-                process: "Your implant journey begins with a thorough evaluation including 3D imaging to assess bone structure. We'll discuss all options and create a personalized treatment plan. The implant is placed during a minor surgical procedure, often with sedation. After a healing period of 3-6 months, your custom crown is attached. We provide comprehensive aftercare instructions and follow-up visits.",
+                processSteps: [
+                    "Schedule a consultation—we'll take 3D images to evaluate your bone structure",
+                    "We place the titanium implant using computer-guided surgery",
+                    "Healing period of 3-6 months as the implant fuses with your jawbone",
+                    "We secure the abutment and place your custom crown, bridge, or denture",
+                ],
+                whyChooseSection: {
+                    title: "Why Choose Implants Over Bridges or Dentures?",
+                    points: [
+                        "Implants preserve your jawbone and prevent deterioration from tooth loss",
+                        "No need to modify healthy neighboring teeth (unlike bridges)",
+                        "Permanent solution that can last a lifetime with proper care",
+                        "Chew and speak naturally—no slipping or adhesives",
+                    ],
+                },
+                relatedServices: ["oral-surgery", "sedation-dentistry", "wisdom-teeth-extraction", "crowns-bridges"],
             },
-            "clear-alignersinvisalign": {
-                whatIs: "Clear aligners like Invisalign and SureSmile offer a virtually invisible way to straighten teeth. These custom-made, removable aligners gradually shift your teeth into proper alignment without the need for metal brackets and wires. They're ideal for adults and teens who want to improve their smile discreetly.",
+            "suresmile-clear-braces": {
+                cardDescription: "Straighten your smile invisibly with clear aligners—50% fewer refinements than Invisalign.",
+                whatIs: "SureSmile Clear Braces offer the invisible way to straighten your teeth without traditional braces. To discuss clear braces in Enumclaw or Bonney Lake, please contact us to schedule a free consultation.",
                 whatWeOffer: [
-                    "Invisalign clear aligners",
-                    "SureSmile aligners",
-                    "3D treatment planning and visualization",
-                    "Comfortable, removable aligners",
-                    "Treatment for mild to complex cases",
-                    "Retainers for maintaining results",
-                    "Teen and adult treatment options",
+                    "Free SureSmile consultation",
+                    "3D imaging and panoramic x-rays",
+                    "Custom clear aligners with Essix ACE plastic",
+                    "50% fewer refinements than other clear aligner systems",
+                    "Comfortable state-of-the-art scanning (no cheek retractors)",
+                    "Insurance accepted (most ortho benefits apply)",
+                    "0% financing and payment plans available",
                 ],
-                process: "We begin with a consultation and digital scan of your teeth. Using advanced 3D software, we create a customized treatment plan showing the expected movement of your teeth. You'll receive a series of aligners, each worn for about two weeks. You'll visit us periodically to monitor progress. Most treatments are completed in 12-18 months.",
+                process: "We start with a records appointment to get a 3D image of your smile and a panoramic x-ray. Using advanced design technology, Dr. Ossman creates your custom treatment plan. You'll wear each set of aligners for about 2 weeks (22 hours daily for best results), removing them only to eat, drink, brush, and floss. You'll visit every 6-8 weeks to ensure treatment is progressing as planned. Total treatment averages 9-15 months with 18-30 aligners, varying by case.",
+                processSteps: [
+                    "First, we start with a records appointment where we get a 3D image of your full smile and a panoramic x-ray of your jaw.",
+                    "SureSmile uses a series of clear removable aligners to straighten your teeth without metal wires or brackets.",
+                    "The aligners are made through a combination of Dr. Ossman's expertise and 3D computer imaging/design technology.",
+                    "You wear each set of aligners for about 2 weeks, removing them only to eat, drink, brush, and floss. For maximum effectiveness, we recommend wearing your aligners 22 hours a day.",
+                    "As you replace each aligner with the next in the series, your teeth will move – little by little, week by week – until they have straightened to the final position Dr. Ossman has prescribed.",
+                    "You'll visit Dr. Ossman about once every 6-8 weeks to ensure that your treatment is progressing as planned.",
+                    "Total treatment time averages 9-15 months and the average number of aligners worn during treatment is between 18 and 30, but both will vary from case to case.",
+                ],
+                whyChooseSection: {
+                    title: "Why SureSmile and Not Invisalign or Other Clear Aligners?",
+                    intro: "The main reason is that we generally see fewer refinements than Invisalign and other clear aligner systems, which leads to a shorter treatment time for our patients!",
+                    points: [
+                        "SureSmile uses more trays to achieve smaller, but more frequent movements in your smile over the same amount of time. This has proven to achieve 50% fewer refinements in patient cases and therefore quicker results.",
+                        "SureSmile uses Essix ACE plastic which combines esthetics, flexibility and durability for clear braces that you will barely see.",
+                        "We use a state-of-the-art 3D scan and design process which allows us to cut out the uncomfortable ortho pictures that involve cheek retractors and large mirrors positioned in your mouth.",
+                    ],
+                },
+                insuranceSection: {
+                    title: "Will Insurance Cover My Clear Braces?",
+                    intro: "Yes, in most cases you will be able to use your full ortho benefit which is normally in the range of $1,000-$3,000 depending on your dental insurance. We can help verify the benefit details specific to your plan!",
+                    points: [
+                        "We offer savings on your case if you decide to pay your patient portion up front.",
+                        "As an additional option, we offer 0% financing on our payment plans which we will extend over the length of your ortho case.",
+                    ],
+                },
+                relatedServices: ["cosmetic-dentistry", "teeth-whitening", "veneers-esthetic-crowns", "smile-makeovers"],
             },
             "teeth-whitening": {
+                cardDescription: "Brighten your smile fast with professional whitening that's stronger than store-bought products.",
                 whatIs: "Professional teeth whitening can dramatically brighten your smile, removing years of stains from coffee, tea, wine, and other foods. Our whitening treatments are stronger and more effective than over-the-counter products, providing faster and more noticeable results while protecting your tooth enamel.",
                 whatWeOffer: [
                     "In-office whitening for immediate results",
@@ -897,8 +1049,10 @@ const _industryConfig = {
                     "Pre-whitening cleaning for optimal results",
                 ],
                 process: "We start by evaluating your teeth to ensure whitening is appropriate. For in-office whitening, we protect your gums and apply a professional-strength whitening gel, often with a special light to enhance results. Treatment takes about an hour. For take-home whitening, we create custom trays and provide professional-grade gel for you to use at your convenience.",
+                relatedServices: ["cosmetic-dentistry", "veneers-esthetic-crowns", "smile-makeovers", "dental-exams-cleanings"],
             },
             "oral-surgery": {
+                cardDescription: "Expert extractions and oral surgery with IV sedation for your comfort.",
                 whatIs: "Our oral surgery services address a range of conditions from wisdom teeth removal to more complex procedures. Dr. Zander is our oral surgery specialist, bringing years of experience and advanced training. We offer IV sedation to ensure your comfort during procedures.",
                 whatWeOffer: [
                     "Wisdom teeth extraction",
@@ -910,70 +1064,186 @@ const _industryConfig = {
                     "Same-day emergency extractions",
                 ],
                 process: "Your surgery begins with a comprehensive consultation and imaging. We'll explain the procedure, discuss sedation options, and answer all your questions. On the day of surgery, you'll be made comfortable with your chosen sedation method. Most procedures are completed in under an hour. We provide detailed aftercare instructions and schedule follow-up visits to ensure proper healing.",
+                relatedServices: ["dental-implants", "wisdom-teeth-extraction", "sedation-dentistry", "emergency-dental-care"],
             },
             "sedation-dentistry": {
-                whatIs: "Sedation dentistry helps patients who experience dental anxiety or need to undergo lengthy procedures feel relaxed and comfortable. We offer multiple sedation options, from mild relaxation with nitrous oxide to deeper sedation with IV medication. Dr. Zander is specially trained in IV sedation techniques.",
+                cardDescription: "Relax through your dental care with IV sedation—often 80% covered by insurance.",
+                whatIs: "At Ossman Harding Dental in Enumclaw and Bonney Lake, we offer IV sedation for patients with dental anxiety or those undergoing longer procedures. Most patients report little to no memory of their treatment—and many insurance plans cover IV sedation at 80%.",
                 whatWeOffer: [
-                    "Nitrous oxide (laughing gas)",
-                    "Oral conscious sedation",
-                    "IV sedation for deep relaxation",
-                    "Sedation for dental anxiety",
-                    "Sedation for complex procedures",
-                    "Safe monitoring throughout treatment",
-                    "Comfortable recovery area",
+                    "IV sedation at our Enumclaw and Bonney Lake offices",
+                    "Often covered 80% by dental insurance",
+                    "Ideal for dental anxiety or phobia",
+                    "Get more treatment done in fewer visits",
+                    "Safe monitoring throughout your procedure",
+                    "Most patients remember little to nothing",
                 ],
-                process: "During your consultation, we'll discuss your anxiety level and medical history to determine the best sedation option. For oral and IV sedation, you'll receive pre-operative instructions. On the day of treatment, we'll monitor your vital signs throughout the procedure. You'll need someone to drive you home after oral or IV sedation. Most patients have little to no memory of the procedure.",
+                process: "We'll review your medical history and discuss your anxiety level to ensure IV sedation is right for you. On the day of your procedure, we monitor your vitals throughout treatment. You'll be relaxed and comfortable the entire time. Plan to have someone drive you home, and avoid strenuous activity for 24 hours.",
+                whyChooseSection: {
+                    title: "Is IV Sedation Right for You?",
+                    points: [
+                        "You avoid the dentist due to fear or anxiety",
+                        "You need multiple procedures completed at once",
+                        "You have a strong gag reflex or difficulty sitting still",
+                        "You want to save time with fewer appointments",
+                    ],
+                },
+                relatedServices: ["dental-implants", "wisdom-teeth-extraction", "oral-surgery", "restorative-dentistry"],
             },
             "sleep-medicine": {
-                whatIs: "Sleep apnea and snoring can significantly impact your health and quality of life. Dr. Phan specializes in sleep medicine and can provide oral appliance therapy as an alternative to CPAP machines. These custom-fitted devices reposition your jaw to keep airways open during sleep.",
+                cardDescription: "Stop snoring and treat sleep apnea with a comfortable alternative to CPAP.",
+                whatIs: "At our Enumclaw and Bonney Lake offices, Dr. Lynda Phan specializes in dental sleep medicine, offering custom oral appliances as an effective CPAP alternative for patients with obstructive sleep apnea and snoring. These comfortable, portable devices are billed to your medical insurance—not your dental benefits.",
                 whatWeOffer: [
-                    "Sleep apnea screening and evaluation",
-                    "Custom oral appliance therapy",
-                    "CPAP alternatives",
-                    "Treatment for snoring",
+                    "Custom-fit oral sleep appliances by Dr. Phan",
+                    "CPAP alternative that's comfortable and portable",
+                    "Billed to medical insurance (preserves dental benefits)",
+                    "Myofunctional therapy with on-staff therapist",
                     "Coordination with sleep specialists",
-                    "Follow-up adjustments for optimal results",
-                    "TMJ-friendly appliance options",
+                    "Quick turnaround: appliance delivered in 2-3 weeks",
                 ],
-                process: "We begin with a thorough evaluation and may recommend a sleep study if you haven't had one. Once sleep apnea is diagnosed, we take precise impressions to create your custom oral appliance. You'll return for fitting and adjustments. We monitor your progress and can modify the appliance as needed to ensure effective treatment.",
+                processSteps: [
+                    "Schedule a consultation at our Enumclaw or Bonney Lake office",
+                    "Complete a sleep study or share your existing results with us",
+                    "Get scanned for your custom oral sleep appliance",
+                    "Receive your custom appliance in 2-3 weeks, fitted in our office",
+                ],
+                whyChooseSection: {
+                    title: "Why Choose an Oral Appliance Over CPAP?",
+                    points: [
+                        "Generally lower cost than CPAP",
+                        "More portable and easy to travel with",
+                        "No loud noise disrupting your sleep",
+                        "Comfortable to wear—fits like a retainer",
+                        "Sleep in any position without affecting therapy",
+                    ],
+                },
+                relatedServices: ["dental-exams-cleanings", "preventive-dentistry"],
             },
             "wisdom-teeth-extraction": {
-                whatIs: "Wisdom teeth often need to be removed when they become impacted, cause crowding, or lead to other dental problems. Dr. Zander performs wisdom teeth extractions using the latest techniques and offers IV sedation for a comfortable experience.",
+                cardDescription: "Get your wisdom teeth removed in-house with 3D-guided precision and IV sedation.",
+                whatIs: "At Ossman Harding Dental in Enumclaw and Bonney Lake, Dr. Zander performs wisdom teeth extractions in-house—no referral to an outside oral surgeon needed. We use 3D imaging to plan your procedure and offer IV sedation so you can relax through the entire process.",
                 whatWeOffer: [
-                    "Evaluation with 3D imaging",
-                    "Removal of impacted wisdom teeth",
-                    "IV sedation available",
+                    "In-house extractions at our Enumclaw and Bonney Lake offices",
+                    "3D imaging (panorex) to evaluate tooth position and plan removal",
+                    "IV sedation available (often covered 80% by insurance)",
+                    "Soft tissue, partial bony, and complete bony impactions",
                     "Same-day extractions when possible",
-                    "Comprehensive aftercare support",
-                    "Management of dry socket and complications",
+                    "Comprehensive aftercare instructions and follow-up",
                 ],
-                process: "We take 3D images to evaluate the position of your wisdom teeth and plan the extraction. On the day of surgery, sedation is administered for your comfort. The procedure typically takes 30-60 minutes depending on complexity. We provide detailed aftercare instructions, prescriptions as needed, and schedule a follow-up visit.",
+                process: "Your visit begins with a consultation and panoramic X-ray to assess your wisdom teeth. We'll explain what type of impaction you have and discuss sedation options. On the day of surgery, most procedures take 30-60 minutes. You'll go home with detailed aftercare instructions, and we'll schedule a follow-up to ensure proper healing.",
+                additionalInfoSection: {
+                    title: "When Should Wisdom Teeth Be Removed?",
+                    intro: "We recommend evaluation in the mid-teenage years, before root structures fully develop. Problems tend to increase after age 30. Signs you may need extraction include:",
+                    points: [
+                        "Pain, swelling, or infection around back molars",
+                        "Crowding or shifting of other teeth",
+                        "Difficulty cleaning around partially erupted teeth",
+                    ],
+                },
+                relatedServices: ["oral-surgery", "sedation-dentistry", "dental-implants", "emergency-dental-care"],
             },
-            "veneers-bonding": {
-                whatIs: "Veneers and bonding are excellent solutions for improving the appearance of chipped, stained, misshapen, or slightly crooked teeth. Veneers are thin porcelain shells bonded to the front of teeth, while bonding uses tooth-colored resin applied directly to the tooth surface.",
+            "veneers-esthetic-crowns": {
+                cardDescription: "Transform your smile with custom porcelain veneers designed by Dr. Ossman.",
+                whatIs: "Veneers are thin shells of ceramic that bond directly to the front surfaces of the teeth. They are an ideal choice for improving your smile and have become increasingly popular due to their simplicity, versatility and ability to completely transform a smile. Dr. Ossman is an expert at designing custom veneers that match and enhance the unique traits of each of her patient's smiles.",
                 whatWeOffer: [
-                    "Porcelain veneers for dramatic transformations",
-                    "Minimal-prep and no-prep veneer options",
-                    "Dental bonding for minor repairs",
-                    "Color matching to natural teeth",
-                    "Smile design consultation",
-                    "Long-lasting, natural-looking results",
+                    "Custom porcelain veneers designed by Dr. Ossman",
+                    "Esthetic crowns for more comprehensive restoration",
+                    "High degree of technical skill and cosmetic attention",
+                    "Individually designed cases to match your unique smile",
+                    "Closing gaps between teeth",
+                    "Repairing chips or worn-down spots",
+                    "Whitening discoloration",
+                    "Correcting alignment issues",
                 ],
-                process: "After consultation and smile design planning, we prepare your teeth (minimal preparation for bonding, slightly more for veneers). Impressions or digital scans are taken for custom veneer fabrication. Temporary veneers may be placed while yours are being made. At your final appointment, we bond your veneers permanently and make any needed adjustments.",
+                process: "Placing custom veneers requires a high degree of technical skill as well as attention to cosmetic detail. We place veneers routinely and design each case individually to match and enhance the characteristics of each patient's smile. After consultation and smile design planning, we prepare your teeth and take impressions or digital scans for custom fabrication. At your final appointment, we bond your veneers permanently and make any needed adjustments.",
+                whyChooseSection: {
+                    title: "What Are the Benefits of Veneers and Esthetic Crowns?",
+                    points: [
+                        "Highly esthetic, relatively instant process to transform your smile (if there is proper spacing, veneers can transform your smile more quickly than orthodontics)",
+                        "Long-lasting results",
+                        "Resistant to breaking, chipping, staining, and wear",
+                        "Biocompatible materials",
+                        "Truly transformational for your confidence",
+                    ],
+                },
+                additionalInfoSection: {
+                    title: "When Would You Use Veneers vs an Esthetic Crown?",
+                    intro: "This will depend on a few key factors that Dr. Ossman will assess. The long-term viability of each option will be considered based on your bite, spacing in your smile, home care, and existing tooth structure.",
+                    points: [
+                        "Dr. Ossman will utilize her experience and esthetic expertise to make a recommendation for your smile.",
+                        "Schedule a consultation to discuss which option is right for you.",
+                    ],
+                },
+                relatedServices: ["cosmetic-dentistry", "teeth-whitening", "smile-makeovers", "crowns-bridges"],
+                gallery: {
+                    title: "Our Veneer & Crown Results",
+                    items: [
+                        { src: "/images/gallery/veneers/6-unit-porcelain-veneers-enumclaw-wa-1.jpg", caption: "6-Unit Veneers by Dr. Ossman", alt: "6-unit porcelain veneers smile transformation in Enumclaw WA" },
+                        { src: "/images/gallery/veneers/6-unit-porcelain-veneers-enumclaw-wa-2.jpg", caption: "6-Unit Veneers by Dr. Ossman", alt: "Porcelain veneers cosmetic dentistry result Enumclaw" },
+                        { src: "/images/gallery/veneers/8-unit-veneers-smile-makeover-dr-ossman.jpg", caption: "8-Unit Veneers by Dr. Ossman", alt: "8-unit veneers smile makeover by Dr. Ossman" },
+                        { src: "/images/gallery/veneers/single-veneer-tooth-repair-bonney-lake.jpg", caption: "Single Unit Veneer by Dr. Ossman", alt: "Single tooth veneer repair in Bonney Lake WA" },
+                        { src: "/images/gallery/veneers/composite-veneers-teeth-reshaping-enumclaw.jpg", caption: "Composite Veneers & Reshaping by Dr. Ossman", alt: "Composite veneers and teeth reshaping Enumclaw dentist" },
+                        { src: "/images/gallery/veneers/single-unit-veneer-cosmetic-dentistry.jpg", caption: "Single Unit Veneer by Dr. Ossman", alt: "Single unit veneer cosmetic dentistry result" },
+                        { src: "/images/gallery/veneers/full-mouth-crown-bridge-restoration.jpg", caption: "13-Unit Crown & Bridge Case by Dr. Ossman", alt: "Full mouth crown and bridge restoration Enumclaw WA" },
+                        { src: "/images/gallery/veneers/6-unit-veneers-smile-transformation.jpg", caption: "6-Unit Veneers by Dr. Ossman", alt: "6-unit veneers smile transformation before and after" },
+                    ],
+                },
             },
             "crowns-bridges": {
-                whatIs: "Dental crowns cap damaged or weakened teeth, restoring their strength and appearance. Bridges replace one or more missing teeth by anchoring artificial teeth to adjacent natural teeth. Both can be made from natural-looking materials that blend seamlessly with your smile.",
+                cardDescription: "Get a perfect-fit crown in one visit with our same-day CEREC technology.",
+                whatIs: "At Ossman Harding Dental in Enumclaw and Bonney Lake, we use CEREC technology to design and mill crowns and bridges right in our office—often completing your restoration in a single visit. No temporary crowns, no waiting on the lab, just a perfect fit in one appointment.",
                 whatWeOffer: [
+                    "Same-day CEREC crowns designed and milled in-office",
+                    "Same-day bridges (depending on size)",
                     "All-ceramic crowns for natural appearance",
-                    "Same-day CEREC crowns available",
-                    "Traditional and implant-supported bridges",
+                    "Implant-supported bridges",
                     "Crown replacement and repair",
-                    "Color matching to existing teeth",
-                    "Durable, long-lasting restorations",
+                    "Tooth-colored composite fillings",
+                    "Color matching to your existing teeth",
                 ],
-                process: "We prepare the tooth by removing any decay and shaping it to receive the crown. Digital impressions are taken and sent to our lab, or we may create same-day crowns using CEREC technology. A temporary crown protects your tooth while the permanent one is made. At your follow-up visit, we cement the permanent crown and adjust your bite as needed.",
+                processSteps: [
+                    "We examine your tooth and take digital impressions—no messy molds",
+                    "Your crown or bridge is designed on-screen using CEREC software",
+                    "We mill your custom restoration right here in our office",
+                    "Your new crown or bridge is seated and adjusted for a perfect fit—all in one visit",
+                ],
+                whyChooseSection: {
+                    title: "Why Choose CEREC Same-Day Crowns?",
+                    points: [
+                        "One appointment instead of two or three visits",
+                        "No temporary crown that can fall off or feel uncomfortable",
+                        "No waiting weeks for a lab to fabricate your restoration",
+                        "Precise digital fit—often better than traditional impressions",
+                        "Durable ceramic material that looks and feels like natural teeth",
+                    ],
+                },
+                additionalInfoSection: {
+                    title: "Why Replace Missing Teeth with a Bridge?",
+                    intro: "Your teeth work together for daily functions from eating to speaking. Missing teeth affect more than your smile:",
+                    points: [
+                        "A missing back tooth can cause your mouth to sink and your face to look older",
+                        "Gaps increase your risk of gum disease",
+                        "Missing teeth can cause speech problems",
+                        "Remaining teeth may shift out of alignment over time",
+                        "Dental implants are also an excellent long-term option—ask us which is right for you",
+                    ],
+                },
+                insuranceSection: {
+                    title: "Affordable Options for Crowns & Bridges",
+                    intro: "We believe everyone deserves a healthy, complete smile.",
+                    points: [
+                        "Most dental insurance plans cover crowns and bridges",
+                        "0% payment plans available",
+                        "We'll help you understand your coverage before treatment",
+                    ],
+                    links: [
+                        { label: "Insurance Coverage", href: "/new-patients/insurance" },
+                        { label: "Payment Plans", href: "/new-patients/payment-options/payment-plans" },
+                    ],
+                },
+                relatedServices: ["restorative-dentistry", "dental-implants", "veneers-esthetic-crowns", "cosmetic-dentistry"],
             },
             "restorative-dentistry": {
+                cardDescription: "Repair damaged teeth with natural-looking restorations that blend seamlessly with your smile.",
                 whatIs: "Restorative dentistry repairs damaged teeth and replaces missing ones, restoring both function and appearance. Using modern materials and techniques, we can create restorations that look and feel like natural teeth, often in just one visit.",
                 whatWeOffer: [
                     "Tooth-colored composite fillings",
@@ -984,8 +1254,10 @@ const _industryConfig = {
                     "Replacement of old metal fillings",
                 ],
                 process: "We evaluate the extent of damage and discuss all treatment options. For fillings, we remove decay, clean the area, and apply tooth-colored composite material. For more extensive repairs, we may recommend crowns, inlays, or onlays. We take time to match materials to your natural tooth color for seamless results.",
+                relatedServices: ["crowns-bridges", "dental-implants", "dental-exams-cleanings", "emergency-dental-care"],
             },
             "emergency-dental-care": {
+                cardDescription: "Severe pain or broken tooth? We offer same-day emergency appointments.",
                 whatIs: "Dental emergencies require prompt attention. Whether you're experiencing severe pain, have a knocked-out tooth, or have a dental infection, we're here to help. We reserve time in our schedule for emergency appointments and can often see you the same day.",
                 whatWeOffer: [
                     "Same-day emergency appointments",
@@ -997,32 +1269,58 @@ const _industryConfig = {
                     "After-hours guidance",
                 ],
                 process: "Call us immediately when you experience a dental emergency. We'll assess your situation over the phone and get you in as soon as possible. Our priority is relieving your pain and addressing the immediate problem. We'll then discuss follow-up care and any additional treatment needed.",
+                relatedServices: ["sedation-dentistry", "oral-surgery", "restorative-dentistry", "wisdom-teeth-extraction"],
             },
             "botox-facial-esthetics": {
-                whatIs: "Beyond beautiful smiles, we offer Botox and facial esthetic treatments to complement your dental work. These treatments can reduce wrinkles, treat TMJ pain, and enhance your overall facial appearance. Our dentists have specialized training in facial anatomy and injection techniques.",
+                cardDescription: "Smooth wrinkles and relieve jaw pain with Botox from Dr. Ossman.",
+                whatIs: "Yes, your dentist can administer Botox and filler! Dentists spend their doctoral years focused on the anatomy of the mouth, jaw, and facial muscles from chin to forehead—making them uniquely suited to be excellent injectors. Dr. Ossman has obtained specialized training from top injectors in the Northwest and administers Botox for both cosmetics and jaw pain relief.",
                 whatWeOffer: [
-                    "Botox for wrinkle reduction",
-                    "Botox for TMJ and jaw pain",
-                    "Dermal fillers for volume restoration",
-                    "Lip enhancement",
-                    "Emface treatments",
-                    "Treatment of gummy smile",
+                    "Masseter injections for jaw pain from clenching and grinding",
+                    "Forehead injections for cosmetic/preventative wrinkle treatment",
+                    "Glabellar region (between the eyes) for frown lines",
+                    "Crow's feet treatment around the corners of the eyes",
+                    "Lip filler for natural-looking volume enhancement",
+                    "Cheek and chin filler to restore volume lost to aging",
+                    "Gummy smile correction",
                 ],
-                process: "During your consultation, we'll discuss your goals and evaluate your facial structure. Treatment sessions are quick, typically 15-30 minutes. Results from Botox appear within a few days and last 3-4 months. Filler results are immediate and can last 6-18 months depending on the product used.",
+                process: "Most patients describe injections as feeling like a small pinch—no anesthesia needed. Dr. Ossman uses the thinnest possible needles and expert techniques to maximize comfort. Injection sites appear as small bumps that disappear within 15-30 minutes. Within 3-14 days, you'll notice facial muscles relaxing and wrinkles smoothing. Results typically last 2-6 months depending on the patient and brand used.",
+                whyChooseSection: {
+                    title: "Why Choose a Dentist for Botox?",
+                    points: [
+                        "Dentists are experts in facial anatomy from chin to forehead",
+                        "Dr. Ossman has specialized training from top Northwest injectors",
+                        "We can treat both cosmetic concerns AND jaw pain in one visit",
+                        "Same attention to detail and precision as your dental care",
+                        "Comfortable, familiar environment—no separate med spa visit needed",
+                    ],
+                },
+                additionalInfoSection: {
+                    title: "What Brands Do You Use?",
+                    intro: "We offer Botox®, Dysport, and Daxxify—the highest quality offerings on the market. We carry multiple brands because each patient responds differently:",
+                    points: [
+                        "Some patients notice faster onset with certain brands",
+                        "Longevity varies based on your body's response to each formula",
+                        "During your consultation, Dr. Ossman will help create a plan that works best for you",
+                    ],
+                },
+                relatedServices: ["cosmetic-dentistry", "smile-makeovers", "veneers-esthetic-crowns", "teeth-whitening"],
             },
             "smile-makeovers": {
+                cardDescription: "Design your dream smile with a personalized plan combining multiple procedures.",
                 whatIs: "A smile makeover is a comprehensive treatment plan that combines multiple cosmetic procedures to transform your smile. Dr. Ossman works with you to design your ideal smile, considering your facial features, goals, and overall oral health.",
                 whatWeOffer: [
                     "Comprehensive smile analysis",
                     "Digital smile design preview",
-                    "Combination of whitening, veneers, bonding",
+                    "Combination of whitening, veneers, esthetic crowns",
                     "Orthodontic integration when needed",
                     "Gum contouring for balanced aesthetics",
                     "Full mouth reconstruction options",
                 ],
                 process: "Your makeover begins with an in-depth consultation where we discuss your vision for your smile. Using digital imaging, we can show you potential outcomes before beginning treatment. We create a phased treatment plan that may include whitening, orthodontics, veneers, and other procedures. Throughout the process, we work together to achieve your dream smile.",
+                relatedServices: ["veneers-esthetic-crowns", "teeth-whitening", "cosmetic-dentistry", "suresmile-clear-braces"],
             },
             "preventive-dentistry": {
+                cardDescription: "Avoid costly problems with regular checkups, cleanings, and preventive care.",
                 whatIs: "Preventive dentistry focuses on maintaining oral health and preventing problems before they start. Through regular checkups, cleanings, and patient education, we help you avoid cavities, gum disease, and other dental issues.",
                 whatWeOffer: [
                     "Regular dental exams and cleanings",
@@ -1034,6 +1332,7 @@ const _industryConfig = {
                     "Oral hygiene education",
                 ],
                 process: "Prevention starts with regular visits every six months. During these appointments, we clean your teeth, check for any developing problems, and provide personalized recommendations. We may suggest sealants for children or night guards for those who grind their teeth. Our goal is to help you maintain a healthy smile for life.",
+                relatedServices: ["dental-exams-cleanings", "restorative-dentistry", "sleep-medicine", "emergency-dental-care"],
             },
         },
     },

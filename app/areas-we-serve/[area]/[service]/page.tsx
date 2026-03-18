@@ -21,14 +21,17 @@ interface PageProps {
     };
 }
 
-// Generate static params for all area + service combinations
+// Generate static params for published area + service combinations only
 export async function generateStaticParams() {
     const industry = industryConfig[businessConfig.industry];
     const allServices = industry.allServices || industry.services;
 
     const params: { area: string; service: string }[] = [];
 
-    for (const area of geoServiceAreas) {
+    // Only generate pages for published areas
+    const publishedAreas = geoServiceAreas.filter((area) => area.published !== false);
+
+    for (const area of publishedAreas) {
         for (const service of allServices) {
             const serviceSlug = service
                 .toLowerCase()
@@ -80,8 +83,12 @@ export function generateMetadata({ params }: PageProps): Metadata {
 
     return generateSEOMetadata(
         {
-            title: `${serviceName} for ${area.name} Residents | ${area.driveTime} from ${nearestOfficeName}`,
-            description: `${serviceName} for ${area.name}, WA residents at our ${nearestOfficeName} dental office. Just ${area.driveTime} away. Experienced team, gentle care, accepting new patients.`,
+            title: area.isOfficeLocation
+                ? `${serviceName} in ${area.name} | ${area.locationDescription || nearestOfficeName}`
+                : `${serviceName} for ${area.name} Residents | ${area.driveTime} from ${nearestOfficeName}`,
+            description: area.isOfficeLocation
+                ? `${serviceName} at our ${nearestOfficeName} office, ${area.locationDescription || `located in ${area.name}`}. Experienced team, gentle care, accepting new patients.`
+                : `${serviceName} for ${area.name}, WA residents at our ${nearestOfficeName} dental office. Just ${area.driveTime} away. Experienced team, gentle care, accepting new patients.`,
             keywords: [
                 ...industry.keywords,
                 serviceName,
@@ -134,7 +141,8 @@ export default function AreaServicePage({ params }: PageProps) {
     const area = findAreaBySlug(params.area);
     const serviceName = findServiceBySlug(params.service);
 
-    if (!area || !serviceName) {
+    // Return 404 if area/service not found or area not published
+    if (!area || !serviceName || area.published === false) {
         notFound();
     }
 
@@ -171,8 +179,10 @@ export default function AreaServicePage({ params }: PageProps) {
             <main id="main-content" className="flex-grow">
                 <Hero
                     backgroundImage={serviceImage || businessConfig.heroImage}
-                    title={`${serviceName} for ${area.name} Residents`}
-                    subtitle={`Available at our ${nearestOfficeName} office — just ${area.driveTime} away`}
+                    title={area.isOfficeLocation ? `${serviceName} in ${area.name}` : `${serviceName} for ${area.name} Residents`}
+                    subtitle={area.isOfficeLocation
+                        ? `${area.locationDescription || `At our ${nearestOfficeName} office`}`
+                        : `Available at our ${nearestOfficeName} office — just ${area.driveTime} away`}
                 />
                 <Breadcrumb
                     items={[
@@ -214,9 +224,18 @@ export default function AreaServicePage({ params }: PageProps) {
                                     </h2>
 
                                     <p className="text-gray-700 leading-relaxed mb-6">
-                                        {area.name} residents can access professional {serviceName.toLowerCase()} services
-                                        at our {nearestOfficeName} dental office, located just {area.driveTime} away
-                                        {area.directionsHint ? ` ${area.directionsHint}` : ""}.
+                                        {area.isOfficeLocation ? (
+                                            <>
+                                                Our {nearestOfficeName} dental office is {area.locationDescription || `located right here in ${area.name}`},
+                                                offering professional {serviceName.toLowerCase()} services to the community.
+                                            </>
+                                        ) : (
+                                            <>
+                                                {area.name} residents can access professional {serviceName.toLowerCase()} services
+                                                at our {nearestOfficeName} dental office, located just {area.driveTime} away
+                                                {area.directionsHint ? ` ${area.directionsHint}` : ""}.
+                                            </>
+                                        )}
                                     </p>
 
                                     {serviceContent?.whatIs ? (
@@ -272,8 +291,17 @@ export default function AreaServicePage({ params }: PageProps) {
                                             </p>
                                             <div className="flex items-center gap-4 text-sm text-gray-600 mb-4">
                                                 <div className="flex items-center gap-1">
-                                                    <Clock className="w-4 h-4" />
-                                                    <span>{area.driveTime} from {area.name}</span>
+                                                    {area.isOfficeLocation ? (
+                                                        <>
+                                                            <MapPin className="w-4 h-4" />
+                                                            <span>{area.locationDescription}</span>
+                                                        </>
+                                                    ) : (
+                                                        <>
+                                                            <Clock className="w-4 h-4" />
+                                                            <span>{area.driveTime} from {area.name}</span>
+                                                        </>
+                                                    )}
                                                 </div>
                                                 <div className="flex items-center gap-1">
                                                     <Phone className="w-4 h-4" />
@@ -331,7 +359,11 @@ export default function AreaServicePage({ params }: PageProps) {
                                     <ul className="space-y-3">
                                         <li className="flex items-start gap-3">
                                             <span className="text-primary-600 font-bold">✓</span>
-                                            <span>Convenient location — just {area.driveTime} from {area.name}</span>
+                                            <span>
+                                                {area.isOfficeLocation
+                                                    ? `Convenient location — ${area.locationDescription || `right here in ${area.name}`}`
+                                                    : `Convenient location — just ${area.driveTime} from ${area.name}`}
+                                            </span>
                                         </li>
                                         <li className="flex items-start gap-3">
                                             <span className="text-primary-600 font-bold">✓</span>

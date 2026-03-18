@@ -131,7 +131,7 @@ export default function PaymentOptionsPage() {
                                                 <span className="text-3xl font-bold text-white">$29</span>
                                                 <span className="text-white text-lg"> /month</span>
                                             </div>
-                                            <ul className="space-y-2 flex-grow">
+                                            <ul className="space-y-2 flex-grow !pl-0 !ml-0 list-none">
                                                 {planBenefits.map((benefit) => (
                                                     <li key={benefit} className="flex items-start gap-2 text-sm">
                                                         <CheckCircle2 className="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" />
@@ -160,7 +160,7 @@ export default function PaymentOptionsPage() {
                                                 <span className="text-3xl font-bold text-white">$50</span>
                                                 <span className="text-white text-lg"> /month</span>
                                             </div>
-                                            <ul className="space-y-2 flex-grow">
+                                            <ul className="space-y-2 flex-grow !pl-0 !ml-0 list-none">
                                                 {planBenefits.map((benefit) => (
                                                     <li key={benefit} className="flex items-start gap-2 text-sm">
                                                         <CheckCircle2 className="w-4 h-4 text-primary-600 flex-shrink-0 mt-0.5" />
@@ -186,7 +186,7 @@ export default function PaymentOptionsPage() {
                                                 <span className="text-3xl font-bold text-white">$70</span>
                                                 <span className="text-white text-lg"> /month</span>
                                             </div>
-                                            <ul className="space-y-2 flex-grow">
+                                            <ul className="space-y-2 flex-grow !pl-0 !ml-0 list-none">
                                                 {perioPlanBenefits.map((benefit) => (
                                                     <li key={benefit} className="flex items-start gap-2 text-sm">
                                                         <CheckCircle2 className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" />
@@ -265,14 +265,12 @@ export default function PaymentOptionsPage() {
                                             </div>
 
                                             <div className="text-center">
-                                                <a
-                                                    href="https://withcherry.com"
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
+                                                <Link
+                                                    href="/new-patients/payment-options/payment-plans"
                                                     className="inline-flex items-center justify-center px-8 py-3 text-lg font-semibold bg-button-600 text-white rounded-xl hover:bg-button-700 transition-colors"
                                                 >
                                                     Learn More About Payment Plans
-                                                </a>
+                                                </Link>
                                             </div>
                                         </div>
                                     </div>

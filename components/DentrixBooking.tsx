@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
-import { Calendar, X } from "lucide-react";
+import { Calendar, X, ExternalLink } from "lucide-react";
 
 interface DentrixBookingProps {
     location?: "enumclaw" | "bonney-lake";
@@ -23,6 +23,17 @@ const LOCATION_IMAGES: Record<string, string> = {
     "bonney-lake": "/images/bonney-lake/exterior-main.jpg",
 };
 
+// Detect iOS Safari (has issues with third-party cookies in iframes)
+function isIOSSafari(): boolean {
+    if (typeof window === "undefined") return false;
+    const ua = window.navigator.userAgent;
+    const iOS = /iPad|iPhone|iPod/.test(ua);
+    const webkit = /WebKit/.test(ua);
+    const notChrome = !/CriOS/.test(ua);
+    const notFirefox = !/FxiOS/.test(ua);
+    return iOS && webkit && notChrome && notFirefox;
+}
+
 export function DentrixBooking({
     location,
     buttonText = "Book Online",
@@ -32,8 +43,22 @@ export function DentrixBooking({
     const [showBooking, setShowBooking] = useState(fullPage);
     const [selectedLocation, setSelectedLocation] = useState<string | null>(location || null);
     const [iframeLoaded, setIframeLoaded] = useState(false);
+    const [useNewTab, setUseNewTab] = useState(false);
+
+    // Check for iOS Safari on mount
+    useEffect(() => {
+        setUseNewTab(isIOSSafari());
+    }, []);
 
     const handleOpenBooking = (loc?: string) => {
+        const targetLocation = loc || selectedLocation;
+
+        // On iOS Safari, open in new tab instead of iframe
+        if (useNewTab && targetLocation) {
+            window.open(BOOKING_URLS[targetLocation], "_blank", "noopener,noreferrer");
+            return;
+        }
+
         if (loc) {
             setSelectedLocation(loc);
         }
@@ -54,13 +79,13 @@ export function DentrixBooking({
                 {/* Location Selector (if no location pre-selected) */}
                 {!selectedLocation && (
                     <div>
-                        <h3 className="text-lg font-semibold text-gray-900 mb-4 text-center">
+                        <h3 className="text-lg font-normal text-gray-900 mb-4 text-center">
                             Select Your Preferred Location
                         </h3>
-                        <div className="flex flex-col gap-4">
+                        <div className="flex flex-col gap-3">
                             <button
                                 onClick={() => handleOpenBooking("enumclaw")}
-                                className="relative w-full h-32 rounded-xl overflow-hidden group"
+                                className="relative w-full h-24 rounded-xl overflow-hidden group"
                             >
                                 <Image
                                     src={LOCATION_IMAGES["enumclaw"]}
@@ -69,14 +94,14 @@ export function DentrixBooking({
                                     className="object-cover transition-transform duration-300 group-hover:scale-105"
                                 />
                                 <div className="absolute inset-0 bg-button-600/95 group-hover:bg-button-700 transition-colors" />
-                                <div className="absolute inset-0 flex flex-col items-center justify-center text-white drop-shadow-md">
+                                <div className="absolute inset-0 flex flex-col items-center justify-center text-white drop-shadow-md p-4">
                                     <span className="text-xl font-bold">Enumclaw Office</span>
                                     <span className="text-sm opacity-90 mt-1">1705 Cole St, Enumclaw, WA</span>
                                 </div>
                             </button>
                             <button
                                 onClick={() => handleOpenBooking("bonney-lake")}
-                                className="relative w-full h-32 rounded-xl overflow-hidden group"
+                                className="relative w-full h-24 rounded-xl overflow-hidden group"
                             >
                                 <Image
                                     src={LOCATION_IMAGES["bonney-lake"]}
@@ -85,7 +110,7 @@ export function DentrixBooking({
                                     className="object-cover transition-transform duration-300 group-hover:scale-105"
                                 />
                                 <div className="absolute inset-0 bg-button-600/95 group-hover:bg-button-700 transition-colors" />
-                                <div className="absolute inset-0 flex flex-col items-center justify-center text-white drop-shadow-md">
+                                <div className="absolute inset-0 flex flex-col items-center justify-center text-white drop-shadow-md p-4">
                                     <span className="text-xl font-bold">Bonney Lake Office</span>
                                     <span className="text-sm opacity-90 mt-1">19034 141st Street Ct E, Bonney Lake, WA</span>
                                 </div>
@@ -94,8 +119,8 @@ export function DentrixBooking({
                     </div>
                 )}
 
-                {/* Iframe Container */}
-                {selectedLocation && (
+                {/* Iframe Container (or new tab button for iOS Safari) */}
+                {selectedLocation && !useNewTab && (
                     <div className="relative">
                         {/* Back button if location was selected via UI */}
                         {!location && (
@@ -125,6 +150,25 @@ export function DentrixBooking({
                             title="Schedule Appointment"
                             onLoad={() => setIframeLoaded(true)}
                         />
+                    </div>
+                )}
+
+                {/* iOS Safari: Show button to open in new tab when location is pre-selected */}
+                {selectedLocation && useNewTab && (
+                    <div className="text-center py-8">
+                        <p className="text-gray-600 mb-4">
+                            Tap below to open our scheduling system
+                        </p>
+                        <a
+                            href={BOOKING_URLS[selectedLocation]}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-button-600 hover:bg-button-700 text-white font-semibold rounded-xl transition-colors"
+                        >
+                            <Calendar className="w-5 h-5" />
+                            Book Appointment
+                            <ExternalLink className="w-4 h-4" />
+                        </a>
                     </div>
                 )}
             </div>
@@ -214,7 +258,7 @@ export function DentrixBooking({
                                 )}
 
                                 {/* Iframe */}
-                                {selectedLocation && (
+                                {selectedLocation && !useNewTab && (
                                     <div className="relative">
                                         {/* Loading state */}
                                         {!iframeLoaded && (
@@ -233,6 +277,25 @@ export function DentrixBooking({
                                             title="Schedule Appointment"
                                             onLoad={() => setIframeLoaded(true)}
                                         />
+                                    </div>
+                                )}
+
+                                {/* iOS Safari: Show button to open in new tab */}
+                                {selectedLocation && useNewTab && (
+                                    <div className="text-center py-8">
+                                        <p className="text-gray-600 mb-4">
+                                            Tap below to open our scheduling system
+                                        </p>
+                                        <a
+                                            href={BOOKING_URLS[selectedLocation]}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-button-600 hover:bg-button-700 text-white font-semibold rounded-xl transition-colors"
+                                        >
+                                            <Calendar className="w-5 h-5" />
+                                            Book Appointment
+                                            <ExternalLink className="w-4 h-4" />
+                                        </a>
                                     </div>
                                 )}
                             </div>

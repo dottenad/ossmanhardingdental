@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Phone, Calendar, MapPin } from "lucide-react";
-import { businessConfig, industryConfig } from "@/lib/config";
+import { businessConfig, industryConfig, siteConfig } from "@/lib/config";
 import { generateMetadata as generateSEOMetadata } from "@/lib/seo";
 import { formatPhoneDisplay, formatPhoneLink } from "@/lib/phone";
 import { Header } from "@/components/Header";
@@ -29,8 +29,13 @@ interface PageProps {
     };
 }
 
-// Generate static params for all services
+// Generate static params for all services (if location services are published)
 export async function generateStaticParams() {
+    // Don't generate pages if location services are not published
+    if (!siteConfig.publishLocationServices) {
+        return [];
+    }
+
     const industry = industryConfig[businessConfig.industry];
     const allServices = industry.allServices || industry.services;
 
@@ -85,7 +90,8 @@ export function generateMetadata({ params }: PageProps): Metadata {
 export default function EnumclawServicePage({ params }: PageProps) {
     const serviceName = findServiceBySlug(params.service);
 
-    if (!serviceName) {
+    // Return 404 if service not found or location services not published
+    if (!serviceName || !siteConfig.publishLocationServices) {
         notFound();
     }
 

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { businessConfig, industryConfig } from "@/lib/config";
 
 interface ServiceCardProps {
     service: string;
@@ -11,6 +12,14 @@ export function ServiceCard({ service }: ServiceCardProps) {
         .replace(/\s+/g, "-")
         .replace(/[^a-z0-9-]/g, "")
         .replace(/-+/g, "-");
+
+    // Get service-specific description from config
+    const serviceContent = (
+        industryConfig[businessConfig.industry].servicePageContent ?? {}
+    )[serviceSlug];
+
+    const description = serviceContent?.cardDescription
+        ?? `Professional ${service.toLowerCase()} services you can trust.`;
 
     return (
         <div className="group bg-white p-8 rounded-2xl shadow-soft border border-gray-100 hover:shadow-large hover:border-primary-200 transition-all duration-300 transform hover:-translate-y-1">
@@ -25,8 +34,7 @@ export function ServiceCard({ service }: ServiceCardProps) {
                 {service}
             </h3>
             <p className="text-gray-600 mb-6 leading-relaxed">
-                Professional {service.toLowerCase()} services you can trust. Our
-                experienced team delivers quality results every time.
+                {description}
             </p>
             <Link
                 href={`/services/${serviceSlug}`}

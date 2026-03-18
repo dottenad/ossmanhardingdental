@@ -1,5 +1,5 @@
 import { MetadataRoute } from "next";
-import { businessConfig, industryConfig, geoServiceAreas } from "@/lib/config";
+import { businessConfig, industryConfig, geoServiceAreas, siteConfig } from "@/lib/config";
 
 // Define the two main office locations
 const OFFICE_LOCATIONS = [
@@ -46,13 +46,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 0.7,
         },
         {
-            url: `${baseUrl}/gallery`,
+            url: `${baseUrl}/faq`,
             lastModified: currentDate,
-            changeFrequency: "weekly" as const,
-            priority: 0.8,
+            changeFrequency: "monthly" as const,
+            priority: 0.7,
         },
         {
-            url: `${baseUrl}/faq`,
+            url: `${baseUrl}/new-patients/payment-options/payment-plans`,
             lastModified: currentDate,
             changeFrequency: "monthly" as const,
             priority: 0.7,
@@ -86,65 +86,100 @@ export default function sitemap(): MetadataRoute.Sitemap {
         };
     });
 
-    // Top-level location pages (e.g., /enumclaw, /bonney-lake)
+    // Locations hub page
+    const locationsHubRoute = {
+        url: `${baseUrl}/locations`,
+        lastModified: currentDate,
+        changeFrequency: "monthly" as const,
+        priority: 0.9,
+    };
+
+    // Location pages (e.g., /locations/enumclaw, /locations/bonney-lake)
     const locationRoutes = OFFICE_LOCATIONS.map((location) => ({
-        url: `${baseUrl}/${location.slug}`,
+        url: `${baseUrl}/locations/${location.slug}`,
         lastModified: currentDate,
         changeFrequency: "monthly" as const,
         priority: 0.9,
     }));
 
-    // Location sub-pages (services listing, team)
-    const locationSubpageRoutes = OFFICE_LOCATIONS.flatMap((location) => [
-        {
-            url: `${baseUrl}/${location.slug}/services`,
-            lastModified: currentDate,
-            changeFrequency: "monthly" as const,
-            priority: 0.85,
-        },
-        {
-            url: `${baseUrl}/${location.slug}/team`,
-            lastModified: currentDate,
-            changeFrequency: "monthly" as const,
-            priority: 0.8,
-        },
-    ]);
+    // Location sub-pages (team, gallery, careers, and services if published)
+    const locationSubpageRoutes = OFFICE_LOCATIONS.flatMap((location) => {
+        const pages = [
+            {
+                url: `${baseUrl}/locations/${location.slug}/team`,
+                lastModified: currentDate,
+                changeFrequency: "monthly" as const,
+                priority: 0.8,
+            },
+            {
+                url: `${baseUrl}/locations/${location.slug}/gallery`,
+                lastModified: currentDate,
+                changeFrequency: "monthly" as const,
+                priority: 0.75,
+            },
+            {
+                url: `${baseUrl}/locations/${location.slug}/careers`,
+                lastModified: currentDate,
+                changeFrequency: "monthly" as const,
+                priority: 0.7,
+            },
+        ];
 
-    // Location-service pages (e.g., /enumclaw/services/dental-implants)
-    const locationServiceRoutes = OFFICE_LOCATIONS.flatMap((location) =>
-        allServices.map((service) => {
-            const serviceSlug = service
-                .toLowerCase()
-                .replace(/\s+/g, "-")
-                .replace(/[^a-z0-9-]/g, "")
-                .replace(/-+/g, "-");
-            return {
-                url: `${baseUrl}/${location.slug}/services/${serviceSlug}`,
+        // Only include services listing page if location services are published
+        if (siteConfig.publishLocationServices) {
+            pages.push({
+                url: `${baseUrl}/locations/${location.slug}/services`,
                 lastModified: currentDate,
                 changeFrequency: "monthly" as const,
                 priority: 0.85,
-            };
-        })
-    );
+            });
+        }
 
-    // Areas We Serve pages
-    const areasWeServeRoutes = [
-        {
-            url: `${baseUrl}/areas-we-serve`,
-            lastModified: currentDate,
-            changeFrequency: "monthly" as const,
-            priority: 0.8,
-        },
-        ...geoServiceAreas.map((area) => ({
-            url: `${baseUrl}/areas-we-serve/${area.slug}`,
-            lastModified: currentDate,
-            changeFrequency: "monthly" as const,
-            priority: 0.7,
-        })),
-    ];
+        return pages;
+    });
+
+    // Location-service pages (e.g., /locations/enumclaw/services/dental-implants)
+    // Only include if location services are published
+    const locationServiceRoutes = siteConfig.publishLocationServices
+        ? OFFICE_LOCATIONS.flatMap((location) =>
+              allServices.map((service) => {
+                  const serviceSlug = service
+                      .toLowerCase()
+                      .replace(/\s+/g, "-")
+                      .replace(/[^a-z0-9-]/g, "")
+                      .replace(/-+/g, "-");
+                  return {
+                      url: `${baseUrl}/locations/${location.slug}/services/${serviceSlug}`,
+                      lastModified: currentDate,
+                      changeFrequency: "monthly" as const,
+                      priority: 0.85,
+                  };
+              })
+          )
+        : [];
+
+    // Areas We Serve pages - only include published areas
+    const publishedAreas = geoServiceAreas.filter((area) => area.published !== false);
+    const areasWeServeRoutes = publishedAreas.length > 0
+        ? [
+              {
+                  url: `${baseUrl}/areas-we-serve`,
+                  lastModified: currentDate,
+                  changeFrequency: "monthly" as const,
+                  priority: 0.8,
+              },
+              ...publishedAreas.map((area) => ({
+                  url: `${baseUrl}/areas-we-serve/${area.slug}`,
+                  lastModified: currentDate,
+                  changeFrequency: "monthly" as const,
+                  priority: 0.7,
+              })),
+          ]
+        : [];
 
     // Areas We Serve + Service pages (e.g., /areas-we-serve/tehaleh/dental-implants)
-    const areaServiceRoutes = geoServiceAreas.flatMap((area) =>
+    // Only include for published areas
+    const areaServiceRoutes = publishedAreas.flatMap((area) =>
         allServices.map((service) => {
             const serviceSlug = service
                 .toLowerCase()
@@ -160,33 +195,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
         })
     );
 
-    // Gallery project pages
-    const galleryRoutes = (businessConfig.gallery || []).map((project) => {
-        const city =
-            project.location?.city.toLowerCase().replace(/\s+/g, "-") ||
-            "project";
-        const projectTypeSlug = project.projectType
-            .toLowerCase()
-            .replace(/\s+/g, "-")
-            .replace(/[^a-z0-9-]/g, "")
-            .replace(/-+/g, "-");
-        const projectSlug = `${city}-${projectTypeSlug}`;
-        return {
-            url: `${baseUrl}/gallery/${projectSlug}`,
-            lastModified: currentDate,
-            changeFrequency: "monthly" as const,
-            priority: 0.7,
-        };
-    });
-
     return [
         ...routes,
         ...serviceRoutes,
+        locationsHubRoute,
         ...locationRoutes,
         ...locationSubpageRoutes,
         ...locationServiceRoutes,
         ...areasWeServeRoutes,
         ...areaServiceRoutes,
-        ...galleryRoutes,
     ];
 }

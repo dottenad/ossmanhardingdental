@@ -190,7 +190,7 @@ export default function EnumclawPage() {
                                     </p>
                                 </div>
 
-                                {/* Services at this location */}
+                                {/* Services at this location - Commented out for Phase 1 rollout (location service pages not yet published)
                                 <div className="mb-8">
                                     <h2 className="text-3xl font-bold text-gray-900 mb-6">
                                         Services Available in {LOCATION.name}
@@ -223,6 +223,7 @@ export default function EnumclawPage() {
                                         </Link>
                                     </div>
                                 </div>
+                                */}
 
                                 {/* Meet Our Team */}
                                 <div className="mb-8">

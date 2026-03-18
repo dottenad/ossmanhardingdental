@@ -19,11 +19,13 @@ interface PageProps {
     };
 }
 
-// Generate static params for all service areas
+// Generate static params for published service areas only
 export async function generateStaticParams() {
-    return geoServiceAreas.map((area) => ({
-        area: area.slug,
-    }));
+    return geoServiceAreas
+        .filter((area) => area.published !== false)
+        .map((area) => ({
+            area: area.slug,
+        }));
 }
 
 // Find area by slug
@@ -42,15 +44,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
     const nearestOfficeName = area.nearestOffice === "enumclaw" ? "Enumclaw" : "Bonney Lake";
 
-    const isTehaleh = area.slug === "tehaleh";
+    const isOfficeLocation = area.isOfficeLocation === true;
 
     return generateSEOMetadata(
         {
-            title: isTehaleh
-                ? `Dentist Serving ${area.name} | Right in Your Neighborhood`
+            title: isOfficeLocation
+                ? `Dentist in ${area.name} | ${area.locationDescription || nearestOfficeName}`
                 : `Dentist Serving ${area.name} | ${area.driveTime} from ${nearestOfficeName}`,
-            description: isTehaleh
-                ? `${businessConfig.name} proudly serves ${area.name} residents. Our Bonney Lake office is right here in the neighborhood. Schedule your appointment today!`
+            description: isOfficeLocation
+                ? `${businessConfig.name} is ${area.locationDescription || `located in ${area.name}`}. Comprehensive dental care for ${area.name} residents. Schedule your appointment today!`
                 : `${businessConfig.name} proudly serves patients from ${area.name}, WA. Our ${nearestOfficeName} office is just ${area.driveTime} away. Schedule your appointment today!`,
             url: `${businessConfig.website}/areas-we-serve/${area.slug}`,
         },
@@ -84,7 +86,8 @@ function generateServiceAreaSchema(area: GeoServiceArea) {
 export default function ServiceAreaPage({ params }: PageProps) {
     const area = findAreaBySlug(params.area);
 
-    if (!area) {
+    // Return 404 if area not found or not published
+    if (!area || area.published === false) {
         notFound();
     }
 
@@ -122,10 +125,12 @@ export default function ServiceAreaPage({ params }: PageProps) {
                 {/* Hero Section */}
                 <Hero
                     backgroundImage={heroImage}
-                    title={`Dentist Serving ${area.name}`}
-                    subtitle={area.slug === "tehaleh"
-                        ? "Our Bonney Lake Office is right here in the neighborhood"
-                        : `Our ${nearestOfficeName} office is just ${area.driveTime} away`}
+                    title={area.isOfficeLocation ? `Dentist in ${area.name}` : `Dentist Serving ${area.name}`}
+                    subtitle={area.isOfficeLocation
+                        ? area.locationDescription || `Our office is located right here in ${area.name}`
+                        : area.slug === "tehaleh"
+                            ? "Our Bonney Lake Office is right here in the neighborhood"
+                            : `Our ${nearestOfficeName} office is just ${area.driveTime} away`}
                 />
                 {/* Breadcrumb */}
                 <Breadcrumb
@@ -152,19 +157,35 @@ export default function ServiceAreaPage({ params }: PageProps) {
                                             {area.description}
                                         </p>
                                         <p className="text-gray-700 leading-relaxed">
-                                            At {businessConfig.name}, we&apos;re proud to serve patients from {area.name} and
-                                            the surrounding area. Our nearest office to {area.name} is our{" "}
-                                            <Link
-                                                href={nearestOfficeHref}
-                                                className="text-primary-600 hover:text-primary-700 font-semibold hover:underline"
-                                            >
-                                                {nearestOfficeName} location
-                                            </Link>
-                                            —{area.directionsHint || `just ${area.driveTime} away`}.
+                                            {area.isOfficeLocation ? (
+                                                <>
+                                                    At {businessConfig.name}, we&apos;re proud to be part of the {area.name} community.
+                                                    Our{" "}
+                                                    <Link
+                                                        href={nearestOfficeHref}
+                                                        className="text-primary-600 hover:text-primary-700 font-semibold hover:underline"
+                                                    >
+                                                        {nearestOfficeName} office
+                                                    </Link>
+                                                    {" "}is {area.directionsHint || area.locationDescription}.
+                                                </>
+                                            ) : (
+                                                <>
+                                                    At {businessConfig.name}, we&apos;re proud to serve patients from {area.name} and
+                                                    the surrounding area. Our nearest office to {area.name} is our{" "}
+                                                    <Link
+                                                        href={nearestOfficeHref}
+                                                        className="text-primary-600 hover:text-primary-700 font-semibold hover:underline"
+                                                    >
+                                                        {nearestOfficeName} location
+                                                    </Link>
+                                                    —{area.directionsHint || `just ${area.driveTime} away`}.
+                                                </>
+                                            )}
                                         </p>
                                     </div>
 
-                                    {/* Nearest Office Card */}
+                                    {/* Office Card */}
                                     <div className="bg-primary-50 border border-primary-200 rounded-xl p-6 mb-10">
                                         <div className="flex items-start gap-4">
                                             <div className="w-14 h-14 bg-primary-600 rounded-xl flex items-center justify-center flex-shrink-0">
@@ -172,16 +193,23 @@ export default function ServiceAreaPage({ params }: PageProps) {
                                             </div>
                                             <div className="flex-1">
                                                 <h3 className="text-xl font-bold text-gray-900 mb-2">
-                                                    Your Nearest Office: {nearestOfficeName}
+                                                    {area.isOfficeLocation ? `Our ${nearestOfficeName} Office` : `Your Nearest Office: ${nearestOfficeName}`}
                                                 </h3>
                                                 <p className="text-gray-700 mb-2">
                                                     {nearestOfficeAddress}
                                                 </p>
                                                 <div className="flex items-center gap-4 text-sm text-gray-600 mb-4">
-                                                    <div className="flex items-center gap-1">
-                                                        <Clock className="w-4 h-4" />
-                                                        <span>{area.driveTime} drive</span>
-                                                    </div>
+                                                    {area.isOfficeLocation ? (
+                                                        <div className="flex items-center gap-1">
+                                                            <MapPin className="w-4 h-4" />
+                                                            <span>{area.locationDescription}</span>
+                                                        </div>
+                                                    ) : (
+                                                        <div className="flex items-center gap-1">
+                                                            <Clock className="w-4 h-4" />
+                                                            <span>{area.driveTime} drive</span>
+                                                        </div>
+                                                    )}
                                                     <div className="flex items-center gap-1">
                                                         <Phone className="w-4 h-4" />
                                                         <a
@@ -240,7 +268,9 @@ export default function ServiceAreaPage({ params }: PageProps) {
                                                     <CheckCircle2 className="w-6 h-6 text-primary-600 flex-shrink-0 mt-0.5" />
                                                     <div>
                                                         <h4 className="font-semibold text-gray-900">Convenient Location</h4>
-                                                        <p className="text-gray-600 text-sm">Just {area.driveTime} from {area.name}</p>
+                                                        <p className="text-gray-600 text-sm">
+                                                            {area.isOfficeLocation ? area.locationDescription : `Just ${area.driveTime} from ${area.name}`}
+                                                        </p>
                                                     </div>
                                                 </div>
                                                 <div className="flex items-start gap-3 p-4 bg-gray-50 rounded-lg">
@@ -329,7 +359,9 @@ export default function ServiceAreaPage({ params }: PageProps) {
                                             Schedule Your Visit Today
                                         </h2>
                                         <p className="text-gray-600 mb-6">
-                                            {area.name} residents can schedule at our {nearestOfficeName} office—just {area.driveTime} away.
+                                            {area.isOfficeLocation
+                                                ? `Visit our ${nearestOfficeName} office—${area.locationDescription || `right here in ${area.name}`}.`
+                                                : `${area.name} residents can schedule at our ${nearestOfficeName} office—just ${area.driveTime} away.`}
                                         </p>
                                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                                             <Link

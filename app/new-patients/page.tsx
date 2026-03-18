@@ -53,22 +53,41 @@ export default function NewPatientsPage() {
                     ]}
                 />
 
-                {/* Intro Section */}
+                {/* Intro Section with Location Cards */}
                 <section className="py-12 px-4 bg-white">
-                    <div className="max-w-4xl mx-auto text-center">
-                        <p className="text-xl text-gray-700 leading-relaxed mb-6">
+                    <div className="max-w-5xl mx-auto">
+                        <p className="text-xl text-gray-700 leading-relaxed mb-8 text-center">
                             We have two amazing locations with incredible teams to serve your dental needs:
                         </p>
-                        <p className="text-lg text-gray-700 mb-8">
-                            <Link href="/locations/enumclaw" className="text-primary-600 hover:text-primary-700 font-semibold hover:underline">
-                                Enumclaw
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                            <Link href="/locations/enumclaw" className="group relative h-56 rounded-xl overflow-hidden shadow-lg">
+                                <Image
+                                    src="/images/enumclaw/exterior-main.jpg"
+                                    alt="Ossman Harding Dental Enumclaw Office"
+                                    fill
+                                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                                <div className="absolute bottom-0 left-0 right-0 p-6">
+                                    <h3 className="text-white text-2xl font-bold group-hover:text-primary-200 transition-colors">Enumclaw Office</h3>
+                                    <p className="text-white/90 text-sm">1705 Cole St, Enumclaw, WA 98022</p>
+                                </div>
                             </Link>
-                            {" "}and{" "}
-                            <Link href="/locations/bonney-lake" className="text-primary-600 hover:text-primary-700 font-semibold hover:underline">
-                                Bonney Lake
+                            <Link href="/locations/bonney-lake" className="group relative h-56 rounded-xl overflow-hidden shadow-lg">
+                                <Image
+                                    src="/images/bonney-lake/exterior-main.jpg"
+                                    alt="Ossman Harding Dental Bonney Lake Office"
+                                    fill
+                                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                                <div className="absolute bottom-0 left-0 right-0 p-6">
+                                    <h3 className="text-white text-2xl font-bold group-hover:text-primary-200 transition-colors">Bonney Lake Office</h3>
+                                    <p className="text-white/90 text-sm">19034 141st Street Ct E, Bonney Lake, WA 98391</p>
+                                    <p className="text-white/80 text-xs">Serving Tehaleh & Lake Tapps</p>
+                                </div>
                             </Link>
-                            {" "}(Tehaleh)
-                        </p>
+                        </div>
                     </div>
                 </section>
 
@@ -139,32 +158,85 @@ export default function NewPatientsPage() {
                     </div>
                 </section>
 
-                {/* Office Images Section */}
+                {/* What to Expect Section */}
                 <section className="py-12 px-4 bg-white">
-                    <div className="max-w-6xl mx-auto">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            <div className="relative h-80 rounded-xl overflow-hidden shadow-lg">
-                                <Image
-                                    src="/images/offices/enumclaw-office.jpg"
-                                    alt="Ossman Harding Dental Enumclaw Office"
-                                    fill
-                                    className="object-cover"
-                                />
-                                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
-                                    <h3 className="text-white text-xl font-bold">Enumclaw Office</h3>
-                                    <p className="text-white/90 text-sm">1705 Cole St, Enumclaw, WA 98022</p>
+                    <div className="max-w-5xl mx-auto">
+                        <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+                            What to Expect at Your First Visit
+                        </h2>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div className="text-center p-6">
+                                <div className="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <span className="text-2xl font-bold text-primary-600">1</span>
+                                </div>
+                                <h3 className="text-lg font-bold text-gray-900 mb-2">Warm Welcome</h3>
+                                <p className="text-gray-600 text-sm">
+                                    Our friendly team will greet you and help you complete any remaining paperwork.
+                                </p>
+                            </div>
+                            <div className="text-center p-6">
+                                <div className="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <span className="text-2xl font-bold text-primary-600">2</span>
+                                </div>
+                                <h3 className="text-lg font-bold text-gray-900 mb-2">Comprehensive Exam</h3>
+                                <p className="text-gray-600 text-sm">
+                                    Your dentist will perform a thorough examination and discuss your dental health goals.
+                                </p>
+                            </div>
+                            <div className="text-center p-6">
+                                <div className="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <span className="text-2xl font-bold text-primary-600">3</span>
+                                </div>
+                                <h3 className="text-lg font-bold text-gray-900 mb-2">Personalized Plan</h3>
+                                <p className="text-gray-600 text-sm">
+                                    We&apos;ll create a customized treatment plan tailored to your needs and budget.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Why Choose Us Section */}
+                <section className="py-12 px-4 bg-primary-50">
+                    <div className="max-w-5xl mx-auto">
+                        <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+                            Why Patients Choose Us
+                        </h2>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div className="flex items-start gap-4 bg-white p-6 rounded-xl">
+                                <div className="w-10 h-10 bg-primary-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <span className="text-white font-bold">✓</span>
+                                </div>
+                                <div>
+                                    <h3 className="font-bold text-gray-900 mb-1">Family-Owned Practice</h3>
+                                    <p className="text-gray-600 text-sm">Dr. Harding founded our practice in 2001, and the Ossman family continues the tradition of personalized care.</p>
                                 </div>
                             </div>
-                            <div className="relative h-80 rounded-xl overflow-hidden shadow-lg">
-                                <Image
-                                    src="/images/offices/bonney-lake-office.jpg"
-                                    alt="Ossman Harding Dental Bonney Lake Office"
-                                    fill
-                                    className="object-cover"
-                                />
-                                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
-                                    <h3 className="text-white text-xl font-bold">Bonney Lake Office</h3>
-                                    <p className="text-white/90 text-sm">19034 141st Street Ct E, Bonney Lake, WA 98391</p>
+                            <div className="flex items-start gap-4 bg-white p-6 rounded-xl">
+                                <div className="w-10 h-10 bg-primary-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <span className="text-white font-bold">✓</span>
+                                </div>
+                                <div>
+                                    <h3 className="font-bold text-gray-900 mb-1">All Services In-House</h3>
+                                    <p className="text-gray-600 text-sm">From cleanings to implants, cosmetic dentistry to oral surgery — no need for referrals.</p>
+                                </div>
+                            </div>
+                            <div className="flex items-start gap-4 bg-white p-6 rounded-xl">
+                                <div className="w-10 h-10 bg-primary-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <span className="text-white font-bold">✓</span>
+                                </div>
+                                <div>
+                                    <h3 className="font-bold text-gray-900 mb-1">Flexible Payment Options</h3>
+                                    <p className="text-gray-600 text-sm">We accept all PPO insurance, offer membership plans, and provide 0% financing.</p>
+                                </div>
+                            </div>
+                            <div className="flex items-start gap-4 bg-white p-6 rounded-xl">
+                                <div className="w-10 h-10 bg-primary-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <span className="text-white font-bold">✓</span>
+                                </div>
+                                <div>
+                                    <h3 className="font-bold text-gray-900 mb-1">Modern Technology</h3>
+                                    <p className="text-gray-600 text-sm">Digital x-rays, 3D imaging, and the latest techniques for comfortable, efficient care.</p>
                                 </div>
                             </div>
                         </div>
