@@ -66,7 +66,8 @@ export default function AboutPage() {
                                             width={400}
                                             height={300}
                                             className="w-full h-auto rounded-xl shadow-lg"
-                                            sizes="(max-width: 768px) 100vw, 300px"
+                                            sizes="(max-width: 768px) 100vw, 50vw"
+                                            priority
                                         />
                                         <p className="text-center text-gray-600 mt-2 mb-0 text-sm font-medium">Our Doctors</p>
                                     </div>
