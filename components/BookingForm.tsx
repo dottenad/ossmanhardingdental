@@ -121,7 +121,7 @@ export function BookingForm({ singleColumn = false }: BookingFormProps) {
         <form
             onSubmit={handleSubmit}
             className="bg-white rounded-lg p-6 shadow-lg border border-black/10"
-            aria-label="Book Appointment Form"
+            aria-label="Schedule Appointment Form"
             method="POST"
             action="#"
         >

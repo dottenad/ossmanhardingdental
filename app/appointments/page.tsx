@@ -61,7 +61,7 @@ export default function AppointmentsPage() {
                             <div className="lg:sticky lg:top-[11.5rem]">
                                 <div className="bg-white p-6 rounded-2xl shadow-soft border border-gray-200">
                                     <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
-                                        Book Your Appointment
+                                        Schedule Your Appointment
                                     </h2>
                                     <DentrixBooking fullPage={true} />
                                 </div>

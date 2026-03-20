@@ -172,7 +172,7 @@ export default function EnumclawServicesPage() {
                                 <div className="lg:sticky lg:top-[11.5rem]">
                                     <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-200">
                                         <h3 className="text-xl font-bold text-gray-900 mb-4 text-center">
-                                            Book at Enumclaw
+                                            Schedule at Enumclaw
                                         </h3>
                                         <DentrixBooking location="enumclaw" fullPage={true} />
                                     </div>

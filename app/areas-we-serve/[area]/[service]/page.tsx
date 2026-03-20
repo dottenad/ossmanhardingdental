@@ -147,8 +147,8 @@ export default function AreaServicePage({ params }: PageProps) {
     }
 
     const nearestOfficeName = area.nearestOffice === "enumclaw" ? "Enumclaw" : "Bonney Lake";
-    const nearestOfficeHref = `/${area.nearestOffice}`;
-    const nearestOfficeServiceHref = `/${area.nearestOffice}/${params.service}`;
+    const nearestOfficeHref = `/locations/${area.nearestOffice}`;
+    const nearestOfficeServiceHref = `/locations/${area.nearestOffice}/services/${params.service}`;
     const nearestOfficeAddress = area.nearestOffice === "enumclaw"
         ? `${businessConfig.address.street}, ${businessConfig.address.city}, ${businessConfig.address.state} ${businessConfig.address.zipCode}`
         : businessConfig.secondaryAddress
@@ -346,7 +346,7 @@ export default function AreaServicePage({ params }: PageProps) {
                                             className="inline-flex items-center justify-center px-6 py-3 bg-button-500 text-white font-semibold rounded-lg hover:bg-button-600 transition-colors"
                                         >
                                             <Calendar className="w-5 h-5 mr-2" />
-                                            Book Appointment
+                                            Schedule Appointment
                                         </Link>
                                     </div>
                                 </div>
@@ -435,7 +435,7 @@ export default function AreaServicePage({ params }: PageProps) {
                                 <div className="lg:sticky lg:top-[11.5rem]">
                                     <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-200">
                                         <h3 className="text-xl font-bold text-gray-900 mb-4 text-center">
-                                            Book an Appointment
+                                            Schedule an Appointment
                                         </h3>
                                         <DentrixBooking fullPage={true} />
                                     </div>

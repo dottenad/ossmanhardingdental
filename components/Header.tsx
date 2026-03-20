@@ -242,7 +242,7 @@ export function Header() {
                                             />
                                         </svg>
                                         <span className="text-xs font-medium">
-                                            Book
+                                            Schedule
                                         </span>
                                     </Link>
                                     <a

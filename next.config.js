@@ -125,10 +125,10 @@ const nextConfig = {
                 permanent: true,
             },
 
-            // Emface → Botox/Facial Esthetics (same category)
+            // EMFACE & EXION has its own page at /emface-exion
             {
-                source: '/emface-exion',
-                destination: '/services/botox-facial-esthetics',
+                source: '/services/emface-exion',
+                destination: '/emface-exion',
                 permanent: true,
             },
 

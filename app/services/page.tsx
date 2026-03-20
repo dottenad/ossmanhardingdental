@@ -24,6 +24,64 @@ export const metadata: Metadata = generateSEOMetadata(
     businessConfig
 );
 
+// Service categories matching the navigation structure
+const serviceCategories = [
+    {
+        name: "Preventive Care",
+        description: "Regular care to keep your smile healthy",
+        services: [
+            { name: "Dental Exams & Cleanings", slug: "dental-exams-cleanings" },
+            { name: "Preventive Dentistry", slug: "preventive-dentistry" },
+        ],
+    },
+    {
+        name: "Cosmetic & Esthetic",
+        description: "Enhance your smile and appearance",
+        services: [
+            { name: "Cosmetic Dentistry", slug: "cosmetic-dentistry" },
+            { name: "Teeth Whitening", slug: "teeth-whitening" },
+            { name: "Veneers & Esthetic Crowns", slug: "veneers-esthetic-crowns" },
+            { name: "Smile Makeovers", slug: "smile-makeovers" },
+            { name: "Botox & Facial Esthetics", slug: "botox-facial-esthetics" },
+            { name: "EMFACE & EXION", slug: "emface-exion", customHref: "/emface-exion" },
+        ],
+    },
+    {
+        name: "Restorative",
+        description: "Repair and restore your teeth",
+        services: [
+            { name: "Crowns & Bridges", slug: "crowns-bridges" },
+            { name: "Restorative Dentistry", slug: "restorative-dentistry" },
+            { name: "Dental Implants", slug: "dental-implants" },
+        ],
+    },
+    {
+        name: "Orthodontics",
+        description: "Straighten your teeth discreetly",
+        services: [
+            { name: "SureSmile Clear Braces", slug: "suresmile-clear-braces" },
+        ],
+    },
+    {
+        name: "Oral Surgery",
+        description: "Surgical procedures with comfort options",
+        services: [
+            { name: "Oral Surgery", slug: "oral-surgery" },
+            { name: "Wisdom Teeth Extraction", slug: "wisdom-teeth-extraction" },
+            { name: "Sedation Dentistry", slug: "sedation-dentistry" },
+        ],
+    },
+    {
+        name: "Specialty",
+        description: "Specialized care for unique needs",
+        services: [
+            { name: "Sleep Medicine", slug: "sleep-medicine" },
+            { name: "Emergency Dental Care", slug: "emergency-dental-care" },
+            { name: "Pediatric Dentistry", slug: "pediatric-dentistry" },
+        ],
+    },
+];
+
 export default function ServicesPage() {
     const industry = industryConfig[businessConfig.industry];
     const services = industry.allServices || industry.services;
@@ -97,47 +155,58 @@ export default function ServicesPage() {
                     ]}
                 />
 
-                {/* Services Grid */}
+                {/* Services by Category */}
                 <section className="py-20 px-4 bg-gradient-to-b from-white to-gray-50">
                     <div className="max-w-7xl mx-auto">
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-                            {services.map((service, index) => {
-                                const serviceSlug = service
-                                    .toLowerCase()
-                                    .replace(/\s+/g, "-")
-                                    .replace(/[^a-z0-9-]/g, "")
-                                    .replace(/-+/g, "-");
-                                const serviceImage = industry.servicePageImages?.[serviceSlug];
+                        <div className="space-y-16 mb-16">
+                            {serviceCategories.map((category, categoryIndex) => (
+                                <div key={categoryIndex}>
+                                    {/* Category Header */}
+                                    <div className="mb-6">
+                                        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
+                                            {category.name}
+                                        </h2>
+                                        <p className="text-gray-600">{category.description}</p>
+                                    </div>
 
-                                return (
-                                    <Link
-                                        key={index}
-                                        href={`/services/${serviceSlug}`}
-                                        className="group bg-white rounded-xl border border-gray-200 overflow-hidden hover:border-primary-300 hover:shadow-lg transition-all"
-                                    >
-                                        {serviceImage && (
-                                            <div className="h-40 bg-gray-100 overflow-hidden relative">
-                                                <Image
-                                                    src={serviceImage}
-                                                    alt={service}
-                                                    fill
-                                                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                                                    className="object-cover group-hover:scale-105 transition-transform duration-300"
-                                                    loading={index < 3 ? "eager" : "lazy"}
-                                                />
-                                            </div>
-                                        )}
-                                        <div className="p-4">
-                                            <div className="flex items-center justify-between">
-                                                <h3 className="font-semibold text-gray-900 group-hover:text-primary-600 transition-colors">
-                                                    {service}
-                                                </h3>
-                                                <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-primary-600 group-hover:translate-x-1 transition-all" />
-                                            </div>
-                                        </div>
-                                    </Link>
-                                );
-                            })}
+                                    {/* Services Grid */}
+                                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                        {category.services.map((service, serviceIndex) => {
+                                            const serviceImage = industry.servicePageImages?.[service.slug];
+                                            const href = service.customHref || `/services/${service.slug}`;
+
+                                            return (
+                                                <Link
+                                                    key={serviceIndex}
+                                                    href={href}
+                                                    className="group bg-white rounded-xl border border-gray-200 overflow-hidden hover:border-primary-300 hover:shadow-lg transition-all"
+                                                >
+                                                    {serviceImage && (
+                                                        <div className="h-40 bg-gray-100 overflow-hidden relative">
+                                                            <Image
+                                                                src={serviceImage}
+                                                                alt={service.name}
+                                                                fill
+                                                                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                                                className="object-cover group-hover:scale-105 transition-transform duration-300"
+                                                                loading={categoryIndex === 0 && serviceIndex < 3 ? "eager" : "lazy"}
+                                                            />
+                                                        </div>
+                                                    )}
+                                                    <div className="p-4">
+                                                        <div className="flex items-center justify-between">
+                                                            <h3 className="font-semibold text-gray-900 group-hover:text-primary-600 transition-colors">
+                                                                {service.name}
+                                                            </h3>
+                                                            <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-primary-600 group-hover:translate-x-1 transition-all" />
+                                                        </div>
+                                                    </div>
+                                                </Link>
+                                            );
+                                        })}
+                                    </div>
+                                </div>
+                            ))}
                         </div>
 
                         {/* Why Choose Section */}

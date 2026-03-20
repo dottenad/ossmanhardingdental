@@ -392,7 +392,7 @@ export default function Home() {
                                     </div>
                                 </div>
 
-                                {/* Areas We Serve Link - hidden until Phase 2 rollout
+                                {/* Areas We Serve Link */}
                                 <div className="text-center pt-4">
                                     <Link
                                         href="/areas-we-serve"
@@ -404,7 +404,6 @@ export default function Home() {
                                         </svg>
                                     </Link>
                                 </div>
-                                */}
                             </div>
                         </div>
                     </div>
@@ -609,7 +608,7 @@ export default function Home() {
                 )}
 
                 {/* CTA Section */}
-                <section className="py-20 md:py-28 px-4 bg-gradient-to-br from-button-600 via-button-700 to-button-800 text-white relative overflow-hidden">
+                <section className="py-20 md:py-28 px-4 bg-primary-900 text-white relative overflow-hidden">
                     <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
                     <div className="relative max-w-4xl mx-auto text-center">
                         <h2 className="text-4xl md:text-5xl font-bold mb-6">

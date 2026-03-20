@@ -170,7 +170,7 @@ export const geoServiceAreas: GeoServiceArea[] = [
         slug: "bonney-lake",
         published: true,
         nearestOffice: "bonney-lake",
-        driveTime: "0 minutes",
+        driveTime: "0 minute",
         isOfficeLocation: true,
         locationDescription: "Located in Downtown Tehaleh",
         description: "Our Bonney Lake office is located right in the heart of the community, providing comprehensive dental care for Bonney Lake residents and families.",
@@ -191,7 +191,7 @@ export const geoServiceAreas: GeoServiceArea[] = [
         slug: "enumclaw",
         published: true,
         nearestOffice: "enumclaw",
-        driveTime: "0 minutes",
+        driveTime: "0 minute",
         isOfficeLocation: true,
         locationDescription: "Located in Downtown Enumclaw on the corner of Myrtle and Cole",
         description: "Our original Enumclaw office has served the foothills community since 2001, providing comprehensive dental care with a personal touch.",
@@ -212,7 +212,9 @@ export const geoServiceAreas: GeoServiceArea[] = [
         slug: "tehaleh",
         published: true,
         nearestOffice: "bonney-lake",
-        driveTime: "5 minutes",
+        driveTime: "5 minute",
+        isOfficeLocation: true,
+        locationDescription: "Located in Downtown Tehaleh",
         description: "Tehaleh residents enjoy convenient access to our Bonney Lake office, located right in the heart of this master-planned community.",
         landmarks: ["The Post", "Caffé D'Arte", "Trilogy at Tehaleh", "Newland Community Parks", "Cascadia Park", "Hounds Hollow Dog Park"],
         directionsHint: "just minutes from The Post community center",
@@ -229,9 +231,9 @@ export const geoServiceAreas: GeoServiceArea[] = [
     {
         name: "Buckley",
         slug: "buckley",
-        published: false,
+        published: true,
         nearestOffice: "enumclaw",
-        driveTime: "10 minutes",
+        driveTime: "10 minute",
         description: "Buckley families have trusted our Enumclaw office for generations, with easy access via Highway 410 through the scenic Foothills corridor.",
         landmarks: ["Downtown Buckley", "Foothills Trail", "White River", "Buckley Log Show", "Ryan's Park", "Mount Rainier views"],
         directionsHint: "a quick 10-minute drive down Highway 410",
@@ -248,9 +250,9 @@ export const geoServiceAreas: GeoServiceArea[] = [
     {
         name: "Puyallup",
         slug: "puyallup",
-        published: false,
+        published: true,
         nearestOffice: "bonney-lake",
-        driveTime: "15 minutes",
+        driveTime: "15 minute",
         description: "Puyallup patients choose our Bonney Lake office for its modern facilities, comprehensive services, and escape from the crowded valley traffic.",
         landmarks: ["Downtown Puyallup", "Puyallup Fairgrounds", "South Hill Mall", "Antique District", "Pioneer Park", "Meeker Mansion"],
         directionsHint: "a quick drive up Highway 410 or via South Hill",
@@ -267,16 +269,16 @@ export const geoServiceAreas: GeoServiceArea[] = [
     {
         name: "Sumner",
         slug: "sumner",
-        published: false,
+        published: true,
         nearestOffice: "bonney-lake",
-        driveTime: "12 minutes",
+        driveTime: "12 minute",
         description: "Sumner residents appreciate our Bonney Lake office's personalized approach and convenient location just east of the valley.",
         landmarks: ["Downtown Sumner", "Sumner Link Trail", "Ryan's Fruit Stand", "Sumner High School", "White River", "Daffodil Parade route"],
         directionsHint: "via Highway 410 East or Traffic Avenue",
         communityType: "small city",
         communityContent: "Known as the 'Rhubarb Pie Capital of the World' and home to the famous Daffodil Parade, Sumner combines small-town charm with easy access to the greater Puget Sound region. The historic downtown, scenic river walks, and strong school district make Sumner a wonderful place to raise a family. Our Bonney Lake office serves many Sumner families who appreciate the personalized attention that's hard to find in larger valley dental practices. We understand the rhythm of Sumner life—stopping by Ryan's Fruit Stand, walking the Link Trail, cheering at Sumner High football games—and we're here to keep your family smiling through it all.",
         whyChooseUs: [
-            "Just 12 minutes from downtown Sumner",
+            "Just a 12 minute drive from downtown Sumner",
             "Personalized care you won't find at big chain practices",
             "Family dentistry for all ages—from first tooth to dentures",
             "SureSmile clear braces specialists",
@@ -286,16 +288,16 @@ export const geoServiceAreas: GeoServiceArea[] = [
     {
         name: "Lake Tapps",
         slug: "lake-tapps",
-        published: false,
+        published: true,
         nearestOffice: "bonney-lake",
-        driveTime: "8 minutes",
+        driveTime: "8 minute",
         description: "Lake Tapps families enjoy the closest dental office to their waterfront community, with comprehensive services for the whole family.",
         landmarks: ["Lake Tapps", "Allan Yorke Park", "Tapps Island", "Lake Tapps Parkway", "Diru Winery", "Lakeland Hills"],
         directionsHint: "just down the road via Lake Tapps Parkway",
         communityType: "lakeside community",
         communityContent: "Life on Lake Tapps revolves around the water—summer days on the boat, evenings watching the sunset from Allan Yorke Park, and the unique camaraderie of lakeside living. Whether you're on Tapps Island, in Lakeland Hills, or anywhere along the scenic shoreline, our Bonney Lake office is your neighborhood dental home. We know that lake life keeps you busy, which is why we offer early morning appointments that let you get back to the water. Many of our Lake Tapps patients have been with us for years, trusting us with everything from routine cleanings to smile makeovers before family reunions at the lake house.",
         whyChooseUs: [
-            "Closest dental office to Lake Tapps—just 8 minutes",
+            "Closest dental office to Lake Tapps—just an 8 minute drive",
             "Early morning appointments so you're back on the lake by noon",
             "Teeth whitening popular with our lake community patients",
             "Emergency dental care for summer accidents",
@@ -305,9 +307,9 @@ export const geoServiceAreas: GeoServiceArea[] = [
     {
         name: "Black Diamond",
         slug: "black-diamond",
-        published: false,
+        published: true,
         nearestOffice: "enumclaw",
-        driveTime: "15 minutes",
+        driveTime: "15 minute",
         description: "Black Diamond residents enjoy a scenic drive to our Enumclaw office, where small-town values meet modern dental care.",
         landmarks: ["Black Diamond Bakery", "Lake Sawyer", "Green River Gorge", "Black Diamond Museum", "Railroad History", "Ten Trails Community"],
         directionsHint: "a scenic 15-minute drive via Highway 169",
@@ -324,9 +326,9 @@ export const geoServiceAreas: GeoServiceArea[] = [
     {
         name: "Auburn",
         slug: "auburn",
-        published: false,
+        published: true,
         nearestOffice: "bonney-lake",
-        driveTime: "20 minutes",
+        driveTime: "20 minute",
         description: "Auburn patients discover that our Bonney Lake office offers a welcome alternative to crowded valley dental clinics.",
         landmarks: ["Downtown Auburn", "Muckleshoot Casino", "White River Valley Museum", "Auburn Airport", "Les Gove Park", "Emerald Downs"],
         directionsHint: "via Highway 167 South to Highway 410",
@@ -343,16 +345,16 @@ export const geoServiceAreas: GeoServiceArea[] = [
     {
         name: "Orting",
         slug: "orting",
-        published: false,
+        published: true,
         nearestOffice: "bonney-lake",
-        driveTime: "20 minutes",
+        driveTime: "20 minute",
         description: "Orting families appreciate having comprehensive dental care within easy reach of their charming Foothills community.",
         landmarks: ["Downtown Orting", "Foothills Trail", "Carbon River", "Orting Valley", "Mount Rainier views", "Soldier's Home"],
         directionsHint: "via Highway 162 North through the beautiful Orting Valley",
         communityType: "small town",
         communityContent: "Nestled in the shadow of Mount Rainier, Orting offers an idyllic small-town lifestyle with stunning natural beauty at every turn. The Foothills Trail runs right through town, the Carbon River offers world-class fishing, and on clear days, 'The Mountain' feels close enough to touch. Orting families are known for their active, outdoor lifestyle—and healthy smiles are part of that picture. Our Bonney Lake office is an easy 20-minute drive through the scenic Orting Valley, bringing comprehensive dental care closer to home. From sports mouthguards for Orting High athletes to cosmetic dentistry for adults, we serve the whole Orting community with the same care we'd give our own families.",
         whyChooseUs: [
-            "Comprehensive care just 20 minutes from Orting",
+            "Comprehensive care just a 20 minute drive from Orting",
             "Sports mouthguards for Orting High athletes",
             "Family-friendly practice welcoming all ages",
             "Sedation dentistry for anxious patients",
@@ -362,9 +364,9 @@ export const geoServiceAreas: GeoServiceArea[] = [
     {
         name: "Maple Valley",
         slug: "maple-valley",
-        published: false,
+        published: true,
         nearestOffice: "enumclaw",
-        driveTime: "20 minutes",
+        driveTime: "20 minute",
         description: "Maple Valley residents enjoy personalized dental care at our Enumclaw office, a pleasant drive through the scenic Foothills.",
         landmarks: ["Lake Wilderness", "Cedar River Trail", "Maple Valley Town Center", "Lake Wilderness Arboretum", "Four Corners", "Ravensdale Park"],
         directionsHint: "south on Highway 169 through scenic Foothills",
@@ -521,68 +523,52 @@ export const businessConfig: BusinessConfig = {
             href: "/services",
             children: [
                 {
-                    label: "Dental Exams & Cleanings",
-                    href: "/services/dental-exams-cleanings",
+                    label: "Preventive Care",
+                    children: [
+                        { label: "Dental Exams & Cleanings", href: "/services/dental-exams-cleanings" },
+                        { label: "Preventive Dentistry", href: "/services/preventive-dentistry" },
+                    ],
                 },
                 {
-                    label: "Cosmetic Dentistry",
-                    href: "/services/cosmetic-dentistry",
+                    label: "Cosmetic & Esthetic",
+                    children: [
+                        { label: "Cosmetic Dentistry", href: "/services/cosmetic-dentistry" },
+                        { label: "Teeth Whitening", href: "/services/teeth-whitening" },
+                        { label: "Veneers & Esthetic Crowns", href: "/services/veneers-esthetic-crowns" },
+                        { label: "Smile Makeovers", href: "/services/smile-makeovers" },
+                        { label: "Botox & Facial Esthetics", href: "/services/botox-facial-esthetics" },
+                        { label: "EMFACE & EXION", href: "/emface-exion" },
+                    ],
                 },
                 {
-                    label: "Dental Implants",
-                    href: "/services/dental-implants",
+                    label: "Restorative",
+                    children: [
+                        { label: "Crowns & Bridges", href: "/services/crowns-bridges" },
+                        { label: "Restorative Dentistry", href: "/services/restorative-dentistry" },
+                        { label: "Dental Implants", href: "/services/dental-implants" },
+                    ],
                 },
                 {
-                    label: "SureSmile Clear Braces",
-                    href: "/services/suresmile-clear-braces",
-                },
-                {
-                    label: "Teeth Whitening",
-                    href: "/services/teeth-whitening",
+                    label: "Orthodontics",
+                    children: [
+                        { label: "SureSmile Clear Braces", href: "/services/suresmile-clear-braces" },
+                    ],
                 },
                 {
                     label: "Oral Surgery",
-                    href: "/services/oral-surgery",
+                    children: [
+                        { label: "Oral Surgery", href: "/services/oral-surgery" },
+                        { label: "Wisdom Teeth Extraction", href: "/services/wisdom-teeth-extraction" },
+                        { label: "Sedation Dentistry", href: "/services/sedation-dentistry" },
+                    ],
                 },
                 {
-                    label: "Sedation Dentistry",
-                    href: "/services/sedation-dentistry",
-                },
-                {
-                    label: "Sleep Medicine",
-                    href: "/services/sleep-medicine",
-                },
-                {
-                    label: "Wisdom Teeth Extraction",
-                    href: "/services/wisdom-teeth-extraction",
-                },
-                {
-                    label: "Veneers & Esthetic Crowns",
-                    href: "/services/veneers-esthetic-crowns",
-                },
-                {
-                    label: "Crowns & Bridges",
-                    href: "/services/crowns-bridges",
-                },
-                {
-                    label: "Restorative Dentistry",
-                    href: "/services/restorative-dentistry",
-                },
-                {
-                    label: "Emergency Dental Care",
-                    href: "/services/emergency-dental-care",
-                },
-                {
-                    label: "Botox & Facial Esthetics",
-                    href: "/services/botox-facial-esthetics",
-                },
-                {
-                    label: "Smile Makeovers",
-                    href: "/services/smile-makeovers",
-                },
-                {
-                    label: "Preventive Dentistry",
-                    href: "/services/preventive-dentistry",
+                    label: "Specialty",
+                    children: [
+                        { label: "Sleep Medicine", href: "/services/sleep-medicine" },
+                        { label: "Emergency Dental Care", href: "/services/emergency-dental-care" },
+                        { label: "Pediatric Dentistry", href: "/services/pediatric-dentistry" },
+                    ],
                 },
             ],
         },
@@ -614,7 +600,7 @@ export const businessConfig: BusinessConfig = {
                     href: "/locations/enumclaw",
                     children: [
                         { label: "Schedule an Appointment", href: "/appointments" },
-                        // { label: "Services", href: "/locations/enumclaw/services" }, // Hidden until Phase 2
+                        { label: "Services", href: "/locations/enumclaw/services" },
                         { label: "Meet Our Team", href: "/locations/enumclaw/team" },
                         { label: "Office Gallery", href: "/locations/enumclaw/gallery" },
                         { label: "Careers", href: "/locations/enumclaw/careers" },
@@ -625,7 +611,7 @@ export const businessConfig: BusinessConfig = {
                     href: "/locations/bonney-lake",
                     children: [
                         { label: "Schedule an Appointment", href: "/appointments" },
-                        // { label: "Services", href: "/locations/bonney-lake/services" }, // Hidden until Phase 2
+                        { label: "Services", href: "/locations/bonney-lake/services" },
                         { label: "Meet Our Team", href: "/locations/bonney-lake/team" },
                         { label: "Office Gallery", href: "/locations/bonney-lake/gallery" },
                         { label: "Careers", href: "/locations/bonney-lake/careers" },
@@ -640,6 +626,13 @@ export const businessConfig: BusinessConfig = {
                 { label: "Bonney Lake", href: "/areas-we-serve/bonney-lake" },
                 { label: "Enumclaw", href: "/areas-we-serve/enumclaw" },
                 { label: "Tehaleh", href: "/areas-we-serve/tehaleh" },
+                { label: "Buckley", href: "/areas-we-serve/buckley" },
+                { label: "Puyallup", href: "/areas-we-serve/puyallup" },
+                { label: "Sumner", href: "/areas-we-serve/sumner" },
+                { label: "Lake Tapps", href: "/areas-we-serve/lake-tapps" },
+                { label: "Black Diamond", href: "/areas-we-serve/black-diamond" },
+                { label: "Auburn", href: "/areas-we-serve/auburn" },
+                { label: "Orting", href: "/areas-we-serve/orting" },
             ],
         },
         { label: "Reviews", href: "/reviews" },
@@ -844,6 +837,9 @@ export type ServicePageContent = {
     gallery?: {
         title?: string;
         items: ServiceGalleryItem[];
+        columns?: 2 | 4; // Default is 4 on desktop
+        showCaptions?: boolean; // Default is true
+        showOverlay?: boolean; // Default is true
     };
 };
 
@@ -885,8 +881,10 @@ const _industryConfig = {
             "Restorative Dentistry",
             "Emergency Dental Care",
             "Botox & Facial Esthetics",
+            "EMFACE & EXION",
             "Smile Makeovers",
             "Preventive Dentistry",
+            "Pediatric Dentistry",
         ],
         keywords: [
             "dentist",
@@ -926,6 +924,8 @@ const _industryConfig = {
             "botox-facial-esthetics": "/images/service-images/botox.jpg",
             "smile-makeovers": "/images/service-images/smile-makeover.jpg",
             "preventive-dentistry": "/images/service-images/preventive.jpg",
+            "emface-exion": "/images/service-images/emface-exion.jpg",
+            "pediatric-dentistry": "/images/service-images/pediatric-dentistry.jpg",
         },
         servicePageContent: {
             "dental-exams-cleanings": {
@@ -1303,7 +1303,18 @@ const _industryConfig = {
                         "During your consultation, Dr. Ossman will help create a plan that works best for you",
                     ],
                 },
-                relatedServices: ["cosmetic-dentistry", "smile-makeovers", "veneers-esthetic-crowns", "teeth-whitening"],
+                relatedServices: ["cosmetic-dentistry", "smile-makeovers", "veneers-esthetic-crowns", "teeth-whitening", "emface-exion"],
+            },
+            "emface-exion": {
+                cardDescription: "Non-invasive facial rejuvenation with EMFACE, EXION, and RF Micro-Needling.",
+                whatIs: "Experience the latest in non-surgical facial rejuvenation at Ossman Harding Dental. Our advanced EMFACE, EXION, and RF Micro-Needling treatments deliver remarkable results without downtime or surgery.",
+                whatWeOffer: [
+                    "EMFACE for simultaneous skin tightening and muscle toning",
+                    "EXION for boosting natural hyaluronic acid production",
+                    "RF Micro-Needling for acne scars, fine lines, and skin texture",
+                    "Personalized treatment plans tailored to your goals",
+                ],
+                relatedServices: ["botox-facial-esthetics", "cosmetic-dentistry", "smile-makeovers"],
             },
             "smile-makeovers": {
                 cardDescription: "Design your dream smile with a personalized plan combining multiple procedures.",
@@ -1333,6 +1344,52 @@ const _industryConfig = {
                 ],
                 process: "Prevention starts with regular visits every six months. During these appointments, we clean your teeth, check for any developing problems, and provide personalized recommendations. We may suggest sealants for children or night guards for those who grind their teeth. Our goal is to help you maintain a healthy smile for life.",
                 relatedServices: ["dental-exams-cleanings", "restorative-dentistry", "sleep-medicine", "emergency-dental-care"],
+            },
+            "pediatric-dentistry": {
+                cardDescription: "Gentle, fun dental care designed specifically for kids of all ages.",
+                whatIs: "At Ossman Harding Dental, we love seeing kids! Our team creates a welcoming, positive environment where children feel comfortable and even excited about visiting the dentist. We believe that establishing good oral health habits early sets children up for a lifetime of healthy smiles. From first teeth to teenage years, we provide gentle, age-appropriate care that makes dental visits something to look forward to.",
+                whatWeOffer: [
+                    "First dental visits for infants and toddlers",
+                    "Kid-friendly cleanings and exams",
+                    "Dental sealants to protect against cavities",
+                    "Fluoride treatments for stronger teeth",
+                    "Gentle cavity treatment with kid-friendly techniques",
+                    "Sports mouthguards for young athletes",
+                    "Orthodontic evaluations and SureSmile clear aligners for teens",
+                    "Education on brushing, flossing, and nutrition",
+                ],
+                process: "Your child's first visit focuses on building trust and comfort. We take time to show them our tools, explain what we're doing in kid-friendly terms, and let them ask questions. For cleanings, we use gentle techniques and plenty of positive reinforcement. Parents are welcome to stay with their child throughout the appointment. We'll discuss your child's oral development, answer your questions, and provide tips for home care tailored to their age.",
+                whyChooseSection: {
+                    title: "When Should My Child First Visit the Dentist?",
+                    intro: "The American Academy of Pediatric Dentistry recommends a first dental visit by age 1 or within 6 months of the first tooth appearing. Early visits help us:",
+                    points: [
+                        "Catch potential problems before they become serious",
+                        "Get your child comfortable with the dental environment",
+                        "Provide guidance on teething, pacifier use, and thumb sucking",
+                        "Establish a dental home for your family",
+                    ],
+                },
+                additionalInfoSection: {
+                    title: "Tips for a Successful Dental Visit",
+                    intro: "Help your child have a positive experience:",
+                    points: [
+                        "Use positive language—avoid words like 'hurt' or 'shot'",
+                        "Read books about visiting the dentist beforehand",
+                        "Schedule appointments when your child is well-rested",
+                        "Let us know about any anxieties so we can address them",
+                    ],
+                },
+                relatedServices: ["dental-exams-cleanings", "preventive-dentistry", "suresmile-clear-braces", "sedation-dentistry"],
+                gallery: {
+                    title: "Our Kid-Friendly Space",
+                    columns: 2,
+                    showCaptions: false,
+                    showOverlay: false,
+                    items: [
+                        { src: "/images/bonney-lake/building/office-8.png", caption: "Kids Play Area", alt: "Kids play area at Ossman Harding Dental Bonney Lake office" },
+                        { src: "/images/bonney-lake/building/office-9.png", caption: "Fun & Welcoming Environment", alt: "Kid-friendly waiting area at Ossman Harding Dental" },
+                    ],
+                },
             },
         },
     },

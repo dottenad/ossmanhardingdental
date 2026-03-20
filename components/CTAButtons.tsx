@@ -75,7 +75,7 @@ export function CTAButtons({
         <div className={`flex flex-col sm:flex-row gap-4 ${className}`}>
             <a
                 href={`tel:${formatPhoneLink(businessConfig.phone)}`}
-                className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-button-700 bg-white rounded-xl shadow-xl hover:shadow-2xl hover:bg-gray-50 transition-all duration-300 transform hover:scale-105 border-2 border-white whitespace-nowrap"
+                className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-button-600 to-button-700 rounded-xl shadow-xl hover:shadow-2xl hover:from-button-700 hover:to-button-800 transition-all duration-300 transform hover:scale-105 border-2 border-white/50 hover:border-white whitespace-nowrap"
             >
                 <svg
                     className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform"
@@ -96,7 +96,7 @@ export function CTAButtons({
                 href="/appointments"
                 className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-black/20 backdrop-blur-sm border-2 border-white/50 rounded-xl hover:bg-white/10 hover:border-white transition-all duration-300 shadow-lg hover:shadow-xl whitespace-nowrap"
             >
-                Book Appointment
+                Schedule Appointment
                 <svg
                     className="w-5 h-5 ml-2"
                     fill="none"

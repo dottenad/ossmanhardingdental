@@ -126,7 +126,7 @@ export default function FAQPage() {
                                 <div className="lg:sticky lg:top-[11.5rem]">
                                     <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-200">
                                         <h3 className="text-xl font-bold text-gray-900 mb-4 text-center">
-                                            Book an Appointment
+                                            Schedule an Appointment
                                         </h3>
                                         <DentrixBooking fullPage={true} />
                                     </div>

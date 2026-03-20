@@ -190,7 +190,7 @@ export default function EnumclawPage() {
                                     </p>
                                 </div>
 
-                                {/* Services at this location - Commented out for Phase 1 rollout (location service pages not yet published)
+                                {/* Services at this location */}
                                 <div className="mb-8">
                                     <h2 className="text-3xl font-bold text-gray-900 mb-6">
                                         Services Available in {LOCATION.name}
@@ -223,7 +223,6 @@ export default function EnumclawPage() {
                                         </Link>
                                     </div>
                                 </div>
-                                */}
 
                                 {/* Meet Our Team */}
                                 <div className="mb-8">
@@ -343,7 +342,7 @@ export default function EnumclawPage() {
                                 <div className="lg:sticky lg:top-[11.5rem]">
                                     <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-200">
                                         <h3 className="text-xl font-bold text-gray-900 mb-4 text-center">
-                                            Book at Enumclaw
+                                            Schedule at Enumclaw
                                         </h3>
                                         <DentrixBooking location="enumclaw" fullPage={true} />
                                     </div>

@@ -36,7 +36,7 @@ function isIOSSafari(): boolean {
 
 export function DentrixBooking({
     location,
-    buttonText = "Book Online",
+    buttonText = "Schedule Online",
     buttonClassName,
     fullPage = false,
 }: DentrixBookingProps) {
@@ -166,7 +166,7 @@ export function DentrixBooking({
                             className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-button-600 hover:bg-button-700 text-white font-semibold rounded-xl transition-colors"
                         >
                             <Calendar className="w-5 h-5" />
-                            Book Appointment
+                            Schedule Appointment
                             <ExternalLink className="w-4 h-4" />
                         </a>
                     </div>
@@ -293,7 +293,7 @@ export function DentrixBooking({
                                             className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-button-600 hover:bg-button-700 text-white font-semibold rounded-xl transition-colors"
                                         >
                                             <Calendar className="w-5 h-5" />
-                                            Book Appointment
+                                            Schedule Appointment
                                             <ExternalLink className="w-4 h-4" />
                                         </a>
                                     </div>

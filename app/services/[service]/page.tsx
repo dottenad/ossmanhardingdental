@@ -501,46 +501,54 @@ export default function ServicePage({ params }: PageProps) {
                                                 industryConfig[
                                                     businessConfig.industry
                                                 ].servicePageContent ?? {}
-                                            )[params.service]?.gallery && (
-                                                <div className="mb-8 not-prose">
-                                                    <h3 className="text-2xl font-bold mb-4 text-gray-900">
-                                                        {(
-                                                            industryConfig[
-                                                                businessConfig.industry
-                                                            ].servicePageContent ?? {}
-                                                        )[params.service]?.gallery?.title || "Our Results"}
-                                                    </h3>
-                                                    <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                                                        {(
-                                                            (
-                                                                industryConfig[
-                                                                    businessConfig.industry
-                                                                ].servicePageContent ?? {}
-                                                            )[params.service]?.gallery?.items ?? []
-                                                        ).map((item, i) => (
-                                                            <div
-                                                                key={i}
-                                                                className="relative rounded-xl overflow-hidden leading-[0]"
-                                                            >
-                                                                <Image
-                                                                    src={item.src}
-                                                                    alt={item.alt || item.caption}
-                                                                    width={400}
-                                                                    height={500}
-                                                                    className="w-full h-auto !m-0"
-                                                                    sizes="(max-width: 768px) 50vw, 25vw"
-                                                                />
-                                                                {/* Gradient overlay fading to light gray */}
-                                                                <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-gray-200 via-gray-200/70 to-transparent pointer-events-none" />
-                                                                {/* Caption text */}
-                                                                <p className="absolute inset-x-0 bottom-2 px-2 text-gray-700 text-xs sm:text-sm font-medium text-center leading-tight uppercase tracking-wide !m-0">
-                                                                    {item.caption}
-                                                                </p>
-                                                            </div>
-                                                        ))}
+                                            )[params.service]?.gallery && (() => {
+                                                const galleryConfig = (
+                                                    industryConfig[
+                                                        businessConfig.industry
+                                                    ].servicePageContent ?? {}
+                                                )[params.service]?.gallery;
+                                                const columns = galleryConfig?.columns ?? 4;
+                                                const showCaptions = galleryConfig?.showCaptions !== false;
+                                                const showOverlay = galleryConfig?.showOverlay !== false;
+                                                const gridClass = columns === 2
+                                                    ? "grid grid-cols-2 gap-4"
+                                                    : "grid grid-cols-2 md:grid-cols-4 gap-3";
+
+                                                return (
+                                                    <div className="mb-8 not-prose">
+                                                        <h3 className="text-2xl font-bold mb-4 text-gray-900">
+                                                            {galleryConfig?.title || "Our Results"}
+                                                        </h3>
+                                                        <div className={gridClass}>
+                                                            {(galleryConfig?.items ?? []).map((item, i) => (
+                                                                <div
+                                                                    key={i}
+                                                                    className="relative rounded-xl overflow-hidden leading-[0]"
+                                                                >
+                                                                    <Image
+                                                                        src={item.src}
+                                                                        alt={item.alt || item.caption}
+                                                                        width={600}
+                                                                        height={400}
+                                                                        className="w-full h-auto !m-0"
+                                                                        sizes={columns === 2 ? "50vw" : "(max-width: 768px) 50vw, 25vw"}
+                                                                    />
+                                                                    {/* Gradient overlay fading to light gray */}
+                                                                    {showOverlay && (
+                                                                        <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-gray-200 via-gray-200/70 to-transparent pointer-events-none" />
+                                                                    )}
+                                                                    {/* Caption text */}
+                                                                    {showCaptions && (
+                                                                        <p className="absolute inset-x-0 bottom-2 px-2 text-gray-700 text-xs sm:text-sm font-medium text-center leading-tight uppercase tracking-wide !m-0">
+                                                                            {item.caption}
+                                                                        </p>
+                                                                    )}
+                                                                </div>
+                                                            ))}
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            )}
+                                                );
+                                            })()}
                                         </>
                                     ) : (
                                         <p className="text-gray-700 mb-8 leading-relaxed">
@@ -576,13 +584,6 @@ export default function ServicePage({ params }: PageProps) {
                                             className="inline-flex items-center px-4 py-2 bg-primary-50 text-primary-700 rounded-lg hover:bg-primary-100 transition-colors font-medium text-sm"
                                         >
                                             {serviceName} in Bonney Lake
-                                            <span className="ml-1">→</span>
-                                        </Link>
-                                        <Link
-                                            href={`/areas-we-serve/tehaleh/${params.service}`}
-                                            className="inline-flex items-center px-4 py-2 bg-primary-50 text-primary-700 rounded-lg hover:bg-primary-100 transition-colors font-medium text-sm"
-                                        >
-                                            {serviceName} near Tehaleh
                                             <span className="ml-1">→</span>
                                         </Link>
                                     </div>
@@ -702,7 +703,7 @@ export default function ServicePage({ params }: PageProps) {
                                 <div className="lg:sticky lg:top-[11.5rem]">
                                     <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-200">
                                         <h3 className="text-xl font-bold text-gray-900 mb-4 text-center">
-                                            Book an Appointment
+                                            Schedule an Appointment
                                         </h3>
                                         <DentrixBooking fullPage={true} />
                                     </div>

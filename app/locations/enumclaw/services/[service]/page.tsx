@@ -205,29 +205,60 @@ export default function EnumclawServicePage({ params }: PageProps) {
                                 </div>
 
                                 {/* CTA Card */}
-                                <div className="bg-primary-600 text-white p-8 rounded-xl mb-8">
-                                    <h3 className="text-2xl font-bold mb-4">
-                                        Schedule Your {serviceName} Appointment
+                                <div className="bg-primary-900 text-white p-8 rounded-xl mb-8">
+                                    <h3 className="text-2xl font-bold mb-2 text-center">
+                                        Ready to Get Started?
                                     </h3>
-                                    <p className="text-primary-100 mb-6">
-                                        Ready to get started? Contact our {LOCATION.name} office today.
-                                        We&apos;re accepting new patients and most insurance plans.
+                                    <p className="text-primary-200 mb-6 text-center">
+                                        Contact us today to schedule your appointment
                                     </p>
-                                    <div className="flex flex-col sm:flex-row gap-4">
+                                    <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
                                         <a
                                             href={`tel:${formatPhoneLink(businessConfig.phone)}`}
-                                            className="inline-flex items-center justify-center px-6 py-3 bg-white text-primary-700 font-semibold rounded-lg hover:bg-primary-50 transition-colors"
+                                            className="group inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-button-600 to-button-700 rounded-xl shadow-xl hover:shadow-2xl hover:from-button-700 hover:to-button-800 transition-all duration-300 transform hover:scale-105 border-2 border-white/50 hover:border-white"
                                         >
-                                            <Phone className="w-5 h-5 mr-2" />
-                                            {formatPhoneDisplay(businessConfig.phone)}
+                                            <Phone className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform" />
+                                            Call {formatPhoneDisplay(businessConfig.phone)}
                                         </a>
                                         <Link
                                             href="/appointments"
-                                            className="inline-flex items-center justify-center px-6 py-3 bg-button-500 text-white font-semibold rounded-lg hover:bg-button-600 transition-colors"
+                                            className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-black/20 backdrop-blur-sm border-2 border-white/50 rounded-xl hover:bg-white/10 hover:border-white transition-all duration-300 shadow-lg hover:shadow-xl"
                                         >
-                                            <Calendar className="w-5 h-5 mr-2" />
-                                            Book Appointment
+                                            Schedule Appointment
+                                            <svg
+                                                className="w-5 h-5 ml-2"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                viewBox="0 0 24 24"
+                                            >
+                                                <path
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round"
+                                                    strokeWidth={2}
+                                                    d="M13 7l5 5m0 0l-5 5m5-5H6"
+                                                />
+                                            </svg>
                                         </Link>
+                                    </div>
+                                    <div className="flex flex-wrap justify-center gap-6 text-sm text-primary-200">
+                                        <div className="flex items-center gap-2">
+                                            <svg className="w-5 h-5 text-button-400" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                                            </svg>
+                                            <span>New Patients Welcome</span>
+                                        </div>
+                                        <div className="flex items-center gap-2">
+                                            <svg className="w-5 h-5 text-button-400" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                                            </svg>
+                                            <span>Gentle, Personalized Care</span>
+                                        </div>
+                                        <div className="flex items-center gap-2">
+                                            <svg className="w-5 h-5 text-button-400" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                                            </svg>
+                                            <span>Two Convenient Locations</span>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -311,7 +342,7 @@ export default function EnumclawServicePage({ params }: PageProps) {
                                 <div className="lg:sticky lg:top-[11.5rem]">
                                     <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-200">
                                         <h3 className="text-xl font-bold text-gray-900 mb-4 text-center">
-                                            Book at Enumclaw
+                                            Schedule at Enumclaw
                                         </h3>
                                         <DentrixBooking location="enumclaw" fullPage={true} />
                                     </div>
