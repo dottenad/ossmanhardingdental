@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     reactStrictMode: true,
+    // Enforce no trailing slashes for consistent URLs
+    trailingSlash: false,
     // Expose Amplify Console env vars to SSR/API routes (Amplify does not inject them into Lambda by default).
     env: {
         JOBBER_CLIENT_ID: process.env.JOBBER_CLIENT_ID,

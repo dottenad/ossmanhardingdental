@@ -13,10 +13,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     const industry = industryConfig[businessConfig.industry];
     const allServices = industry.allServices || industry.services;
 
-    // Core pages
+    // Core pages (ensure home page URL doesn't have trailing slash)
     const routes = [
         {
-            url: baseUrl,
+            url: baseUrl.replace(/\/$/, ""),
             lastModified: currentDate,
             changeFrequency: "weekly" as const,
             priority: 1,
