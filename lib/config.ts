@@ -423,10 +423,7 @@ export const businessConfig: BusinessConfig = {
         typeof process !== "undefined"
             ? process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY
             : undefined,
-    googleAnalyticsId:
-        typeof process !== "undefined"
-            ? process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID
-            : undefined,
+    googleAnalyticsId: "G-0R5CKREX9Z",
     hotjarId:
         typeof process !== "undefined" && process.env.NEXT_PUBLIC_HOTJAR_ID
             ? parseInt(process.env.NEXT_PUBLIC_HOTJAR_ID, 10)

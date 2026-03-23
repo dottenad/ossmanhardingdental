@@ -1,5 +1,8 @@
+"use client";
+
 import { businessConfig } from "@/lib/config";
 import { formatPhoneDisplay, formatPhoneLink } from "@/lib/phone";
+import { trackPhoneClick, trackScheduleClick } from "@/lib/analytics";
 
 interface CTAButtonsProps {
     /**
@@ -12,6 +15,10 @@ interface CTAButtonsProps {
      * Additional CSS classes for the container div
      */
     className?: string;
+    /**
+     * Location identifier for tracking (e.g., "hero", "footer", "service-page")
+     */
+    trackingLocation?: string;
 }
 
 /**
@@ -21,7 +28,16 @@ interface CTAButtonsProps {
 export function CTAButtons({
     variant = "hero",
     className = "",
+    trackingLocation = "unknown",
 }: CTAButtonsProps) {
+    const handlePhoneClick = () => {
+        trackPhoneClick(businessConfig.phone, trackingLocation);
+    };
+
+    const handleScheduleClick = () => {
+        trackScheduleClick(trackingLocation);
+    };
+
     // Hero variant - button-colored buttons
     if (variant === "hero") {
         return (
@@ -30,6 +46,7 @@ export function CTAButtons({
             >
                 <a
                     href={`tel:${formatPhoneLink(businessConfig.phone)}`}
+                    onClick={handlePhoneClick}
                     className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-button-600 to-button-700 rounded-xl shadow-lg hover:shadow-xl hover:from-button-700 hover:to-button-800 transition-all duration-300 transform hover:scale-105 whitespace-nowrap"
                 >
                     <svg
@@ -49,6 +66,7 @@ export function CTAButtons({
                 </a>
                 <a
                     href="/appointments"
+                    onClick={handleScheduleClick}
                     className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-button-700 bg-white border-2 border-button-600 rounded-xl hover:bg-button-50 hover:border-button-700 transition-all duration-300 shadow-md hover:shadow-lg whitespace-nowrap"
                 >
                     Schedule Appointment
@@ -75,6 +93,7 @@ export function CTAButtons({
         <div className={`flex flex-col sm:flex-row gap-4 ${className}`}>
             <a
                 href={`tel:${formatPhoneLink(businessConfig.phone)}`}
+                onClick={handlePhoneClick}
                 className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-button-600 to-button-700 rounded-xl shadow-xl hover:shadow-2xl hover:from-button-700 hover:to-button-800 transition-all duration-300 transform hover:scale-105 border-2 border-white/50 hover:border-white whitespace-nowrap"
             >
                 <svg
@@ -94,6 +113,7 @@ export function CTAButtons({
             </a>
             <a
                 href="/appointments"
+                onClick={handleScheduleClick}
                 className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-black/20 backdrop-blur-sm border-2 border-white/50 rounded-xl hover:bg-white/10 hover:border-white transition-all duration-300 shadow-lg hover:shadow-xl whitespace-nowrap"
             >
                 Schedule Appointment
