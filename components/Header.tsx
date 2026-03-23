@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { businessConfig, NavigationItem } from "@/lib/config";
 import { formatPhoneDisplay, formatPhoneLink } from "@/lib/phone";
+import { trackPhoneClick, trackScheduleClick } from "@/lib/analytics";
 
 export function Header() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -159,6 +160,7 @@ export function Header() {
                             <div className="hidden lg:flex items-center gap-3 ml-auto">
                                 <Link
                                     href="/appointments"
+                                    onClick={() => trackScheduleClick("header-lg")}
                                     className="bg-button-600 hover:bg-button-700 text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-lg font-semibold text-sm sm:text-base transition-all shadow-md hover:shadow-lg flex items-center gap-2"
                                 >
                                     <Calendar className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -168,6 +170,7 @@ export function Header() {
                                     href={`tel:${formatPhoneLink(
                                         businessConfig.phone,
                                     )}`}
+                                    onClick={() => trackPhoneClick(businessConfig.phone, "header-lg")}
                                     className="bg-button-700 hover:bg-button-800 text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-lg font-semibold text-sm sm:text-base flex items-center gap-2 transition-all shadow-md hover:shadow-lg whitespace-nowrap"
                                 >
                                     <Phone className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -180,6 +183,7 @@ export function Header() {
                                 <div className="hidden md:flex lg:hidden items-center gap-3">
                                     <Link
                                         href="/appointments"
+                                        onClick={() => trackScheduleClick("header-md")}
                                         className="bg-button-600 hover:bg-button-700 text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-lg font-semibold text-sm sm:text-base transition-all shadow-md hover:shadow-lg flex items-center gap-2"
                                     >
                                         <svg
@@ -201,6 +205,7 @@ export function Header() {
                                         href={`tel:${formatPhoneLink(
                                             businessConfig.phone,
                                         )}`}
+                                        onClick={() => trackPhoneClick(businessConfig.phone, "header-md")}
                                         className="bg-button-700 hover:bg-button-800 text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-lg font-semibold text-sm sm:text-base flex items-center gap-2 transition-all shadow-md hover:shadow-lg whitespace-nowrap"
                                     >
                                         <svg
@@ -225,6 +230,7 @@ export function Header() {
                                 <div className="md:hidden flex items-center gap-2">
                                     <Link
                                         href="/appointments"
+                                        onClick={() => trackScheduleClick("header-sm")}
                                         className="flex flex-col items-center gap-1 bg-button-600 hover:bg-button-700 text-white py-2 px-4 rounded-lg transition-all flex-shrink-0"
                                         aria-label="Schedule Appointment"
                                     >
@@ -249,6 +255,7 @@ export function Header() {
                                         href={`tel:${formatPhoneLink(
                                             businessConfig.phone,
                                         )}`}
+                                        onClick={() => trackPhoneClick(businessConfig.phone, "header-sm")}
                                         className="flex flex-col items-center gap-1 bg-button-700 hover:bg-button-800 text-white py-2 px-4 rounded-lg transition-all flex-shrink-0"
                                         aria-label={`Call ${formatPhoneDisplay(
                                             businessConfig.phone,

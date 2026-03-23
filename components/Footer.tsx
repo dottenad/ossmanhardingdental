@@ -1,9 +1,12 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { Phone, Mail, MapPin, Facebook, Instagram } from "lucide-react";
 import { businessConfig } from "@/lib/config";
 import { formatPhoneDisplay, formatPhoneLink } from "@/lib/phone";
 import { OfficeLocationsMap } from "@/components/OfficeLocationsMap";
+import { trackPhoneClick } from "@/lib/analytics";
 
 export function Footer() {
     const currentYear = new Date().getFullYear();
@@ -192,6 +195,7 @@ export function Footer() {
                                     <Phone className="w-5 h-5 text-primary-400 mt-1 flex-shrink-0" />
                                     <a
                                         href={`tel:${formatPhoneLink(phone)}`}
+                                        onClick={() => trackPhoneClick(phone, "footer")}
                                         className="hover:text-primary-400 transition-colors"
                                     >
                                         {formatPhoneDisplay(phone)}
