@@ -405,7 +405,7 @@ export function Header() {
                                                         index
                                                     ] = el;
                                                 }}
-                                                className="absolute top-[calc(100%-1px)] left-0 pt-1 bg-transparent min-w-[240px] z-50"
+                                                className="absolute top-full left-0 min-w-[240px] z-50"
                                                 onMouseEnter={() => {
                                                     setOpenDropdown(index);
                                                 }}
@@ -414,7 +414,7 @@ export function Header() {
                                                     setOpenSubDropdown(null);
                                                 }}
                                             >
-                                                <div className="bg-white rounded-lg shadow-xl border border-gray-200 py-2">
+                                                <div className="bg-white rounded-lg shadow-xl border border-gray-200 py-2 mt-0">
                                                     {item.children.map(
                                                         (child, childIndex) => (
                                                             <div
@@ -489,7 +489,7 @@ export function Header() {
                                                                     openSubDropdown ===
                                                                         childIndex && (
                                                                         <div
-                                                                            className="absolute left-[calc(100%-1px)] -top-2 pl-1 bg-transparent min-w-[200px] z-50"
+                                                                            className="absolute left-full -top-2 min-w-[200px] z-50"
                                                                             onMouseEnter={() => {
                                                                                 setOpenSubDropdown(
                                                                                     childIndex,
