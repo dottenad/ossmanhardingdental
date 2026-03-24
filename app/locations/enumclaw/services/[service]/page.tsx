@@ -1,9 +1,9 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { Phone, Calendar, MapPin } from "lucide-react";
-import { businessConfig, industryConfig, siteConfig } from "@/lib/config";
+import { businessConfig, industryConfig, siteConfig, isServiceAvailableAtLocation, getServiceLocation } from "@/lib/config";
 import { generateMetadata as generateSEOMetadata } from "@/lib/seo";
 import { formatPhoneDisplay, formatPhoneLink } from "@/lib/phone";
 import { Header } from "@/components/Header";
@@ -29,7 +29,7 @@ interface PageProps {
     };
 }
 
-// Generate static params for all services (if location services are published)
+// Generate static params for all services available at this location
 export async function generateStaticParams() {
     // Don't generate pages if location services are not published
     if (!siteConfig.publishLocationServices) {
@@ -39,13 +39,16 @@ export async function generateStaticParams() {
     const industry = industryConfig[businessConfig.industry];
     const allServices = industry.allServices || industry.services;
 
-    return allServices.map((service) => ({
-        service: service
-            .toLowerCase()
-            .replace(/\s+/g, "-")
-            .replace(/[^a-z0-9-]/g, "")
-            .replace(/-+/g, "-"),
-    }));
+    return allServices
+        .map((service) => {
+            const slug = service
+                .toLowerCase()
+                .replace(/\s+/g, "-")
+                .replace(/[^a-z0-9-]/g, "")
+                .replace(/-+/g, "-");
+            return { service: slug };
+        })
+        .filter(({ service }) => isServiceAvailableAtLocation(service, "enumclaw"));
 }
 
 function findServiceBySlug(slug: string) {
@@ -93,6 +96,14 @@ export default function EnumclawServicePage({ params }: PageProps) {
     // Return 404 if service not found or location services not published
     if (!serviceName || !siteConfig.publishLocationServices) {
         notFound();
+    }
+
+    // Redirect to the correct location if this service is only available elsewhere
+    if (!isServiceAvailableAtLocation(params.service, LOCATION.slug)) {
+        const availableLocation = getServiceLocation(params.service);
+        if (availableLocation) {
+            redirect(`/locations/${availableLocation}/services/${params.service}`);
+        }
     }
 
     const industry = industryConfig[businessConfig.industry];

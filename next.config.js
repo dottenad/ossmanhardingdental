@@ -115,15 +115,10 @@ const nextConfig = {
                 permanent: true,
             },
 
-            // Blog (redirect to home since blog is dropped)
-            {
-                source: '/blog',
-                destination: '/',
-                permanent: true,
-            },
+            // Old Wix blog posts redirect to new blog
             {
                 source: '/post/:path*',
-                destination: '/',
+                destination: '/blog',
                 permanent: true,
             },
 

@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Phone, Calendar, MapPin, Clock, ArrowRight, CheckCircle2 } from "lucide-react";
-import { businessConfig, industryConfig, geoServiceAreas, GeoServiceArea } from "@/lib/config";
+import { businessConfig, industryConfig, geoServiceAreas, GeoServiceArea, isServiceAvailableAtLocation, getServiceLocation } from "@/lib/config";
 import { generateMetadata as generateSEOMetadata } from "@/lib/seo";
 import { formatPhoneDisplay, formatPhoneLink } from "@/lib/phone";
 import { Header } from "@/components/Header";
@@ -146,10 +146,20 @@ export default function AreaServicePage({ params }: PageProps) {
         notFound();
     }
 
-    const nearestOfficeName = area.nearestOffice === "enumclaw" ? "Enumclaw" : "Bonney Lake";
-    const nearestOfficeHref = `/locations/${area.nearestOffice}`;
-    const nearestOfficeServiceHref = `/locations/${area.nearestOffice}/services/${params.service}`;
-    const nearestOfficeAddress = area.nearestOffice === "enumclaw"
+    // Determine which office has this service
+    // If the service is only available at a specific location, use that location instead of the nearest office
+    let officeSlug = area.nearestOffice;
+    if (!isServiceAvailableAtLocation(params.service, area.nearestOffice)) {
+        const availableLocation = getServiceLocation(params.service);
+        if (availableLocation) {
+            officeSlug = availableLocation;
+        }
+    }
+
+    const nearestOfficeName = officeSlug === "enumclaw" ? "Enumclaw" : "Bonney Lake";
+    const nearestOfficeHref = `/locations/${officeSlug}`;
+    const nearestOfficeServiceHref = `/locations/${officeSlug}/services/${params.service}`;
+    const nearestOfficeAddress = officeSlug === "enumclaw"
         ? `${businessConfig.address.street}, ${businessConfig.address.city}, ${businessConfig.address.state} ${businessConfig.address.zipCode}`
         : businessConfig.secondaryAddress
             ? `${businessConfig.secondaryAddress.street}, ${businessConfig.secondaryAddress.city}, ${businessConfig.secondaryAddress.state} ${businessConfig.secondaryAddress.zipCode}`

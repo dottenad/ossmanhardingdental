@@ -55,7 +55,12 @@ function getServiceShortDescription(
     _serviceSlug: string,
     serviceName: string
 ): string {
-    return `Learn more about our ${serviceName} service. Our experienced dental team is here to provide exceptional care.`;
+    // Convert plural service names to singular when used as adjective before "service"
+    const singularName = serviceName
+        .replace(/Makeovers$/i, "Makeover")
+        .replace(/Implants$/i, "Implant")
+        .replace(/Veneers$/i, "Veneer");
+    return `Learn more about our ${singularName} service. Our experienced dental team is here to provide exceptional care.`;
 }
 
 export function generateMetadata({ params }: PageProps): Metadata {
@@ -148,11 +153,15 @@ export default function ServicePage({ params }: PageProps) {
                                     </h2>
                                     <p className="text-xl text-gray-700 mb-6 leading-relaxed">
                                         {businessConfig.name} provides expert{" "}
-                                        {serviceName.toLowerCase()} services for
-                                        patients of all ages at our Enumclaw and
-                                        Bonney Lake locations. Our experienced
-                                        dental team is committed to exceptional
-                                        care and your comfort.
+                                        {serviceName
+                                            .replace(/Makeovers$/i, "makeover")
+                                            .replace(/Implants$/i, "implant")
+                                            .replace(/Veneers$/i, "veneer")
+                                            .toLowerCase()}{" "}
+                                        services for patients of all ages at our
+                                        Enumclaw and Bonney Lake locations. Our
+                                        experienced dental team is committed to
+                                        exceptional care and your comfort.
                                     </p>
                                     {industryConfig[
                                         businessConfig.industry
@@ -184,7 +193,14 @@ export default function ServicePage({ params }: PageProps) {
                                     )[params.service] ? (
                                         <>
                                             <h3 className="text-2xl font-bold mt-10 mb-3 text-gray-900">
-                                                What {serviceName.includes(" & ") ? "are" : "is"} {serviceName}?
+                                                What {serviceName.includes(" & ") ||
+                                                    serviceName.endsWith("Implants") ||
+                                                    serviceName.endsWith("Teeth") ||
+                                                    serviceName.endsWith("Braces") ||
+                                                    serviceName.endsWith("Crowns") ||
+                                                    serviceName.endsWith("Veneers") ||
+                                                    serviceName.endsWith("Cleanings") ||
+                                                    serviceName.endsWith("Makeovers") ? "are" : "is"} {serviceName}?
                                             </h3>
                                             <p className="text-gray-700 mb-8 leading-relaxed">
                                                 {

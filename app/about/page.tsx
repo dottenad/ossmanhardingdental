@@ -71,7 +71,7 @@ export default function AboutPage() {
                                         />
                                         <p className="text-center text-gray-600 mt-2 mb-0 text-sm font-medium">Our Doctors</p>
                                     </div>
-                                    <p className="text-xl text-gray-700 mb-4 leading-relaxed mt-0 pt-0">
+                                    <p className="text-gray-700 mb-4 leading-relaxed mt-0 pt-0">
                                             At {businessConfig.name}, we believe that great dental
                                             care goes beyond treating teeth—it&apos;s about building
                                             relationships, improving confidence, and enhancing

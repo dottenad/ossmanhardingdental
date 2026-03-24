@@ -69,6 +69,7 @@ export interface BusinessConfig {
     };
     font?: string; // Google Font name (e.g., "Inter", "Roboto", "Open Sans", "Poppins", "Montserrat"). Defaults to "Inter"
     gallery?: GalleryProject[]; // Optional gallery of completed projects/work
+    blogPosts?: BlogPost[]; // Optional blog posts/articles
     faqs?: FAQ[]; // Optional frequently asked questions
     faqImage?: FAQImage; // Optional image for FAQ section
     /** Per-area local content (landmarks, intro/community copy) for service area pages. Keys = area slug. */
@@ -110,6 +111,19 @@ export interface GalleryProject {
 export interface FAQ {
     question: string;
     answer: string;
+}
+
+export interface BlogPost {
+    id: string; // Unique identifier/slug
+    title: string; // Post title
+    excerpt: string; // Short description/excerpt
+    content?: string; // Full post content (HTML)
+    featuredImage: string; // Main image path
+    author?: string; // Author name
+    date: string; // Publication date (ISO format)
+    readTime?: string; // Estimated read time (e.g., "8 min read")
+    tags: string[]; // Array of tags/categories
+    featured?: boolean; // Whether to show in featured section
 }
 
 export interface FAQImage {
@@ -163,50 +177,45 @@ export const siteConfig = {
     publishLocationServices: true,
 };
 
+/**
+ * Services that are only available at specific locations.
+ * Services listed here will be excluded from other locations' service pages.
+ * For areas-we-serve that point to an excluded location, they'll be redirected to the available location.
+ */
+export const locationOnlyServices: Record<string, string[]> = {
+    "bonney-lake": [
+        "sleep-medicine",
+        "emface-exion",
+    ],
+};
+
+/**
+ * Get the location where a service is available.
+ * Returns the location slug if the service is location-specific, or null if available everywhere.
+ */
+export function getServiceLocation(serviceSlug: string): string | null {
+    for (const [location, services] of Object.entries(locationOnlyServices)) {
+        if (services.includes(serviceSlug)) {
+            return location;
+        }
+    }
+    return null;
+}
+
+/**
+ * Check if a service is available at a specific location.
+ */
+export function isServiceAvailableAtLocation(serviceSlug: string, locationSlug: string): boolean {
+    const serviceLocation = getServiceLocation(serviceSlug);
+    if (serviceLocation === null) {
+        return true; // Available everywhere
+    }
+    return serviceLocation === locationSlug;
+}
+
 // Geo-targeted service areas (cities we serve but don't have offices in)
+// Note: Bonney Lake and Enumclaw are NOT included here since they have dedicated /locations/ pages
 export const geoServiceAreas: GeoServiceArea[] = [
-    {
-        name: "Bonney Lake",
-        slug: "bonney-lake",
-        published: true,
-        nearestOffice: "bonney-lake",
-        driveTime: "0 minute",
-        isOfficeLocation: true,
-        locationDescription: "Located in Downtown Tehaleh",
-        description: "Our Bonney Lake office is located right in the heart of the community, providing comprehensive dental care for Bonney Lake residents and families.",
-        landmarks: ["Lake Tapps", "Allan Yorke Park", "Victor Falls", "Fennel Creek Trail", "Bonney Lake Town Center"],
-        directionsHint: "on 141st Street Ct E in the Tehaleh community",
-        communityType: "growing city",
-        communityContent: "Bonney Lake has transformed from a quiet lakeside community into one of Pierce County's most vibrant cities. With easy access to Lake Tapps, beautiful parks like Allan Yorke and Victor Falls, and a growing downtown area, Bonney Lake offers the perfect blend of outdoor recreation and suburban convenience. Our Bonney Lake office opened in 2024 to serve this thriving community, bringing the same exceptional care that families in Enumclaw have trusted for over two decades. Whether you're a longtime Bonney Lake resident or just moved to one of the new developments, we're proud to be your neighborhood dental home.",
-        whyChooseUs: [
-            "Conveniently located right here in Bonney Lake",
-            "Brand new, state-of-the-art facility opened in 2024",
-            "Early 7 AM appointments for busy schedules",
-            "Full range of services from cleanings to implants and oral surgery",
-            "Same experienced team trusted by Enumclaw families for 20+ years",
-        ],
-    },
-    {
-        name: "Enumclaw",
-        slug: "enumclaw",
-        published: true,
-        nearestOffice: "enumclaw",
-        driveTime: "0 minute",
-        isOfficeLocation: true,
-        locationDescription: "Located in Downtown Enumclaw on the corner of Myrtle and Cole",
-        description: "Our original Enumclaw office has served the foothills community since 2001, providing comprehensive dental care with a personal touch.",
-        landmarks: ["Downtown Enumclaw", "Mount Rainier", "White River", "Enumclaw Golf Course", "Mud Mountain Dam", "Flaming Geyser State Park"],
-        directionsHint: "on the corner of Myrtle and Cole",
-        communityType: "small town",
-        communityContent: "Enumclaw sits at the gateway to Mount Rainier, a charming small town where neighbors know each other and community matters. From the historic downtown to the stunning views of 'The Mountain,' Enumclaw offers a quality of life that's hard to find elsewhere. Dr. Harding established our practice here in 2001, and we've been privileged to care for multiple generations of Enumclaw families. Now led by Dr. Ossman, we continue the tradition of personalized, high-quality dental care that our community deserves. Whether you're a farmer from the plateau, a family in town, or an outdoor enthusiast drawn to the foothills lifestyle, we're honored to be your dental home.",
-        whyChooseUs: [
-            "Serving Enumclaw families since 2001",
-            "Multi-generational care—we've treated grandparents, parents, and kids",
-            "Comprehensive services including implants, oral surgery, and IV sedation",
-            "Small-town values with big-city capabilities",
-            "Dr. Ossman continues Dr. Harding's legacy of excellence",
-        ],
-    },
     {
         name: "Tehaleh",
         slug: "tehaleh",
@@ -559,17 +568,25 @@ export const businessConfig: BusinessConfig = {
                         { label: "Sedation Dentistry", href: "/services/sedation-dentistry" },
                     ],
                 },
+                { label: "Sleep Medicine", href: "/services/sleep-medicine" },
+                { label: "Emergency Dental Care", href: "/services/emergency-dental-care" },
+                { label: "Pediatric Dentistry", href: "/services/pediatric-dentistry" },
+            ],
+        },
+        {
+            label: "About Us",
+            href: "/about",
+            children: [
+                { label: "About Us", href: "/about" },
                 {
-                    label: "Specialty",
+                    label: "Meet Our Teams",
                     children: [
-                        { label: "Sleep Medicine", href: "/services/sleep-medicine" },
-                        { label: "Emergency Dental Care", href: "/services/emergency-dental-care" },
-                        { label: "Pediatric Dentistry", href: "/services/pediatric-dentistry" },
+                        { label: "Bonney Lake Team", href: "/locations/bonney-lake/team" },
+                        { label: "Enumclaw Team", href: "/locations/enumclaw/team" },
                     ],
                 },
             ],
         },
-        { label: "About Us", href: "/about" },
         {
             label: "New Patients",
             href: "/new-patients",
@@ -620,8 +637,6 @@ export const businessConfig: BusinessConfig = {
             label: "Areas We Serve",
             href: "/areas-we-serve",
             children: [
-                { label: "Bonney Lake", href: "/areas-we-serve/bonney-lake" },
-                { label: "Enumclaw", href: "/areas-we-serve/enumclaw" },
                 { label: "Tehaleh", href: "/areas-we-serve/tehaleh" },
                 { label: "Buckley", href: "/areas-we-serve/buckley" },
                 { label: "Puyallup", href: "/areas-we-serve/puyallup" },
@@ -630,9 +645,11 @@ export const businessConfig: BusinessConfig = {
                 { label: "Black Diamond", href: "/areas-we-serve/black-diamond" },
                 { label: "Auburn", href: "/areas-we-serve/auburn" },
                 { label: "Orting", href: "/areas-we-serve/orting" },
+                { label: "Maple Valley", href: "/areas-we-serve/maple-valley" },
             ],
         },
         { label: "Reviews", href: "/reviews" },
+        { label: "Blog", href: "/blog" },
         { label: "FAQ", href: "/faq" },
     ],
     pageHeroImages: {
@@ -650,14 +667,15 @@ export const businessConfig: BusinessConfig = {
         "/new-patients/insurance": "/images/service-images/cosmetic-dentistry.jpg",
         "/new-patients/payment-options": "/images/service-images/cosmetic-dentistry.jpg",
         "/areas-we-serve": "/images/rainier.jpg",
+        "/blog": "/images/hero-dental.jpg",
         // Office location sub-pages - using exterior images
         "/locations/enumclaw": "/images/enumclaw/building/office-7.jpg",
         "/locations/enumclaw/gallery": "/images/enumclaw/building/office-7.jpg",
-        "/locations/enumclaw/team": "/images/enumclaw/building/office-7.jpg",
+        "/locations/enumclaw/team": "/images/enumclaw/exterior-main.jpg",
         "/locations/enumclaw/services": "/images/enumclaw/building/office-7.jpg",
         "/locations/bonney-lake": "/images/bonney-lake/building/exterior-1.jpg",
         "/locations/bonney-lake/gallery": "/images/bonney-lake/building/exterior-1.jpg",
-        "/locations/bonney-lake/team": "/images/bonney-lake/building/exterior-1.jpg",
+        "/locations/bonney-lake/team": "/images/bonney-lake/exterior-main.jpg",
         "/locations/bonney-lake/services": "/images/bonney-lake/building/exterior-1.jpg",
         // Service pages
         "/services/dental-exams-cleanings": "/images/service-images/dental-exam.jpg",
@@ -679,6 +697,104 @@ export const businessConfig: BusinessConfig = {
     },
     font: "Montserrat",
     gallery: [], // Gallery can be populated with smile makeovers, office photos, etc.
+    blogPosts: [
+        {
+            id: "how-often-should-you-visit-dentist",
+            title: "How Often Should You Really Visit the Dentist?",
+            excerpt:
+                "Most people know they should see a dentist regularly, but how often is enough? We break down the recommended schedule and what factors might mean you need more frequent visits.",
+            featuredImage: "/images/service-images/dental-office.jpg",
+            author: "Dr. Ossman",
+            date: "2025-03-15",
+            readTime: "5 min read",
+            tags: ["Preventive Care", "Dental Health", "Tips"],
+            featured: true,
+        },
+        {
+            id: "what-to-expect-dental-implants",
+            title: "What to Expect During the Dental Implant Process",
+            excerpt:
+                "Dental implants are the gold standard for replacing missing teeth. Here's a step-by-step guide to what happens from consultation to your final restoration.",
+            featuredImage: "/images/service-images/dental-implants.jpg",
+            author: "Dr. Ossman",
+            date: "2025-02-28",
+            readTime: "8 min read",
+            tags: ["Dental Implants", "Restorative", "Procedures"],
+            featured: true,
+        },
+        {
+            id: "wisdom-teeth-removal-guide",
+            title: "Wisdom Teeth Removal: A Complete Guide for Patients",
+            excerpt:
+                "Not sure if you need your wisdom teeth removed? Learn about the signs, the procedure, recovery tips, and why early evaluation matters.",
+            featuredImage: "/images/service-images/wisdom-teeth.jpg",
+            author: "Dr. Ossman",
+            date: "2025-02-10",
+            readTime: "7 min read",
+            tags: ["Oral Surgery", "Wisdom Teeth", "Procedures"],
+            featured: true,
+        },
+        {
+            id: "overcome-dental-anxiety",
+            title: "5 Ways to Overcome Dental Anxiety",
+            excerpt:
+                "Dental anxiety is more common than you think. Here are practical strategies and sedation options that can help make your visit comfortable and stress-free.",
+            featuredImage: "/images/service-images/sedation-dentistry.jpg",
+            author: "Dr. Ossman",
+            date: "2025-01-25",
+            readTime: "6 min read",
+            tags: ["Sedation Dentistry", "Dental Anxiety", "Tips"],
+            featured: false,
+        },
+        {
+            id: "electric-vs-manual-toothbrush",
+            title: "Electric vs Manual Toothbrush: Which Is Better?",
+            excerpt:
+                "The debate continues—is an electric toothbrush worth the investment? We compare effectiveness, technique, and what the research actually says.",
+            featuredImage: "/images/service-images/preventive-dentistry.jpg",
+            author: "Dr. Ossman",
+            date: "2025-01-10",
+            readTime: "5 min read",
+            tags: ["Preventive Care", "Oral Hygiene", "Tips"],
+            featured: false,
+        },
+        {
+            id: "signs-you-need-root-canal",
+            title: "6 Signs You Might Need a Root Canal",
+            excerpt:
+                "Persistent tooth pain? Sensitivity to hot and cold? Learn the warning signs that indicate you may need root canal therapy—and why it's nothing to fear.",
+            featuredImage: "/images/service-images/root-canal.jpg",
+            author: "Dr. Ossman",
+            date: "2024-12-15",
+            readTime: "6 min read",
+            tags: ["Root Canal", "Restorative", "Symptoms"],
+            featured: false,
+        },
+        {
+            id: "caring-for-childs-teeth",
+            title: "A Parent's Guide to Caring for Your Child's Teeth",
+            excerpt:
+                "From first tooth to braces, here's everything parents need to know about pediatric dental care, including when to schedule that first appointment.",
+            featuredImage: "/images/bonney-lake/building/office-8.png",
+            author: "Dr. Ossman",
+            date: "2024-11-20",
+            readTime: "8 min read",
+            tags: ["Pediatric Dentistry", "Children", "Preventive Care"],
+            featured: false,
+        },
+        {
+            id: "cosmetic-dentistry-options",
+            title: "Transform Your Smile: Cosmetic Dentistry Options Explained",
+            excerpt:
+                "From teeth whitening to veneers, discover the cosmetic dentistry treatments that can help you achieve the smile you've always wanted.",
+            featuredImage: "/images/service-images/cosmetic-dentistry.jpg",
+            author: "Dr. Ossman",
+            date: "2024-10-30",
+            readTime: "7 min read",
+            tags: ["Cosmetic Dentistry", "Veneers", "Teeth Whitening"],
+            featured: false,
+        },
+    ],
     reviews: [
         {
             author: "Sarah M.",
@@ -743,8 +859,8 @@ export const businessConfig: BusinessConfig = {
             answer: "We would love to see your kids! We enjoy treating patients of all ages and create a comfortable, positive dental experience for young patients.",
         },
         {
-            question: "Do you do all dental procedures including specialties?",
-            answer: "Our vision is to have all specialties under one roof so patients never have to leave for their dental care. We currently provide cosmetic dentistry, orthodontics (SureSmile clear braces), Botox and fillers, dental implants, IV sedation dentistry, wisdom teeth removal, oral surgery, and more. The only specialty we currently refer out is molar root canals.",
+            question: "What dental procedures do you offer?",
+            answer: "Our vision is to provide comprehensive care under one roof so patients never have to leave for their dental needs. We currently provide cosmetic dentistry, orthodontics (SureSmile clear braces), Botox and fillers, dental implants, IV sedation dentistry, wisdom teeth removal, oral surgery, sleep medicine, pediatric dentistry, and more. The only procedure we currently refer out is molar root canals.",
         },
         {
             question: "What insurance do you accept?",

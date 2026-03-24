@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { notFound } from "next/navigation";
-import { businessConfig, industryConfig, siteConfig } from "@/lib/config";
+import { businessConfig, industryConfig, siteConfig, isServiceAvailableAtLocation } from "@/lib/config";
 import { generateMetadata as generateSEOMetadata } from "@/lib/seo";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -40,7 +40,17 @@ export default function EnumclawServicesPage() {
     }
 
     const industry = industryConfig[businessConfig.industry];
-    const allServices = industry.allServices || industry.services;
+    const allServicesRaw = industry.allServices || industry.services;
+
+    // Filter out services that are only available at other locations
+    const allServices = allServicesRaw.filter((service) => {
+        const serviceSlug = service
+            .toLowerCase()
+            .replace(/\s+/g, "-")
+            .replace(/[^a-z0-9-]/g, "")
+            .replace(/-+/g, "-");
+        return isServiceAvailableAtLocation(serviceSlug, LOCATION.slug);
+    });
 
     const breadcrumbSchema = generateBreadcrumbSchema([
         { name: "Home", url: businessConfig.website },

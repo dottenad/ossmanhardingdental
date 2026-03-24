@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Phone, Calendar, MapPin } from "lucide-react";
-import { businessConfig, industryConfig, siteConfig } from "@/lib/config";
+import { businessConfig, industryConfig, siteConfig, isServiceAvailableAtLocation } from "@/lib/config";
 import { generateMetadata as generateSEOMetadata } from "@/lib/seo";
 import { formatPhoneDisplay, formatPhoneLink } from "@/lib/phone";
 import { Header } from "@/components/Header";
@@ -321,21 +321,23 @@ export default function BonneyLakeServicePage({ params }: PageProps) {
                                     </div>
                                 )}
 
-                                {/* Other Location */}
-                                <div className="bg-button-50 p-6 rounded-xl border border-button-200">
-                                    <h3 className="text-xl font-bold text-gray-900 mb-2">
-                                        Also Available at Our Enumclaw Office
-                                    </h3>
-                                    <p className="text-gray-700 mb-4">
-                                        This service is also available at our Enumclaw location.
-                                    </p>
-                                    <Link
-                                        href={`/enumclaw/services/${params.service}`}
-                                        className="text-primary-600 hover:text-primary-700 font-semibold"
-                                    >
-                                        View {serviceName} in Enumclaw →
-                                    </Link>
-                                </div>
+                                {/* Other Location - only show if service is available at Enumclaw */}
+                                {isServiceAvailableAtLocation(params.service, "enumclaw") && (
+                                    <div className="bg-button-50 p-6 rounded-xl border border-button-200">
+                                        <h3 className="text-xl font-bold text-gray-900 mb-2">
+                                            Also Available at Our Enumclaw Office
+                                        </h3>
+                                        <p className="text-gray-700 mb-4">
+                                            This service is also available at our Enumclaw location.
+                                        </p>
+                                        <Link
+                                            href={`/enumclaw/services/${params.service}`}
+                                            className="text-primary-600 hover:text-primary-700 font-semibold"
+                                        >
+                                            View {serviceName} in Enumclaw →
+                                        </Link>
+                                    </div>
+                                )}
                             </div>
 
                             {/* Sidebar */}

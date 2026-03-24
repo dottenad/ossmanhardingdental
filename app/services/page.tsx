@@ -72,8 +72,8 @@ const serviceCategories = [
         ],
     },
     {
-        name: "Specialty",
-        description: "Specialized care for unique needs",
+        name: "Additional Services",
+        description: "More ways we care for you",
         services: [
             { name: "Sleep Medicine", slug: "sleep-medicine" },
             { name: "Emergency Dental Care", slug: "emergency-dental-care" },
