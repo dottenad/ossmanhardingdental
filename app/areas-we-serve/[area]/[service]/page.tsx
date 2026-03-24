@@ -148,10 +148,10 @@ export default function AreaServicePage({ params }: PageProps) {
 
     // Determine which office has this service
     // If the service is only available at a specific location, use that location instead of the nearest office
-    let officeSlug = area.nearestOffice;
+    let officeSlug: "enumclaw" | "bonney-lake" = area.nearestOffice;
     if (!isServiceAvailableAtLocation(params.service, area.nearestOffice)) {
         const availableLocation = getServiceLocation(params.service);
-        if (availableLocation) {
+        if (availableLocation === "enumclaw" || availableLocation === "bonney-lake") {
             officeSlug = availableLocation;
         }
     }

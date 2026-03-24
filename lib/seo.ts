@@ -34,11 +34,8 @@ export function generateMetadata(
         pageTitle === siteName ? siteName : `${pageTitle} | ${siteName}`;
     const metaDescription = description || defaultDescription;
     const siteUrl = url || businessConfig.website;
-    // Use an image that exists (hero or default)
-    const defaultImagePath =
-        businessConfig.heroImage ||
-        businessConfig.logo ||
-        "/images/logo.png";
+    // Use dedicated OG image, falling back to hero or logo
+    const defaultImagePath = "/images/og-image.jpg";
     const ogImage = image
         ? (image.startsWith("http") ? image : `${businessConfig.website}${image}`)
         : `${businessConfig.website}${defaultImagePath}`;
