@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { notFound } from "next/navigation";
 import { businessConfig, industryConfig, siteConfig } from "@/lib/config";
@@ -17,6 +18,64 @@ const LOCATION = {
     slug: "bonney-lake",
 };
 
+// Service categories matching the navigation structure
+const serviceCategories = [
+    {
+        name: "Preventive Care",
+        description: "Regular care to keep your smile healthy",
+        services: [
+            { name: "Dental Exams & Cleanings", slug: "dental-exams-cleanings" },
+            { name: "Preventive Dentistry", slug: "preventive-dentistry" },
+        ],
+    },
+    {
+        name: "Cosmetic & Esthetic",
+        description: "Enhance your smile and appearance",
+        services: [
+            { name: "Cosmetic Dentistry", slug: "cosmetic-dentistry" },
+            { name: "Teeth Whitening", slug: "teeth-whitening" },
+            { name: "Veneers & Esthetic Crowns", slug: "veneers-esthetic-crowns" },
+            { name: "Smile Makeovers", slug: "smile-makeovers" },
+            { name: "Botox & Facial Esthetics", slug: "botox-facial-esthetics" },
+            { name: "EMFACE & EXION", slug: "emface-exion", customHref: "/emface-exion" },
+        ],
+    },
+    {
+        name: "Restorative",
+        description: "Repair and restore your teeth",
+        services: [
+            { name: "Crowns & Bridges", slug: "crowns-bridges" },
+            { name: "Restorative Dentistry", slug: "restorative-dentistry" },
+            { name: "Dental Implants", slug: "dental-implants" },
+        ],
+    },
+    {
+        name: "Orthodontics",
+        description: "Straighten your teeth discreetly",
+        services: [
+            { name: "SureSmile Clear Braces", slug: "suresmile-clear-braces" },
+        ],
+    },
+    {
+        name: "Oral Surgery",
+        description: "Surgical procedures with comfort options",
+        services: [
+            { name: "Oral Surgery", slug: "oral-surgery" },
+            { name: "Wisdom Teeth Extraction", slug: "wisdom-teeth-extraction" },
+            { name: "Sedation Dentistry", slug: "sedation-dentistry" },
+        ],
+    },
+    {
+        name: "Additional Services",
+        description: "More ways we care for you",
+        services: [
+            { name: "Sleep Medicine", slug: "sleep-medicine" },
+            { name: "Emergency Dental Care", slug: "emergency-dental-care" },
+            { name: "Pediatric Dentistry", slug: "pediatric-dentistry" },
+        ],
+    },
+];
+
 export const metadata: Metadata = generateSEOMetadata(
     {
         title: `Dental Services in ${LOCATION.name} | ${businessConfig.name}`,
@@ -29,7 +88,7 @@ export const metadata: Metadata = generateSEOMetadata(
             "cosmetic dentistry",
             "teeth whitening",
         ],
-        url: `${businessConfig.website}/${LOCATION.slug}/services`,
+        url: `${businessConfig.website}/locations/${LOCATION.slug}/services`,
     },
     businessConfig
 );
@@ -41,12 +100,11 @@ export default function BonneyLakeServicesPage() {
     }
 
     const industry = industryConfig[businessConfig.industry];
-    const allServices = industry.allServices || industry.services;
 
     const breadcrumbSchema = generateBreadcrumbSchema([
         { name: "Home", url: businessConfig.website },
-        { name: `${LOCATION.name} Office`, url: `${businessConfig.website}/${LOCATION.slug}` },
-        { name: "Services", url: `${businessConfig.website}/${LOCATION.slug}/services` },
+        { name: `${LOCATION.name} Office`, url: `${businessConfig.website}/locations/${LOCATION.slug}` },
+        { name: "Services", url: `${businessConfig.website}/locations/${LOCATION.slug}/services` },
     ]);
 
     return (
@@ -62,8 +120,8 @@ export default function BonneyLakeServicesPage() {
                 <Breadcrumb
                     items={[
                         { name: "Home", url: "/" },
-                        { name: `${LOCATION.name} Office`, url: `/${LOCATION.slug}` },
-                        { name: "Services", url: `/${LOCATION.slug}/services` },
+                        { name: `${LOCATION.name} Office`, url: `/locations/${LOCATION.slug}` },
+                        { name: "Services", url: `/locations/${LOCATION.slug}/services` },
                     ]}
                 />
 
@@ -76,7 +134,7 @@ export default function BonneyLakeServicesPage() {
                                     <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
                                         Our Services at {LOCATION.name}
                                     </h1>
-                                    <p className="text-xl text-gray-700 leading-relaxed">
+                                    <p className="text-gray-700 leading-relaxed">
                                         At our {LOCATION.name} dental office, we offer a comprehensive range of
                                         dental services to meet all your oral health needs. From preventive care
                                         to advanced cosmetic and restorative treatments, our experienced team
@@ -84,42 +142,56 @@ export default function BonneyLakeServicesPage() {
                                     </p>
                                 </div>
 
-                                {/* Services Grid */}
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-                                    {allServices.map((service, index) => {
-                                        const serviceSlug = service
-                                            .toLowerCase()
-                                            .replace(/\s+/g, "-")
-                                            .replace(/[^a-z0-9-]/g, "")
-                                            .replace(/-+/g, "-");
-                                        const serviceImage = industry.servicePageImages?.[serviceSlug];
+                                {/* Services by Category */}
+                                <div className="space-y-12 mb-8">
+                                    {serviceCategories.map((category, categoryIndex) => (
+                                        <div key={categoryIndex}>
+                                            {/* Category Header */}
+                                            <div className="mb-4">
+                                                <h2 className="text-2xl font-bold text-gray-900 mb-1">
+                                                    {category.name}
+                                                </h2>
+                                                <p className="text-gray-600 text-sm">{category.description}</p>
+                                            </div>
 
-                                        return (
-                                            <Link
-                                                key={index}
-                                                href={`/${LOCATION.slug}/services/${serviceSlug}`}
-                                                className="group bg-white rounded-xl border border-gray-200 overflow-hidden hover:border-primary-300 hover:shadow-lg transition-all"
-                                            >
-                                                {serviceImage && (
-                                                    <div className="h-32 bg-gray-100 overflow-hidden">
-                                                        <img
-                                                            src={serviceImage}
-                                                            alt={service}
-                                                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                                                        />
-                                                    </div>
-                                                )}
-                                                <div className="p-4">
-                                                    <div className="flex items-center justify-between">
-                                                        <h3 className="font-semibold text-gray-900 group-hover:text-primary-600 transition-colors">
-                                                            {service}
-                                                        </h3>
-                                                        <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-primary-600 group-hover:translate-x-1 transition-all" />
-                                                    </div>
-                                                </div>
-                                            </Link>
-                                        );
-                                    })}
+                                            {/* Services Grid */}
+                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                                {category.services.map((service, serviceIndex) => {
+                                                    const serviceImage = industry.servicePageImages?.[service.slug];
+                                                    const href = service.customHref || `/locations/${LOCATION.slug}/services/${service.slug}`;
+
+                                                    return (
+                                                        <Link
+                                                            key={serviceIndex}
+                                                            href={href}
+                                                            className="group bg-white rounded-xl border border-gray-200 overflow-hidden hover:border-primary-300 hover:shadow-lg transition-all"
+                                                        >
+                                                            {serviceImage && (
+                                                                <div className="h-32 bg-gray-100 overflow-hidden relative">
+                                                                    <Image
+                                                                        src={serviceImage}
+                                                                        alt={service.name}
+                                                                        fill
+                                                                        sizes="(max-width: 768px) 100vw, 50vw"
+                                                                        className="object-cover group-hover:scale-105 transition-transform duration-300"
+                                                                        loading={categoryIndex === 0 && serviceIndex < 2 ? "eager" : "lazy"}
+                                                                    />
+                                                                </div>
+                                                            )}
+                                                            <div className="p-4">
+                                                                <div className="flex items-center justify-between">
+                                                                    <h3 className="text-[15px] font-semibold text-gray-900 group-hover:text-primary-600 transition-colors">
+                                                                        {service.name}
+                                                                    </h3>
+                                                                    <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-primary-600 group-hover:translate-x-1 transition-all" />
+                                                                </div>
+                                                            </div>
+                                                        </Link>
+                                                    );
+                                                })}
+                                            </div>
+                                        </div>
+                                    ))}
                                 </div>
 
                                 {/* Why Choose Us */}
@@ -154,13 +226,13 @@ export default function BonneyLakeServicesPage() {
                                 {/* Back to Office */}
                                 <div className="flex gap-4">
                                     <Link
-                                        href={`/${LOCATION.slug}`}
+                                        href={`/locations/${LOCATION.slug}`}
                                         className="text-primary-600 hover:text-primary-700 font-semibold"
                                     >
                                         ← Back to {LOCATION.name} Office
                                     </Link>
                                     <Link
-                                        href={`/${LOCATION.slug}/team`}
+                                        href={`/locations/${LOCATION.slug}/team`}
                                         className="text-primary-600 hover:text-primary-700 font-semibold"
                                     >
                                         Meet Our Team →
@@ -173,7 +245,7 @@ export default function BonneyLakeServicesPage() {
                                 <div className="lg:sticky lg:top-[11.5rem]">
                                     <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-200">
                                         <h3 className="text-xl font-bold text-gray-900 mb-4 text-center">
-                                            Schedule at Bonney Lake
+                                            Schedule at {LOCATION.name}
                                         </h3>
                                         <DentrixBooking location="bonney-lake" fullPage={true} />
                                     </div>

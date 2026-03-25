@@ -135,6 +135,7 @@ export default function EnumclawServicePage({ params }: PageProps) {
                     backgroundImage={serviceImage || businessConfig.heroImage}
                     title={`${serviceName} in ${LOCATION.name}`}
                     subtitle={`Professional ${serviceName.toLowerCase()} at our ${LOCATION.name} dental office`}
+                    priority={true}
                 />
                 <Breadcrumb
                     items={[

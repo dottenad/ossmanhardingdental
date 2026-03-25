@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MapPin, Clock, Phone, Calendar, CheckCircle2, ArrowRight } from "lucide-react";
-import { businessConfig, industryConfig, geoServiceAreas, GeoServiceArea } from "@/lib/config";
+import { businessConfig, industryConfig, geoServiceAreas, GeoServiceArea, isServiceAvailableAtLocation, getServiceLocation } from "@/lib/config";
 import { generateMetadata as generateSEOMetadata } from "@/lib/seo";
 import { formatPhoneDisplay, formatPhoneLink } from "@/lib/phone";
 import { Header } from "@/components/Header";
@@ -314,15 +314,31 @@ export default function ServiceAreaPage({ params }: PageProps) {
                                                     .replace(/\s+/g, "-")
                                                     .replace(/[^a-z0-9-]/g, "")
                                                     .replace(/-+/g, "-");
+
+                                                // Check if this service is only available at a specific location
+                                                const serviceLocation = getServiceLocation(serviceSlug);
+                                                const isLocationSpecific = serviceLocation !== null && serviceLocation !== area.nearestOffice;
+                                                const locationName = serviceLocation === "bonney-lake" ? "Bonney Lake" : "Enumclaw";
+                                                const driveTime = isLocationSpecific && serviceLocation === "bonney-lake" && area.driveTimeToBonneyLake
+                                                    ? area.driveTimeToBonneyLake
+                                                    : area.driveTime;
+
                                                 return (
                                                     <Link
                                                         key={service}
                                                         href={`/areas-we-serve/${area.slug}/${serviceSlug}`}
-                                                        className="flex items-center gap-2 p-3 bg-gray-50 rounded-lg hover:bg-primary-50 hover:border-primary-200 border border-transparent transition-colors group"
+                                                        className="flex flex-col gap-1 p-3 bg-gray-50 rounded-lg hover:bg-primary-50 hover:border-primary-200 border border-transparent transition-colors group"
                                                     >
-                                                        <CheckCircle2 className="w-5 h-5 text-primary-600 flex-shrink-0" />
-                                                        <span className="text-gray-700 text-sm font-medium group-hover:text-primary-700">{service}</span>
-                                                        <ArrowRight className="w-4 h-4 text-gray-400 ml-auto group-hover:text-primary-600 transition-colors" />
+                                                        <div className="flex items-center gap-2">
+                                                            <CheckCircle2 className="w-5 h-5 text-primary-600 flex-shrink-0" />
+                                                            <span className="text-gray-700 text-sm font-medium group-hover:text-primary-700">{service}</span>
+                                                            <ArrowRight className="w-4 h-4 text-gray-400 ml-auto group-hover:text-primary-600 transition-colors" />
+                                                        </div>
+                                                        {isLocationSpecific && (
+                                                            <span className="text-xs text-gray-500 ml-7">
+                                                                {locationName} office • {driveTime} drive
+                                                            </span>
+                                                        )}
                                                     </Link>
                                                 );
                                             })}

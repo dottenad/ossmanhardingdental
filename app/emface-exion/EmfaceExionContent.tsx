@@ -585,7 +585,7 @@ export function EmfaceExionContent() {
                                         <h3 className="text-xl font-bold text-gray-900 mb-4 text-center">
                                             Schedule a Consultation
                                         </h3>
-                                        <DentrixBooking fullPage={true} />
+                                        <DentrixBooking fullPage={true} location="bonney-lake" />
                                     </div>
                                 </div>
                             </div>

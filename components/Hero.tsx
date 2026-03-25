@@ -10,7 +10,7 @@ interface HeroProps {
     mobileBackgroundImage?: string; // Optional different image for mobile
     children?: ReactNode;
     className?: string;
-    priority?: boolean; // For LCP optimization on home page
+    priority?: boolean; // For LCP optimization - defaults to true since hero is usually LCP
     /** Skip Next.js image optimization (e.g. for gallery hero so it loads static from CDN) */
     unoptimized?: boolean;
     /** Use compact padding (for home page) */
@@ -35,7 +35,7 @@ export function Hero({
     mobileBackgroundImage,
     children,
     className = "",
-    priority = false,
+    priority = true,
     unoptimized = false,
     compact = false,
 }: HeroProps) {

@@ -152,6 +152,8 @@ export interface GeoServiceArea {
     nearestOffice: "enumclaw" | "bonney-lake";
     /** Approximate drive time to nearest office (e.g., "15 minutes") */
     driveTime: string;
+    /** Drive time to Bonney Lake (for areas where Enumclaw is nearest but some services are only at BL) */
+    driveTimeToBonneyLake?: string;
     /** True if the office is actually located in this area (not just serving it) */
     isOfficeLocation?: boolean;
     /** Location description for areas where office is located (e.g., "on the corner of Myrtle and Cole") */
@@ -244,6 +246,7 @@ export const geoServiceAreas: GeoServiceArea[] = [
         published: true,
         nearestOffice: "enumclaw",
         driveTime: "10 minute",
+        driveTimeToBonneyLake: "15 minute",
         description: "Buckley families have trusted our Enumclaw office for generations, with easy access via Highway 410 through the scenic Foothills corridor.",
         landmarks: ["Downtown Buckley", "Foothills Trail", "White River", "Buckley Log Show", "Ryan's Park", "Mount Rainier views"],
         directionsHint: "a quick 10-minute drive down Highway 410",
@@ -320,6 +323,7 @@ export const geoServiceAreas: GeoServiceArea[] = [
         published: true,
         nearestOffice: "enumclaw",
         driveTime: "15 minute",
+        driveTimeToBonneyLake: "20 minute",
         description: "Black Diamond residents enjoy a scenic drive to our Enumclaw office, where small-town values meet modern dental care.",
         landmarks: ["Black Diamond Bakery", "Lake Sawyer", "Green River Gorge", "Black Diamond Museum", "Railroad History", "Ten Trails Community"],
         directionsHint: "a scenic 15-minute drive via Highway 169",
@@ -377,6 +381,7 @@ export const geoServiceAreas: GeoServiceArea[] = [
         published: true,
         nearestOffice: "enumclaw",
         driveTime: "20 minute",
+        driveTimeToBonneyLake: "25 minute",
         description: "Maple Valley residents enjoy personalized dental care at our Enumclaw office, a pleasant drive through the scenic Foothills.",
         landmarks: ["Lake Wilderness", "Cedar River Trail", "Maple Valley Town Center", "Lake Wilderness Arboretum", "Four Corners", "Ravensdale Park"],
         directionsHint: "south on Highway 169 through scenic Foothills",
@@ -1225,7 +1230,7 @@ const _industryConfig = {
             },
             "sleep-medicine": {
                 cardDescription: "Stop snoring and treat sleep apnea with a comfortable alternative to CPAP.",
-                whatIs: "At our Enumclaw and Bonney Lake offices, Dr. Lynda Phan specializes in dental sleep medicine, offering custom oral appliances as an effective CPAP alternative for patients with obstructive sleep apnea and snoring. These comfortable, portable devices are billed to your medical insurance—not your dental benefits.",
+                whatIs: "At our Bonney Lake office, Dr. Lynda Phan specializes in dental sleep medicine, offering custom oral appliances as an effective CPAP alternative for patients with obstructive sleep apnea and snoring. These comfortable, portable devices are billed to your medical insurance—not your dental benefits.",
                 whatWeOffer: [
                     "Custom-fit oral sleep appliances by Dr. Phan",
                     "CPAP alternative that's comfortable and portable",

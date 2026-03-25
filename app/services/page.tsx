@@ -195,10 +195,10 @@ export default function ServicesPage() {
                                                     )}
                                                     <div className="p-4">
                                                         <div className="flex items-center justify-between">
-                                                            <h3 className="font-semibold text-gray-900 group-hover:text-primary-600 transition-colors">
+                                                            <h3 className="text-[15px] font-semibold text-gray-900 group-hover:text-primary-600 transition-colors">
                                                                 {service.name}
                                                             </h3>
-                                                            <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-primary-600 group-hover:translate-x-1 transition-all" />
+                                                            <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-primary-600 group-hover:translate-x-1 transition-all" />
                                                         </div>
                                                     </div>
                                                 </Link>

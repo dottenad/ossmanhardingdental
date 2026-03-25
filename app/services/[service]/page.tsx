@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { businessConfig, industryConfig } from "@/lib/config";
+import { businessConfig, industryConfig, getServiceLocation } from "@/lib/config";
 import { generateMetadata as generateSEOMetadata } from "@/lib/seo";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -129,6 +129,7 @@ export default function ServicePage({ params }: PageProps) {
                     backgroundImage={serviceHeroImage}
                     title={serviceName}
                     subtitle={getServiceShortDescription(params.service, serviceName)}
+                    priority={true}
                 />
                 {/* Breadcrumb */}
                 <Breadcrumb
@@ -721,7 +722,10 @@ export default function ServicePage({ params }: PageProps) {
                                         <h3 className="text-xl font-bold text-gray-900 mb-4 text-center">
                                             Schedule an Appointment
                                         </h3>
-                                        <DentrixBooking fullPage={true} />
+                                        <DentrixBooking
+                                            fullPage={true}
+                                            location={getServiceLocation(params.service) as "enumclaw" | "bonney-lake" | undefined}
+                                        />
                                     </div>
                                 </div>
                             </div>

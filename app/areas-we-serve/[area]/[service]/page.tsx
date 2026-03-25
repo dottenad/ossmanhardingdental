@@ -165,6 +165,12 @@ export default function AreaServicePage({ params }: PageProps) {
             ? `${businessConfig.secondaryAddress.street}, ${businessConfig.secondaryAddress.city}, ${businessConfig.secondaryAddress.state} ${businessConfig.secondaryAddress.zipCode}`
             : "";
 
+    // Determine drive time - use driveTimeToBonneyLake if service is at Bonney Lake but area's nearest is Enumclaw
+    const isServiceAtDifferentLocation = officeSlug !== area.nearestOffice;
+    const driveTimeToOffice = isServiceAtDifferentLocation && officeSlug === "bonney-lake" && area.driveTimeToBonneyLake
+        ? area.driveTimeToBonneyLake
+        : area.driveTime;
+
     const industry = industryConfig[businessConfig.industry];
     const serviceContent = industry.servicePageContent?.[params.service];
     const serviceImage = industry.servicePageImages?.[params.service];
@@ -242,8 +248,7 @@ export default function AreaServicePage({ params }: PageProps) {
                                         ) : (
                                             <>
                                                 {area.name} residents can access professional {serviceName.toLowerCase()} services
-                                                at our {nearestOfficeName} dental office, located just {area.driveTime} away
-                                                {area.directionsHint ? ` ${area.directionsHint}` : ""}.
+                                                at our {nearestOfficeName} dental office, located just {driveTimeToOffice} away.
                                             </>
                                         )}
                                     </p>
@@ -447,7 +452,7 @@ export default function AreaServicePage({ params }: PageProps) {
                                         <h3 className="text-xl font-bold text-gray-900 mb-4 text-center">
                                             Schedule an Appointment
                                         </h3>
-                                        <DentrixBooking fullPage={true} />
+                                        <DentrixBooking fullPage={true} location={officeSlug} />
                                     </div>
                                 </div>
                             </div>
