@@ -119,7 +119,18 @@ export default async function BlogPostPage({ params }: PageProps) {
                         {/* Post Meta */}
                         <div className="flex items-center gap-4 mb-8 text-sm text-gray-600">
                             {post.author && (
-                                <span>By {post.author}</span>
+                                <div className="flex items-center gap-3">
+                                    {post.authorImage && (
+                                        <Image
+                                            src={post.authorImage}
+                                            alt={post.author}
+                                            width={40}
+                                            height={40}
+                                            className="rounded-full object-cover"
+                                        />
+                                    )}
+                                    <span>By {post.author}</span>
+                                </div>
                             )}
                             <span>
                                 {new Date(post.date).toLocaleDateString(

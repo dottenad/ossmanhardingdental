@@ -120,6 +120,7 @@ export interface BlogPost {
     content?: string; // Full post content (HTML)
     featuredImage: string; // Main image path
     author?: string; // Author name
+    authorImage?: string; // Author headshot image path
     date: string; // Publication date (ISO format)
     readTime?: string; // Estimated read time (e.g., "8 min read")
     tags: string[]; // Array of tags/categories
@@ -699,99 +700,119 @@ export const businessConfig: BusinessConfig = {
     gallery: [], // Gallery can be populated with smile makeovers, office photos, etc.
     blogPosts: [
         {
-            id: "how-often-should-you-visit-dentist",
-            title: "How Often Should You Really Visit the Dentist?",
-            excerpt:
-                "Most people know they should see a dentist regularly, but how often is enough? We break down the recommended schedule and what factors might mean you need more frequent visits.",
-            featuredImage: "/images/service-images/dental-office.jpg",
-            author: "Dr. Ossman",
-            date: "2025-03-15",
-            readTime: "5 min read",
-            tags: ["Preventive Care", "Dental Health", "Tips"],
-            featured: true,
-        },
-        {
-            id: "what-to-expect-dental-implants",
-            title: "What to Expect During the Dental Implant Process",
-            excerpt:
-                "Dental implants are the gold standard for replacing missing teeth. Here's a step-by-step guide to what happens from consultation to your final restoration.",
-            featuredImage: "/images/service-images/dental-implants.jpg",
-            author: "Dr. Ossman",
-            date: "2025-02-28",
-            readTime: "8 min read",
-            tags: ["Dental Implants", "Restorative", "Procedures"],
-            featured: true,
-        },
-        {
-            id: "wisdom-teeth-removal-guide",
-            title: "Wisdom Teeth Removal: A Complete Guide for Patients",
-            excerpt:
-                "Not sure if you need your wisdom teeth removed? Learn about the signs, the procedure, recovery tips, and why early evaluation matters.",
-            featuredImage: "/images/service-images/wisdom-teeth.jpg",
-            author: "Dr. Ossman",
-            date: "2025-02-10",
-            readTime: "7 min read",
-            tags: ["Oral Surgery", "Wisdom Teeth", "Procedures"],
-            featured: true,
-        },
-        {
-            id: "overcome-dental-anxiety",
-            title: "5 Ways to Overcome Dental Anxiety",
-            excerpt:
-                "Dental anxiety is more common than you think. Here are practical strategies and sedation options that can help make your visit comfortable and stress-free.",
-            featuredImage: "/images/service-images/sedation-dentistry.jpg",
-            author: "Dr. Ossman",
-            date: "2025-01-25",
-            readTime: "6 min read",
-            tags: ["Sedation Dentistry", "Dental Anxiety", "Tips"],
-            featured: false,
-        },
-        {
-            id: "electric-vs-manual-toothbrush",
-            title: "Electric vs Manual Toothbrush: Which Is Better?",
-            excerpt:
-                "The debate continues—is an electric toothbrush worth the investment? We compare effectiveness, technique, and what the research actually says.",
-            featuredImage: "/images/service-images/preventive-dentistry.jpg",
-            author: "Dr. Ossman",
-            date: "2025-01-10",
-            readTime: "5 min read",
-            tags: ["Preventive Care", "Oral Hygiene", "Tips"],
-            featured: false,
-        },
-        {
-            id: "signs-you-need-root-canal",
-            title: "6 Signs You Might Need a Root Canal",
-            excerpt:
-                "Persistent tooth pain? Sensitivity to hot and cold? Learn the warning signs that indicate you may need root canal therapy—and why it's nothing to fear.",
-            featuredImage: "/images/service-images/root-canal.jpg",
-            author: "Dr. Ossman",
-            date: "2024-12-15",
-            readTime: "6 min read",
-            tags: ["Root Canal", "Restorative", "Symptoms"],
-            featured: false,
-        },
-        {
-            id: "caring-for-childs-teeth",
-            title: "A Parent's Guide to Caring for Your Child's Teeth",
-            excerpt:
-                "From first tooth to braces, here's everything parents need to know about pediatric dental care, including when to schedule that first appointment.",
-            featuredImage: "/images/bonney-lake/building/office-8.png",
-            author: "Dr. Ossman",
-            date: "2024-11-20",
-            readTime: "8 min read",
-            tags: ["Pediatric Dentistry", "Children", "Preventive Care"],
-            featured: false,
-        },
-        {
-            id: "cosmetic-dentistry-options",
-            title: "Transform Your Smile: Cosmetic Dentistry Options Explained",
-            excerpt:
-                "From teeth whitening to veneers, discover the cosmetic dentistry treatments that can help you achieve the smile you've always wanted.",
+            id: "fresh-smile-for-spring-cosmetic-dentistry-suresmile",
+            title: "A Fresh Smile for Spring: How Cosmetic Dentistry and SureSmile Can Boost Your Confidence",
+            excerpt: "Spring is a season of fresh starts. Discover how modern cosmetic dentistry options like professional whitening, veneers, and SureSmile clear aligners can help you achieve a natural, confident smile.",
+            content: `<p>Spring is a season of fresh starts, and for many people it's also a time to focus on feeling more confident in their appearance. One of the most powerful ways to do that is through your smile. Cosmetic dentistry today is not about creating something artificial—it's about enhancing what's already there and helping your smile reflect how you feel inside.</p>
+<p>Many patients are surprised by how simple and natural modern cosmetic options can be. Small changes can create significant improvements in both appearance and confidence.</p>
+<h2>Teeth Whitening: A Simple Refresh</h2>
+<p>Professional whitening is one of the fastest ways to brighten your smile. Years of coffee, tea, and everyday life can dull enamel, even with great brushing habits. In-office and custom take-home whitening safely lift stains and restore brightness in ways that over-the-counter products simply can't.</p>
+<h2>Veneers: Subtle Changes, Beautiful Results</h2>
+<p>Veneers are thin, custom-designed shells placed over the front of teeth to correct chips, gaps, uneven edges, or deep discoloration. When done properly, veneers don't look "fake"—they look like the best version of your natural smile.</p>
+<h2>SureSmile Clear Aligners: Straightening Without Braces</h2>
+<p>For patients who want straighter teeth without metal brackets or wires, SureSmile clear aligners offer a discreet and highly precise solution. Using advanced 3D imaging and digital smile design, we create a custom plan that gently guides your teeth into their ideal position.</p>
+<p>The process begins with a digital scan and panoramic X-ray—no uncomfortable impressions or bulky trays. You'll receive a series of clear, removable aligners that are worn about 22 hours a day and changed every two weeks. Each set moves your teeth a little closer to their final alignment, with treatment typically lasting between 9 and 15 months.</p>
+<p>One of the reasons we use SureSmile is its precision. The system uses more aligners with smaller, more frequent movements, which often results in fewer refinements and faster overall treatment compared to other clear aligner systems. The aligners are made from an advanced, clear material that is both durable and nearly invisible, so most people won't even notice you're wearing them.</p>
+<h2>A Straighter Smile Can Be a Healthier One</h2>
+<p>In addition to improving appearance, straight teeth are easier to clean, which reduces the risk of cavities and gum disease. Clear aligners can also improve bite alignment, helping reduce jaw strain and uneven tooth wear.</p>
+<h2>Flexible Payment Options</h2>
+<p>In many cases, dental insurance will contribute to SureSmile treatment using your orthodontic benefit. We also offer 0% financing and savings for patients who choose to pay their portion upfront, making treatment more accessible for families.</p>
+<p>Spring is the perfect time to invest in yourself. Whether you're preparing for a big event, starting a new chapter, or simply want to feel more confident every time you smile, cosmetic dentistry—including SureSmile—can help you get there.</p>`,
             featuredImage: "/images/service-images/cosmetic-dentistry.jpg",
-            author: "Dr. Ossman",
-            date: "2024-10-30",
-            readTime: "7 min read",
-            tags: ["Cosmetic Dentistry", "Veneers", "Teeth Whitening"],
+            author: "Madisyn Ossman",
+            authorImage: "/images/blog/authors/madisyn_ossman.jpg",
+            date: "2025-04-01",
+            readTime: "5 min read",
+            tags: ["Cosmetic Dentistry", "SureSmile", "Teeth Whitening", "Veneers"],
+            featured: true,
+        },
+        {
+            id: "oral-health-month-why-your-smile-deserves-attention",
+            title: "Oral Health Month: Why Your Smile Deserves Attention All Year Long",
+            excerpt: "March is Oral Health Month—a reminder that great dental health isn't just about cleanings twice a year. Learn why prevention, gum health, and daily habits matter for your confidence and wellbeing.",
+            content: `<p>March is Oral Health Month, a time dedicated to raising awareness about the connection between oral health and overall wellbeing. For our team, it's an opportunity to remind families that great dental health isn't just about cleanings twice a year—it's about understanding your smile, catching issues early, and feeling confident in the care you receive.</p>
+<h2>Prevention Starts Before Symptoms Do</h2>
+<p>Many dental problems begin long before you feel discomfort. Cavities can form silently, gum inflammation can progress without pain, and bite issues can develop gradually. Routine checkups allow us to catch these concerns early, when treatment is simple, affordable, and far more comfortable.</p>
+<h2>Gum Health Matters More Than Most People Realize</h2>
+<p>Gums are the foundation of every tooth, and inflammation is one of the earliest signs something needs attention. March is a great time to pay closer attention: bleeding when brushing, persistent bad breath, or gum tenderness are all reasons to schedule an exam. With early care, gum issues are highly treatable and often reversible.</p>
+<h2>A Great Smile Isn't Just About Teeth—It's About Confidence</h2>
+<p>Whether it's brightening your smile, smoothing out chips, addressing alignment, or improving the comfort of your bite, small changes can make a meaningful impact. Many patients are surprised by how accessible cosmetic and restorative options have become, and our office is always happy to guide you through what's possible.</p>
+<h2>Refresh the Tools You Use Daily</h2>
+<p>This month is also a perfect time to evaluate your at-home routine. Old toothbrush heads, worn bristles, expired toothpaste, or inconsistent flossing habits can quietly limit your progress. A quick refresh—including replacing brush heads and adding tools like water flossers—can dramatically improve the effectiveness of your daily care.</p>
+<h2>Your Dental Team Is Your Partner in Health</h2>
+<p>Oral Health Month is more than a reminder to schedule your next cleaning. It's a chance to think about how your smile supports your confidence, comfort, and long-term wellness. We're here to answer questions, address concerns early, and help every member of your family feel cared for.</p>
+<p>If it's been a while since your last visit or if you're ready to take a more proactive approach to your smile this year, March is the perfect time to start.</p>`,
+            featuredImage: "/images/service-images/dental-exam.jpg",
+            author: "Madisyn Ossman",
+            authorImage: "/images/blog/authors/madisyn_ossman.jpg",
+            date: "2025-03-01",
+            readTime: "4 min read",
+            tags: ["Oral Health", "Preventive Care", "Gum Health", "Tips"],
+            featured: true,
+        },
+        {
+            id: "kids-dental-health-month-what-parents-should-know",
+            title: "Kids' Dental Health Month: What Parents Should Know",
+            excerpt: "February is National Children's Dental Health Month. Learn when to schedule your child's first dental visit, how to make brushing fun, and tips to prevent childhood cavities.",
+            content: `<p>February is National Children's Dental Health Month, a perfect reminder that strong, healthy smiles start early in life. Dental cavities are one of the most prevalent diseases in children and will impact a child's overall health as well as their future permanent teeth. Early prevention of dental complications will prepare your children for a healthy future and enjoyable experiences at the dentist for years to come.</p>
+<h2>Start Early</h2>
+<p>Our doctors, along with the American Dental Association, recommend a child's first dental visit by age one or within six months of their first tooth erupting. Early visits help us monitor development, prevent small issues from becoming larger ones, and give parents personalized oral hygiene guidance.</p>
+<h2>Make Brushing Fun</h2>
+<p>Kids respond well to routine and play. Songs, timers, reward charts, and kid-friendly electric toothbrushes make brushing a moment they can look forward to rather than avoid. We recommend brushing two times per day as soon as your child gets their first tooth.</p>
+<h2>Don't Skip Fluoride or Fluoride Alternatives</h2>
+<p>Fluoride is one of the most effective tools we have for strengthening enamel and preventing childhood cavities. It's especially important for developing teeth, which are more vulnerable to decay. We are happy to give you personalized guidance on how to use children's fluoride to avoid any risk of toxicity based on the child's cavity risk, age, and weight. If you prefer to look at a fluoride alternative, we can give you some great recommendations.</p>
+<h2>Watch Cavity-Causing Snacks</h2>
+<p>Many parents don't realize snacking can increase their child's cavity risk. Sugary or sticky snacks such as granola bars, fruit snacks, crackers, and juice will increase your child's cavity risk. Choosing snacks like apples, cheese, or carrots, and drinking plain water throughout the day can make a big difference. Frequency of snacking is also important to consider as grazing throughout the day or sipping on juice will increase cavity risk as compared to more specific mealtimes.</p>
+<h2>Create Positive Dental Experiences and Set a Good Example</h2>
+<p>We pride ourselves on creating an environment where children feel safe, supported, and heard. In response, we find that their overall confidence grows. Discussing dental visits in an upbeat way at home will help your kids frame dental care in a positive light. Positive early dental experiences reduce anxiety, build trust, and help set them up for consistent preventive care.</p>
+<p>Caring for all the families in our community is one of the best parts of what we do. If your child is due for a checkup, or ready for their very first visit, our team would be honored to welcome them and help them build healthy habits for a lifetime.</p>`,
+            featuredImage: "/images/blog/images/kids-dental-health-month.jpg",
+            author: "Madisyn Ossman",
+            authorImage: "/images/blog/authors/madisyn_ossman.jpg",
+            date: "2025-02-01",
+            readTime: "5 min read",
+            tags: ["Pediatric Dentistry", "Children", "Preventive Care", "Tips"],
+            featured: true,
+        },
+        {
+            id: "new-year-healthy-smile-daily-habits",
+            title: "New Year, Healthy Smile: Daily Habits That Make the Biggest Difference",
+            excerpt: "A new year is the perfect time to build healthier habits for your smile. Learn how oral health connects to whole-body wellness and the daily routines that protect your teeth all year long.",
+            content: `<p>A new year is the perfect moment to reset routines and build healthier habits, and your smile is a great place to start. Oral health affects more than teeth—it influences your confidence, energy, sleep, and long-term whole-body wellness.</p>
+<h2>Oral Health and Overall Health: A Stronger Link Than Most Realize</h2>
+<p>Modern research shows clear connections between gum health and major health conditions. The mouth is a gateway to the rest of the body, and the state of your teeth and gums can influence:</p>
+<ul>
+<li><strong>Heart health:</strong> Gum inflammation is associated with higher cardiovascular risks.</li>
+<li><strong>Diabetes management:</strong> Inflammation can make blood sugar harder to regulate.</li>
+<li><strong>Pregnancy outcomes:</strong> Healthy gums support healthier full-term pregnancies.</li>
+<li><strong>Respiratory health:</strong> Oral bacteria can contribute to respiratory infections.</li>
+<li><strong>Immune function:</strong> A healthy mouth reduces overall inflammation in the body.</li>
+</ul>
+<p>Small daily habits truly support whole body wellbeing.</p>
+<h2>Daily Habits That Protect Your Smile All Year Long</h2>
+<h3>1. Brush your teeth twice a day</h3>
+<p>Brushing your teeth twice a day removes plaque buildup that can lead to cavities, gum disease, and bad breath. It also helps keep your enamel strong and your smile healthy by preventing harmful bacteria from lingering in your mouth overnight or between meals.</p>
+<h3>2. Add flossing (or a water flosser) to your nightly routine</h3>
+<p>Brushing alone cleans only about 60% of the tooth surface! Flossing reaches where decay and gum irritation often begin.</p>
+<h3>3. Choose a toothpaste with fluoride</h3>
+<p>Fluoride is a naturally occurring mineral found in soil, water, and many foods. It is one of the most thoroughly studied ingredients in dentistry. In toothpaste, it is used in very small, safe, science-backed amounts that strengthen enamel and help prevent early cavities. When used as directed, it carries no risk of toxicity. For patients who prefer an alternative, we offer effective fluoride-free options and are happy to guide you toward the best fit for your goals.</p>
+<h3>4. Limit sugary drinks, especially frequent sipping</h3>
+<p>Constant exposure keeps your mouth acidic, weakening enamel more than an occasional treat.</p>
+<h3>5. Don't ignore gum health</h3>
+<p>Bleeding, tenderness, or persistent bad breath are early warning signs your gums need attention. Healthy gums support healthy teeth for life.</p>
+<h3>6. Replace your toothbrush every 3 months</h3>
+<p>Fresh, soft bristles clean better and are gentler on your gums.</p>
+<h2>Bonus Tip: Consider an Electric Toothbrush</h2>
+<p>Electric toothbrushes remove plaque more effectively than manual brushing and make it easier to reach tricky areas along the gumline. Many models include built-in timers and pressure sensors, helping you brush for the right amount of time without damaging enamel. They're especially helpful for kids, teens, and anyone who struggles with manual dexterity—making good brushing habits simpler and more consistent.</p>
+<h2>Healthy Smiles Start with Consistency</h2>
+<p>A strong routine doesn't require perfection, just steady, simple habits paired with regular checkups. Your mouth—and your whole body—will thank you.</p>
+<p>We're here to help you start the year with clarity and confidence. Schedule your New Year cleaning, and let's make this your healthiest smile yet.</p>`,
+            featuredImage: "/images/blog/images/toothbrushing.jpg",
+            author: "Madisyn Ossman",
+            authorImage: "/images/blog/authors/madisyn_ossman.jpg",
+            date: "2025-01-15",
+            readTime: "6 min read",
+            tags: ["Oral Health", "Preventive Care", "Tips", "New Year"],
             featured: false,
         },
     ],

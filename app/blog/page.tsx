@@ -127,6 +127,20 @@ export default function BlogPage() {
                                                         <p className="text-sm text-gray-600 mb-4 line-clamp-3">
                                                             {post.excerpt}
                                                         </p>
+                                                        {post.author && (
+                                                            <div className="flex items-center gap-2 mb-3">
+                                                                {post.authorImage && (
+                                                                    <Image
+                                                                        src={post.authorImage}
+                                                                        alt={post.author}
+                                                                        width={20}
+                                                                        height={20}
+                                                                        className="rounded-full object-cover"
+                                                                    />
+                                                                )}
+                                                                <span className="text-xs text-gray-600">{post.author}</span>
+                                                            </div>
+                                                        )}
                                                         <div className="flex items-center justify-between text-xs text-gray-500 mb-3">
                                                             <span>
                                                                 {new Date(
@@ -283,6 +297,20 @@ export default function BlogPage() {
                                                         </p>
                                                         <div className="flex items-center justify-between">
                                                             <div className="flex items-center gap-4 text-xs text-gray-500">
+                                                                {post.author && (
+                                                                    <div className="flex items-center gap-2">
+                                                                        {post.authorImage && (
+                                                                            <Image
+                                                                                src={post.authorImage}
+                                                                                alt={post.author}
+                                                                                width={24}
+                                                                                height={24}
+                                                                                className="rounded-full object-cover"
+                                                                            />
+                                                                        )}
+                                                                        <span>{post.author}</span>
+                                                                    </div>
+                                                                )}
                                                                 <span>
                                                                     {new Date(
                                                                         post.date
