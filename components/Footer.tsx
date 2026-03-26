@@ -222,6 +222,20 @@ export function Footer() {
                                         {address.zipCode}
                                     </a>
                                 </li>
+                                {businessConfig.secondaryAddress && (
+                                    <li className="flex items-start gap-3">
+                                        <MapPin className="w-5 h-5 text-primary-400 mt-1 flex-shrink-0" />
+                                        <a
+                                            href={`https://www.google.com/maps?q=${encodeURIComponent(`${businessConfig.secondaryAddress.street}, ${businessConfig.secondaryAddress.city}, ${businessConfig.secondaryAddress.state} ${businessConfig.secondaryAddress.zipCode}`)}`}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="hover:text-primary-400 transition-colors"
+                                        >
+                                            {businessConfig.secondaryAddress.city}, {businessConfig.secondaryAddress.state}{" "}
+                                            {businessConfig.secondaryAddress.zipCode}
+                                        </a>
+                                    </li>
+                                )}
                             </ul>
                         </div>
 
@@ -261,8 +275,19 @@ export function Footer() {
                                 <span suppressHydrationWarning>
                                     {currentYear}
                                 </span>{" "}
-                                {businessConfig.name}. All
-                                rights reserved.
+                                {businessConfig.name}. All rights reserved.
+                                <span className="hidden md:inline mx-3"> | </span>
+                                <span className="block md:inline mt-1 md:mt-0">
+                                    Site created by{" "}
+                                    <a
+                                        href="https://www.drawbridgemarketing.com"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="font-semibold hover:text-white transition-colors"
+                                    >
+                                        Drawbridge Marketing
+                                    </a>
+                                </span>
                             </p>
                             <div className="flex gap-6 text-sm text-gray-100">
                                 <Link
