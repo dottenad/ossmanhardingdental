@@ -352,7 +352,7 @@ export default function ServiceAreaPage({ params }: PageProps) {
                                                 Serving the {area.name} Community
                                             </h2>
                                             <p className="text-gray-700 mb-4">
-                                                Whether you live near {area.landmarks.slice(0, 3).join(", ")}, or anywhere else in {area.name},
+                                                Whether you live in {area.landmarks.slice(0, 3).join(", ")}, or anywhere else in {area.name},
                                                 our {nearestOfficeName} office is conveniently located to serve your dental needs.
                                             </p>
                                             <div className="flex flex-wrap gap-2">

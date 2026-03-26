@@ -228,10 +228,10 @@ export const geoServiceAreas: GeoServiceArea[] = [
         isOfficeLocation: true,
         locationDescription: "Located in Downtown Tehaleh",
         description: "Tehaleh residents enjoy convenient access to our Bonney Lake office, located right in the heart of this master-planned community.",
-        landmarks: ["The Post", "Caffé D'Arte", "Trilogy at Tehaleh", "Newland Community Parks", "Cascadia Park", "Hounds Hollow Dog Park"],
-        directionsHint: "just minutes from The Post community center",
+        landmarks: ["Eagle Ridge", "Trilogy", "Glacier Pointe", "Big Sky", "Berkeley Park", "Observation Ridge"],
+        directionsHint: "conveniently located to serve all Tehaleh neighborhoods",
         communityType: "master-planned community",
-        communityContent: "As one of the fastest-growing communities in the Pacific Northwest, Tehaleh attracts young families and active adults seeking a vibrant, connected lifestyle. The community's emphasis on health and wellness aligns perfectly with our approach to preventive dental care. Whether you're grabbing coffee at Caffé D'Arte after dropping kids at school or enjoying a weekend hike on the community trails, maintaining your family's oral health shouldn't be a hassle. Our Bonney Lake office was designed with Tehaleh families in mind—modern amenities, early morning appointments, and a welcoming environment for patients of all ages.",
+        communityContent: "As one of the fastest-growing communities in the Pacific Northwest, Tehaleh attracts young families and active adults seeking a vibrant, connected lifestyle. The community's emphasis on health and wellness aligns perfectly with our approach to preventive dental care. Whether you're in Eagle Ridge, Glacier Pointe, Trilogy, or any of the other wonderful Tehaleh neighborhoods, our Bonney Lake office is conveniently located to serve your dental needs. We designed our practice with Tehaleh families in mind—modern amenities, early morning appointments, and a welcoming environment for patients of all ages.",
         whyChooseUs: [
             "Conveniently located right here in Tehaleh",
             "Early 7 AM appointments perfect for busy Tehaleh families",
@@ -537,8 +537,8 @@ export const businessConfig: BusinessConfig = {
                 {
                     label: "Preventive Care",
                     children: [
-                        { label: "Dental Exams & Cleanings", href: "/services/dental-exams-cleanings" },
                         { label: "Preventive Dentistry", href: "/services/preventive-dentistry" },
+                        { label: "Dental Exams & Cleanings", href: "/services/dental-exams-cleanings" },
                     ],
                 },
                 {
@@ -555,8 +555,9 @@ export const businessConfig: BusinessConfig = {
                 {
                     label: "Restorative",
                     children: [
-                        { label: "Crowns & Bridges", href: "/services/crowns-bridges" },
                         { label: "Restorative Dentistry", href: "/services/restorative-dentistry" },
+                        { label: "Crowns & Bridges", href: "/services/crowns-bridges" },
+                        { label: "Dentures", href: "/services/dentures" },
                         { label: "Dental Implants", href: "/services/dental-implants" },
                     ],
                 },
@@ -696,6 +697,7 @@ export const businessConfig: BusinessConfig = {
         "/services/veneers-esthetic-crowns": "/images/service-images/veneers.jpg",
         "/services/crowns-bridges": "/images/service-images/crowns.jpg",
         "/services/restorative-dentistry": "/images/service-images/crowns.jpg",
+        "/services/dentures": "/images/service-images/dentures.jpg",
         "/services/emergency-dental-care": "/images/service-images/emergency-dental.jpg",
         "/services/botox-facial-esthetics": "/images/service-images/botox.jpg",
         "/services/smile-makeovers": "/images/service-images/smile-makeover.jpg",
@@ -1018,6 +1020,7 @@ const _industryConfig = {
             "Veneers & Esthetic Crowns",
             "Crowns & Bridges",
             "Restorative Dentistry",
+            "Dentures",
             "Emergency Dental Care",
             "Botox & Facial Esthetics",
             "EMFACE & EXION",
@@ -1059,6 +1062,7 @@ const _industryConfig = {
             "veneers-esthetic-crowns": "/images/service-images/veneers.jpg",
             "crowns-bridges": "/images/service-images/crowns.jpg",
             "restorative-dentistry": "/images/service-images/restorative.jpg",
+            "dentures": "/images/service-images/dentures.jpg",
             "emergency-dental-care": "/images/service-images/emergency-dental.jpg",
             "botox-facial-esthetics": "/images/service-images/botox.jpg",
             "smile-makeovers": "/images/service-images/smile-makeover.jpg",
@@ -1131,6 +1135,27 @@ const _industryConfig = {
                         "No need to modify healthy neighboring teeth (unlike bridges)",
                         "Permanent solution that can last a lifetime with proper care",
                         "Chew and speak naturally—no slipping or adhesives",
+                    ],
+                },
+                solutionsSection: {
+                    title: "Our Implant Solutions",
+                    items: [
+                        {
+                            name: "Single Tooth Implants",
+                            description: "Replace one missing tooth with a titanium implant and custom crown that looks, feels, and functions like your natural tooth.",
+                        },
+                        {
+                            name: "Implant-Supported Dentures",
+                            description: "Secure your full or partial dentures with 2-4 implants for stability and confidence. No more slipping, adhesives, or discomfort.",
+                        },
+                        {
+                            name: "All-on-4 / All-on-X Dental Implants",
+                            description: "Replace a full arch of teeth with just 4-6 strategically placed implants. A cost-effective, long-lasting alternative to traditional dentures.",
+                        },
+                        {
+                            name: "Teeth in a Day (Full Smile Makeover)",
+                            description: "Walk in with failing or missing teeth, walk out with a brand new smile—all in one appointment. Immediate function and aesthetics while your permanent restoration is crafted.",
+                        },
                     ],
                 },
                 relatedServices: ["oral-surgery", "sedation-dentistry", "wisdom-teeth-extraction", "crowns-bridges"],
@@ -1388,12 +1413,66 @@ const _industryConfig = {
                     "Tooth-colored composite fillings",
                     "Inlays and onlays",
                     "Crown and bridge work",
+                    "Full and partial dentures",
+                    "Implant-supported dentures",
                     "Full mouth reconstruction",
                     "Repair of chipped or broken teeth",
                     "Replacement of old metal fillings",
                 ],
-                process: "We evaluate the extent of damage and discuss all treatment options. For fillings, we remove decay, clean the area, and apply tooth-colored composite material. For more extensive repairs, we may recommend crowns, inlays, or onlays. We take time to match materials to your natural tooth color for seamless results.",
+                process: "We evaluate the extent of damage and discuss all treatment options. For fillings, we remove decay, clean the area, and apply tooth-colored composite material. For more extensive repairs, we may recommend crowns, inlays, or onlays. For missing teeth, we offer both traditional dentures and implant-supported options for improved stability. We take time to match materials to your natural tooth color for seamless results.",
                 relatedServices: ["crowns-bridges", "dental-implants", "dental-exams-cleanings", "emergency-dental-care"],
+            },
+            "dentures": {
+                cardDescription: "Restore your smile and confidence with custom-crafted dentures designed for comfort and natural appearance.",
+                whatIs: "At Ossman Harding Dental, we create custom dentures that restore your ability to eat, speak, and smile with confidence. Whether you need to replace a few teeth or a full arch, our dentures are crafted for comfort, durability, and a natural appearance. We also offer implant-supported dentures for patients who want added stability without adhesives.",
+                whatWeOffer: [
+                    "Full dentures for complete tooth replacement",
+                    "Partial dentures to fill gaps while preserving natural teeth",
+                    "Implant-supported dentures for maximum stability",
+                    "Immediate dentures placed the same day as extractions",
+                    "Denture repairs and relines",
+                    "Custom color and shape matching for natural appearance",
+                    "Flexible partial dentures for added comfort",
+                ],
+                processSteps: [
+                    "Comprehensive exam and consultation to discuss your goals and options",
+                    "Impressions and measurements for your custom dentures",
+                    "Try-in appointment to verify fit, bite, and appearance",
+                    "Final denture delivery with adjustments as needed",
+                    "Follow-up visits to ensure comfort and proper fit",
+                ],
+                solutionsSection: {
+                    title: "Our Denture Options",
+                    items: [
+                        {
+                            name: "Full Dentures",
+                            description: "Replace all teeth in the upper or lower arch with a removable prosthetic that rests on your gums. Ideal for patients who have lost all their teeth or need full extractions.",
+                        },
+                        {
+                            name: "Partial Dentures",
+                            description: "Fill gaps from missing teeth while preserving your remaining natural teeth. Partials use clasps or precision attachments to stay secure.",
+                        },
+                        {
+                            name: "Implant-Supported Dentures",
+                            description: "Snap-on dentures anchored by 2-4 dental implants for superior stability. Eat, laugh, and speak without worrying about slipping or adhesives.",
+                        },
+                        {
+                            name: "Immediate Dentures",
+                            description: "Receive temporary dentures the same day as your extractions so you never have to be without teeth. Permanent dentures are crafted once healing is complete.",
+                        },
+                    ],
+                },
+                whyChooseSection: {
+                    title: "Why Choose Dentures?",
+                    points: [
+                        "Restore your ability to eat your favorite foods",
+                        "Improve speech clarity affected by missing teeth",
+                        "Support facial structure and prevent a sunken appearance",
+                        "Affordable solution for replacing multiple missing teeth",
+                        "Removable for easy cleaning and maintenance",
+                    ],
+                },
+                relatedServices: ["dental-implants", "restorative-dentistry", "oral-surgery", "crowns-bridges"],
             },
             "emergency-dental-care": {
                 cardDescription: "Severe pain or broken tooth? We offer same-day emergency appointments.",

@@ -350,7 +350,7 @@ export default function ReviewsPage() {
                                             >
                                                 <div className="flex items-center gap-4 p-4">
                                                     <div className="flex-grow">
-                                                        <p className="text-lg font-semibold text-gray-900 mb-2">Bonney Lake Office</p>
+                                                        <p className="text-lg font-bold text-gray-900 mb-2">Bonney Lake Office</p>
                                                         <div className="flex items-center gap-2">
                                                             <span className="text-2xl font-bold text-gray-900">4.9</span>
                                                             <div className="flex items-center gap-0.5">
@@ -395,7 +395,7 @@ export default function ReviewsPage() {
                                             >
                                                 <div className="flex items-center gap-4 p-4">
                                                     <div className="flex-grow">
-                                                        <p className="text-lg font-semibold text-gray-900 mb-2">Enumclaw Office</p>
+                                                        <p className="text-lg font-bold text-gray-900 mb-2">Enumclaw Office</p>
                                                         <div className="flex items-center gap-2">
                                                             <span className="text-2xl font-bold text-gray-900">5.0</span>
                                                             <div className="flex items-center gap-0.5">

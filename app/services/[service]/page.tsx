@@ -365,6 +365,52 @@ export default function ServicePage({ params }: PageProps) {
                                                 </>
                                             )}
 
+                                            {/* Solutions Section (e.g., Implant Types) */}
+                                            {(
+                                                industryConfig[
+                                                    businessConfig.industry
+                                                ].servicePageContent ?? {}
+                                            )[params.service]?.solutionsSection && (
+                                                <>
+                                                    <h3 className="text-2xl font-bold mt-10 mb-4 text-gray-900">
+                                                        {
+                                                            (
+                                                                industryConfig[
+                                                                    businessConfig
+                                                                        .industry
+                                                                ].servicePageContent ??
+                                                                {}
+                                                            )[params.service]
+                                                                ?.solutionsSection?.title
+                                                        }
+                                                    </h3>
+                                                    <div className="space-y-4 mb-8">
+                                                        {(
+                                                            (
+                                                                industryConfig[
+                                                                    businessConfig
+                                                                        .industry
+                                                                ].servicePageContent ??
+                                                                {}
+                                                            )[params.service]
+                                                                ?.solutionsSection?.items ?? []
+                                                        ).map((item: { name: string; description: string }, i: number) => (
+                                                            <div
+                                                                key={i}
+                                                                className="bg-gray-50 p-5 rounded-xl border border-gray-200"
+                                                            >
+                                                                <h4 className="font-bold text-gray-900 mb-2">
+                                                                    {item.name}
+                                                                </h4>
+                                                                <p className="text-gray-700 text-sm leading-relaxed m-0">
+                                                                    {item.description}
+                                                                </p>
+                                                            </div>
+                                                        ))}
+                                                    </div>
+                                                </>
+                                            )}
+
                                             {/* Insurance Section */}
                                             {(
                                                 industryConfig[

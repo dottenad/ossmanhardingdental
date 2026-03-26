@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { MapPin, Phone, Clock, Calendar } from "lucide-react";
+import { MapPin, Phone, Clock, Calendar, CheckCircle2, ArrowRight } from "lucide-react";
 import { businessConfig, industryConfig } from "@/lib/config";
 import { generateMetadata as generateSEOMetadata } from "@/lib/seo";
 import { formatPhoneDisplay, formatPhoneLink } from "@/lib/phone";
@@ -195,8 +195,8 @@ export default function EnumclawPage() {
                                     <h2 className="text-3xl font-bold text-gray-900 mb-6">
                                         Services Available in {LOCATION.name}
                                     </h2>
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                        {industry.services.map((service, index) => {
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                                        {(industry.allServices || industry.services).map((service) => {
                                             const serviceSlug = service
                                                 .toLowerCase()
                                                 .replace(/\s+/g, "-")
@@ -204,23 +204,16 @@ export default function EnumclawPage() {
                                                 .replace(/-+/g, "-");
                                             return (
                                                 <Link
-                                                    key={index}
+                                                    key={service}
                                                     href={`/locations/${LOCATION.slug}/services/${serviceSlug}`}
-                                                    className="flex items-center gap-3 p-4 bg-gray-50 rounded-lg border border-gray-200 hover:border-primary-300 hover:bg-primary-50 transition-colors"
+                                                    className="flex items-center gap-2 p-3 bg-gray-50 rounded-lg hover:bg-primary-50 hover:border-primary-200 border border-transparent transition-colors group"
                                                 >
-                                                    <span className="w-2 h-2 bg-primary-600 rounded-full" />
-                                                    <span className="font-medium text-gray-900">{service}</span>
+                                                    <CheckCircle2 className="w-5 h-5 text-primary-600 flex-shrink-0" />
+                                                    <span className="text-gray-700 text-sm font-medium group-hover:text-primary-700">{service}</span>
+                                                    <ArrowRight className="w-4 h-4 text-gray-400 ml-auto group-hover:text-primary-600 transition-colors" />
                                                 </Link>
                                             );
                                         })}
-                                    </div>
-                                    <div className="mt-4">
-                                        <Link
-                                            href={`/locations/${LOCATION.slug}/services`}
-                                            className="text-primary-600 hover:text-primary-700 font-semibold"
-                                        >
-                                            View all services →
-                                        </Link>
                                     </div>
                                 </div>
 
