@@ -30,8 +30,8 @@ const serviceCategories = [
         name: "Preventive Care",
         description: "Regular care to keep your smile healthy",
         services: [
-            { name: "Dental Exams & Cleanings", slug: "dental-exams-cleanings" },
             { name: "Preventive Dentistry", slug: "preventive-dentistry" },
+            { name: "Dental Exams & Cleanings", slug: "dental-exams-cleanings" },
         ],
     },
     {
@@ -50,8 +50,9 @@ const serviceCategories = [
         name: "Restorative",
         description: "Repair and restore your teeth",
         services: [
-            { name: "Crowns & Bridges", slug: "crowns-bridges" },
             { name: "Restorative Dentistry", slug: "restorative-dentistry" },
+            { name: "Crowns & Bridges", slug: "crowns-bridges" },
+            { name: "Dentures", slug: "dentures" },
             { name: "Dental Implants", slug: "dental-implants" },
         ],
     },
