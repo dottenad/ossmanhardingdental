@@ -403,10 +403,12 @@ const serviceAreasList = [
     "Bonney Lake, WA",
     "Tehaleh, WA",
     "Buckley, WA",
-    "Lake Tapps, WA",
-    "Black Diamond, WA",
     "Sumner, WA",
-    "Puyallup, WA",
+    // Future expansion areas:
+    // "Lake Tapps, WA",
+    // "Black Diamond, WA",
+    // "Puyallup, WA",
+    // "Auburn, WA",
 ];
 
 // Client-specific configuration for Ossman Harding Dental
@@ -646,13 +648,14 @@ export const businessConfig: BusinessConfig = {
             children: [
                 { label: "Tehaleh", href: "/areas-we-serve/tehaleh" },
                 { label: "Buckley", href: "/areas-we-serve/buckley" },
-                { label: "Puyallup", href: "/areas-we-serve/puyallup" },
                 { label: "Sumner", href: "/areas-we-serve/sumner" },
-                { label: "Lake Tapps", href: "/areas-we-serve/lake-tapps" },
-                { label: "Black Diamond", href: "/areas-we-serve/black-diamond" },
-                { label: "Auburn", href: "/areas-we-serve/auburn" },
                 { label: "Orting", href: "/areas-we-serve/orting" },
-                { label: "Maple Valley", href: "/areas-we-serve/maple-valley" },
+                // Future expansion:
+                // { label: "Maple Valley", href: "/areas-we-serve/maple-valley" },
+                // { label: "Lake Tapps", href: "/areas-we-serve/lake-tapps" },
+                // { label: "Black Diamond", href: "/areas-we-serve/black-diamond" },
+                // { label: "Auburn", href: "/areas-we-serve/auburn" },
+                // { label: "Puyallup", href: "/areas-we-serve/puyallup" },
             ],
         },
         { label: "Reviews", href: "/reviews" },
