@@ -959,6 +959,11 @@ export type ServicePageContent = {
         intro?: string;
         points: string[];
     };
+    /** Optional solutions/options section with named items and descriptions */
+    solutionsSection?: {
+        title: string;
+        items: { name: string; description: string }[];
+    };
     /** Optional insurance/payment information section */
     insuranceSection?: {
         title: string;
