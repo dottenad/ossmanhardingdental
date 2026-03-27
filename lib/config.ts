@@ -646,8 +646,10 @@ export const businessConfig: BusinessConfig = {
             label: "Areas We Serve",
             href: "/areas-we-serve",
             children: [
-                { label: "Tehaleh", href: "/areas-we-serve/tehaleh" },
+                { label: "Enumclaw", href: "/locations/enumclaw" },
                 { label: "Buckley", href: "/areas-we-serve/buckley" },
+                { label: "Bonney Lake", href: "/locations/bonney-lake" },
+                { label: "Tehaleh", href: "/areas-we-serve/tehaleh" },
                 { label: "Sumner", href: "/areas-we-serve/sumner" },
                 { label: "Orting", href: "/areas-we-serve/orting" },
                 // Future expansion:
