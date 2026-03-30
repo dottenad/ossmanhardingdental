@@ -16,7 +16,7 @@ import {
 export const metadata: Metadata = generateSEOMetadata(
     {
         title: "Areas We Serve",
-        description: `${businessConfig.name} proudly serves patients from Enumclaw, Bonney Lake, Tehaleh, Puyallup, Buckley, and surrounding communities. Find the office nearest you.`,
+        description: `${businessConfig.name} proudly serves patients from Enumclaw, Bonney Lake, Tehaleh, Buckley, Sumner, Orting, and surrounding communities. Find the office nearest you.`,
         url: `${businessConfig.website}/areas-we-serve`,
     },
     businessConfig

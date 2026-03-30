@@ -33,7 +33,7 @@ const LOCATION = {
     description:
         "Our original Enumclaw location has been serving the community with quality dental care for years. Located on Cole Street, we're easily accessible from downtown Enumclaw and surrounding areas.",
     landmarks: ["Downtown Enumclaw", "White River", "Mount Rainier views"],
-    servingAreas: ["Enumclaw", "Buckley", "Black Diamond", "Carbonado", "Wilkeson"],
+    servingAreas: ["Enumclaw", "Buckley", "Carbonado", "Wilkeson"],
 };
 
 export const metadata: Metadata = generateSEOMetadata(

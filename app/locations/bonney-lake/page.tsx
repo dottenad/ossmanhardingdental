@@ -32,7 +32,7 @@ const LOCATION = {
     description:
         "Our Bonney Lake office serves the growing communities of Bonney Lake, Tehaleh, and Lake Tapps. Conveniently located on 141st Street, we offer the same exceptional care as our Enumclaw location.",
     landmarks: ["Tehaleh", "Lake Tapps", "Allan Yorke Park"],
-    servingAreas: ["Bonney Lake", "Tehaleh", "Lake Tapps", "Sumner", "Puyallup", "South Prairie"],
+    servingAreas: ["Bonney Lake", "Tehaleh", "Sumner", "Orting"],
 };
 
 export const metadata: Metadata = generateSEOMetadata(

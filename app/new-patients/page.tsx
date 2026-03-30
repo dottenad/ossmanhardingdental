@@ -84,7 +84,7 @@ export default function NewPatientsPage() {
                                 <div className="absolute bottom-0 left-0 right-0 p-6">
                                     <h3 className="text-white text-2xl font-bold group-hover:text-primary-200 transition-colors">Bonney Lake Office</h3>
                                     <p className="text-white/90 text-sm">19034 141st Street Ct E, Bonney Lake, WA 98391</p>
-                                    <p className="text-white/80 text-xs">Serving Tehaleh & Lake Tapps</p>
+                                    <p className="text-white/80 text-xs">Serving Tehaleh & Sumner</p>
                                 </div>
                             </Link>
                         </div>

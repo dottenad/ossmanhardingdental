@@ -215,7 +215,7 @@ export default function BonneyLakeServicesPage() {
                                         </li>
                                         <li className="flex items-center gap-3">
                                             <span className="text-primary-600 font-bold">✓</span>
-                                            <span>Convenient for Tehaleh and Lake Tapps residents</span>
+                                            <span>Convenient for Tehaleh and Sumner residents</span>
                                         </li>
                                         <li className="flex items-center gap-3">
                                             <span className="text-primary-600 font-bold">✓</span>

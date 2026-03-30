@@ -24,9 +24,9 @@ const LOCATIONS = [
         },
         hours: "Mon-Wed 7AM-4PM, Thu 7AM-2PM",
         description:
-            "Our original location serving Enumclaw, Buckley, Black Diamond, and surrounding communities.",
+            "Our original location serving Enumclaw, Buckley, and surrounding communities.",
         image: "/images/enumclaw/exterior-main.jpg",
-        servingAreas: ["Enumclaw", "Buckley", "Black Diamond", "Carbonado", "Wilkeson"],
+        servingAreas: ["Enumclaw", "Buckley", "Carbonado", "Wilkeson"],
     },
     {
         name: "Bonney Lake",
@@ -39,9 +39,9 @@ const LOCATIONS = [
         },
         hours: "Mon-Thu 7AM-4PM",
         description:
-            "Our newest location serving Bonney Lake, Tehaleh, Lake Tapps, Sumner, and Puyallup.",
+            "Our newest location serving Bonney Lake, Tehaleh, Sumner, Orting, and surrounding communities.",
         image: "/images/bonney-lake/exterior-main.jpg",
-        servingAreas: ["Bonney Lake", "Tehaleh", "Lake Tapps", "Sumner", "Puyallup"],
+        servingAreas: ["Bonney Lake", "Tehaleh", "Sumner", "Orting"],
     },
 ];
 
