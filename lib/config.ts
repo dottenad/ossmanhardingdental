@@ -263,7 +263,7 @@ export const geoServiceAreas: GeoServiceArea[] = [
     {
         name: "Puyallup",
         slug: "puyallup",
-        published: true,
+        published: false,
         nearestOffice: "bonney-lake",
         driveTime: "15 minute",
         description: "Puyallup patients choose our Bonney Lake office for its modern facilities, comprehensive services, and escape from the crowded valley traffic.",
@@ -301,7 +301,7 @@ export const geoServiceAreas: GeoServiceArea[] = [
     {
         name: "Lake Tapps",
         slug: "lake-tapps",
-        published: true,
+        published: false,
         nearestOffice: "bonney-lake",
         driveTime: "8 minute",
         description: "Lake Tapps families enjoy the closest dental office to their waterfront community, with comprehensive services for the whole family.",
@@ -320,7 +320,7 @@ export const geoServiceAreas: GeoServiceArea[] = [
     {
         name: "Black Diamond",
         slug: "black-diamond",
-        published: true,
+        published: false,
         nearestOffice: "enumclaw",
         driveTime: "15 minute",
         driveTimeToBonneyLake: "20 minute",
@@ -340,7 +340,7 @@ export const geoServiceAreas: GeoServiceArea[] = [
     {
         name: "Auburn",
         slug: "auburn",
-        published: true,
+        published: false,
         nearestOffice: "bonney-lake",
         driveTime: "20 minute",
         description: "Auburn patients discover that our Bonney Lake office offers a welcome alternative to crowded valley dental clinics.",
@@ -378,7 +378,7 @@ export const geoServiceAreas: GeoServiceArea[] = [
     {
         name: "Maple Valley",
         slug: "maple-valley",
-        published: true,
+        published: false,
         nearestOffice: "enumclaw",
         driveTime: "20 minute",
         driveTimeToBonneyLake: "25 minute",
