@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { businessConfig, industryConfig, getServiceLocation } from "@/lib/config";
+import { businessConfig, industryConfig, getServiceLocation, geoServiceAreas } from "@/lib/config";
 import { generateMetadata as generateSEOMetadata } from "@/lib/seo";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -756,6 +756,33 @@ export default function ServicePage({ params }: PageProps) {
                                                     );
                                                 });
                                             })()}
+                                        </div>
+                                    </div>
+
+                                    {/* Service Areas - Links to area+service pages */}
+                                    <div className="mb-8">
+                                        <h3 className="text-2xl font-bold mb-4 text-gray-900">
+                                            {serviceName} Near You
+                                        </h3>
+                                        <p className="text-gray-700 mb-4">
+                                            We provide {serviceName.toLowerCase()} to patients throughout
+                                            Pierce and King counties. Find {serviceName.toLowerCase()} services
+                                            near your community:
+                                        </p>
+                                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+                                            {geoServiceAreas
+                                                .filter((area) => area.published !== false)
+                                                .map((area) => (
+                                                    <Link
+                                                        key={area.slug}
+                                                        href={`/areas-we-serve/${area.slug}/${params.service}`}
+                                                        className="flex items-center justify-center px-3 py-2 bg-gray-50 rounded-lg hover:bg-primary-50 hover:border-primary-200 border border-gray-200 transition-colors text-center group"
+                                                    >
+                                                        <span className="text-gray-700 text-sm font-medium group-hover:text-primary-700">
+                                                            {area.name}
+                                                        </span>
+                                                    </Link>
+                                                ))}
                                         </div>
                                     </div>
                                 </div>

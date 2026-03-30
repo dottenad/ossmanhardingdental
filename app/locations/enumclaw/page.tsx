@@ -215,6 +215,14 @@ export default function EnumclawPage() {
                                             );
                                         })}
                                     </div>
+                                    <div className="mt-4">
+                                        <Link
+                                            href={`/locations/${LOCATION.slug}/services`}
+                                            className="inline-flex items-center text-primary-600 hover:text-primary-700 font-semibold"
+                                        >
+                                            View all {LOCATION.name} services →
+                                        </Link>
+                                    </div>
                                 </div>
 
                                 {/* Meet Our Team */}

@@ -225,12 +225,18 @@ export default function BonneyLakeServicesPage() {
                                 </div>
 
                                 {/* Back to Office */}
-                                <div className="flex gap-4">
+                                <div className="flex flex-wrap gap-4">
                                     <Link
                                         href={`/locations/${LOCATION.slug}`}
                                         className="text-primary-600 hover:text-primary-700 font-semibold"
                                     >
                                         ← Back to {LOCATION.name} Office
+                                    </Link>
+                                    <Link
+                                        href="/services"
+                                        className="text-primary-600 hover:text-primary-700 font-semibold"
+                                    >
+                                        All Services Overview →
                                     </Link>
                                     <Link
                                         href={`/locations/${LOCATION.slug}/team`}
