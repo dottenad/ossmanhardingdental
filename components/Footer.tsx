@@ -244,24 +244,35 @@ export function Footer() {
                             <h4 className="text-lg font-bold mb-6 text-white">
                                 Locations
                             </h4>
-                            <ul className="space-y-2 text-gray-300">
-                                <li>
+                            <div className="space-y-5 text-gray-300">
+                                {/* Enumclaw */}
+                                <div>
                                     <Link
                                         href="/locations/enumclaw"
-                                        className="hover:text-primary-400 transition-colors cursor-pointer"
+                                        className="font-semibold text-white hover:text-primary-400 transition-colors"
                                     >
                                         Enumclaw
                                     </Link>
-                                </li>
-                                <li>
+                                    <div className="text-sm text-gray-400 mt-1 space-y-0.5">
+                                        <p>Mon–Wed: 7 AM–12 PM, 1–4 PM</p>
+                                        <p>Thu: 7 AM–2 PM</p>
+                                        <p>Fri–Sun: Closed</p>
+                                    </div>
+                                </div>
+                                {/* Bonney Lake */}
+                                <div>
                                     <Link
                                         href="/locations/bonney-lake"
-                                        className="hover:text-primary-400 transition-colors cursor-pointer"
+                                        className="font-semibold text-white hover:text-primary-400 transition-colors"
                                     >
                                         Bonney Lake
                                     </Link>
-                                </li>
-                            </ul>
+                                    <div className="text-sm text-gray-400 mt-1 space-y-0.5">
+                                        <p>Mon–Thu: 7 AM–12 PM, 1–4 PM</p>
+                                        <p>Fri–Sun: Closed</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

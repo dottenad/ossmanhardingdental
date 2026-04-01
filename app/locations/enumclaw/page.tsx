@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { MapPin, Phone, Clock, Calendar, CheckCircle2, ArrowRight } from "lucide-react";
-import { businessConfig, industryConfig } from "@/lib/config";
+import { businessConfig, industryConfig, isServiceAvailableAtLocation } from "@/lib/config";
 import { generateMetadata as generateSEOMetadata } from "@/lib/seo";
 import { formatPhoneDisplay, formatPhoneLink } from "@/lib/phone";
 import { Header } from "@/components/Header";
@@ -196,24 +196,33 @@ export default function EnumclawPage() {
                                         Services Available in {LOCATION.name}
                                     </h2>
                                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-                                        {(industry.allServices || industry.services).map((service) => {
-                                            const serviceSlug = service
-                                                .toLowerCase()
-                                                .replace(/\s+/g, "-")
-                                                .replace(/[^a-z0-9-]/g, "")
-                                                .replace(/-+/g, "-");
-                                            return (
-                                                <Link
-                                                    key={service}
-                                                    href={`/locations/${LOCATION.slug}/services/${serviceSlug}`}
-                                                    className="flex items-center gap-2 p-3 bg-gray-50 rounded-lg hover:bg-primary-50 hover:border-primary-200 border border-transparent transition-colors group"
-                                                >
-                                                    <CheckCircle2 className="w-5 h-5 text-primary-600 flex-shrink-0" />
-                                                    <span className="text-gray-700 text-sm font-medium group-hover:text-primary-700">{service}</span>
-                                                    <ArrowRight className="w-4 h-4 text-gray-400 ml-auto group-hover:text-primary-600 transition-colors" />
-                                                </Link>
-                                            );
-                                        })}
+                                        {(industry.allServices || industry.services)
+                                            .filter((service) => {
+                                                const serviceSlug = service
+                                                    .toLowerCase()
+                                                    .replace(/\s+/g, "-")
+                                                    .replace(/[^a-z0-9-]/g, "")
+                                                    .replace(/-+/g, "-");
+                                                return isServiceAvailableAtLocation(serviceSlug, LOCATION.slug);
+                                            })
+                                            .map((service) => {
+                                                const serviceSlug = service
+                                                    .toLowerCase()
+                                                    .replace(/\s+/g, "-")
+                                                    .replace(/[^a-z0-9-]/g, "")
+                                                    .replace(/-+/g, "-");
+                                                return (
+                                                    <Link
+                                                        key={service}
+                                                        href={`/locations/${LOCATION.slug}/services/${serviceSlug}`}
+                                                        className="flex items-center gap-2 p-3 bg-gray-50 rounded-lg hover:bg-primary-50 hover:border-primary-200 border border-transparent transition-colors group"
+                                                    >
+                                                        <CheckCircle2 className="w-5 h-5 text-primary-600 flex-shrink-0" />
+                                                        <span className="text-gray-700 text-sm font-medium group-hover:text-primary-700">{service}</span>
+                                                        <ArrowRight className="w-4 h-4 text-gray-400 ml-auto group-hover:text-primary-600 transition-colors" />
+                                                    </Link>
+                                                );
+                                            })}
                                     </div>
                                     <div className="mt-4">
                                         <Link
