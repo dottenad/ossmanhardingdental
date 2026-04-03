@@ -54,14 +54,15 @@ export function trackPhoneClick(phoneNumber: string, location?: string) {
 /**
  * Track schedule/appointment button click
  * Estimated value: $50 (intent signal)
+ * @param eventName - Custom event name (e.g., "Nav_Schedule_Button_Click", "Sidebar_Widget_Enumclaw_Schedule_Button_Click")
+ * @param serviceName - Optional service name for context
  */
-export function trackScheduleClick(buttonLocation: string, serviceName?: string) {
+export function trackScheduleClick(eventName: string, serviceName?: string) {
     if (!isGtagAvailable()) return;
 
-    window.gtag("event", "schedule_button_click", {
+    window.gtag("event", eventName, {
         event_category: "conversion",
-        event_label: buttonLocation,
-        button_location: buttonLocation,
+        event_label: eventName,
         service_name: serviceName || "general",
         value: 50,
         currency: "USD",
