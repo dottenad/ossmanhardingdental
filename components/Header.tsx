@@ -160,7 +160,7 @@ export function Header() {
                             <div className="hidden lg:flex items-center gap-3 ml-auto">
                                 <Link
                                     href="/appointments"
-                                    onClick={() => trackScheduleClick("header-lg")}
+                                    onClick={() => trackScheduleClick("Nav_Schedule_Button_Click")}
                                     className="bg-button-600 hover:bg-button-700 text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-lg font-semibold text-sm sm:text-base transition-all shadow-md hover:shadow-lg flex items-center gap-2"
                                 >
                                     <Calendar className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -183,7 +183,7 @@ export function Header() {
                                 <div className="hidden md:flex lg:hidden items-center gap-3">
                                     <Link
                                         href="/appointments"
-                                        onClick={() => trackScheduleClick("header-md")}
+                                        onClick={() => trackScheduleClick("Nav_Schedule_Button_Click")}
                                         className="bg-button-600 hover:bg-button-700 text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-lg font-semibold text-sm sm:text-base transition-all shadow-md hover:shadow-lg flex items-center gap-2"
                                     >
                                         <svg
@@ -230,7 +230,7 @@ export function Header() {
                                 <div className="md:hidden flex items-center gap-2">
                                     <Link
                                         href="/appointments"
-                                        onClick={() => trackScheduleClick("header-sm")}
+                                        onClick={() => trackScheduleClick("Nav_Schedule_Button_Click")}
                                         className="flex flex-col items-center gap-1 bg-button-600 hover:bg-button-700 text-white py-2 px-4 rounded-lg transition-all flex-shrink-0"
                                         aria-label="Schedule Appointment"
                                     >

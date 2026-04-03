@@ -56,9 +56,10 @@ export function DentrixBooking({
 
         // Fire analytics event when a location is selected
         if (targetLocation) {
+            const locationName = targetLocation === "bonney-lake" ? "Bonney_Lake" : "Enumclaw";
             const eventName = fullPage
-                ? `sidebar_widget_${targetLocation.replace("-", "_")}`
-                : `modal_widget_${targetLocation.replace("-", "_")}`;
+                ? `Sidebar_Widget_${locationName}_Schedule_Button_Click`
+                : `Modal_Widget_${locationName}_Schedule_Button_Click`;
             trackScheduleClick(eventName);
         }
 
