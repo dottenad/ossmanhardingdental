@@ -671,7 +671,7 @@ export const businessConfig: BusinessConfig = {
         "/appointments": "/images/hero-dental.jpg",
         "/reviews": "/images/reviews.jpg",
         "/locations": "/images/locations-hero.jpg",
-        "/faq": "/images/faq-hero.jpg",
+        "/faq": "/images/bonney-lake/building/exterior-1.jpg",
         "/terms": "/images/hero-dental.jpg",
         "/privacy": "/images/hero-dental.jpg",
         "/new-patients": "/images/service-images/cosmetic-dentistry.jpg",

@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Calendar, X, ExternalLink } from "lucide-react";
+import { trackScheduleClick } from "@/lib/analytics";
 
 interface DentrixBookingProps {
     location?: "enumclaw" | "bonney-lake";
@@ -52,6 +53,14 @@ export function DentrixBooking({
 
     const handleOpenBooking = (loc?: string) => {
         const targetLocation = loc || selectedLocation;
+
+        // Fire analytics event when a location is selected
+        if (targetLocation) {
+            const eventName = fullPage
+                ? `sidebar_widget_${targetLocation.replace("-", "_")}`
+                : `modal_widget_${targetLocation.replace("-", "_")}`;
+            trackScheduleClick(eventName);
+        }
 
         // On iOS Safari, open in new tab instead of iframe
         if (useNewTab && targetLocation) {
