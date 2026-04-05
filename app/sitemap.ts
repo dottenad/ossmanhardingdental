@@ -52,6 +52,36 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 0.7,
         },
         {
+            url: `${baseUrl}/blog`,
+            lastModified: currentDate,
+            changeFrequency: "weekly" as const,
+            priority: 0.7,
+        },
+        {
+            url: `${baseUrl}/new-patients`,
+            lastModified: currentDate,
+            changeFrequency: "monthly" as const,
+            priority: 0.8,
+        },
+        {
+            url: `${baseUrl}/new-patients/scheduling`,
+            lastModified: currentDate,
+            changeFrequency: "monthly" as const,
+            priority: 0.8,
+        },
+        {
+            url: `${baseUrl}/new-patients/insurance`,
+            lastModified: currentDate,
+            changeFrequency: "monthly" as const,
+            priority: 0.8,
+        },
+        {
+            url: `${baseUrl}/new-patients/payment-options`,
+            lastModified: currentDate,
+            changeFrequency: "monthly" as const,
+            priority: 0.7,
+        },
+        {
             url: `${baseUrl}/new-patients/payment-options/payment-plans`,
             lastModified: currentDate,
             changeFrequency: "monthly" as const,
