@@ -24,15 +24,16 @@ const LOCATION_IMAGES: Record<string, string> = {
     "bonney-lake": "/images/bonney-lake/exterior-main.jpg",
 };
 
-// Detect iOS Safari (has issues with third-party cookies in iframes)
-function isIOSSafari(): boolean {
+// Detect Safari (has issues with third-party cookies in iframes)
+function isSafari(): boolean {
     if (typeof window === "undefined") return false;
     const ua = window.navigator.userAgent;
-    const iOS = /iPad|iPhone|iPod/.test(ua);
-    const webkit = /WebKit/.test(ua);
-    const notChrome = !/CriOS/.test(ua);
-    const notFirefox = !/FxiOS/.test(ua);
-    return iOS && webkit && notChrome && notFirefox;
+    // Safari contains "Safari" but not "Chrome", "Chromium", "Edge", or "Firefox"
+    const hasSafari = /Safari/.test(ua);
+    const notChrome = !/Chrome/.test(ua) && !/Chromium/.test(ua) && !/CriOS/.test(ua);
+    const notFirefox = !/Firefox/.test(ua) && !/FxiOS/.test(ua);
+    const notEdge = !/Edg/.test(ua);
+    return hasSafari && notChrome && notFirefox && notEdge;
 }
 
 export function DentrixBooking({
@@ -48,7 +49,7 @@ export function DentrixBooking({
 
     // Check for iOS Safari on mount
     useEffect(() => {
-        setUseNewTab(isIOSSafari());
+        setUseNewTab(isSafari());
     }, []);
 
     const handleOpenBooking = (loc?: string) => {
