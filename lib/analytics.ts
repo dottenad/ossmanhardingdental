@@ -37,15 +37,16 @@ export function trackPageView(url: string) {
 /**
  * Track phone call click
  * Estimated value: $200 (high-intent action)
+ * @param phoneNumber - The phone number clicked
+ * @param eventName - Custom event name (e.g., "Homepage_Banner_Call_Button_Click")
  */
-export function trackPhoneClick(phoneNumber: string, location?: string) {
+export function trackPhoneClick(phoneNumber: string, eventName?: string) {
     if (!isGtagAvailable()) return;
 
-    window.gtag("event", "phone_call_click", {
+    window.gtag("event", eventName || "phone_call_click", {
         event_category: "conversion",
         event_label: phoneNumber,
         phone_number: phoneNumber,
-        click_location: location || "unknown",
         value: 200,
         currency: "USD",
     });

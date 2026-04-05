@@ -170,7 +170,7 @@ export function Header() {
                                     href={`tel:${formatPhoneLink(
                                         businessConfig.phone,
                                     )}`}
-                                    onClick={() => trackPhoneClick(businessConfig.phone, "header-lg")}
+                                    onClick={() => trackPhoneClick(businessConfig.phone, "Nav_Call_Button_Click")}
                                     className="bg-button-700 hover:bg-button-800 text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-lg font-semibold text-sm sm:text-base flex items-center gap-2 transition-all shadow-md hover:shadow-lg whitespace-nowrap"
                                 >
                                     <Phone className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -205,7 +205,7 @@ export function Header() {
                                         href={`tel:${formatPhoneLink(
                                             businessConfig.phone,
                                         )}`}
-                                        onClick={() => trackPhoneClick(businessConfig.phone, "header-md")}
+                                        onClick={() => trackPhoneClick(businessConfig.phone, "Nav_Call_Button_Click")}
                                         className="bg-button-700 hover:bg-button-800 text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-lg font-semibold text-sm sm:text-base flex items-center gap-2 transition-all shadow-md hover:shadow-lg whitespace-nowrap"
                                     >
                                         <svg
@@ -255,7 +255,7 @@ export function Header() {
                                         href={`tel:${formatPhoneLink(
                                             businessConfig.phone,
                                         )}`}
-                                        onClick={() => trackPhoneClick(businessConfig.phone, "header-sm")}
+                                        onClick={() => trackPhoneClick(businessConfig.phone, "Nav_Call_Button_Click")}
                                         className="flex flex-col items-center gap-1 bg-button-700 hover:bg-button-800 text-white py-2 px-4 rounded-lg transition-all flex-shrink-0"
                                         aria-label={`Call ${formatPhoneDisplay(
                                             businessConfig.phone,

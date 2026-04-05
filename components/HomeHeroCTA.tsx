@@ -21,7 +21,7 @@ export function HomeHeroCTA() {
         e.preventDefault();
 
         // Track the schedule click
-        trackScheduleClick("home-hero");
+        trackScheduleClick("Homepage_Banner_Schedule_Button_Click");
 
         const bookingForm = document.getElementById("booking-form");
         if (!bookingForm) return;
@@ -66,7 +66,7 @@ export function HomeHeroCTA() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a
                 href={`tel:${formatPhoneLink(businessConfig.phone)}`}
-                onClick={() => trackPhoneClick(businessConfig.phone, "home-hero")}
+                onClick={() => trackPhoneClick(businessConfig.phone, "Homepage_Banner_Call_Button_Click")}
                 className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-button-600 to-button-700 rounded-xl shadow-lg hover:shadow-xl hover:from-button-700 hover:to-button-800 transition-all duration-300 transform hover:scale-105 whitespace-nowrap"
             >
                 <svg

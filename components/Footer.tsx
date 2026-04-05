@@ -195,7 +195,7 @@ export function Footer() {
                                     <Phone className="w-5 h-5 text-primary-400 mt-1 flex-shrink-0" />
                                     <a
                                         href={`tel:${formatPhoneLink(phone)}`}
-                                        onClick={() => trackPhoneClick(phone, "footer")}
+                                        onClick={() => trackPhoneClick(phone, "Footer_Call_Button_Click")}
                                         className="hover:text-primary-400 transition-colors"
                                     >
                                         {formatPhoneDisplay(phone)}
