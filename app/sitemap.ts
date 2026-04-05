@@ -57,6 +57,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
             changeFrequency: "weekly" as const,
             priority: 0.7,
         },
+        // Individual blog posts
+        ...(businessConfig.blogPosts || []).map((post) => ({
+            url: `${baseUrl}/blog/${post.id}`,
+            lastModified: post.date || currentDate,
+            changeFrequency: "monthly" as const,
+            priority: 0.6,
+        })),
         {
             url: `${baseUrl}/new-patients`,
             lastModified: currentDate,
