@@ -279,25 +279,11 @@ export function generateReviewSchema(
                     bestRating: "5",
                     worstRating: "1",
                 },
-                ...(review.service
-                    ? {
-                          itemReviewed: {
-                              "@type": "Service",
-                              name: review.service,
-                              provider: {
-                                  "@type": businessType,
-                                  name: businessConfig.name,
-                                  image: imageUrl,
-                              },
-                          },
-                      }
-                    : {
-                          itemReviewed: {
-                              "@type": businessType,
-                              name: businessConfig.name,
-                              image: imageUrl,
-                          },
-                      }),
+                itemReviewed: {
+                    "@type": businessType,
+                    name: businessConfig.name,
+                    image: imageUrl,
+                },
             },
         })),
     };
