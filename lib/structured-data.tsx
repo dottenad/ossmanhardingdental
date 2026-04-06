@@ -244,6 +244,21 @@ export function generateReviewSchema(
         return null;
     }
 
+    const businessTypes: Record<string, string> = {
+        hvac: "HVACBusiness",
+        plumbing: "Plumber",
+        roofing: "RoofingContractor",
+        fencing: "LocalBusiness",
+        painting: "HousePainter",
+        dental: "Dentist",
+    };
+
+    const businessType = businessTypes[businessConfig.industry] || "LocalBusiness";
+    const logoPath = businessConfig.logo || "/images/logo.png";
+    const imageUrl = logoPath.startsWith("http")
+        ? logoPath
+        : `${businessConfig.website}${logoPath}`;
+
     return {
         "@context": "https://schema.org",
         "@type": "ItemList",
@@ -270,15 +285,17 @@ export function generateReviewSchema(
                               "@type": "Service",
                               name: review.service,
                               provider: {
-                                  "@type": "LocalBusiness",
+                                  "@type": businessType,
                                   name: businessConfig.name,
+                                  image: imageUrl,
                               },
                           },
                       }
                     : {
                           itemReviewed: {
-                              "@type": "LocalBusiness",
+                              "@type": businessType,
                               name: businessConfig.name,
+                              image: imageUrl,
                           },
                       }),
             },
