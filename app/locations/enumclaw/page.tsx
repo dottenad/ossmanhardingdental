@@ -148,13 +148,15 @@ export default function EnumclawPage() {
                                             <Phone className="w-5 h-5 mr-2" />
                                             Call Now
                                         </a>
-                                        <Link
-                                            href="/appointments"
+                                        <a
+                                            href="https://bookit.dentrixascend.com/soe/new/dental?pid=ASC15000000000350&mode=externalLink"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
                                             className="inline-flex items-center justify-center px-6 py-3 text-lg font-semibold text-primary-700 bg-white border-2 border-primary-600 rounded-lg hover:bg-primary-50 transition-colors"
                                         >
                                             <Calendar className="w-5 h-5 mr-2" />
                                             Schedule Appointment
-                                        </Link>
+                                        </a>
                                     </div>
                                 </div>
 

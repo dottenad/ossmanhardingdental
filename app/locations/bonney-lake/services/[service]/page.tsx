@@ -221,8 +221,10 @@ export default function BonneyLakeServicePage({ params }: PageProps) {
                                             <Phone className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform" />
                                             Call {formatPhoneDisplay(businessConfig.phone)}
                                         </a>
-                                        <Link
-                                            href="/appointments"
+                                        <a
+                                            href="https://bookit.dentrixascend.com/soe/new/dental?pid=ASC15000000000835&mode=externalLink"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
                                             className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-black/20 backdrop-blur-sm border-2 border-white/50 rounded-xl hover:bg-white/10 hover:border-white transition-all duration-300 shadow-lg hover:shadow-xl"
                                         >
                                             Schedule Appointment
@@ -239,7 +241,7 @@ export default function BonneyLakeServicePage({ params }: PageProps) {
                                                     d="M13 7l5 5m0 0l-5 5m5-5H6"
                                                 />
                                             </svg>
-                                        </Link>
+                                        </a>
                                     </div>
                                     <div className="flex flex-wrap justify-center gap-6 text-sm text-primary-200">
                                         <div className="flex items-center gap-2">

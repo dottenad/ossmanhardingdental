@@ -114,7 +114,9 @@ export default function BonneyLakeGalleryPage() {
                             </p>
                             <div className="flex flex-col sm:flex-row gap-4 justify-center">
                                 <a
-                                    href="/appointments"
+                                    href="https://bookit.dentrixascend.com/soe/new/dental?pid=ASC15000000000835&mode=externalLink"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     className="inline-flex items-center justify-center px-6 py-3 text-lg font-semibold text-white bg-button-600 rounded-lg hover:bg-button-700 transition-colors"
                                 >
                                     Schedule a Visit

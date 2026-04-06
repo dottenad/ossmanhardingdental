@@ -290,12 +290,14 @@ export default function EnumclawTeamPage() {
                                 and experience the difference of personalized dental care.
                             </p>
                             <div className="flex flex-col sm:flex-row gap-4">
-                                <Link
-                                    href="/appointments"
+                                <a
+                                    href="https://bookit.dentrixascend.com/soe/new/dental?pid=ASC15000000000350&mode=externalLink"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     className="inline-flex items-center justify-center px-6 py-3 bg-button-600 text-white font-semibold rounded-lg hover:bg-button-700 transition-colors"
                                 >
                                     Schedule an Appointment
-                                </Link>
+                                </a>
                                 <Link
                                     href={`/${LOCATION.slug}/services`}
                                     className="inline-flex items-center justify-center px-6 py-3 bg-white text-primary-900 font-semibold rounded-lg hover:bg-gray-100 transition-colors"
