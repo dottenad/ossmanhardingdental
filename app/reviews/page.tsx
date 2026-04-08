@@ -60,8 +60,8 @@ export default function ReviewsPage() {
                     backgroundImage={
                         businessConfig.pageHeroImages?.["/reviews"]
                     }
-                    title="Customer Reviews"
-                    subtitle={`See what our customers have to say about their experience with ${businessConfig.name}`}
+                    title="Patient Reviews"
+                    subtitle={`See what our patients have to say about their experience with ${businessConfig.name}`}
                 />
                 {/* Breadcrumb */}
                 <Breadcrumb
@@ -112,17 +112,7 @@ export default function ReviewsPage() {
                                                         </p>
                                                         <div className="border-t border-gray-200 pt-4 flex items-start justify-between">
                                                             <div>
-                                                                <p className="font-semibold text-gray-900">
-                                                                    {review.author}
-                                                                </p>
-                                                                {review.service && (
-                                                                    <p className="text-sm text-gray-600">
-                                                                        {
-                                                                            review.service
-                                                                        }
-                                                                    </p>
-                                                                )}
-                                                                <p className="text-sm text-gray-500 mt-1" suppressHydrationWarning>
+                                                                <p className="text-sm text-gray-600" suppressHydrationWarning>
                                                                     {new Date(
                                                                         review.date
                                                                     ).toLocaleDateString(
@@ -134,6 +124,13 @@ export default function ReviewsPage() {
                                                                         }
                                                                     )}
                                                                 </p>
+                                                                {review.service && (
+                                                                    <p className="text-sm text-gray-600">
+                                                                        {
+                                                                            review.service
+                                                                        }
+                                                                    </p>
+                                                                )}
                                                                 <p className="text-sm text-gray-500 mt-4">
                                                                     Read more reviews:{" "}
                                                                     <a
@@ -277,7 +274,7 @@ export default function ReviewsPage() {
                                                 href="https://g.page/r/CQD6lRG2iGp2EBM/review"
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="inline-flex items-center justify-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg transition-all hover:bg-blue-700"
+                                                className="inline-flex items-center justify-center px-6 py-3 bg-primary-600 text-white font-semibold rounded-lg transition-all hover:bg-primary-700"
                                             >
                                                 Leave a Review - Enumclaw
                                                 <svg
@@ -298,7 +295,7 @@ export default function ReviewsPage() {
                                                 href="https://g.page/r/CXkAJAwWBfmJEBM/review"
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="inline-flex items-center justify-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg transition-all hover:bg-blue-700"
+                                                className="inline-flex items-center justify-center px-6 py-3 bg-primary-600 text-white font-semibold rounded-lg transition-all hover:bg-primary-700"
                                             >
                                                 Leave a Review - Bonney Lake
                                                 <svg
@@ -378,7 +375,7 @@ export default function ReviewsPage() {
                                                     </div>
                                                 </div>
                                                 <div className="bg-gray-100 group-hover:bg-gray-200 px-4 py-2 text-right transition-colors border-t border-gray-200">
-                                                    <span className="inline-flex items-center text-sm text-blue-600 group-hover:text-blue-700">
+                                                    <span className="inline-flex items-center text-sm text-primary-600 group-hover:text-primary-700">
                                                         Read more
                                                         <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -423,7 +420,7 @@ export default function ReviewsPage() {
                                                     </div>
                                                 </div>
                                                 <div className="bg-gray-100 group-hover:bg-gray-200 px-4 py-2 text-right transition-colors border-t border-gray-200">
-                                                    <span className="inline-flex items-center text-sm text-blue-600 group-hover:text-blue-700">
+                                                    <span className="inline-flex items-center text-sm text-primary-600 group-hover:text-primary-700">
                                                         Read more
                                                         <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

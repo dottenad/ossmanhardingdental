@@ -5,7 +5,7 @@ import { generateMetadata as generateSEOMetadata } from "@/lib/seo";
 import { StructuredData } from "@/components/StructuredData";
 import { SkipLink } from "@/components/SkipLink";
 import { Analytics } from "@/components/Analytics";
-import { getFont } from "@/lib/fonts";
+import { getFont, getHeadingFont } from "@/lib/fonts";
 import {
     generateLocalBusinessSchema,
     generateOrganizationSchema,
@@ -13,6 +13,7 @@ import {
 } from "@/lib/structured-data";
 
 const font = getFont(businessConfig.font);
+const headingFont = getHeadingFont(businessConfig.headingFont);
 
 export const metadata: Metadata = {
     ...generateSEOMetadata(
@@ -79,7 +80,7 @@ export default function RootLayout({
                     }}
                 />
             </head>
-            <body className={`${(font as any).variable || ""} font-sans`}>
+            <body className={`${(font as any).variable || ""} ${(headingFont as any)?.variable || ""} font-sans`}>
                 <Analytics />
                 <SkipLink />
                 {children}

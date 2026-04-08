@@ -134,11 +134,11 @@ export default function InsurancePage() {
                                             We are considered <strong>participating out-of-network providers</strong> for
                                             the below insurances and any other PPO plan you may have:
                                         </p>
-                                        <div className="bg-blue-50 border border-blue-200 rounded-xl p-6 mb-6">
+                                        <div className="bg-primary-50 border border-primary-200 rounded-xl p-6 mb-6">
                                             <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                                                 {participatingOutOfNetwork.map((provider) => (
                                                     <div key={provider} className="flex items-center gap-2">
-                                                        <CheckCircle2 className="w-4 h-4 text-blue-600 flex-shrink-0" />
+                                                        <CheckCircle2 className="w-4 h-4 text-primary-600 flex-shrink-0" />
                                                         <span className="text-gray-700 text-sm">{provider}</span>
                                                     </div>
                                                 ))}

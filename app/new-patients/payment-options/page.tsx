@@ -116,9 +116,9 @@ export default function PaymentOptionsPage() {
                                     {/* Membership Plans Grid */}
                                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
                                         {/* Kid's Plan */}
-                                        <div className="bg-gradient-to-br from-blue-50 to-blue-100 border border-blue-200 rounded-2xl p-6 flex flex-col">
+                                        <div className="bg-gradient-to-br from-primary-50 to-primary-100 border border-primary-200 rounded-2xl p-6 flex flex-col">
                                             <div className="text-center mb-4">
-                                                <div className="w-14 h-14 bg-blue-600 rounded-xl flex items-center justify-center mx-auto mb-3">
+                                                <div className="w-14 h-14 bg-primary-600 rounded-xl flex items-center justify-center mx-auto mb-3">
                                                     <Baby className="w-7 h-7 text-white" />
                                                 </div>
                                                 <h3 className="text-xl font-bold text-gray-900">OHD Kid&apos;s Plan</h3>
@@ -127,14 +127,14 @@ export default function PaymentOptionsPage() {
                                                     YOU SAVE $537 PER YEAR!
                                                 </p>
                                             </div>
-                                            <div className="bg-blue-600 rounded-xl p-4 text-center mb-4">
+                                            <div className="bg-primary-600 rounded-xl p-4 text-center mb-4">
                                                 <span className="text-3xl font-bold text-white">$29</span>
                                                 <span className="text-white text-lg"> /month</span>
                                             </div>
                                             <ul className="space-y-2 flex-grow !pl-0 !ml-0 list-none">
                                                 {planBenefits.map((benefit) => (
                                                     <li key={benefit} className="flex items-start gap-2 text-sm">
-                                                        <CheckCircle2 className="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" />
+                                                        <CheckCircle2 className="w-4 h-4 text-primary-600 flex-shrink-0 mt-0.5" />
                                                         <span className="text-gray-700">{benefit}</span>
                                                     </li>
                                                 ))}

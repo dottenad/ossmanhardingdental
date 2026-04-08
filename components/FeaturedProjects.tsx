@@ -29,7 +29,7 @@ export function FeaturedProjects() {
                         Featured Projects
                     </h2>
                     <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                        A sample of our completed work and customer satisfaction
+                        A sample of our completed work and patient satisfaction
                     </p>
                     <div className="mt-8 w-24 h-1 bg-gradient-to-r from-primary-500 to-primary-600 mx-auto rounded-full" />
                 </div>

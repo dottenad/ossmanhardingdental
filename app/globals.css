@@ -26,6 +26,7 @@
     h4,
     h5,
     h6 {
+        font-family: var(--font-heading), var(--font-primary), system-ui, sans-serif;
         font-weight: 700;
         letter-spacing: -0.025em;
     }
@@ -79,7 +80,7 @@
     }
 
     .gradient-text {
-        background: linear-gradient(to right, rgb(91 138 114), rgb(74 107 90));
+        background: linear-gradient(to right, rgb(91 154 154), rgb(74 130 130));
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
@@ -151,7 +152,7 @@ html {
 
 /* Accessible focus indicators - visible for keyboard navigation */
 *:focus-visible {
-    outline: 2px solid rgb(59 130 246);
+    outline: 2px solid rgb(91 154 154);
     outline-offset: 2px;
 }
 
@@ -161,9 +162,9 @@ input[type="text"]:focus-visible,
 input[type="email"]:focus-visible,
 input[type="tel"]:focus-visible,
 select:focus-visible {
-    outline: 2px solid rgb(59 130 246);
+    outline: 2px solid rgb(91 154 154);
     outline-offset: 2px;
-    border-color: rgb(59 130 246);
+    border-color: rgb(91 154 154);
 }
 
 /* Ensure checkboxes work properly and are consistently sized */
@@ -181,7 +182,7 @@ input[type="checkbox"] {
 }
 
 input[type="checkbox"]:focus-visible {
-    outline: 2px solid rgb(59 130 246);
+    outline: 2px solid rgb(91 154 154);
     outline-offset: 2px;
 }
 
@@ -195,12 +196,12 @@ input[type="checkbox"]:focus-visible {
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: rgb(96 165 250);
+    background-color: rgb(91 154 154);
     border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background-color: rgb(59 130 246);
+    background-color: rgb(74 130 130);
 }
 
 /* Grid pattern background */

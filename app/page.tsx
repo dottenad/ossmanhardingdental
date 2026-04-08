@@ -519,11 +519,11 @@ export default function Home() {
                             <div className="max-w-7xl mx-auto">
                                 <div className="text-center mb-16">
                                     <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
-                                        What Our Customers Say
+                                        What Our Patients Say
                                     </h2>
                                     <p className="text-xl text-gray-600 max-w-2xl mx-auto">
                                         Don&apos;t just take our word for it -
-                                        see what our satisfied customers have to
+                                        see what our satisfied patients have to
                                         say
                                     </p>
                                 </div>

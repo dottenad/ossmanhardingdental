@@ -114,7 +114,7 @@ export function ReviewsCarousel({ reviews }: ReviewsCarouselProps) {
             ref={carouselRef}
             className="relative"
             role="region"
-            aria-label="Customer reviews carousel"
+            aria-label="Patient reviews carousel"
             aria-live="polite"
         >
             <div className="overflow-hidden">
@@ -155,15 +155,7 @@ export function ReviewsCarousel({ reviews }: ReviewsCarouselProps) {
                                 <div className="border-t border-gray-200 pt-4">
                                     <div className="flex items-start justify-between">
                                         <div>
-                                            <p className="font-semibold text-gray-900">
-                                                {review.author}
-                                            </p>
-                                            {review.service && (
-                                                <p className="text-sm text-gray-600">
-                                                    {review.service}
-                                                </p>
-                                            )}
-                                            <p className="text-sm text-gray-600 mt-1" suppressHydrationWarning>
+                                            <p className="text-sm text-gray-600" suppressHydrationWarning>
                                                 {new Date(
                                                     review.date
                                                 ).toLocaleDateString("en-US", {
@@ -172,6 +164,11 @@ export function ReviewsCarousel({ reviews }: ReviewsCarouselProps) {
                                                     day: "numeric",
                                                 })}
                                             </p>
+                                            {review.service && (
+                                                <p className="text-sm text-gray-600">
+                                                    {review.service}
+                                                </p>
+                                            )}
                                         </div>
                                         <svg className="w-6 h-6 flex-shrink-0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-label="Google Review">
                                             <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>

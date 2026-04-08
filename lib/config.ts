@@ -68,6 +68,7 @@ export interface BusinessConfig {
         [key: string]: string; // Map page routes to hero image paths (e.g., "/services": "/images/services-hero.jpg")
     };
     font?: string; // Google Font name (e.g., "Inter", "Roboto", "Open Sans", "Poppins", "Montserrat"). Defaults to "Inter"
+    headingFont?: string; // Font for headings (h1-h6). Can be Google Font or "Brandon Grotesque" (local). Falls back to primary font if not specified
     gallery?: GalleryProject[]; // Optional gallery of completed projects/work
     blogPosts?: BlogPost[]; // Optional blog posts/articles
     faqs?: FAQ[]; // Optional frequently asked questions
@@ -81,7 +82,7 @@ export interface BusinessConfig {
 }
 
 export interface Review {
-    author: string;
+    author?: string; // Optional - omit for anonymous reviews
     rating: number; // 1-5
     text: string;
     date: string; // ISO date string or formatted date
@@ -512,15 +513,15 @@ export const businessConfig: BusinessConfig = {
     logo: "/images/logo.png",
     logoLight: "/images/logo-white.png",
     heroImage: "/images/hero-dental.jpg",
-    primaryColor: "#0072CE", // Professional dental blue
-    buttonColor: "#F5A623", // Warm golden accent
+    primaryColor: "#5B9A9A", // Soft turquoise/teal - calming
+    buttonColor: "#C4A77D", // Warm tan accent
     banner: {
         enabled: true,
         text: "Now Accepting New Patients | Two Convenient Locations",
         link: "/appointments",
         linkText: "Schedule Today",
-        color: "#0072CE",
-        colorDark: "#005299",
+        color: "#4A8282",
+        colorDark: "#3D6B6B",
     },
     hours: {
         monday: "7:00 AM - 4:00 PM",
@@ -709,6 +710,7 @@ export const businessConfig: BusinessConfig = {
         "/services/preventive-dentistry": "/images/service-images/preventive.jpg",
     },
     font: "Montserrat",
+    headingFont: "Brandon Grotesque",
     gallery: [], // Gallery can be populated with smile makeovers, office photos, etc.
     blogPosts: [
         {
@@ -830,59 +832,51 @@ export const businessConfig: BusinessConfig = {
     ],
     reviews: [
         {
-            author: "Sarah M.",
             rating: 5,
-            text: "Dr. Ossman and her team are absolutely wonderful! They made me feel comfortable from the moment I walked in. My teeth have never looked better after my cosmetic treatment.",
-            date: "2025-01-15",
-            service: "Cosmetic Dentistry",
-        },
-        {
-            author: "Michael T.",
-            rating: 5,
-            text: "I was terrified of getting dental implants, but the sedation dentistry option made it so easy. Dr. Zander is incredibly skilled and the results exceeded my expectations.",
-            date: "2024-12-20",
-            service: "Dental Implants",
-        },
-        {
-            author: "Jennifer L.",
-            rating: 5,
-            text: "The whole family goes to Ossman Harding Dental. The staff is friendly, appointments run on time, and both offices are clean and modern. Highly recommend!",
-            date: "2024-11-10",
+            text: "I gave my dentist and her assistants F1 Status. Simply Awesome. Beautiful Office and top notch technology. I would highly recommend them - the front staff led by Brandy and others are 1st class!",
+            date: "2026-02-26",
             service: "General Dentistry",
         },
         {
-            author: "David R.",
             rating: 5,
-            text: "Had my wisdom teeth removed by Dr. Zander. The procedure was quick and painless thanks to IV sedation. Recovery was smooth and the follow-up care was excellent.",
-            date: "2024-10-25",
-            service: "Oral Surgery",
-        },
-        {
-            author: "Emily K.",
-            rating: 5,
-            text: "Finally found a dentist who takes sleep apnea seriously! Dr. Phan fitted me with an oral appliance and I'm sleeping so much better. Life-changing care.",
-            date: "2024-09-15",
-            service: "Sleep Medicine",
-        },
-        {
-            author: "Robert H.",
-            rating: 5,
-            text: "The SureSmile clear braces treatment here was seamless. Dr. Ossman created a perfect plan and my teeth are now perfectly straight. Worth every penny!",
-            date: "2024-08-30",
-            service: "SureSmile Clear Braces",
-        },
-        {
-            author: "Amanda C.",
-            rating: 5,
-            text: "Best dental cleaning experience I've ever had. The hygienists are gentle and thorough, and they really take time to explain proper care techniques.",
-            date: "2024-08-01",
+            text: "I am a new patient at Ossman Harding Dental. What a great experience from the parking lot to dental chair. Alissa took my X-rays. She was genuinely nice and educational. Krystin my hygienist, I kid you not gave the most gentle cleaning I have ever had. Phenomenal customer service, it felt like I was in a resort waiting for the cocktail menu!",
+            date: "2026-02-19",
             service: "Dental Cleaning",
         },
         {
-            author: "James W.",
             rating: 5,
-            text: "Dr. Harding took care of my teeth for years before his daughter took over. The same quality care continues with Dr. Ossman. A true family practice!",
-            date: "2024-07-15",
+            text: "I never thought I would say I love going to the dentist until I started going to Ossman Harding Dental! Not only is the staff extremely welcoming and kind, but it feels like you are checking into a 5 star hotel. Highly recommend coming here and bonus if you get lucky enough to have Megan as your hygienist. My husband also goes here and has had the same great experience.",
+            date: "2026-02-08",
+            service: "Dental Cleaning",
+        },
+        {
+            rating: 5,
+            text: "Amazing Botox experience with Dr. Ossman! Very professional, thorough, and natural-looking results. I felt comfortable the entire time and couldn't be happier. Highly recommend.",
+            date: "2026-02-08",
+            service: "Cosmetic Dentistry",
+        },
+        {
+            rating: 5,
+            text: "Ossman Harding Dental in Bonney Lake is nestled into a stunning new community, Tehaleh. The interior is stunning, modern, and so welcoming, as well as their staff being the most amazing group of women! Love being a patient for both dental and cosmetic needs. 12/10 recommend, always dropping their name to all of my friends and family!",
+            date: "2026-02-05",
+            service: "Cosmetic Dentistry",
+        },
+        {
+            rating: 5,
+            text: "Hands down the best dental office I have been to. I have been taking my kids here for years and wouldn't go anywhere else. They have the most amazing staff, all so friendly and most of all personable! The office is beautiful and my kids love the game room!",
+            date: "2026-02-04",
+            service: "General Dentistry",
+        },
+        {
+            rating: 5,
+            text: "I used to hate going to the dentist, even for routine cleanings because it always felt weird. But it's not creepy here. Everything is clean, everyone is nice and they even laugh and joke around with you. I needed a crown replaced, they did everything same day and it wasn't nearly as traumatic. Every time I walk to my car feeling good, I stop myself and ask what actually happened because I shouldn't feel this nice after going to the dentist.",
+            date: "2025-12-09",
+            service: "Dental Crowns",
+        },
+        {
+            rating: 5,
+            text: "When I think of excellence in healthcare, I think OHD. An absolute gem of a dentistry practice and team. My hygienist Jami took excellent care of me, as did Dr. Zander. I will be back, will have to get my wife on their schedule too.",
+            date: "2025-10-02",
             service: "General Dentistry",
         },
     ],

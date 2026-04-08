@@ -101,7 +101,7 @@ export function generateLocalBusinessSchema(businessConfig: BusinessConfig) {
                       "@type": "Review",
                       author: {
                           "@type": "Person",
-                          name: review.author,
+                          name: review.author || "Patient",
                       },
                       datePublished: review.date,
                       reviewBody: review.text,
@@ -269,7 +269,7 @@ export function generateReviewSchema(
                 "@type": "Review",
                 author: {
                     "@type": "Person",
-                    name: review.author,
+                    name: review.author || "Patient",
                 },
                 datePublished: review.date,
                 reviewBody: review.text,
