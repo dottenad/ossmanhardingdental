@@ -506,7 +506,24 @@ export function Header() {
                                                                                     (
                                                                                         subChild,
                                                                                         subChildIndex,
-                                                                                    ) => (
+                                                                                    ) => subChild.external ? (
+                                                                                        <a
+                                                                                            key={
+                                                                                                subChildIndex
+                                                                                            }
+                                                                                            href={
+                                                                                                subChild.href ||
+                                                                                                "#"
+                                                                                            }
+                                                                                            target="_blank"
+                                                                                            rel="noopener noreferrer"
+                                                                                            className="block px-4 py-2.5 text-gray-800 hover:bg-button-50 hover:text-primary-700 font-medium uppercase text-sm transition-colors"
+                                                                                        >
+                                                                                            {
+                                                                                                subChild.label
+                                                                                            }
+                                                                                        </a>
+                                                                                    ) : (
                                                                                         <Link
                                                                                             key={
                                                                                                 subChildIndex
@@ -707,7 +724,20 @@ const MobileNavMenu = React.forwardRef<
                                             className="mt-1 space-y-1"
                                         >
                                             {child.children?.map(
-                                                (subChild, subChildIndex) => (
+                                                (subChild, subChildIndex) => subChild.external ? (
+                                                    <a
+                                                        key={subChildIndex}
+                                                        href={
+                                                            subChild.href || "#"
+                                                        }
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        className="w-full block px-4 py-2 text-gray-500 hover:text-primary-600 hover:bg-gray-50 transition-colors pl-12 text-sm uppercase font-medium"
+                                                        onClick={onClose}
+                                                    >
+                                                        {subChild.label}
+                                                    </a>
+                                                ) : (
                                                     <Link
                                                         key={subChildIndex}
                                                         href={

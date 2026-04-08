@@ -93,6 +93,7 @@ export interface NavigationItem {
     label: string;
     href?: string; // If no href, item is a dropdown parent only
     children?: NavigationItem[]; // Sub-navigation items
+    external?: boolean; // If true, link opens in new tab
 }
 
 export interface GalleryProject {
@@ -623,7 +624,7 @@ export const businessConfig: BusinessConfig = {
                     label: "Enumclaw Office",
                     href: "/locations/enumclaw",
                     children: [
-                        { label: "Schedule an Appointment", href: "/appointments" },
+                        { label: "Schedule an Appointment", href: "https://bookit.dentrixascend.com/soe/new/dental?pid=ASC15000000000350&mode=externalLink", external: true },
                         { label: "Services", href: "/locations/enumclaw/services" },
                         { label: "Meet Our Team", href: "/locations/enumclaw/team" },
                         { label: "Office Gallery", href: "/locations/enumclaw/gallery" },
@@ -634,7 +635,7 @@ export const businessConfig: BusinessConfig = {
                     label: "Bonney Lake Office",
                     href: "/locations/bonney-lake",
                     children: [
-                        { label: "Schedule an Appointment", href: "/appointments" },
+                        { label: "Schedule an Appointment", href: "https://bookit.dentrixascend.com/soe/new/dental?pid=ASC15000000000835&mode=externalLink", external: true },
                         { label: "Services", href: "/locations/bonney-lake/services" },
                         { label: "Meet Our Team", href: "/locations/bonney-lake/team" },
                         { label: "Office Gallery", href: "/locations/bonney-lake/gallery" },
