@@ -28,7 +28,7 @@ export const metadata: Metadata = generateSEOMetadata(
             "dental office careers",
             "join dental team",
         ],
-        url: `${businessConfig.website}/${LOCATION.slug}/careers`,
+        url: `${businessConfig.website}/locations/${LOCATION.slug}/careers`,
     },
     businessConfig
 );
@@ -64,8 +64,8 @@ const benefits = [
 export default function EnumclawCareersPage() {
     const breadcrumbSchema = generateBreadcrumbSchema([
         { name: "Home", url: businessConfig.website },
-        { name: `${LOCATION.name} Office`, url: `${businessConfig.website}/${LOCATION.slug}` },
-        { name: "Careers", url: `${businessConfig.website}/${LOCATION.slug}/careers` },
+        { name: `${LOCATION.name} Office`, url: `${businessConfig.website}/locations/${LOCATION.slug}` },
+        { name: "Careers", url: `${businessConfig.website}/locations/${LOCATION.slug}/careers` },
     ]);
 
     return (
@@ -81,8 +81,8 @@ export default function EnumclawCareersPage() {
                 <Breadcrumb
                     items={[
                         { name: "Home", url: "/" },
-                        { name: `${LOCATION.name} Office`, url: `/${LOCATION.slug}` },
-                        { name: "Careers", url: `/${LOCATION.slug}/careers` },
+                        { name: `${LOCATION.name} Office`, url: `/locations/${LOCATION.slug}` },
+                        { name: "Careers", url: `/locations/${LOCATION.slug}/careers` },
                     ]}
                 />
 

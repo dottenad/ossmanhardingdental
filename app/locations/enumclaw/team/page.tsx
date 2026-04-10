@@ -231,7 +231,7 @@ export const metadata: Metadata = generateSEOMetadata(
             "Dr. Zander",
             "dental professionals",
         ],
-        url: `${businessConfig.website}/${LOCATION.slug}/team`,
+        url: `${businessConfig.website}/locations/${LOCATION.slug}/team`,
     },
     businessConfig
 );
@@ -239,8 +239,8 @@ export const metadata: Metadata = generateSEOMetadata(
 export default function EnumclawTeamPage() {
     const breadcrumbSchema = generateBreadcrumbSchema([
         { name: "Home", url: businessConfig.website },
-        { name: `${LOCATION.name} Office`, url: `${businessConfig.website}/${LOCATION.slug}` },
-        { name: "Our Team", url: `${businessConfig.website}/${LOCATION.slug}/team` },
+        { name: `${LOCATION.name} Office`, url: `${businessConfig.website}/locations/${LOCATION.slug}` },
+        { name: "Our Team", url: `${businessConfig.website}/locations/${LOCATION.slug}/team` },
     ]);
 
     return (
@@ -256,8 +256,8 @@ export default function EnumclawTeamPage() {
                 <Breadcrumb
                     items={[
                         { name: "Home", url: "/" },
-                        { name: `${LOCATION.name} Office`, url: `/${LOCATION.slug}` },
-                        { name: "Our Team", url: `/${LOCATION.slug}/team` },
+                        { name: `${LOCATION.name} Office`, url: `/locations/${LOCATION.slug}` },
+                        { name: "Our Team", url: `/locations/${LOCATION.slug}/team` },
                     ]}
                 />
 

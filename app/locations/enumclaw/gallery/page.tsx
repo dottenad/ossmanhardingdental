@@ -51,7 +51,7 @@ export const metadata: Metadata = generateSEOMetadata(
             "modern dental facility",
             "dental office gallery",
         ],
-        url: `${businessConfig.website}/${LOCATION.slug}/gallery`,
+        url: `${businessConfig.website}/locations/${LOCATION.slug}/gallery`,
     },
     businessConfig
 );
@@ -59,8 +59,8 @@ export const metadata: Metadata = generateSEOMetadata(
 export default function EnumclawGalleryPage() {
     const breadcrumbSchema = generateBreadcrumbSchema([
         { name: "Home", url: businessConfig.website },
-        { name: `${LOCATION.name} Office`, url: `${businessConfig.website}/${LOCATION.slug}` },
-        { name: "Gallery", url: `${businessConfig.website}/${LOCATION.slug}/gallery` },
+        { name: `${LOCATION.name} Office`, url: `${businessConfig.website}/locations/${LOCATION.slug}` },
+        { name: "Gallery", url: `${businessConfig.website}/locations/${LOCATION.slug}/gallery` },
     ]);
 
     return (
@@ -76,8 +76,8 @@ export default function EnumclawGalleryPage() {
                 <Breadcrumb
                     items={[
                         { name: "Home", url: "/" },
-                        { name: `${LOCATION.name} Office`, url: `/${LOCATION.slug}` },
-                        { name: "Gallery", url: `/${LOCATION.slug}/gallery` },
+                        { name: `${LOCATION.name} Office`, url: `/locations/${LOCATION.slug}` },
+                        { name: "Gallery", url: `/locations/${LOCATION.slug}/gallery` },
                     ]}
                 />
 

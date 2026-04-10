@@ -82,7 +82,7 @@ export function generateMetadata({ params }: PageProps): Metadata {
                 `${LOCATION.name} ${serviceName.toLowerCase()}`,
                 `${serviceName} Tehaleh`,
             ],
-            url: `${businessConfig.website}/${LOCATION.slug}/services/${params.service}`,
+            url: `${businessConfig.website}/locations/${LOCATION.slug}/services/${params.service}`,
         },
         businessConfig
     );
@@ -101,9 +101,9 @@ export default function BonneyLakeServicePage({ params }: PageProps) {
 
     const breadcrumbSchema = generateBreadcrumbSchema([
         { name: "Home", url: businessConfig.website },
-        { name: `${LOCATION.name} Office`, url: `${businessConfig.website}/${LOCATION.slug}` },
-        { name: "Services", url: `${businessConfig.website}/${LOCATION.slug}/services` },
-        { name: serviceName, url: `${businessConfig.website}/${LOCATION.slug}/services/${params.service}` },
+        { name: `${LOCATION.name} Office`, url: `${businessConfig.website}/locations/${LOCATION.slug}` },
+        { name: "Services", url: `${businessConfig.website}/locations/${LOCATION.slug}/services` },
+        { name: serviceName, url: `${businessConfig.website}/locations/${LOCATION.slug}/services/${params.service}` },
     ]);
 
     const serviceSchema = generateServiceSchema(serviceName, businessConfig);
@@ -129,9 +129,9 @@ export default function BonneyLakeServicePage({ params }: PageProps) {
                 <Breadcrumb
                     items={[
                         { name: "Home", url: "/" },
-                        { name: `${LOCATION.name} Office`, url: `/${LOCATION.slug}` },
-                        { name: "Services", url: `/${LOCATION.slug}/services` },
-                        { name: serviceName, url: `/${LOCATION.slug}/services/${params.service}` },
+                        { name: `${LOCATION.name} Office`, url: `/locations/${LOCATION.slug}` },
+                        { name: "Services", url: `/locations/${LOCATION.slug}/services` },
+                        { name: serviceName, url: `/locations/${LOCATION.slug}/services/${params.service}` },
                     ]}
                 />
 
