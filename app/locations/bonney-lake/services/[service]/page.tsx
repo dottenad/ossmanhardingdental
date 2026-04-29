@@ -333,7 +333,7 @@ export default function BonneyLakeServicePage({ params }: PageProps) {
                                             This service is also available at our Enumclaw location.
                                         </p>
                                         <Link
-                                            href={`/enumclaw/services/${params.service}`}
+                                            href={`/locations/enumclaw/services/${params.service}`}
                                             className="text-primary-600 hover:text-primary-700 font-semibold"
                                         >
                                             View {serviceName} in Enumclaw →

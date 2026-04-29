@@ -100,16 +100,35 @@ export function generateMetadata({ params }: PageProps): Metadata {
     );
 }
 
-// Generate schema WITHOUT PostalAddress - just areaServed (consistent with area pages)
+// Generate schema - include PostalAddress only for office locations
 function generateAreaServiceSchema(area: GeoServiceArea, serviceName: string) {
+    // Get the office address if this is an office location
+    const officeAddress = area.isOfficeLocation
+        ? area.nearestOffice === "enumclaw"
+            ? businessConfig.address
+            : businessConfig.secondaryAddress
+        : null;
+
     return {
         "@context": "https://schema.org",
         "@type": "Dentist",
         name: businessConfig.name,
-        description: `${businessConfig.name} provides ${serviceName} services to patients from ${area.name}, WA and surrounding areas.`,
+        description: area.isOfficeLocation
+            ? `${businessConfig.name} provides ${serviceName} at our dental office in ${area.name}, WA.`
+            : `${businessConfig.name} provides ${serviceName} services to patients from ${area.name}, WA and surrounding areas.`,
         url: businessConfig.website,
         telephone: businessConfig.phone,
-        // No PostalAddress - this is intentional for service area pages
+        // Include PostalAddress for office locations
+        ...(officeAddress && {
+            address: {
+                "@type": "PostalAddress",
+                streetAddress: officeAddress.street,
+                addressLocality: officeAddress.city,
+                addressRegion: officeAddress.state,
+                postalCode: officeAddress.zipCode,
+                addressCountry: "US",
+            },
+        }),
         areaServed: {
             "@type": "City",
             name: `${area.name}, WA`,
