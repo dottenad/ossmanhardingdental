@@ -48,7 +48,7 @@ const officeImages = [
 
 export const metadata: Metadata = generateSEOMetadata(
     {
-        title: `Office Gallery | ${LOCATION.name} Dental Office | ${businessConfig.name}`,
+        title: `${LOCATION.name} Office Gallery`,
         description: `Take a virtual tour of our ${LOCATION.name} dental office in Tehaleh. View our modern facilities with stunning Mt. Rainier views, comfortable treatment rooms, and state-of-the-art dental technology.`,
         keywords: [
             `${LOCATION.name} dental office`,

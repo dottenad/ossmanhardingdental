@@ -47,7 +47,7 @@ const LOCATIONS = [
 
 export const metadata: Metadata = generateSEOMetadata(
     {
-        title: `Our Locations | ${businessConfig.name}`,
+        title: "Our Locations",
         description: `Visit our dental offices in Enumclaw and Bonney Lake, WA. Two convenient locations offering comprehensive dental care, cosmetic dentistry, and more.`,
         keywords: [
             "dental office locations",

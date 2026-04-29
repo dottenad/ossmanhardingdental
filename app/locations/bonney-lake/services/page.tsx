@@ -79,7 +79,7 @@ const serviceCategories = [
 
 export const metadata: Metadata = generateSEOMetadata(
     {
-        title: `Dental Services in ${LOCATION.name} | ${businessConfig.name}`,
+        title: `${LOCATION.name} Dental Services`,
         description: `Explore our full range of dental services at our ${LOCATION.name} office. From routine cleanings to cosmetic dentistry, implants, and oral surgery.`,
         keywords: [
             `${LOCATION.name} dental services`,

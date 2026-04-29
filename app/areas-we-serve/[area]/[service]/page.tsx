@@ -83,9 +83,7 @@ export function generateMetadata({ params }: PageProps): Metadata {
 
     return generateSEOMetadata(
         {
-            title: area.isOfficeLocation
-                ? `${serviceName} in ${area.name} | ${area.locationDescription || nearestOfficeName}`
-                : `${serviceName} for ${area.name} Residents | ${area.driveTime} from ${nearestOfficeName}`,
+            title: `${serviceName} Near ${area.name}`,
             description: area.isOfficeLocation
                 ? `${serviceName} at our ${nearestOfficeName} office, ${area.locationDescription || `located in ${area.name}`}. Experienced team, gentle care, accepting new patients.`
                 : `${serviceName} for ${area.name}, WA residents at our ${nearestOfficeName} dental office. Just ${area.driveTime} away. Experienced team, gentle care, accepting new patients.`,

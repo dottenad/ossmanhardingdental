@@ -17,7 +17,7 @@ import {
 
 export const metadata: Metadata = generateSEOMetadata(
     {
-        title: "No Insurance, No Problem - Payment Options",
+        title: "Payment Options",
         description: `${businessConfig.name} offers membership plans and 0% payment plans to make dental care affordable. No insurance required!`,
         url: `${businessConfig.website}/new-patients/payment-options`,
     },

@@ -220,7 +220,7 @@ My fiancé Zach & I currently live in Enumclaw. Our family includes a 2 year old
 
 export const metadata: Metadata = generateSEOMetadata(
     {
-        title: `Meet Our ${LOCATION.name} Dental Team | ${businessConfig.name}`,
+        title: `${LOCATION.name} Dental Team`,
         description: `Meet the experienced dental professionals at our ${LOCATION.name} office. Our caring team includes Dr. Ossman, Dr. Zander, Dr. Ornelas, Dr. Harding, and dedicated hygienists and assistants.`,
         keywords: [
             `${LOCATION.name} dentist`,

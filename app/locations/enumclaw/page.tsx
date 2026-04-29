@@ -38,7 +38,7 @@ const LOCATION = {
 
 export const metadata: Metadata = generateSEOMetadata(
     {
-        title: `Dentist in ${LOCATION.name} | ${businessConfig.name}`,
+        title: `${LOCATION.name} Dentist`,
         description: `Visit our ${LOCATION.name} dental office for comprehensive care including cleanings, cosmetic dentistry, implants, and more. Accepting new patients.`,
         keywords: [
             `${LOCATION.name} dentist`,

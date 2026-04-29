@@ -190,7 +190,7 @@ Outside of work, my life is full of energy and love. I have a 1-year-old son, En
 
 export const metadata: Metadata = generateSEOMetadata(
     {
-        title: `Meet Our ${LOCATION.name} Dental Team | ${businessConfig.name}`,
+        title: `${LOCATION.name} Dental Team`,
         description: `Meet the experienced dental professionals at our ${LOCATION.name} office in Tehaleh. Our caring team includes Dr. Madisyn Ossman, Dr. Lynda Phan, Dr. Vernon Zander, and dedicated hygienists and assistants.`,
         keywords: [
             `${LOCATION.name} dentist`,

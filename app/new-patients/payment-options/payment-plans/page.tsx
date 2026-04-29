@@ -29,7 +29,7 @@ const CherryWidget = dynamic(
 
 export const metadata: Metadata = generateSEOMetadata(
     {
-        title: "Payment Plans - 0% Financing Available",
+        title: "0% Payment Plans",
         description: `Get the dental care you need today with flexible payment plans from ${businessConfig.name}. 0% financing available through Cherry. Apply online in minutes.`,
         url: `${businessConfig.website}/new-patients/payment-options/payment-plans`,
     },

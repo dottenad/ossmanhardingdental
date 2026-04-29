@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
     return generateSEOMetadata(
         {
-            title: `${post.title} - ${businessConfig.name} Blog`,
+            title: post.title,
             description: post.excerpt,
             url: `${businessConfig.website}/blog/${post.id}`,
             image: post.featuredImage,

@@ -49,8 +49,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return generateSEOMetadata(
         {
             title: isOfficeLocation
-                ? `Dentist in ${area.name} | ${area.locationDescription || nearestOfficeName}`
-                : `Dentist Serving ${area.name} | ${area.driveTime} from ${nearestOfficeName}`,
+                ? `${area.name} Dentist`
+                : `Dentist Near ${area.name}`,
             description: isOfficeLocation
                 ? `${businessConfig.name} is ${area.locationDescription || `located in ${area.name}`}. Comprehensive dental care for ${area.name} residents. Schedule your appointment today!`
                 : `${businessConfig.name} proudly serves patients from ${area.name}, WA. Our ${nearestOfficeName} office is just ${area.driveTime} away. Schedule your appointment today!`,
