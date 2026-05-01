@@ -168,7 +168,7 @@ export default function EnumclawServicesPage() {
                                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                                 {category.services.map((service, serviceIndex) => {
                                                     const serviceImage = industry.servicePageImages?.[service.slug];
-                                                    const href = service.customHref || `/locations/${LOCATION.slug}/services/${service.slug}`;
+                                                    const href = `/locations/${LOCATION.slug}/services/${service.slug}`;
 
                                                     return (
                                                         <Link
