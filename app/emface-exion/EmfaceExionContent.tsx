@@ -199,7 +199,7 @@ export function EmfaceExionContent() {
                                     </h2>
                                     <p className="text-xl text-gray-700 mb-6 leading-relaxed">
                                         At Ossman Harding Dental, we offer the latest in non-surgical facial rejuvenation technology.
-                                        Our advanced treatments—EMFACE, EXION, and RF Micro-Needling—deliver remarkable results
+                                        Our advanced treatments (EMFACE, EXION, and RF Micro-Needling) deliver remarkable results
                                         without the downtime, discomfort, or risks associated with surgical procedures.
                                     </p>
                                     <p className="text-gray-700 mb-8 leading-relaxed">
@@ -227,7 +227,7 @@ export function EmfaceExionContent() {
                                         </h3>
                                         <p className="text-gray-700 mb-4 leading-relaxed">
                                             EMFACE is a revolutionary non-invasive facial treatment that simultaneously
-                                            addresses skin and muscle—the two key components of facial aging. Using
+                                            addresses skin and muscle, the two key components of facial aging. Using
                                             synchronized radiofrequency (RF) and HIFES (High-Intensity Facial Electrical
                                             Stimulation) technology, EMFACE lifts, tones, and rejuvenates without needles
                                             or downtime.
@@ -245,7 +245,7 @@ export function EmfaceExionContent() {
                                             </li>
                                             <li className="flex items-start">
                                                 <span className="text-primary-600 mr-2 font-bold shrink-0">✓</span>
-                                                <span className="text-gray-700"><strong>No needles, no downtime</strong>—return to your normal activities immediately</span>
+                                                <span className="text-gray-700"><strong>No needles, no downtime</strong>. Return to your normal activities immediately</span>
                                             </li>
                                         </ul>
 
@@ -530,19 +530,19 @@ export function EmfaceExionContent() {
                                         <ul className="space-y-3 text-gray-700 list-none pl-0">
                                             <li className="flex items-start">
                                                 <span className="text-primary-600 mr-2 font-bold shrink-0">✓</span>
-                                                <span><strong>Expert Knowledge of Facial Anatomy</strong> — As dental professionals, we have extensive training in facial anatomy, muscles, and nerves</span>
+                                                <span><strong>Expert Knowledge of Facial Anatomy</strong>: As dental professionals, we have extensive training in facial anatomy, muscles, and nerves</span>
                                             </li>
                                             <li className="flex items-start">
                                                 <span className="text-primary-600 mr-2 font-bold shrink-0">✓</span>
-                                                <span><strong>Advanced Training</strong> — Dr. Ossman has completed specialized certifications in EMFACE, EXION, and RF Micro-Needling</span>
+                                                <span><strong>Advanced Training</strong>: Dr. Ossman has completed specialized certifications in EMFACE, EXION, and RF Micro-Needling</span>
                                             </li>
                                             <li className="flex items-start">
                                                 <span className="text-primary-600 mr-2 font-bold shrink-0">✓</span>
-                                                <span><strong>Convenient Locations</strong> — Offices in Enumclaw and Bonney Lake to fit your schedule</span>
+                                                <span><strong>Convenient Locations</strong>: Offices in Enumclaw and Bonney Lake to fit your schedule</span>
                                             </li>
                                             <li className="flex items-start">
                                                 <span className="text-primary-600 mr-2 font-bold shrink-0">✓</span>
-                                                <span><strong>Natural-Looking Results</strong> — We focus on enhancing your natural beauty with subtle, refreshed results</span>
+                                                <span><strong>Natural-Looking Results</strong>: We focus on enhancing your natural beauty with subtle, refreshed results</span>
                                             </li>
                                         </ul>
                                     </div>

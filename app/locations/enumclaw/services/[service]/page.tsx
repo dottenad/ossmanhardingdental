@@ -213,6 +213,32 @@ export default function EnumclawServicePage({ params }: PageProps) {
                                             <p className="text-gray-700">{serviceContent.process}</p>
                                         </div>
                                     )}
+
+                                    {/* Link to Parent Service Page */}
+                                    {(() => {
+                                        const parentLinkTemplates = [
+                                            { before: "For a complete overview of what we offer, read our ", anchor: `guide to ${serviceName}`, after: "." },
+                                            { before: "Want to know more? Learn ", anchor: `how ${serviceName} works`, after: " at our practice." },
+                                            { before: "Explore all your options in our ", anchor: `${serviceName} overview`, after: "." },
+                                            { before: "See the full details in our ", anchor: `${serviceName} service guide`, after: "." },
+                                            { before: "Get answers to common questions in our ", anchor: `${serviceName} resource page`, after: "." },
+                                        ];
+                                        // Simple hash based on service slug to select variant
+                                        const hash = params.service.split("").reduce((acc, char) => acc + char.charCodeAt(0), 0);
+                                        const template = parentLinkTemplates[hash % parentLinkTemplates.length];
+                                        return (
+                                            <p className="text-gray-700 mb-6">
+                                                {template.before}
+                                                <Link
+                                                    href={`/services/${params.service}`}
+                                                    className="text-primary-600 hover:text-primary-700 font-semibold"
+                                                >
+                                                    {template.anchor}
+                                                </Link>
+                                                {template.after}
+                                            </p>
+                                        );
+                                    })()}
                                 </div>
 
                                 {/* CTA Card */}
@@ -305,33 +331,43 @@ export default function EnumclawServicePage({ params }: PageProps) {
                                 </div>
 
                                 {/* Other Services */}
-                                {otherServices.length > 0 && (
-                                    <div className="mb-8">
-                                        <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                                            Other Services in {LOCATION.name}
-                                        </h3>
-                                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-                                            {otherServices.map((service) => {
-                                                const serviceSlug = service
-                                                    .toLowerCase()
-                                                    .replace(/\s+/g, "-")
-                                                    .replace(/[^a-z0-9-]/g, "")
-                                                    .replace(/-+/g, "-");
-                                                return (
-                                                    <Link
-                                                        key={service}
-                                                        href={`/locations/${LOCATION.slug}/services/${serviceSlug}`}
-                                                        className="flex items-center gap-2 p-3 bg-gray-50 rounded-lg hover:bg-primary-50 hover:border-primary-200 border border-transparent transition-colors group"
-                                                    >
-                                                        <CheckCircle2 className="w-5 h-5 text-primary-600 flex-shrink-0" />
-                                                        <span className="text-gray-700 text-sm font-medium group-hover:text-primary-700">{service}</span>
-                                                        <ArrowRight className="w-4 h-4 text-gray-400 ml-auto group-hover:text-primary-600 transition-colors" />
-                                                    </Link>
-                                                );
-                                            })}
+                                {(() => {
+                                    const availableServices = otherServices.filter((service) => {
+                                        const serviceSlug = service
+                                            .toLowerCase()
+                                            .replace(/\s+/g, "-")
+                                            .replace(/[^a-z0-9-]/g, "")
+                                            .replace(/-+/g, "-");
+                                        return isServiceAvailableAtLocation(serviceSlug, LOCATION.slug);
+                                    });
+                                    return availableServices.length > 0 && (
+                                        <div className="mb-8">
+                                            <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                                                Other Services in {LOCATION.name}
+                                            </h3>
+                                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                                                {availableServices.map((service) => {
+                                                    const serviceSlug = service
+                                                        .toLowerCase()
+                                                        .replace(/\s+/g, "-")
+                                                        .replace(/[^a-z0-9-]/g, "")
+                                                        .replace(/-+/g, "-");
+                                                    return (
+                                                        <Link
+                                                            key={service}
+                                                            href={`/locations/${LOCATION.slug}/services/${serviceSlug}`}
+                                                            className="flex items-center gap-2 p-3 bg-gray-50 rounded-lg hover:bg-primary-50 hover:border-primary-200 border border-transparent transition-colors group"
+                                                        >
+                                                            <CheckCircle2 className="w-5 h-5 text-primary-600 flex-shrink-0" />
+                                                            <span className="text-gray-700 text-sm font-medium group-hover:text-primary-700">{service}</span>
+                                                            <ArrowRight className="w-4 h-4 text-gray-400 ml-auto group-hover:text-primary-600 transition-colors" />
+                                                        </Link>
+                                                    );
+                                                })}
+                                            </div>
                                         </div>
-                                    </div>
-                                )}
+                                    );
+                                })()}
 
                                 {/* Other Location */}
                                 <div className="bg-button-50 p-6 rounded-xl border border-button-200">

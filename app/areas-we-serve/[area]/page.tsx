@@ -198,7 +198,7 @@ export default function ServiceAreaPage({ params }: PageProps) {
                                                     >
                                                         {nearestOfficeName} location
                                                     </Link>
-                                                    —{area.directionsHint || `just ${area.driveTime} away`}.
+                                                    , {area.directionsHint || `just ${area.driveTime} away`}.
                                                 </>
                                             )}
                                         </p>
@@ -257,7 +257,7 @@ export default function ServiceAreaPage({ params }: PageProps) {
                                                 About {area.name}
                                                 {area.communityType && (
                                                     <span className="text-lg font-normal text-gray-500 ml-2">
-                                                        — A {area.communityType}
+                                                        ({area.communityType})
                                                     </span>
                                                 )}
                                             </h2>
@@ -342,23 +342,42 @@ export default function ServiceAreaPage({ params }: PageProps) {
                                                     ? area.driveTimeToBonneyLake
                                                     : area.driveTime;
 
+                                                // Hash-based anchor text variation for parent service links
+                                                const parentLinkAnchors = [
+                                                    `about ${service}`,
+                                                    `${service} details`,
+                                                    `${service} options`,
+                                                    `${service} overview`,
+                                                    `our ${service} services`,
+                                                ];
+                                                const hash = serviceSlug.split("").reduce((acc, char) => acc + char.charCodeAt(0), 0);
+                                                const anchorText = parentLinkAnchors[hash % parentLinkAnchors.length];
+
                                                 return (
-                                                    <Link
+                                                    <div
                                                         key={service}
-                                                        href={`/areas-we-serve/${area.slug}/${serviceSlug}`}
-                                                        className="flex flex-col gap-1 p-3 bg-gray-50 rounded-lg hover:bg-primary-50 hover:border-primary-200 border border-transparent transition-colors group"
+                                                        className="bg-gray-50 rounded-lg border border-transparent hover:border-primary-200 hover:bg-primary-50 transition-colors p-3"
                                                     >
-                                                        <div className="flex items-center gap-2">
+                                                        <Link
+                                                            href={`/areas-we-serve/${area.slug}/${serviceSlug}`}
+                                                            className="flex items-center gap-2 group"
+                                                        >
                                                             <CheckCircle2 className="w-5 h-5 text-primary-600 flex-shrink-0" />
                                                             <span className="text-gray-700 text-sm font-medium group-hover:text-primary-700">{service}</span>
                                                             <ArrowRight className="w-4 h-4 text-gray-400 ml-auto group-hover:text-primary-600 transition-colors" />
-                                                        </div>
+                                                        </Link>
                                                         {isLocationSpecific && (
-                                                            <span className="text-xs text-gray-500 ml-7">
+                                                            <span className="block text-xs text-gray-500 ml-7">
                                                                 {locationName} office • {driveTime} drive
                                                             </span>
                                                         )}
-                                                    </Link>
+                                                        <Link
+                                                            href={`/services/${serviceSlug}`}
+                                                            className="block mt-2 text-xs text-primary-600 hover:text-primary-700 pl-7"
+                                                        >
+                                                            Learn more {anchorText} →
+                                                        </Link>
+                                                    </div>
                                                 );
                                             })}
                                         </div>
@@ -395,8 +414,8 @@ export default function ServiceAreaPage({ params }: PageProps) {
                                         </h2>
                                         <p className="text-gray-600 mb-6">
                                             {area.isOfficeLocation
-                                                ? `Visit our ${nearestOfficeName} office—${area.locationDescription || `right here in ${area.name}`}.`
-                                                : `${area.name} residents can schedule at our ${nearestOfficeName} office—just ${area.driveTime} away.`}
+                                                ? `Visit our ${nearestOfficeName} office, ${area.locationDescription || `right here in ${area.name}`}.`
+                                                : `${area.name} residents can schedule at our ${nearestOfficeName} office, just ${area.driveTime} away.`}
                                         </p>
                                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                                             <Link

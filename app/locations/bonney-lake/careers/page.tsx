@@ -100,7 +100,7 @@ export default function BonneyLakeCareersPage() {
                                 individuals who share our passion for excellent patient care.
                             </p>
                             <p className="text-lg text-gray-600">
-                                The Ossmans envisioned OHD Tehaleh as a one-stop shop for all dental and esthetic needs—and
+                                The Ossmans envisioned OHD Tehaleh as a one-stop shop for all dental and esthetic needs, and
                                 we need great people to make that vision a reality. Join us and be part of something special
                                 in this thriving community.
                             </p>

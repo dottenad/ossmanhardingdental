@@ -73,7 +73,7 @@ export default function AboutPage() {
                                     </div>
                                     <p className="text-gray-700 mb-4 leading-relaxed mt-0 pt-0">
                                             At {businessConfig.name}, we believe that great dental
-                                            care goes beyond treating teeth—it&apos;s about building
+                                            care goes beyond treating teeth. It&apos;s about building
                                             relationships, improving confidence, and enhancing
                                             quality of life. With offices in both Enumclaw and
                                             Bonney Lake, we&apos;re proud to serve families throughout

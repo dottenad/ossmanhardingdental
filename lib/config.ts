@@ -233,7 +233,7 @@ export const geoServiceAreas: GeoServiceArea[] = [
         landmarks: ["Eagle Ridge", "Trilogy", "Glacier Pointe", "Big Sky", "Berkeley Park", "Observation Ridge"],
         directionsHint: "conveniently located to serve all Tehaleh neighborhoods",
         communityType: "master-planned community",
-        communityContent: "As one of the fastest-growing communities in the Pacific Northwest, Tehaleh attracts young families and active adults seeking a vibrant, connected lifestyle. The community's emphasis on health and wellness aligns perfectly with our approach to preventive dental care. Whether you're in Eagle Ridge, Glacier Pointe, Trilogy, or any of the other wonderful Tehaleh neighborhoods, our Bonney Lake office is conveniently located to serve your dental needs. We designed our practice with Tehaleh families in mind—modern amenities, early morning appointments, and a welcoming environment for patients of all ages.",
+        communityContent: "As one of the fastest-growing communities in the Pacific Northwest, Tehaleh attracts young families and active adults seeking a vibrant, connected lifestyle. The community's emphasis on health and wellness aligns perfectly with our approach to preventive dental care. Whether you're in Eagle Ridge, Glacier Pointe, Trilogy, or any of the other wonderful Tehaleh neighborhoods, our Bonney Lake office is conveniently located to serve your dental needs. We designed our practice with Tehaleh families in mind: modern amenities, early morning appointments, and a welcoming environment for patients of all ages.",
         whyChooseUs: [
             "Conveniently located right here in Tehaleh",
             "Early 7 AM appointments perfect for busy Tehaleh families",
@@ -253,11 +253,11 @@ export const geoServiceAreas: GeoServiceArea[] = [
         landmarks: ["Downtown Buckley", "Foothills Trail", "White River", "Buckley Log Show", "Ryan's Park", "Mount Rainier views"],
         directionsHint: "a quick 10-minute drive down Highway 410",
         communityType: "small town",
-        communityContent: "Buckley embodies the spirit of small-town Washington—friendly neighbors, stunning mountain views, and a strong sense of community pride showcased every year at the famous Buckley Log Show. Many Buckley families have been patients at our Enumclaw office for multiple generations, and we're honored to be part of this tight-knit community's healthcare network. From the loggers and farmers who built this town to the young families now calling Buckley home, we provide personalized dental care that respects both your time and your budget. After your appointment, you're just minutes from the Foothills Trail for a refreshing walk along the White River.",
+        communityContent: "Buckley embodies the spirit of small-town Washington with friendly neighbors, stunning mountain views, and a strong sense of community pride showcased every year at the famous Buckley Log Show. Many Buckley families have been patients at our Enumclaw office for multiple generations, and we're honored to be part of this tight-knit community's healthcare network. From the loggers and farmers who built this town to the young families now calling Buckley home, we provide personalized dental care that respects both your time and your budget. After your appointment, you're just minutes from the Foothills Trail for a refreshing walk along the White River.",
         whyChooseUs: [
             "Serving Buckley families for multiple generations",
             "Quick 10-minute drive from downtown Buckley",
-            "No big-city dental office hassle—small-town feel",
+            "Small-town feel without big-city hassle",
             "Comprehensive care from cleanings to oral surgery",
             "Flexible payment options for working families",
         ],
@@ -272,9 +272,9 @@ export const geoServiceAreas: GeoServiceArea[] = [
         landmarks: ["Downtown Puyallup", "Puyallup Fairgrounds", "South Hill Mall", "Antique District", "Pioneer Park", "Meeker Mansion"],
         directionsHint: "a quick drive up Highway 410 or via South Hill",
         communityType: "growing city",
-        communityContent: "Puyallup has grown from a small farming community into one of Pierce County's most dynamic cities, yet it retains its historic charm—from the Meeker Mansion to the beloved annual Puyallup Fair. Many Puyallup residents are discovering that heading east to our Bonney Lake office offers a refreshing alternative to the congested valley clinics. You'll find shorter wait times, easier parking, and a team that takes time to know you by name. Whether you live near South Hill Mall, the historic Antique District, or anywhere in between, our office is an easy drive against traffic. Plus, our early morning hours mean you can get your cleaning done before heading to work in Tacoma or Seattle.",
+        communityContent: "Puyallup has grown from a small farming community into one of Pierce County's most dynamic cities, yet it retains its historic charm, from the Meeker Mansion to the beloved annual Puyallup Fair. Many Puyallup residents are discovering that heading east to our Bonney Lake office offers a refreshing alternative to the congested valley clinics. You'll find shorter wait times, easier parking, and a team that takes time to know you by name. Whether you live near South Hill Mall, the historic Antique District, or anywhere in between, our office is an easy drive against traffic. Plus, our early morning hours mean you can get your cleaning done before heading to work in Tacoma or Seattle.",
         whyChooseUs: [
-            "Escape valley traffic—our office is an easy drive against rush hour",
+            "Easy drive against rush hour, away from valley traffic",
             "Modern facility with latest dental technology",
             "All PPO insurance plans accepted",
             "Cosmetic dentistry expertise for smile makeovers",
@@ -291,11 +291,11 @@ export const geoServiceAreas: GeoServiceArea[] = [
         landmarks: ["Downtown Sumner", "Sumner Link Trail", "Ryan's Fruit Stand", "Sumner High School", "White River", "Daffodil Parade route"],
         directionsHint: "via Highway 410 East or Traffic Avenue",
         communityType: "small city",
-        communityContent: "Known as the 'Rhubarb Pie Capital of the World' and home to the famous Daffodil Parade, Sumner combines small-town charm with easy access to the greater Puget Sound region. The historic downtown, scenic river walks, and strong school district make Sumner a wonderful place to raise a family. Our Bonney Lake office serves many Sumner families who appreciate the personalized attention that's hard to find in larger valley dental practices. We understand the rhythm of Sumner life—stopping by Ryan's Fruit Stand, walking the Link Trail, cheering at Sumner High football games—and we're here to keep your family smiling through it all.",
+        communityContent: "Known as the 'Rhubarb Pie Capital of the World' and home to the famous Daffodil Parade, Sumner combines small-town charm with easy access to the greater Puget Sound region. The historic downtown, scenic river walks, and strong school district make Sumner a wonderful place to raise a family. Our Bonney Lake office serves many Sumner families who appreciate the personalized attention that's hard to find in larger valley dental practices. We understand the rhythm of Sumner life: stopping by Ryan's Fruit Stand, walking the Link Trail, cheering at Sumner High football games. We're here to keep your family smiling through it all.",
         whyChooseUs: [
             "Just a 12 minute drive from downtown Sumner",
             "Personalized care you won't find at big chain practices",
-            "Family dentistry for all ages—from first tooth to dentures",
+            "Family dentistry for all ages, from first tooth to dentures",
             "SureSmile clear braces specialists",
             "Welcoming environment for anxious patients",
         ],
@@ -310,13 +310,13 @@ export const geoServiceAreas: GeoServiceArea[] = [
         landmarks: ["Lake Tapps", "Allan Yorke Park", "Tapps Island", "Lake Tapps Parkway", "Diru Winery", "Lakeland Hills"],
         directionsHint: "just down the road via Lake Tapps Parkway",
         communityType: "lakeside community",
-        communityContent: "Life on Lake Tapps revolves around the water—summer days on the boat, evenings watching the sunset from Allan Yorke Park, and the unique camaraderie of lakeside living. Whether you're on Tapps Island, in Lakeland Hills, or anywhere along the scenic shoreline, our Bonney Lake office is your neighborhood dental home. We know that lake life keeps you busy, which is why we offer early morning appointments that let you get back to the water. Many of our Lake Tapps patients have been with us for years, trusting us with everything from routine cleanings to smile makeovers before family reunions at the lake house.",
+        communityContent: "Life on Lake Tapps revolves around the water: summer days on the boat, evenings watching the sunset from Allan Yorke Park, and the unique camaraderie of lakeside living. Whether you're on Tapps Island, in Lakeland Hills, or anywhere along the scenic shoreline, our Bonney Lake office is your neighborhood dental home. We know that lake life keeps you busy, which is why we offer early morning appointments that let you get back to the water. Many of our Lake Tapps patients have been with us for years, trusting us with everything from routine cleanings to smile makeovers before family reunions at the lake house.",
         whyChooseUs: [
-            "Closest dental office to Lake Tapps—just an 8 minute drive",
+            "Closest dental office to Lake Tapps, just 8 minutes away",
             "Early morning appointments so you're back on the lake by noon",
             "Teeth whitening popular with our lake community patients",
             "Emergency dental care for summer accidents",
-            "All ages welcome—from kids to grandparents visiting the lake house",
+            "All ages welcome, from kids to grandparents visiting the lake house",
         ],
     },
     {
@@ -330,7 +330,7 @@ export const geoServiceAreas: GeoServiceArea[] = [
         landmarks: ["Black Diamond Bakery", "Lake Sawyer", "Green River Gorge", "Black Diamond Museum", "Railroad History", "Ten Trails Community"],
         directionsHint: "a scenic 15-minute drive via Highway 169",
         communityType: "historic small town",
-        communityContent: "Black Diamond's coal mining heritage lives on in its tight-knit community spirit, world-famous bakery, and the beautiful Green River Gorge that draws visitors from across the region. As the Ten Trails development brings new families to town, Black Diamond is experiencing a renaissance while holding onto what makes it special. Our Enumclaw office has served Black Diamond residents for years—we understand that you chose this community for its authenticity and natural beauty, not strip malls and chain stores. That's why we offer the kind of personalized, unhurried dental care that fits Black Diamond's character. Stop by the bakery before your appointment for a legendary donut, and enjoy the scenic Highway 169 drive home.",
+        communityContent: "Black Diamond's coal mining heritage lives on in its tight-knit community spirit, world-famous bakery, and the beautiful Green River Gorge that draws visitors from across the region. As the Ten Trails development brings new families to town, Black Diamond is experiencing a renaissance while holding onto what makes it special. Our Enumclaw office has served Black Diamond residents for years. We understand that you chose this community for its authenticity and natural beauty, not strip malls and chain stores. That's why we offer the kind of personalized, unhurried dental care that fits Black Diamond's character. Stop by the bakery before your appointment for a legendary donut, and enjoy the scenic Highway 169 drive home.",
         whyChooseUs: [
             "Serving Black Diamond families for years",
             "Small-town dental care that matches Black Diamond values",
@@ -349,13 +349,13 @@ export const geoServiceAreas: GeoServiceArea[] = [
         landmarks: ["Downtown Auburn", "Muckleshoot Casino", "White River Valley Museum", "Auburn Airport", "Les Gove Park", "Emerald Downs"],
         directionsHint: "via Highway 167 South to Highway 410",
         communityType: "major city",
-        communityContent: "Auburn sits at the crossroads of King and Pierce counties, a diverse and growing city with deep roots in the White River Valley's agricultural heritage. From the excitement of Emerald Downs to the cultural offerings at the White River Valley Museum, Auburn offers big-city amenities with a community feel. Many Auburn residents—especially those in East Auburn and Lakeland—are discovering that our Bonney Lake office provides the personalized attention that's increasingly rare in busy urban dental practices. Skip the crowded waiting rooms and impersonal treatment of valley chain clinics. Our team takes time to understand your dental goals, whether you're preparing for a smile makeover or simply maintaining your oral health for years to come.",
+        communityContent: "Auburn sits at the crossroads of King and Pierce counties, a diverse and growing city with deep roots in the White River Valley's agricultural heritage. From the excitement of Emerald Downs to the cultural offerings at the White River Valley Museum, Auburn offers big-city amenities with a community feel. Many Auburn residents, especially those in East Auburn and Lakeland, are discovering that our Bonney Lake office provides the personalized attention that's increasingly rare in busy urban dental practices. Skip the crowded waiting rooms and impersonal treatment of valley chain clinics. Our team takes time to understand your dental goals, whether you're preparing for a smile makeover or simply maintaining your oral health for years to come.",
         whyChooseUs: [
             "Escape to personalized care away from crowded valley clinics",
             "Convenient for East Auburn and Lakeland residents",
             "Full-service dentistry including implants and oral surgery",
             "IV sedation available for complex procedures",
-            "Accept all PPO plans—we maximize your benefits",
+            "Accept all PPO plans and maximize your benefits",
         ],
     },
     {
@@ -368,7 +368,7 @@ export const geoServiceAreas: GeoServiceArea[] = [
         landmarks: ["Downtown Orting", "Foothills Trail", "Carbon River", "Orting Valley", "Mount Rainier views", "Soldier's Home"],
         directionsHint: "via Highway 162 North through the beautiful Orting Valley",
         communityType: "small town",
-        communityContent: "Nestled in the shadow of Mount Rainier, Orting offers an idyllic small-town lifestyle with stunning natural beauty at every turn. The Foothills Trail runs right through town, the Carbon River offers world-class fishing, and on clear days, 'The Mountain' feels close enough to touch. Orting families are known for their active, outdoor lifestyle—and healthy smiles are part of that picture. Our Bonney Lake office is an easy 20-minute drive through the scenic Orting Valley, bringing comprehensive dental care closer to home. From sports mouthguards for Orting High athletes to cosmetic dentistry for adults, we serve the whole Orting community with the same care we'd give our own families.",
+        communityContent: "Nestled in the shadow of Mount Rainier, Orting offers an idyllic small-town lifestyle with stunning natural beauty at every turn. The Foothills Trail runs right through town, the Carbon River offers world-class fishing, and on clear days, 'The Mountain' feels close enough to touch. Orting families are known for their active, outdoor lifestyle, and healthy smiles are part of that picture. Our Bonney Lake office is an easy 20-minute drive through the scenic Orting Valley, bringing comprehensive dental care closer to home. From sports mouthguards for Orting High athletes to cosmetic dentistry for adults, we serve the whole Orting community with the same care we'd give our own families.",
         whyChooseUs: [
             "Comprehensive care just a 20 minute drive from Orting",
             "Sports mouthguards for Orting High athletes",
@@ -388,7 +388,7 @@ export const geoServiceAreas: GeoServiceArea[] = [
         landmarks: ["Lake Wilderness", "Cedar River Trail", "Maple Valley Town Center", "Lake Wilderness Arboretum", "Four Corners", "Ravensdale Park"],
         directionsHint: "south on Highway 169 through scenic Foothills",
         communityType: "growing suburban community",
-        communityContent: "Maple Valley has grown from a quiet rural crossroads into one of King County's most desirable family communities. Nestled between Lake Wilderness and the Cedar River, residents here value outdoor recreation, excellent schools, and maintaining their connection to nature. Whether you're hiking the Cedar River Trail, enjoying summer concerts at Lake Wilderness, or exploring the charming shops at Four Corners, Maple Valley offers the perfect blend of suburban convenience and natural beauty. Our Enumclaw office provides Maple Valley families with comprehensive dental care that matches their community's focus on health and wellness—without the traffic headaches of driving to Renton or the Eastside.",
+        communityContent: "Maple Valley has grown from a quiet rural crossroads into one of King County's most desirable family communities. Nestled between Lake Wilderness and the Cedar River, residents here value outdoor recreation, excellent schools, and maintaining their connection to nature. Whether you're hiking the Cedar River Trail, enjoying summer concerts at Lake Wilderness, or exploring the charming shops at Four Corners, Maple Valley offers the perfect blend of suburban convenience and natural beauty. Our Enumclaw office provides Maple Valley families with comprehensive dental care that matches their community's focus on health and wellness, without the traffic headaches of driving to Renton or the Eastside.",
         whyChooseUs: [
             "Scenic 20-minute drive south on Highway 169",
             "Avoid Renton and Eastside traffic congestion",
@@ -718,21 +718,21 @@ export const businessConfig: BusinessConfig = {
             id: "fresh-smile-for-spring-cosmetic-dentistry-suresmile",
             title: "A Fresh Smile for Spring: How Cosmetic Dentistry and SureSmile Can Boost Your Confidence",
             excerpt: "Spring is a season of fresh starts. Discover how modern cosmetic dentistry options like professional whitening, veneers, and SureSmile clear aligners can help you achieve a natural, confident smile.",
-            content: `<p>Spring is a season of fresh starts, and for many people it's also a time to focus on feeling more confident in their appearance. One of the most powerful ways to do that is through your smile. Cosmetic dentistry today is not about creating something artificial—it's about enhancing what's already there and helping your smile reflect how you feel inside.</p>
+            content: `<p>Spring is a season of fresh starts, and for many people it's also a time to focus on feeling more confident in their appearance. One of the most powerful ways to do that is through your smile. Cosmetic dentistry today is not about creating something artificial. It's about enhancing what's already there and helping your smile reflect how you feel inside.</p>
 <p>Many patients are surprised by how simple and natural modern cosmetic options can be. Small changes can create significant improvements in both appearance and confidence.</p>
 <h2>Teeth Whitening: A Simple Refresh</h2>
 <p>Professional whitening is one of the fastest ways to brighten your smile. Years of coffee, tea, and everyday life can dull enamel, even with great brushing habits. In-office and custom take-home whitening safely lift stains and restore brightness in ways that over-the-counter products simply can't.</p>
 <h2>Veneers: Subtle Changes, Beautiful Results</h2>
-<p>Veneers are thin, custom-designed shells placed over the front of teeth to correct chips, gaps, uneven edges, or deep discoloration. When done properly, veneers don't look "fake"—they look like the best version of your natural smile.</p>
+<p>Veneers are thin, custom-designed shells placed over the front of teeth to correct chips, gaps, uneven edges, or deep discoloration. When done properly, veneers don't look "fake." They look like the best version of your natural smile.</p>
 <h2>SureSmile Clear Aligners: Straightening Without Braces</h2>
 <p>For patients who want straighter teeth without metal brackets or wires, SureSmile clear aligners offer a discreet and highly precise solution. Using advanced 3D imaging and digital smile design, we create a custom plan that gently guides your teeth into their ideal position.</p>
-<p>The process begins with a digital scan and panoramic X-ray—no uncomfortable impressions or bulky trays. You'll receive a series of clear, removable aligners that are worn about 22 hours a day and changed every two weeks. Each set moves your teeth a little closer to their final alignment, with treatment typically lasting between 9 and 15 months.</p>
+<p>The process begins with a digital scan and panoramic X-ray. No uncomfortable impressions or bulky trays. You'll receive a series of clear, removable aligners that are worn about 22 hours a day and changed every two weeks. Each set moves your teeth a little closer to their final alignment, with treatment typically lasting between 9 and 15 months.</p>
 <p>One of the reasons we use SureSmile is its precision. The system uses more aligners with smaller, more frequent movements, which often results in fewer refinements and faster overall treatment compared to other clear aligner systems. The aligners are made from an advanced, clear material that is both durable and nearly invisible, so most people won't even notice you're wearing them.</p>
 <h2>A Straighter Smile Can Be a Healthier One</h2>
 <p>In addition to improving appearance, straight teeth are easier to clean, which reduces the risk of cavities and gum disease. Clear aligners can also improve bite alignment, helping reduce jaw strain and uneven tooth wear.</p>
 <h2>Flexible Payment Options</h2>
 <p>In many cases, dental insurance will contribute to SureSmile treatment using your orthodontic benefit. We also offer 0% financing and savings for patients who choose to pay their portion upfront, making treatment more accessible for families.</p>
-<p>Spring is the perfect time to invest in yourself. Whether you're preparing for a big event, starting a new chapter, or simply want to feel more confident every time you smile, cosmetic dentistry—including SureSmile—can help you get there.</p>`,
+<p>Spring is the perfect time to invest in yourself. Whether you're preparing for a big event, starting a new chapter, or simply want to feel more confident every time you smile, cosmetic dentistry, including SureSmile, can help you get there.</p>`,
             featuredImage: "/images/service-images/cosmetic-dentistry.jpg",
             author: "Madisyn Ossman",
             authorImage: "/images/blog/authors/madisyn_ossman.jpg",
@@ -744,16 +744,16 @@ export const businessConfig: BusinessConfig = {
         {
             id: "oral-health-month-why-your-smile-deserves-attention",
             title: "Oral Health Month: Why Your Smile Deserves Attention All Year Long",
-            excerpt: "March is Oral Health Month—a reminder that great dental health isn't just about cleanings twice a year. Learn why prevention, gum health, and daily habits matter for your confidence and wellbeing.",
-            content: `<p>March is Oral Health Month, a time dedicated to raising awareness about the connection between oral health and overall wellbeing. For our team, it's an opportunity to remind families that great dental health isn't just about cleanings twice a year—it's about understanding your smile, catching issues early, and feeling confident in the care you receive.</p>
+            excerpt: "March is Oral Health Month, a reminder that great dental health isn't just about cleanings twice a year. Learn why prevention, gum health, and daily habits matter for your confidence and wellbeing.",
+            content: `<p>March is Oral Health Month, a time dedicated to raising awareness about the connection between oral health and overall wellbeing. For our team, it's an opportunity to remind families that great dental health isn't just about cleanings twice a year. It's about understanding your smile, catching issues early, and feeling confident in the care you receive.</p>
 <h2>Prevention Starts Before Symptoms Do</h2>
 <p>Many dental problems begin long before you feel discomfort. Cavities can form silently, gum inflammation can progress without pain, and bite issues can develop gradually. Routine checkups allow us to catch these concerns early, when treatment is simple, affordable, and far more comfortable.</p>
 <h2>Gum Health Matters More Than Most People Realize</h2>
 <p>Gums are the foundation of every tooth, and inflammation is one of the earliest signs something needs attention. March is a great time to pay closer attention: bleeding when brushing, persistent bad breath, or gum tenderness are all reasons to schedule an exam. With early care, gum issues are highly treatable and often reversible.</p>
-<h2>A Great Smile Isn't Just About Teeth—It's About Confidence</h2>
+<h2>A Great Smile Isn't Just About Teeth. It's About Confidence</h2>
 <p>Whether it's brightening your smile, smoothing out chips, addressing alignment, or improving the comfort of your bite, small changes can make a meaningful impact. Many patients are surprised by how accessible cosmetic and restorative options have become, and our office is always happy to guide you through what's possible.</p>
 <h2>Refresh the Tools You Use Daily</h2>
-<p>This month is also a perfect time to evaluate your at-home routine. Old toothbrush heads, worn bristles, expired toothpaste, or inconsistent flossing habits can quietly limit your progress. A quick refresh—including replacing brush heads and adding tools like water flossers—can dramatically improve the effectiveness of your daily care.</p>
+<p>This month is also a perfect time to evaluate your at-home routine. Old toothbrush heads, worn bristles, expired toothpaste, or inconsistent flossing habits can quietly limit your progress. A quick refresh (replacing brush heads and adding tools like water flossers) can dramatically improve the effectiveness of your daily care.</p>
 <h2>Your Dental Team Is Your Partner in Health</h2>
 <p>Oral Health Month is more than a reminder to schedule your next cleaning. It's a chance to think about how your smile supports your confidence, comfort, and long-term wellness. We're here to answer questions, address concerns early, and help every member of your family feel cared for.</p>
 <p>If it's been a while since your last visit or if you're ready to take a more proactive approach to your smile this year, March is the perfect time to start.</p>`,
@@ -793,7 +793,7 @@ export const businessConfig: BusinessConfig = {
             id: "new-year-healthy-smile-daily-habits",
             title: "New Year, Healthy Smile: Daily Habits That Make the Biggest Difference",
             excerpt: "A new year is the perfect time to build healthier habits for your smile. Learn how oral health connects to whole-body wellness and the daily routines that protect your teeth all year long.",
-            content: `<p>A new year is the perfect moment to reset routines and build healthier habits, and your smile is a great place to start. Oral health affects more than teeth—it influences your confidence, energy, sleep, and long-term whole-body wellness.</p>
+            content: `<p>A new year is the perfect moment to reset routines and build healthier habits, and your smile is a great place to start. Oral health affects more than teeth. It influences your confidence, energy, sleep, and long-term whole-body wellness.</p>
 <h2>Oral Health and Overall Health: A Stronger Link Than Most Realize</h2>
 <p>Modern research shows clear connections between gum health and major health conditions. The mouth is a gateway to the rest of the body, and the state of your teeth and gums can influence:</p>
 <ul>
@@ -818,9 +818,9 @@ export const businessConfig: BusinessConfig = {
 <h3>6. Replace your toothbrush every 3 months</h3>
 <p>Fresh, soft bristles clean better and are gentler on your gums.</p>
 <h2>Bonus Tip: Consider an Electric Toothbrush</h2>
-<p>Electric toothbrushes remove plaque more effectively than manual brushing and make it easier to reach tricky areas along the gumline. Many models include built-in timers and pressure sensors, helping you brush for the right amount of time without damaging enamel. They're especially helpful for kids, teens, and anyone who struggles with manual dexterity—making good brushing habits simpler and more consistent.</p>
+<p>Electric toothbrushes remove plaque more effectively than manual brushing and make it easier to reach tricky areas along the gumline. Many models include built-in timers and pressure sensors, helping you brush for the right amount of time without damaging enamel. They're especially helpful for kids, teens, and anyone who struggles with manual dexterity, making good brushing habits simpler and more consistent.</p>
 <h2>Healthy Smiles Start with Consistency</h2>
-<p>A strong routine doesn't require perfection, just steady, simple habits paired with regular checkups. Your mouth—and your whole body—will thank you.</p>
+<p>A strong routine doesn't require perfection, just steady, simple habits paired with regular checkups. Your mouth and your whole body will thank you.</p>
 <p>We're here to help you start the year with clarity and confidence. Schedule your New Year cleaning, and let's make this your healthiest smile yet.</p>`,
             featuredImage: "/images/blog/images/toothbrushing.jpg",
             author: "Madisyn Ossman",
@@ -896,7 +896,7 @@ export const businessConfig: BusinessConfig = {
         },
         {
             question: "What if I don't have dental insurance?",
-            answer: "No problem—we'd still love to see you! We offer preventative care for a low monthly price and a 20% discount on all necessary treatment. Check out our <a href=\"/new-patients/payment-options\">payment options</a> page for more information on how to save money on your dental care, including our <a href=\"/new-patients/payment-options/payment-plans\">payment plans</a>.",
+            answer: "No problem! We'd still love to see you. We offer preventative care for a low monthly price and a 20% discount on all necessary treatment. Check out our <a href=\"/new-patients/payment-options\">payment options</a> page for more information on how to save money on your dental care, including our <a href=\"/new-patients/payment-options/payment-plans\">payment plans</a>.",
         },
         {
             question: "Are you accepting new patients?",
@@ -1078,7 +1078,7 @@ const _industryConfig = {
         servicePageContent: {
             "dental-exams-cleanings": {
                 cardDescription: "Catch problems early with comfortable, thorough exams and cleanings at our Enumclaw and Bonney Lake offices.",
-                whatIs: "At Ossman Harding Dental in Enumclaw and Bonney Lake, we make dental exams and cleanings comfortable and thorough. Our experienced hygienists and dentists use digital X-rays and modern techniques to catch problems early—before they become costly. We're currently accepting new patients at both locations.",
+                whatIs: "At Ossman Harding Dental in Enumclaw and Bonney Lake, we make dental exams and cleanings comfortable and thorough. Our experienced hygienists and dentists use digital X-rays and modern techniques to catch problems early, before they become costly. We're currently accepting new patients at both locations.",
                 whatWeOffer: [
                     "Comprehensive exams at our Enumclaw and Bonney Lake offices",
                     "Digital X-rays with minimal radiation exposure",
@@ -1102,7 +1102,7 @@ const _industryConfig = {
                 relatedServices: ["preventive-dentistry", "teeth-whitening", "restorative-dentistry", "cosmetic-dentistry"],
             },
             "cosmetic-dentistry": {
-                cardDescription: "Transform your smile with expert cosmetic care—from subtle enhancements to complete makeovers.",
+                cardDescription: "Transform your smile with expert cosmetic care, from subtle enhancements to complete makeovers.",
                 whatIs: "Cosmetic dentistry focuses on improving the appearance of your smile while maintaining optimal oral health. From subtle changes to major repairs, we offer a variety of procedures to help you achieve the smile you've always wanted. Dr. Ossman specializes in creating natural-looking results that enhance your confidence.",
                 whatWeOffer: [
                     "Porcelain veneers for a complete smile transformation",
@@ -1118,7 +1118,7 @@ const _industryConfig = {
             },
             "dental-implants": {
                 cardDescription: "Replace missing teeth permanently with implants that look, feel, and function like natural teeth.",
-                whatIs: "At Ossman Harding Dental in Enumclaw and Bonney Lake, we place dental implants in-house using computer-guided surgery for precise, long-lasting results. Unlike bridges or dentures, implants replace the entire tooth—from root to crown—so they look, feel, and function like natural teeth. IV sedation is available for a stress-free experience.",
+                whatIs: "At Ossman Harding Dental in Enumclaw and Bonney Lake, we place dental implants in-house using computer-guided surgery for precise, long-lasting results. Unlike bridges or dentures, implants replace the entire tooth, from root to crown, so they look, feel, and function like natural teeth. IV sedation is available for a stress-free experience.",
                 whatWeOffer: [
                     "Computer-guided implant placement for optimal results",
                     "Single and multiple tooth implants",
@@ -1128,7 +1128,7 @@ const _industryConfig = {
                     "All treatment completed at our Enumclaw and Bonney Lake offices",
                 ],
                 processSteps: [
-                    "Schedule a consultation—we'll take 3D images to evaluate your bone structure",
+                    "Schedule a consultation where we'll take 3D images to evaluate your bone structure",
                     "We place the titanium implant using computer-guided surgery",
                     "Healing period of 3-6 months as the implant fuses with your jawbone",
                     "We secure the abutment and place your custom crown, bridge, or denture",
@@ -1139,7 +1139,7 @@ const _industryConfig = {
                         "Implants preserve your jawbone and prevent deterioration from tooth loss",
                         "No need to modify healthy neighboring teeth (unlike bridges)",
                         "Permanent solution that can last a lifetime with proper care",
-                        "Chew and speak naturally—no slipping or adhesives",
+                        "Chew and speak naturally with no slipping or adhesives",
                     ],
                 },
                 solutionsSection: {
@@ -1159,14 +1159,14 @@ const _industryConfig = {
                         },
                         {
                             name: "Teeth in a Day (Full Smile Makeover)",
-                            description: "Walk in with failing or missing teeth, walk out with a brand new smile—all in one appointment. Immediate function and aesthetics while your permanent restoration is crafted.",
+                            description: "Walk in with failing or missing teeth, walk out with a brand new smile, all in one appointment. Immediate function and aesthetics while your permanent restoration is crafted.",
                         },
                     ],
                 },
                 relatedServices: ["oral-surgery", "sedation-dentistry", "wisdom-teeth-extraction", "crowns-bridges"],
             },
             "suresmile-clear-braces": {
-                cardDescription: "Straighten your smile invisibly with clear aligners—50% fewer refinements than Invisalign.",
+                cardDescription: "Straighten your smile invisibly with clear aligners. 50% fewer refinements than Invisalign.",
                 whatIs: "SureSmile Clear Braces offer the invisible way to straighten your teeth without traditional braces. To discuss clear braces in Enumclaw or Bonney Lake, please contact us to schedule a free consultation.",
                 whatWeOffer: [
                     "Free SureSmile consultation",
@@ -1236,8 +1236,8 @@ const _industryConfig = {
                 relatedServices: ["dental-implants", "wisdom-teeth-extraction", "sedation-dentistry", "emergency-dental-care"],
             },
             "sedation-dentistry": {
-                cardDescription: "Relax through your dental care with IV sedation—often 80% covered by insurance.",
-                whatIs: "At Ossman Harding Dental in Enumclaw and Bonney Lake, we offer IV sedation for patients with dental anxiety or those undergoing longer procedures. Most patients report little to no memory of their treatment—and many insurance plans cover IV sedation at 80%.",
+                cardDescription: "Relax through your dental care with IV sedation, often 80% covered by insurance.",
+                whatIs: "At Ossman Harding Dental in Enumclaw and Bonney Lake, we offer IV sedation for patients with dental anxiety or those undergoing longer procedures. Most patients report little to no memory of their treatment, and many insurance plans cover IV sedation at 80%.",
                 whatWeOffer: [
                     "IV sedation at our Enumclaw and Bonney Lake offices",
                     "Often covered 80% by dental insurance",
@@ -1260,7 +1260,7 @@ const _industryConfig = {
             },
             "sleep-medicine": {
                 cardDescription: "Stop snoring and treat sleep apnea with a comfortable alternative to CPAP.",
-                whatIs: "At our Bonney Lake office, Dr. Lynda Phan specializes in dental sleep medicine, offering custom oral appliances as an effective CPAP alternative for patients with obstructive sleep apnea and snoring. These comfortable, portable devices are billed to your medical insurance—not your dental benefits.",
+                whatIs: "At our Bonney Lake office, Dr. Lynda Phan specializes in dental sleep medicine, offering custom oral appliances as an effective CPAP alternative for patients with obstructive sleep apnea and snoring. These comfortable, portable devices are billed to your medical insurance, not your dental benefits.",
                 whatWeOffer: [
                     "Custom-fit oral sleep appliances by Dr. Phan",
                     "CPAP alternative that's comfortable and portable",
@@ -1281,7 +1281,7 @@ const _industryConfig = {
                         "Generally lower cost than CPAP",
                         "More portable and easy to travel with",
                         "No loud noise disrupting your sleep",
-                        "Comfortable to wear—fits like a retainer",
+                        "Comfortable to wear and fits like a retainer",
                         "Sleep in any position without affecting therapy",
                     ],
                 },
@@ -1289,7 +1289,7 @@ const _industryConfig = {
             },
             "wisdom-teeth-extraction": {
                 cardDescription: "Get your wisdom teeth removed in-house with 3D-guided precision and IV sedation.",
-                whatIs: "At Ossman Harding Dental in Enumclaw and Bonney Lake, Dr. Zander performs wisdom teeth extractions in-house—no referral to an outside oral surgeon needed. We use 3D imaging to plan your procedure and offer IV sedation so you can relax through the entire process.",
+                whatIs: "At Ossman Harding Dental in Enumclaw and Bonney Lake, Dr. Zander performs wisdom teeth extractions in-house with no referral to an outside oral surgeon needed. We use 3D imaging to plan your procedure and offer IV sedation so you can relax through the entire process.",
                 whatWeOffer: [
                     "In-house extractions at our Enumclaw and Bonney Lake offices",
                     "3D imaging (panorex) to evaluate tooth position and plan removal",
@@ -1359,7 +1359,7 @@ const _industryConfig = {
             },
             "crowns-bridges": {
                 cardDescription: "Get a perfect-fit crown in one visit with our same-day CEREC technology.",
-                whatIs: "At Ossman Harding Dental in Enumclaw and Bonney Lake, we use CEREC technology to design and mill crowns and bridges right in our office—often completing your restoration in a single visit. No temporary crowns, no waiting on the lab, just a perfect fit in one appointment.",
+                whatIs: "At Ossman Harding Dental in Enumclaw and Bonney Lake, we use CEREC technology to design and mill crowns and bridges right in our office, often completing your restoration in a single visit. No temporary crowns, no waiting on the lab, just a perfect fit in one appointment.",
                 whatWeOffer: [
                     "Same-day CEREC crowns designed and milled in-office",
                     "Same-day bridges (depending on size)",
@@ -1370,10 +1370,10 @@ const _industryConfig = {
                     "Color matching to your existing teeth",
                 ],
                 processSteps: [
-                    "We examine your tooth and take digital impressions—no messy molds",
+                    "We examine your tooth and take digital impressions with no messy molds",
                     "Your crown or bridge is designed on-screen using CEREC software",
                     "We mill your custom restoration right here in our office",
-                    "Your new crown or bridge is seated and adjusted for a perfect fit—all in one visit",
+                    "Your new crown or bridge is seated and adjusted for a perfect fit, all in one visit",
                 ],
                 whyChooseSection: {
                     title: "Why Choose CEREC Same-Day Crowns?",
@@ -1381,7 +1381,7 @@ const _industryConfig = {
                         "One appointment instead of two or three visits",
                         "No temporary crown that can fall off or feel uncomfortable",
                         "No waiting weeks for a lab to fabricate your restoration",
-                        "Precise digital fit—often better than traditional impressions",
+                        "Precise digital fit, often better than traditional impressions",
                         "Durable ceramic material that looks and feels like natural teeth",
                     ],
                 },
@@ -1393,7 +1393,7 @@ const _industryConfig = {
                         "Gaps increase your risk of gum disease",
                         "Missing teeth can cause speech problems",
                         "Remaining teeth may shift out of alignment over time",
-                        "Dental implants are also an excellent long-term option—ask us which is right for you",
+                        "Dental implants are also an excellent long-term option (ask us which is right for you)",
                     ],
                 },
                 insuranceSection: {
@@ -1496,7 +1496,7 @@ const _industryConfig = {
             },
             "botox-facial-esthetics": {
                 cardDescription: "Smooth wrinkles and relieve jaw pain with Botox from Dr. Ossman.",
-                whatIs: "Yes, your dentist can administer Botox and filler! Dentists spend their doctoral years focused on the anatomy of the mouth, jaw, and facial muscles from chin to forehead—making them uniquely suited to be excellent injectors. Dr. Ossman has obtained specialized training from top injectors in the Northwest and administers Botox for both cosmetics and jaw pain relief.",
+                whatIs: "Yes, your dentist can administer Botox and filler! Dentists spend their doctoral years focused on the anatomy of the mouth, jaw, and facial muscles from chin to forehead, making them uniquely suited to be excellent injectors. Dr. Ossman has obtained specialized training from top injectors in the Northwest and administers Botox for both cosmetics and jaw pain relief.",
                 whatWeOffer: [
                     "Masseter injections for jaw pain from clenching and grinding",
                     "Forehead injections for cosmetic/preventative wrinkle treatment",
@@ -1506,7 +1506,7 @@ const _industryConfig = {
                     "Cheek and chin filler to restore volume lost to aging",
                     "Gummy smile correction",
                 ],
-                process: "Most patients describe injections as feeling like a small pinch—no anesthesia needed. Dr. Ossman uses the thinnest possible needles and expert techniques to maximize comfort. Injection sites appear as small bumps that disappear within 15-30 minutes. Within 3-14 days, you'll notice facial muscles relaxing and wrinkles smoothing. Results typically last 2-6 months depending on the patient and brand used.",
+                process: "Most patients describe injections as feeling like a small pinch. No anesthesia needed. Dr. Ossman uses the thinnest possible needles and expert techniques to maximize comfort. Injection sites appear as small bumps that disappear within 15-30 minutes. Within 3-14 days, you'll notice facial muscles relaxing and wrinkles smoothing. Results typically last 2-6 months depending on the patient and brand used.",
                 whyChooseSection: {
                     title: "Why Choose a Dentist for Botox?",
                     points: [
@@ -1514,12 +1514,12 @@ const _industryConfig = {
                         "Dr. Ossman has specialized training from top Northwest injectors",
                         "We can treat both cosmetic concerns AND jaw pain in one visit",
                         "Same attention to detail and precision as your dental care",
-                        "Comfortable, familiar environment—no separate med spa visit needed",
+                        "Comfortable, familiar environment with no separate med spa visit needed",
                     ],
                 },
                 additionalInfoSection: {
                     title: "What Brands Do You Use?",
-                    intro: "We offer Botox®, Dysport, and Daxxify—the highest quality offerings on the market. We carry multiple brands because each patient responds differently:",
+                    intro: "We offer Botox®, Dysport, and Daxxify, the highest quality offerings on the market. We carry multiple brands because each patient responds differently:",
                     points: [
                         "Some patients notice faster onset with certain brands",
                         "Longevity varies based on your body's response to each formula",
@@ -1596,7 +1596,7 @@ const _industryConfig = {
                     title: "Tips for a Successful Dental Visit",
                     intro: "Help your child have a positive experience:",
                     points: [
-                        "Use positive language—avoid words like 'hurt' or 'shot'",
+                        "Use positive language and avoid words like 'hurt' or 'shot'",
                         "Read books about visiting the dentist beforehand",
                         "Schedule appointments when your child is well-rested",
                         "Let us know about any anxieties so we can address them",
@@ -1685,7 +1685,7 @@ const _industryConfig = {
         },
         servicePageContent: {
             "privacy-fence-installation": {
-                whatIs: "A privacy fence is a solid or semi-solid barrier that gives you seclusion from neighbors and street traffic while defining your property line. We install wood, vinyl, and composite privacy fences in a range of heights and styles, from classic vertical board to horizontal modern designs. Proper installation—including sturdy posts, level rails, and consistent spacing—ensures your fence looks great and lasts for years.",
+                whatIs: "A privacy fence is a solid or semi-solid barrier that gives you seclusion from neighbors and street traffic while defining your property line. We install wood, vinyl, and composite privacy fences in a range of heights and styles, from classic vertical board to horizontal modern designs. Proper installation (including sturdy posts, level rails, and consistent spacing) ensures your fence looks great and lasts for years.",
                 whatWeOffer: [
                     "Full design consultation and layout",
                     "Wood, vinyl, and composite privacy options",

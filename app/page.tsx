@@ -503,7 +503,7 @@ export default function Home() {
                                     Two Convenient Locations
                                 </h3>
                                 <p className="text-gray-600 leading-relaxed">
-                                    Visit us in Enumclaw or Bonney Lake—two modern
+                                    Visit us in Enumclaw or Bonney Lake. Two modern
                                     offices designed for your comfort, serving
                                     families across King and Pierce counties.
                                 </p>

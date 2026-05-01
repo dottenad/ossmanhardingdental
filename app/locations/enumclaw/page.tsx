@@ -197,7 +197,7 @@ export default function EnumclawPage() {
                                     <h2 className="text-3xl font-bold text-gray-900 mb-6">
                                         Services Available in {LOCATION.name}
                                     </h2>
-                                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                                         {(industry.allServices || industry.services)
                                             .filter((service) => {
                                                 const serviceSlug = service
@@ -213,16 +213,33 @@ export default function EnumclawPage() {
                                                     .replace(/\s+/g, "-")
                                                     .replace(/[^a-z0-9-]/g, "")
                                                     .replace(/-+/g, "-");
+                                                // Hash-based anchor text variation
+                                                const parentLinkAnchors = [
+                                                    `about ${service}`,
+                                                    `${service} details`,
+                                                    `${service} options`,
+                                                    `${service} overview`,
+                                                    `our ${service} services`,
+                                                ];
+                                                const hash = serviceSlug.split("").reduce((acc, char) => acc + char.charCodeAt(0), 0);
+                                                const anchorText = parentLinkAnchors[hash % parentLinkAnchors.length];
                                                 return (
-                                                    <Link
-                                                        key={service}
-                                                        href={`/locations/${LOCATION.slug}/services/${serviceSlug}`}
-                                                        className="flex items-center gap-2 p-3 bg-gray-50 rounded-lg hover:bg-primary-50 hover:border-primary-200 border border-transparent transition-colors group"
-                                                    >
-                                                        <CheckCircle2 className="w-5 h-5 text-primary-600 flex-shrink-0" />
-                                                        <span className="text-gray-700 text-sm font-medium group-hover:text-primary-700">{service}</span>
-                                                        <ArrowRight className="w-4 h-4 text-gray-400 ml-auto group-hover:text-primary-600 transition-colors" />
-                                                    </Link>
+                                                    <div key={service} className="bg-gray-50 rounded-lg border border-transparent hover:border-primary-200 hover:bg-primary-50 transition-colors p-3">
+                                                        <Link
+                                                            href={`/locations/${LOCATION.slug}/services/${serviceSlug}`}
+                                                            className="flex items-center gap-2 group"
+                                                        >
+                                                            <CheckCircle2 className="w-5 h-5 text-primary-600 flex-shrink-0" />
+                                                            <span className="text-gray-700 text-sm font-medium group-hover:text-primary-700">{service}</span>
+                                                            <ArrowRight className="w-4 h-4 text-gray-400 ml-auto group-hover:text-primary-600 transition-colors" />
+                                                        </Link>
+                                                        <Link
+                                                            href={`/services/${serviceSlug}`}
+                                                            className="block mt-2 text-xs text-primary-600 hover:text-primary-700 pl-7"
+                                                        >
+                                                            Learn more {anchorText} →
+                                                        </Link>
+                                                    </div>
                                                 );
                                             })}
                                     </div>

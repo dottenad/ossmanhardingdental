@@ -218,7 +218,7 @@ export default function NewPatientsPage() {
                                 </div>
                                 <div>
                                     <h3 className="font-bold text-gray-900 mb-1">All Services In-House</h3>
-                                    <p className="text-gray-600 text-sm">From cleanings to implants, cosmetic dentistry to oral surgery — no need for referrals.</p>
+                                    <p className="text-gray-600 text-sm">From cleanings to implants, cosmetic dentistry to oral surgery. No need for referrals.</p>
                                 </div>
                             </div>
                             <div className="flex items-start gap-4 bg-white p-6 rounded-xl">

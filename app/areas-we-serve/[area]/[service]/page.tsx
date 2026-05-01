@@ -215,7 +215,7 @@ export default function AreaServicePage({ params }: PageProps) {
                     title={area.isOfficeLocation ? `${serviceName} in ${area.name}` : `${serviceName} for ${area.name} Residents`}
                     subtitle={area.isOfficeLocation
                         ? `${area.locationDescription || `At our ${nearestOfficeName} office`}`
-                        : `Available at our ${nearestOfficeName} office — just ${area.driveTime} away`}
+                        : `Available at our ${nearestOfficeName} office, just ${area.driveTime} away`}
                 />
                 <Breadcrumb
                     items={[
@@ -403,8 +403,8 @@ export default function AreaServicePage({ params }: PageProps) {
                                             <span className="text-primary-600 font-bold">✓</span>
                                             <span>
                                                 {area.isOfficeLocation
-                                                    ? `Convenient location — ${area.locationDescription || `right here in ${area.name}`}`
-                                                    : `Convenient location — just ${area.driveTime} from ${area.name}`}
+                                                    ? `Convenient location, ${area.locationDescription || `right here in ${area.name}`}`
+                                                    : `Convenient location, just ${area.driveTime} from ${area.name}`}
                                             </span>
                                         </li>
                                         <li className="flex items-start gap-3">
