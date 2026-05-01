@@ -18,7 +18,7 @@ export const metadata: Metadata = generateSEOMetadata(
             "Enumclaw facial esthetics",
             "Bonney Lake facial treatments",
         ],
-        url: `${businessConfig.website}/emface-exion`,
+        url: `${businessConfig.website}/services/emface-exion`,
     },
     businessConfig
 );

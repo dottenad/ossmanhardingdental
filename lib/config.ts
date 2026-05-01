@@ -553,7 +553,7 @@ export const businessConfig: BusinessConfig = {
                         { label: "Veneers & Esthetic Crowns", href: "/services/veneers-esthetic-crowns" },
                         { label: "Smile Makeovers", href: "/services/smile-makeovers" },
                         { label: "Botox & Facial Esthetics", href: "/services/botox-facial-esthetics" },
-                        { label: "EMFACE & EXION", href: "/emface-exion" },
+                        { label: "EMFACE & EXION", href: "/services/emface-exion" },
                     ],
                 },
                 {

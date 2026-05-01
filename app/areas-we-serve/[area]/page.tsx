@@ -344,11 +344,11 @@ export default function ServiceAreaPage({ params }: PageProps) {
 
                                                 // Hash-based anchor text variation for parent service links
                                                 const parentLinkAnchors = [
-                                                    `about ${service}`,
-                                                    `${service} details`,
-                                                    `${service} options`,
-                                                    `${service} overview`,
-                                                    `our ${service} services`,
+                                                    `Complete guide to ${service}`,
+                                                    `All ${service} options at our practice`,
+                                                    `How ${service} works`,
+                                                    `${service} treatment overview`,
+                                                    `What to expect with ${service}`,
                                                 ];
                                                 const hash = serviceSlug.split("").reduce((acc, char) => acc + char.charCodeAt(0), 0);
                                                 const anchorText = parentLinkAnchors[hash % parentLinkAnchors.length];
@@ -375,7 +375,7 @@ export default function ServiceAreaPage({ params }: PageProps) {
                                                             href={`/services/${serviceSlug}`}
                                                             className="block mt-2 text-xs text-primary-600 hover:text-primary-700 pl-7"
                                                         >
-                                                            Learn more {anchorText} →
+                                                            {anchorText}
                                                         </Link>
                                                     </div>
                                                 );

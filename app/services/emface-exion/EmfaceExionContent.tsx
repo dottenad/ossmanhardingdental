@@ -131,7 +131,8 @@ export function EmfaceExionContent() {
 
     const breadcrumbSchema = generateBreadcrumbSchema([
         { name: "Home", url: businessConfig.website },
-        { name: "EMFACE & EXION", url: `${businessConfig.website}/emface-exion` },
+        { name: "Services", url: `${businessConfig.website}/services` },
+        { name: "EMFACE & EXION", url: `${businessConfig.website}/services/emface-exion` },
     ]);
 
     const emfaceImages = [
@@ -182,7 +183,8 @@ export function EmfaceExionContent() {
                 <Breadcrumb
                     items={[
                         { name: "Home", url: "/" },
-                        { name: "EMFACE & EXION", url: "/emface-exion" },
+                        { name: "Services", url: "/services" },
+                        { name: "EMFACE & EXION", url: "/services/emface-exion" },
                     ]}
                 />
 
@@ -245,7 +247,7 @@ export function EmfaceExionContent() {
                                             </li>
                                             <li className="flex items-start">
                                                 <span className="text-primary-600 mr-2 font-bold shrink-0">✓</span>
-                                                <span className="text-gray-700"><strong>No needles, no downtime</strong>. Return to your normal activities immediately</span>
+                                                <span className="text-gray-700"><strong>No needles, no downtime</strong>, return to your normal activities immediately</span>
                                             </li>
                                         </ul>
 
@@ -495,7 +497,7 @@ export function EmfaceExionContent() {
                                                     },
                                                     {
                                                         question: "What areas do you treat?",
-                                                        answer: `<p>Face, Neck, Hands and/or Décolletage (upper chest area)</p>`
+                                                        answer: `<p>Face, Neck, Hands and/or Decolletage (upper chest area)</p>`
                                                     },
                                                     {
                                                         question: "How long does treatment take and how many treatments are needed?",
@@ -503,7 +505,7 @@ export function EmfaceExionContent() {
                                                     },
                                                     {
                                                         question: "How long does it take to see results?",
-                                                        answer: `<p>You can expect to see some improvements in your skin after a few days of RF micro-needling, but it can take 3–6 months to see the final results. This is because it takes time for your body to produce the collagen and elastin that is stimulated through these treatments.</p>`
+                                                        answer: `<p>You can expect to see some improvements in your skin after a few days of RF micro-needling, but it can take 3-6 months to see the final results. This is because it takes time for your body to produce the collagen and elastin that is stimulated through these treatments.</p>`
                                                     },
                                                     {
                                                         question: "How long do results last?",

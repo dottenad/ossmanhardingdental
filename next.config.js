@@ -122,13 +122,6 @@ const nextConfig = {
                 permanent: true,
             },
 
-            // EMFACE & EXION has its own page at /emface-exion
-            {
-                source: '/services/emface-exion',
-                destination: '/emface-exion',
-                permanent: true,
-            },
-
             // ===========================================
             // Internal structure redirects
             // ===========================================

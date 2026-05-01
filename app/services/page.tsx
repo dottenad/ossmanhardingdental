@@ -43,7 +43,7 @@ const serviceCategories = [
             { name: "Veneers & Esthetic Crowns", slug: "veneers-esthetic-crowns" },
             { name: "Smile Makeovers", slug: "smile-makeovers" },
             { name: "Botox & Facial Esthetics", slug: "botox-facial-esthetics" },
-            { name: "EMFACE & EXION", slug: "emface-exion", customHref: "/emface-exion" },
+            { name: "EMFACE & EXION", slug: "emface-exion" },
         ],
     },
     {
