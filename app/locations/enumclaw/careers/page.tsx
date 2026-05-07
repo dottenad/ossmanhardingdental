@@ -130,6 +130,39 @@ export default function EnumclawCareersPage() {
                             </div>
                         </div>
 
+                        {/* What Makes Enumclaw Special */}
+                        <div className="bg-primary-50 p-8 rounded-xl border border-primary-100 mb-12">
+                            <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                                What Makes Our {LOCATION.name} Office Special
+                            </h3>
+                            <ul className="space-y-3 text-gray-700">
+                                <li className="flex items-start gap-2">
+                                    <span className="text-primary-600 font-bold mt-1">✓</span>
+                                    <span>Incredible long-tenured team that truly cares about each other</span>
+                                </li>
+                                <li className="flex items-start gap-2">
+                                    <span className="text-primary-600 font-bold mt-1">✓</span>
+                                    <span>State-of-the-art facilities (recently renovated) and equipment</span>
+                                </li>
+                                <li className="flex items-start gap-2">
+                                    <span className="text-primary-600 font-bold mt-1">✓</span>
+                                    <span>Charming small-town feel; our team really gets to know our patients and sees them around the community</span>
+                                </li>
+                                <li className="flex items-start gap-2">
+                                    <span className="text-primary-600 font-bold mt-1">✓</span>
+                                    <span>Full-service practice with in-house specialties</span>
+                                </li>
+                                <li className="flex items-start gap-2">
+                                    <span className="text-primary-600 font-bold mt-1">✓</span>
+                                    <span>Downtown location with many local shops, restaurants, and happy hour spots</span>
+                                </li>
+                                <li className="flex items-start gap-2">
+                                    <span className="text-primary-600 font-bold mt-1">✓</span>
+                                    <span>Lots of opportunities to get involved in the local community</span>
+                                </li>
+                            </ul>
+                        </div>
+
                         {/* Location Info */}
                         <div className="bg-gray-50 p-8 rounded-xl border border-gray-200 mb-12">
                             <div className="flex items-start gap-4 mb-4">

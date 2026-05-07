@@ -139,6 +139,10 @@ export default function BonneyLakeCareersPage() {
                             <ul className="space-y-3 text-gray-700">
                                 <li className="flex items-start gap-2">
                                     <span className="text-primary-600 font-bold mt-1">✓</span>
+                                    <span>Experienced team that truly cares about each other</span>
+                                </li>
+                                <li className="flex items-start gap-2">
+                                    <span className="text-primary-600 font-bold mt-1">✓</span>
                                     <span>Brand new, state-of-the-art facility opened in 2024</span>
                                 </li>
                                 <li className="flex items-start gap-2">
