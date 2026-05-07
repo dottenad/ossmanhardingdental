@@ -122,6 +122,23 @@ const nextConfig = {
                 permanent: true,
             },
 
+            // Legacy Joomla URL (crawled but not indexed)
+            {
+                source: '/',
+                has: [
+                    { type: 'query', key: 'option', value: 'com_content' },
+                ],
+                destination: '/blog',
+                permanent: true,
+            },
+
+            // Old draft page redirect
+            {
+                source: '/copy-of-natural-esthetics-practice',
+                destination: '/services/emface-exion',
+                permanent: true,
+            },
+
             // ===========================================
             // Internal structure redirects
             // ===========================================
