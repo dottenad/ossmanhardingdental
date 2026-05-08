@@ -322,7 +322,7 @@ export const geoServiceAreas: GeoServiceArea[] = [
     {
         name: "Black Diamond",
         slug: "black-diamond",
-        published: false,
+        published: true,
         nearestOffice: "enumclaw",
         driveTime: "15 minute",
         driveTimeToBonneyLake: "20 minute",
@@ -342,7 +342,7 @@ export const geoServiceAreas: GeoServiceArea[] = [
     {
         name: "Auburn",
         slug: "auburn",
-        published: false,
+        published: true,
         nearestOffice: "bonney-lake",
         driveTime: "20 minute",
         description: "Auburn patients discover that our Bonney Lake office offers a welcome alternative to crowded valley dental clinics.",
@@ -380,7 +380,7 @@ export const geoServiceAreas: GeoServiceArea[] = [
     {
         name: "Maple Valley",
         slug: "maple-valley",
-        published: false,
+        published: true,
         nearestOffice: "enumclaw",
         driveTime: "20 minute",
         driveTimeToBonneyLake: "25 minute",
@@ -406,11 +406,12 @@ const serviceAreasList = [
     "Tehaleh, WA",
     "Buckley, WA",
     "Sumner, WA",
+    "Black Diamond, WA",
+    "Maple Valley, WA",
+    "Auburn, WA",
     // Future expansion areas:
     // "Lake Tapps, WA",
-    // "Black Diamond, WA",
     // "Puyallup, WA",
-    // "Auburn, WA",
 ];
 
 // Client-specific configuration for Ossman Harding Dental
@@ -654,11 +655,11 @@ export const businessConfig: BusinessConfig = {
                 { label: "Tehaleh", href: "/areas-we-serve/tehaleh" },
                 { label: "Sumner", href: "/areas-we-serve/sumner" },
                 { label: "Orting", href: "/areas-we-serve/orting" },
+                { label: "Black Diamond", href: "/areas-we-serve/black-diamond" },
+                { label: "Maple Valley", href: "/areas-we-serve/maple-valley" },
+                { label: "Auburn", href: "/areas-we-serve/auburn" },
                 // Future expansion:
-                // { label: "Maple Valley", href: "/areas-we-serve/maple-valley" },
                 // { label: "Lake Tapps", href: "/areas-we-serve/lake-tapps" },
-                // { label: "Black Diamond", href: "/areas-we-serve/black-diamond" },
-                // { label: "Auburn", href: "/areas-we-serve/auburn" },
                 // { label: "Puyallup", href: "/areas-we-serve/puyallup" },
             ],
         },
