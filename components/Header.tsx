@@ -15,13 +15,21 @@ import { businessConfig, NavigationItem } from "@/lib/config";
 import { formatPhoneDisplay, formatPhoneLink } from "@/lib/phone";
 import { trackPhoneClick, trackScheduleClick } from "@/lib/analytics";
 
+// Dentrix Ascend booking URLs per location
+const BOOKING_URLS = {
+    "bonney-lake": "https://bookit.dentrixascend.com/soe/new/dental?pid=ASC15000000000835&mode=externalLink",
+    "enumclaw": "https://bookit.dentrixascend.com/soe/new/dental?pid=ASC15000000000350&mode=externalLink",
+};
+
 export function Header() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [openDropdown, setOpenDropdown] = useState<number | null>(null);
     const [openSubDropdown, setOpenSubDropdown] = useState<number | null>(null);
+    const [scheduleDropdownOpen, setScheduleDropdownOpen] = useState(false);
     const dropdownRefs = useRef<(HTMLDivElement | null)[]>([]);
     const menuButtonRef = useRef<HTMLButtonElement>(null);
     const mobileMenuRef = useRef<HTMLDivElement>(null);
+    const scheduleDropdownRef = useRef<HTMLDivElement>(null);
 
     // Focus management for mobile menu
     useEffect(() => {
@@ -158,14 +166,57 @@ export function Header() {
                             </div>
                             {/* Large screen buttons - show only on large screens, right-aligned */}
                             <div className="hidden lg:flex items-center gap-3 ml-auto">
-                                <Link
-                                    href="/appointments"
-                                    onClick={() => trackScheduleClick("Nav_Schedule_Button_Click")}
-                                    className="bg-button-600 hover:bg-button-700 text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-lg font-semibold text-sm sm:text-base transition-all shadow-md hover:shadow-lg flex items-center gap-2"
+                                <div
+                                    className="relative"
+                                    onMouseEnter={() => setScheduleDropdownOpen(true)}
+                                    onMouseLeave={() => setScheduleDropdownOpen(false)}
                                 >
-                                    <Calendar className="w-4 h-4 sm:w-5 sm:h-5" />
-                                    <span>Schedule Appointment</span>
-                                </Link>
+                                    <button
+                                        onClick={() => setScheduleDropdownOpen(!scheduleDropdownOpen)}
+                                        className="bg-button-600 hover:bg-button-700 text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-lg font-semibold text-sm sm:text-base transition-all shadow-md hover:shadow-lg flex items-center gap-2"
+                                    >
+                                        <Calendar className="w-4 h-4 sm:w-5 sm:h-5" />
+                                        <span>Schedule Appointment</span>
+                                        <ChevronDown className={`w-4 h-4 transition-transform ${scheduleDropdownOpen ? "rotate-180" : ""}`} />
+                                    </button>
+                                    {scheduleDropdownOpen && (
+                                        <div
+                                            ref={scheduleDropdownRef}
+                                            className="absolute top-full right-0 w-72 bg-white rounded-lg shadow-xl border border-gray-200 py-2 z-50"
+                                        >
+                                            <a
+                                                href={BOOKING_URLS["enumclaw"]}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                onClick={() => trackScheduleClick("Nav_Schedule_Enumclaw_Click")}
+                                                className="flex items-center gap-3 px-4 py-3 text-gray-800 hover:bg-button-50 hover:text-primary-700 transition-colors"
+                                            >
+                                                <div className="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                                    <Calendar className="w-5 h-5 text-primary-600" />
+                                                </div>
+                                                <div>
+                                                    <div className="font-semibold">Schedule at Enumclaw</div>
+                                                    <div className="text-xs text-gray-500">1705 Cole St</div>
+                                                </div>
+                                            </a>
+                                            <a
+                                                href={BOOKING_URLS["bonney-lake"]}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                onClick={() => trackScheduleClick("Nav_Schedule_BonneyLake_Click")}
+                                                className="flex items-center gap-3 px-4 py-3 text-gray-800 hover:bg-button-50 hover:text-primary-700 transition-colors"
+                                            >
+                                                <div className="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                                    <Calendar className="w-5 h-5 text-primary-600" />
+                                                </div>
+                                                <div>
+                                                    <div className="font-semibold">Schedule at Bonney Lake</div>
+                                                    <div className="text-xs text-gray-500">19034 141st St Ct E</div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    )}
+                                </div>
                                 <a
                                     href={`tel:${formatPhoneLink(
                                         businessConfig.phone,
@@ -181,26 +232,66 @@ export function Header() {
                             <div className="flex items-center gap-2 flex-shrink-0">
                                 {/* Medium screen buttons - show only on medium */}
                                 <div className="hidden md:flex lg:hidden items-center gap-3">
-                                    <Link
-                                        href="/appointments"
-                                        onClick={() => trackScheduleClick("Nav_Schedule_Button_Click")}
-                                        className="bg-button-600 hover:bg-button-700 text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-lg font-semibold text-sm sm:text-base transition-all shadow-md hover:shadow-lg flex items-center gap-2"
+                                    <div
+                                        className="relative"
+                                        onMouseEnter={() => setScheduleDropdownOpen(true)}
+                                        onMouseLeave={() => setScheduleDropdownOpen(false)}
                                     >
-                                        <svg
-                                            className="w-4 h-4 sm:w-5 sm:h-5"
-                                            fill="none"
-                                            stroke="currentColor"
-                                            viewBox="0 0 24 24"
+                                        <button
+                                            onClick={() => setScheduleDropdownOpen(!scheduleDropdownOpen)}
+                                            className="bg-button-600 hover:bg-button-700 text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-lg font-semibold text-sm sm:text-base transition-all shadow-md hover:shadow-lg flex items-center gap-2"
                                         >
-                                            <path
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                                strokeWidth={2}
-                                                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                                            />
-                                        </svg>
-                                        <span>Schedule Appointment</span>
-                                    </Link>
+                                            <svg
+                                                className="w-4 h-4 sm:w-5 sm:h-5"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                viewBox="0 0 24 24"
+                                            >
+                                                <path
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round"
+                                                    strokeWidth={2}
+                                                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                                                />
+                                            </svg>
+                                            <span>Schedule Appointment</span>
+                                            <ChevronDown className={`w-4 h-4 transition-transform ${scheduleDropdownOpen ? "rotate-180" : ""}`} />
+                                        </button>
+                                        {scheduleDropdownOpen && (
+                                            <div className="absolute top-full right-0 w-72 bg-white rounded-lg shadow-xl border border-gray-200 py-2 z-50">
+                                                <a
+                                                    href={BOOKING_URLS["enumclaw"]}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    onClick={() => trackScheduleClick("Nav_Schedule_Enumclaw_Click")}
+                                                    className="flex items-center gap-3 px-4 py-3 text-gray-800 hover:bg-button-50 hover:text-primary-700 transition-colors"
+                                                >
+                                                    <div className="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                                        <Calendar className="w-5 h-5 text-primary-600" />
+                                                    </div>
+                                                    <div>
+                                                        <div className="font-semibold">Schedule at Enumclaw</div>
+                                                        <div className="text-xs text-gray-500">1705 Cole St</div>
+                                                    </div>
+                                                </a>
+                                                <a
+                                                    href={BOOKING_URLS["bonney-lake"]}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    onClick={() => trackScheduleClick("Nav_Schedule_BonneyLake_Click")}
+                                                    className="flex items-center gap-3 px-4 py-3 text-gray-800 hover:bg-button-50 hover:text-primary-700 transition-colors"
+                                                >
+                                                    <div className="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                                        <Calendar className="w-5 h-5 text-primary-600" />
+                                                    </div>
+                                                    <div>
+                                                        <div className="font-semibold">Schedule at Bonney Lake</div>
+                                                        <div className="text-xs text-gray-500">19034 141st St Ct E</div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        )}
+                                    </div>
                                     <a
                                         href={`tel:${formatPhoneLink(
                                             businessConfig.phone,
@@ -228,29 +319,77 @@ export function Header() {
                                 </div>
                                 {/* Miniature buttons - only on small screens */}
                                 <div className="md:hidden flex items-center gap-2">
-                                    <Link
-                                        href="/appointments"
-                                        onClick={() => trackScheduleClick("Nav_Schedule_Button_Click")}
-                                        className="flex flex-col items-center gap-1 bg-button-600 hover:bg-button-700 text-white py-2 px-4 rounded-lg transition-all flex-shrink-0"
-                                        aria-label="Schedule Appointment"
-                                    >
-                                        <svg
-                                            className="w-5 h-5"
-                                            fill="none"
-                                            stroke="currentColor"
-                                            viewBox="0 0 24 24"
+                                    <div className="relative">
+                                        <button
+                                            onClick={() => setScheduleDropdownOpen(!scheduleDropdownOpen)}
+                                            className="flex flex-col items-center gap-1 bg-button-600 hover:bg-button-700 text-white py-2 px-4 rounded-lg transition-all flex-shrink-0"
+                                            aria-label="Schedule Appointment"
                                         >
-                                            <path
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                                strokeWidth={2}
-                                                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                                            />
-                                        </svg>
-                                        <span className="text-xs font-medium">
-                                            Schedule
-                                        </span>
-                                    </Link>
+                                            <svg
+                                                className="w-5 h-5"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                viewBox="0 0 24 24"
+                                            >
+                                                <path
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round"
+                                                    strokeWidth={2}
+                                                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                                                />
+                                            </svg>
+                                            <span className="text-xs font-medium">
+                                                Schedule
+                                            </span>
+                                        </button>
+                                        {scheduleDropdownOpen && (
+                                            <>
+                                                {/* Backdrop for mobile */}
+                                                <div
+                                                    className="fixed inset-0 z-40"
+                                                    onClick={() => setScheduleDropdownOpen(false)}
+                                                />
+                                                <div className="absolute top-full right-0 mt-2 w-72 bg-white rounded-lg shadow-xl border border-gray-200 py-2 z-50">
+                                                    <a
+                                                        href={BOOKING_URLS["enumclaw"]}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        onClick={() => {
+                                                            trackScheduleClick("Nav_Schedule_Enumclaw_Click");
+                                                            setScheduleDropdownOpen(false);
+                                                        }}
+                                                        className="flex items-center gap-3 px-4 py-3 text-gray-800 hover:bg-button-50 hover:text-primary-700 transition-colors"
+                                                    >
+                                                        <div className="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                                            <Calendar className="w-5 h-5 text-primary-600" />
+                                                        </div>
+                                                        <div>
+                                                            <div className="font-semibold">Schedule at Enumclaw</div>
+                                                            <div className="text-xs text-gray-500">1705 Cole St</div>
+                                                        </div>
+                                                    </a>
+                                                    <a
+                                                        href={BOOKING_URLS["bonney-lake"]}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        onClick={() => {
+                                                            trackScheduleClick("Nav_Schedule_BonneyLake_Click");
+                                                            setScheduleDropdownOpen(false);
+                                                        }}
+                                                        className="flex items-center gap-3 px-4 py-3 text-gray-800 hover:bg-button-50 hover:text-primary-700 transition-colors"
+                                                    >
+                                                        <div className="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                                            <Calendar className="w-5 h-5 text-primary-600" />
+                                                        </div>
+                                                        <div>
+                                                            <div className="font-semibold">Schedule at Bonney Lake</div>
+                                                            <div className="text-xs text-gray-500">19034 141st St Ct E</div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </>
+                                        )}
+                                    </div>
                                     <a
                                         href={`tel:${formatPhoneLink(
                                             businessConfig.phone,
