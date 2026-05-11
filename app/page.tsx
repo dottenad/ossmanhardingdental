@@ -335,7 +335,7 @@ export default function Home() {
                                             <p className="text-gray-700 mb-1">1705 Cole St., Enumclaw, WA 98022</p>
                                             <p className="text-gray-600 text-sm mb-3">Mon-Thu: 7:00 AM - 4:00 PM</p>
                                             <a
-                                                href="https://schedule.jarvisanalytics.com/frame/ossman-harding-dental?location_id=10614"
+                                                href="https://bookit.dentrixascend.com/soe/new/dental?pid=ASC15000000000350&mode=externalLink"
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                                 className="inline-flex items-center justify-center px-4 py-2 text-sm font-semibold text-white bg-button-600 rounded-lg hover:bg-button-700 transition-colors mb-3"
@@ -374,7 +374,7 @@ export default function Home() {
                                             <p className="text-gray-700 mb-1">19034 141st Street Ct E, Bonney Lake, WA 98391</p>
                                             <p className="text-gray-600 text-sm mb-3">Mon-Thu: 7:00 AM - 4:00 PM</p>
                                             <a
-                                                href="https://schedule.jarvisanalytics.com/frame/ossman-harding-dental?location_id=10615"
+                                                href="https://bookit.dentrixascend.com/soe/new/dental?pid=ASC15000000000835&mode=externalLink"
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                                 className="inline-flex items-center justify-center px-4 py-2 text-sm font-semibold text-white bg-button-600 rounded-lg hover:bg-button-700 transition-colors mb-3"
