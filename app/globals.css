@@ -272,11 +272,18 @@ input[type="checkbox"]:focus-visible {
     font-weight: 600;
 }
 
-.prose ul,
+.prose ul {
+    margin-top: 1.25em;
+    margin-bottom: 1.25em;
+    padding-left: 1.625em;
+    list-style-type: disc;
+}
+
 .prose ol {
     margin-top: 1.25em;
     margin-bottom: 1.25em;
     padding-left: 1.625em;
+    list-style-type: decimal;
 }
 
 .prose li {
@@ -305,11 +312,267 @@ input[type="checkbox"]:focus-visible {
     font-weight: 400;
 }
 
+/* Enhanced blockquote with accent styling */
 .prose blockquote {
-    border-left: 0.25em solid;
-    padding-left: 1em;
-    margin: 1.5em 0;
+    border-left: 4px solid rgb(91 154 154);
+    background: linear-gradient(to right, rgb(91 154 154 / 0.08), transparent);
+    padding: 1.25em 1.5em;
+    margin: 2em 0;
     font-style: italic;
+    border-radius: 0 0.5em 0.5em 0;
+    color: rgb(55 65 81);
+}
+
+.prose blockquote p:first-child {
+    margin-top: 0;
+}
+
+.prose blockquote p:last-child {
+    margin-bottom: 0;
+}
+
+/* Highlight box - use with <div class="highlight-box"> */
+.prose .highlight-box {
+    background: rgb(91 154 154 / 0.1);
+    border: 1px solid rgb(91 154 154 / 0.3);
+    border-radius: 0.75em;
+    padding: 1.5em;
+    margin: 2em 0;
+}
+
+.prose .highlight-box p:first-child,
+.prose .highlight-box ul:first-child,
+.prose .highlight-box ol:first-child {
+    margin-top: 0;
+}
+
+.prose .highlight-box p:last-child,
+.prose .highlight-box ul:last-child,
+.prose .highlight-box ol:last-child {
+    margin-bottom: 0;
+}
+
+/* Tip box - use with <div class="tip-box"> */
+.prose .tip-box {
+    background: linear-gradient(135deg, rgb(234 179 8 / 0.1), rgb(234 179 8 / 0.05));
+    border-left: 4px solid rgb(234 179 8);
+    border-radius: 0 0.5em 0.5em 0;
+    padding: 1.25em 1.5em;
+    margin: 2em 0;
+}
+
+.prose .tip-box::before {
+    content: "💡 Tip";
+    display: block;
+    font-weight: 700;
+    color: rgb(161 98 7);
+    margin-bottom: 0.5em;
+    font-size: 0.875em;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.prose .tip-box p:first-child {
+    margin-top: 0;
+}
+
+.prose .tip-box p:last-child {
+    margin-bottom: 0;
+}
+
+/* Key takeaway box - use with <div class="key-takeaway"> */
+.prose .key-takeaway {
+    background: rgb(243 244 246);
+    border-radius: 0.75em;
+    padding: 1.5em;
+    margin: 2em 0;
+    border: 1px solid rgb(229 231 235);
+}
+
+.prose .key-takeaway::before {
+    content: "Key Takeaway";
+    display: block;
+    font-weight: 700;
+    color: rgb(91 154 154);
+    margin-bottom: 0.75em;
+    font-size: 0.875em;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.prose .key-takeaway p:first-child {
+    margin-top: 0;
+}
+
+.prose .key-takeaway p:last-child {
+    margin-bottom: 0;
+}
+
+/* CTA box - call to action with button */
+.prose .cta-box {
+    background: linear-gradient(135deg, rgb(91 154 154), rgb(74 130 130));
+    border-radius: 0.75em;
+    padding: 1.5em 2em;
+    margin: 2em 0;
+    text-align: center;
+}
+
+.prose .cta-box p {
+    color: white;
+    margin: 0 0 1em 0;
+    font-size: 1.1em;
+}
+
+.prose .cta-box a {
+    display: inline-block;
+    background: white;
+    color: rgb(74 130 130);
+    font-weight: 600;
+    padding: 0.75em 1.5em;
+    border-radius: 0.5em;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.prose .cta-box a:hover {
+    background: rgb(243 244 246);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgb(0 0 0 / 0.15);
+}
+
+/* Pull quote - larger, centered quote for emphasis */
+.prose .pull-quote {
+    font-size: 1.5em;
+    line-height: 1.4;
+    text-align: center;
+    color: rgb(91 154 154);
+    font-weight: 500;
+    padding: 1.5em 2em;
+    margin: 2em 0;
+    position: relative;
+}
+
+.prose .pull-quote::before,
+.prose .pull-quote::after {
+    content: '"';
+    font-size: 3em;
+    color: rgb(91 154 154 / 0.3);
+    position: absolute;
+    font-family: Georgia, serif;
+    line-height: 1;
+}
+
+.prose .pull-quote::before {
+    top: 0;
+    left: 0;
+}
+
+.prose .pull-quote::after {
+    bottom: 0;
+    right: 0;
+    content: '"';
+}
+
+/* Styled list with checkmarks - use with <ul class="check-list"> */
+.prose .check-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.prose .check-list li {
+    position: relative;
+    padding-left: 1.75em;
+}
+
+.prose .check-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: rgb(91 154 154);
+    font-weight: 700;
+}
+
+/* Warning/caution box */
+.prose .warning-box {
+    background: linear-gradient(135deg, rgb(239 68 68 / 0.1), rgb(239 68 68 / 0.05));
+    border-left: 4px solid rgb(239 68 68);
+    border-radius: 0 0.5em 0.5em 0;
+    padding: 1.25em 1.5em;
+    margin: 2em 0;
+}
+
+.prose .warning-box::before {
+    content: "⚠️ Important";
+    display: block;
+    font-weight: 700;
+    color: rgb(185 28 28);
+    margin-bottom: 0.5em;
+    font-size: 0.875em;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.prose .warning-box p:first-child,
+.prose .warning-box ul:first-child,
+.prose .warning-box ol:first-child {
+    margin-top: 0;
+}
+
+.prose .warning-box p:last-child,
+.prose .warning-box ul:last-child,
+.prose .warning-box ol:last-child {
+    margin-bottom: 0;
+}
+
+/* Stats/numbers highlight */
+.prose .stat-highlight {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    margin: 2em 0;
+}
+
+.prose .stat-highlight .stat {
+    flex: 1;
+    min-width: 150px;
+    background: white;
+    border: 1px solid rgb(229 231 235);
+    border-radius: 0.75em;
+    padding: 1.25em;
+    text-align: center;
+    box-shadow: 0 1px 3px rgb(0 0 0 / 0.1);
+}
+
+.prose .stat-highlight .stat-number {
+    display: block;
+    font-size: 2em;
+    font-weight: 700;
+    color: rgb(91 154 154);
+    line-height: 1.2;
+}
+
+.prose .stat-highlight .stat-label {
+    display: block;
+    font-size: 0.875em;
+    color: rgb(107 114 128);
+    margin-top: 0.25em;
+}
+
+/* Section divider with icon */
+.prose .section-divider {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    margin: 3em 0;
+    color: rgb(156 163 175);
+}
+
+.prose .section-divider::before,
+.prose .section-divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgb(229 231 235), transparent);
 }
 
 .prose img {

@@ -716,6 +716,150 @@ export const businessConfig: BusinessConfig = {
     gallery: [], // Gallery can be populated with smile makeovers, office photos, etc.
     blogPosts: [
         {
+            id: "laser-dentistry-changing-patient-experience",
+            title: "How Laser Dentistry Is Changing the Patient Experience",
+            excerpt: "Laser dentistry is one of the most exciting advancements in modern dental care. Learn how this gentle, precise technology improves comfort, speeds healing, and benefits patients of all ages.",
+            content: `<p>Dentistry has come a long way over the years, and one of the most exciting advancements we are seeing in our office is the use of dental lasers. If you have not heard of laser dentistry before, you are not alone. It is quickly becoming one of the most comfortable and effective ways to treat a variety of dental concerns while improving the overall patient experience.</p>
+<h2>What Is a Dental Laser?</h2>
+<p>A dental laser is a specialized tool that uses focused light energy to gently treat soft tissue, like the gums, and in some cases teeth, with incredible precision. LASER stands for Light Amplification by Stimulated Emission of Radiation.</p>
+<div class="highlight-box">
+<p>In simple terms, it gives us a way to treat areas in the mouth more gently, with less discomfort afterward and less disruption to the surrounding tissue. Because the laser is so precise, it can target specific areas while helping preserve healthy tissue.</p>
+</div>
+<h2>Why We Use a Laser</h2>
+<p>One of the biggest reasons we incorporate laser technology into our practice is to improve healing and comfort for our patients. Many people feel anxious about dental visits, especially when it comes to procedures involving the gums.</p>
+<p>Using a laser allows us to treat these areas in a way that is often more comfortable and less intimidating. In many cases, it can reduce the need for more invasive tools, decrease discomfort after treatment, and create a much smoother experience from start to finish.</p>
+<p>Another great benefit of laser dentistry is that it can safely be used for patients of all ages, from children to adults. Because the laser uses focused light energy rather than medications or chemicals, there is no risk of allergic reactions, making it a safe and versatile treatment option for many patients.</p>
+<p>Lasers can also help stimulate healing, improve collagen production, and reduce bacteria in the gum tissue and sulcus area around the teeth. Because of the laser's coagulation abilities, there is often less bleeding and swelling during treatment as well.</p>
+<h2>How It Can Help Patients</h2>
+<p>Laser dentistry can be used in a variety of ways depending on a patient's needs. Some of the most common benefits include:</p>
+<ul class="check-list">
+<li>Increased comfort during procedures</li>
+<li>Less bleeding and swelling</li>
+<li>Faster healing times</li>
+<li>Greater precision during treatment</li>
+<li>Less numbing required in some cases</li>
+</ul>
+<p>For many patients, this means less downtime and a quicker return to normal daily activities.</p>
+<h2>When Might a Laser Be Used?</h2>
+<p>There are several situations where a dental laser can be especially helpful. It is commonly used for treating gum inflammation or infection, reshaping gum tissue, assisting with deep cleanings, and improving overall gum health. Laser dentistry can also be used for procedures such as:</p>
+<ul>
+<li>Gingivectomy and gum contouring for gummy smiles</li>
+<li>Frenectomies</li>
+<li>Implant recovery and healing support</li>
+<li>Crown lengthening</li>
+<li>Draining abscesses and treating infected areas</li>
+<li>Treating herpetic lesions and aphthous ulcers</li>
+</ul>
+<div class="tip-box">
+<p>Laser therapy can be incredibly helpful for treating painful areas like canker sores, cold sores, and fever blisters. When treated early, the laser can help reduce discomfort, speed up healing, and sometimes even shorten how long the sore lasts.</p>
+</div>
+<p>Because laser treatment is so versatile, it allows us to provide more customized care and tailor treatment to what works best for each individual patient.</p>
+<h2>What This Means for Our Patients</h2>
+<p>At the end of the day, our goal is always to make dental care as comfortable, efficient, and effective as possible. Bringing laser technology into our office is one more way we are able to do that.</p>
+<blockquote>
+<p>Our doctors and hygienists are certified through the Academy of Laser Dentistry and are excited to offer this advanced technology to our patients right here in Enumclaw.</p>
+</blockquote>
+<p>If you have ever felt nervous about dental treatment or have been putting something off, this may be a great option to explore. Many patients are surprised at how quick and comfortable their experience can be.</p>
+<p>We have already seen firsthand how beneficial laser therapy can be for our patients, whether helping relieve discomfort from cold sores and canker sores or supporting faster healing and improved comfort during treatment.</p>
+<div class="key-takeaway">
+<p>Advancements like laser dentistry are changing the way people think about going to the dentist. If you've been putting off treatment or feel anxious about dental visits, ask us about how laser therapy might help make your experience more comfortable.</p>
+</div>`,
+            featuredImage: "/images/blog/images/laser-dentistry.jpg",
+            author: "Madisyn Ossman",
+            authorImage: "/images/blog/authors/madisyn_ossman.jpg",
+            date: "2025-06-01",
+            readTime: "5 min read",
+            tags: ["Laser Dentistry", "Technology", "Patient Comfort", "Gum Health"],
+            featured: true,
+        },
+        {
+            id: "hidden-signs-grinding-clenching-teeth",
+            title: "The Hidden Signs You Might Be Grinding or Clenching Your Teeth",
+            excerpt: "Many people don't realize they're clenching or grinding their teeth. Learn the hidden signs, why it matters, and effective treatments including custom nightguards and Botox.",
+            content: `<p>Many people think teeth grinding only happens at night, and that if you don't hear it, it's not happening. But the truth is, clenching and grinding (also known as bruxism) is incredibly common, and most people don't even realize they're doing it.</p>
+<p>Over time, it can quietly take a toll on your teeth, jaw, and overall comfort.</p>
+<h2>Signs You Might Be Clenching or Grinding</h2>
+<p>You don't have to wake up with obvious symptoms to be affected. Some of the most common signs we see include:</p>
+<div class="highlight-box">
+<ul>
+<li>Frequent headaches, especially in the morning</li>
+<li>Jaw soreness or tightness</li>
+<li>Clicking or popping in the jaw</li>
+<li>Worn, flattened, or chipped teeth</li>
+<li>Increased tooth sensitivity</li>
+<li>Neck and shoulder tension</li>
+</ul>
+</div>
+<p>Many patients are surprised to learn that their daily stress or even focused activities (like working, driving, or exercising) can lead to daytime clenching, not just nighttime grinding.</p>
+<h2>Why It Matters</h2>
+<p>Clenching and grinding puts significant pressure on your teeth, far more than normal chewing. Over time, this can lead to:</p>
+<div class="warning-box">
+<ul>
+<li>Cracked or damaged teeth</li>
+<li>Gum recession</li>
+<li>Jaw discomfort or TMJ issues</li>
+<li>Shortened or worn-down teeth</li>
+</ul>
+</div>
+<p>Catching these signs early can help prevent more serious (and costly) issues down the road.</p>
+<h2>What Can Help?</h2>
+<p>The good news is there are several effective ways to manage clenching and grinding, depending on the cause and severity.</p>
+<h3>Custom Nightguards</h3>
+<img src="/images/blog/images/custom-nightguard.jpg" alt="Custom dental nightguard for teeth grinding protection" />
+<p>One of the most effective ways to protect your teeth from grinding and clenching is with a custom nightguard. Unlike over the counter options, a custom nightguard is made specifically for your bite, making it more comfortable, secure, and effective.</p>
+<p>Because it is tailored to you, a custom nightguard:</p>
+<ul class="check-list">
+<li>Fits comfortably and stays in place throughout the night</li>
+<li>Helps reduce pressure on your teeth and jaw</li>
+<li>Protects against wear, chipping, and long term damage</li>
+<li>Often improves overall comfort and sleep quality</li>
+</ul>
+<p>Many patients who have tried store bought guards are surprised at how much more comfortable and easy to wear a custom option feels.</p>
+<blockquote>
+<p>If you are waking up with jaw tension, headaches, or sensitive teeth, a custom nightguard can be a simple step that makes a big difference.</p>
+</blockquote>
+<div class="cta-box">
+<p>Ready to protect your smile with a custom nightguard?</p>
+<a href="/appointments">Book a Consultation</a>
+</div>
+<h3>Awareness During the Day</h3>
+<p>Many people are surprised to learn that clenching does not just happen at night. We see it all the time during the day, especially when people are focused, stressed, or even just driving. The tricky part is that most people do not even realize they are doing it.</p>
+<div class="tip-box">
+<p><strong>Quick self-check:</strong> Your teeth should not be touching when you are at rest. Instead, your lips should be closed, your teeth slightly apart, and your tongue relaxed. Try checking in with yourself throughout the day—this small shift can take a lot of pressure off your teeth and jaw over time.</p>
+</div>
+<h3>Stress Management</h3>
+<p>Stress plays a bigger role in clenching and grinding than most people realize. When life gets busy, our bodies tend to hold tension and for many people, that tension shows up in the jaw.</p>
+<p>That does not mean you need to completely eliminate stress (wouldn't that be nice), but finding small ways to manage it throughout the day can make a noticeable difference:</p>
+<ul>
+<li>Getting outside for a walk</li>
+<li>Stretching your neck and shoulders</li>
+<li>Taking a few deep breaths</li>
+<li>Being mindful of when you are feeling tense</li>
+</ul>
+<p>We often tell patients that even small, consistent changes can go a long way. When you combine stress awareness with the right treatment, it can significantly reduce clenching and help you feel more comfortable day to day.</p>
+<h3>Botox for Clenching and Jaw Tension</h3>
+<p>One of the newer and highly effective treatments for chronic clenching is Botox.</p>
+<p>Botox works by relaxing the overactive jaw muscles responsible for clenching and grinding. By reducing the intensity of those muscle contractions, it can:</p>
+<ul class="check-list">
+<li>Relieve jaw tension and soreness</li>
+<li>Decrease headaches caused by clenching</li>
+<li>Help prevent further wear and damage to teeth</li>
+<li>Slim and soften the jawline in some cases</li>
+</ul>
+<p>It's a quick, minimally invasive treatment that many patients find incredibly helpful, especially when traditional options alone aren't enough.</p>
+<h2>When to Get Checked</h2>
+<div class="key-takeaway">
+<p>If you've been dealing with headaches, jaw tension, or sensitive teeth, your smile might be trying to tell you something. Often, we can spot signs of grinding before you're even aware of them. Addressing clenching early not only protects your smile, but can make a big difference in how you feel day to day.</p>
+</div>`,
+            featuredImage: "/images/blog/images/teeth-grinding.jpg",
+            author: "Madisyn Ossman",
+            authorImage: "/images/blog/authors/madisyn_ossman.jpg",
+            date: "2025-05-01",
+            readTime: "6 min read",
+            tags: ["TMJ", "Teeth Grinding", "Nightguards", "Botox", "Preventive Care"],
+            featured: true,
+        },
+        {
             id: "fresh-smile-for-spring-cosmetic-dentistry-suresmile",
             title: "A Fresh Smile for Spring: How Cosmetic Dentistry and SureSmile Can Boost Your Confidence",
             excerpt: "Spring is a season of fresh starts. Discover how modern cosmetic dentistry options like professional whitening, veneers, and SureSmile clear aligners can help you achieve a natural, confident smile.",
