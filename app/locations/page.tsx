@@ -27,6 +27,7 @@ const LOCATIONS = [
             "Our original location serving Enumclaw, Buckley, and surrounding communities.",
         image: "/images/enumclaw/exterior-main.jpg",
         servingAreas: ["Enumclaw", "Buckley", "Carbonado", "Wilkeson"],
+        mapQuery: "1705+Cole+St,+Enumclaw,+WA+98022",
     },
     {
         name: "Bonney Lake",
@@ -42,6 +43,7 @@ const LOCATIONS = [
             "Our newest location serving Bonney Lake, Tehaleh, Sumner, Orting, and surrounding communities.",
         image: "/images/bonney-lake/exterior-main.jpg",
         servingAreas: ["Bonney Lake", "Tehaleh", "Sumner", "Orting"],
+        mapQuery: "19034+141st+Street+Ct+E,+Bonney+Lake,+WA+98391",
     },
 ];
 
@@ -166,6 +168,20 @@ export default function LocationsPage() {
                                                     </span>
                                                 ))}
                                             </div>
+                                        </div>
+
+                                        {/* Map */}
+                                        <div className="mb-6 rounded-lg overflow-hidden border border-gray-200">
+                                            <iframe
+                                                src={`https://www.google.com/maps/embed/v1/place?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&q=${location.mapQuery}`}
+                                                width="100%"
+                                                height="200"
+                                                style={{ border: 0 }}
+                                                allowFullScreen
+                                                loading="lazy"
+                                                referrerPolicy="no-referrer-when-downgrade"
+                                                title={`Map of ${location.name} office`}
+                                            />
                                         </div>
 
                                         {/* CTA */}
