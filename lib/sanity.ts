@@ -13,7 +13,7 @@ export const sanityClient = createClient({
     projectId,
     dataset,
     apiVersion,
-    useCdn: process.env.NODE_ENV === "production", // Use CDN in production, fresh data in dev
+    useCdn: false, // Disable CDN for real-time updates when content changes
 });
 
 // Image URL builder
