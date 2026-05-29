@@ -5,9 +5,14 @@ import imageUrlBuilder from "@sanity/image-url";
 type SanityImageSource = any;
 
 // These will be set via environment variables
-const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "";
+const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "t8gkgoe7";
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || "production";
 const apiVersion = process.env.NEXT_PUBLIC_SANITY_API_VERSION || "2024-01-01";
+
+// Log warning if env vars are missing (helps debug production issues)
+if (!process.env.NEXT_PUBLIC_SANITY_PROJECT_ID) {
+    console.warn("NEXT_PUBLIC_SANITY_PROJECT_ID not set, using default");
+}
 
 export const sanityClient = createClient({
     projectId,
