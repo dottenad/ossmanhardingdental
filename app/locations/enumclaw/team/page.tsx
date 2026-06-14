@@ -34,8 +34,8 @@ export const metadata: Metadata = generateSEOMetadata(
     businessConfig
 );
 
-// Revalidate every 60 seconds to pick up Sanity changes
-export const revalidate = 60;
+// Force dynamic rendering to always fetch fresh data from Sanity
+export const dynamic = "force-dynamic";
 
 export default async function EnumclawTeamPage() {
     const teamData = await getTeamData("enumclaw");
