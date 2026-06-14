@@ -265,9 +265,12 @@ export async function getTeamData(location: "enumclaw" | "bonney-lake") {
         // Try to fetch from Sanity
         const sanityMembers = await getTeamMembers(location);
 
+        console.log(`[TeamData] Fetched ${sanityMembers?.length || 0} team members from Sanity for ${location}`);
+
         // If we have Sanity data, use it
         if (sanityMembers && sanityMembers.length > 0) {
             const grouped = groupTeamMembersByCategory(sanityMembers);
+            console.log(`[TeamData] Using Sanity data - doctors: ${grouped.doctors.length}, leadership: ${grouped.leadership.length}, frontOffice: ${grouped.frontOffice.length}, hygienists: ${grouped.hygienists.length}, assistants: ${grouped.assistants.length}`);
             return {
                 doctors: grouped.doctors.map(m => sanityToTeamMember(m, location)),
                 leadership: grouped.leadership.map(m => sanityToTeamMember(m, location)),
@@ -276,12 +279,15 @@ export async function getTeamData(location: "enumclaw" | "bonney-lake") {
                 assistants: grouped.assistants.map(m => sanityToTeamMember(m, location)),
                 source: "sanity" as const,
             };
+        } else {
+            console.warn(`[TeamData] Sanity returned empty data for ${location}, falling back to hardcoded data`);
         }
     } catch (error) {
-        console.warn("Failed to fetch from Sanity, using fallback data:", error);
+        console.error("[TeamData] Failed to fetch from Sanity, using fallback data:", error);
     }
 
     // Fallback to hardcoded data
+    console.warn(`[TeamData] Using FALLBACK hardcoded data for ${location}`);
     if (location === "enumclaw") {
         return { ...enumclawFallbackData, source: "fallback" as const };
     }
