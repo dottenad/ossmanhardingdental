@@ -3,8 +3,32 @@ import { getTeamMembers, getAllTeamMembers } from "@/lib/sanity";
 
 export const dynamic = "force-dynamic";
 
+interface TeamMemberSummary {
+    name: string;
+    category: string;
+    location: string;
+}
+
+interface LocationData {
+    count: number;
+    members: TeamMemberSummary[];
+}
+
+interface DebugResults {
+    timestamp: string;
+    environment: {
+        projectId: string;
+        dataset: string;
+        nodeEnv: string | undefined;
+    };
+    enumclaw: LocationData | null;
+    bonneyLake: LocationData | null;
+    allMembers: LocationData | null;
+    errors: string[];
+}
+
 export async function GET() {
-    const results: Record<string, unknown> = {
+    const results: DebugResults = {
         timestamp: new Date().toISOString(),
         environment: {
             projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "t8gkgoe7 (fallback)",
@@ -14,7 +38,7 @@ export async function GET() {
         enumclaw: null,
         bonneyLake: null,
         allMembers: null,
-        errors: [] as string[],
+        errors: [],
     };
 
     try {
