@@ -92,11 +92,6 @@ export interface SanityPageImage {
     secondaryImage?: SanityImageSource;
 }
 
-// Cache for page images to avoid repeated fetches
-let pageImagesCache: Map<string, SanityPageImage> | null = null;
-let pageImagesCacheTime: number = 0;
-const CACHE_TTL = 60000; // 1 minute cache
-
 // Fetch all page images from Sanity
 export async function getAllPageImages(): Promise<SanityPageImage[]> {
     const query = `*[_type == "pageImage"] {
@@ -110,20 +105,11 @@ export async function getAllPageImages(): Promise<SanityPageImage[]> {
     return sanityClient.fetch(query);
 }
 
-// Get page images map (cached)
+// Get page images map (no caching - fetch fresh every time for consistent CMS updates)
 async function getPageImagesMap(): Promise<Map<string, SanityPageImage>> {
-    const now = Date.now();
-
-    // Return cached if still valid
-    if (pageImagesCache && (now - pageImagesCacheTime) < CACHE_TTL) {
-        return pageImagesCache;
-    }
-
     try {
         const images = await getAllPageImages();
-        pageImagesCache = new Map(images.map(img => [img.page, img]));
-        pageImagesCacheTime = now;
-        return pageImagesCache;
+        return new Map(images.map(img => [img.page, img]));
     } catch (error) {
         console.error("[Sanity] Failed to fetch page images:", error);
         return new Map();
