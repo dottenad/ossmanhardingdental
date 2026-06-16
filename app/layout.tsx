@@ -12,6 +12,9 @@ import {
     generateSecondaryLocationSchema,
 } from "@/lib/structured-data";
 
+// Force dynamic rendering site-wide so Sanity CMS changes appear without redeploy
+export const dynamic = "force-dynamic";
+
 const font = getFont(businessConfig.font);
 const headingFont = getHeadingFont(businessConfig.headingFont);
 

@@ -16,6 +16,7 @@ import {
     generateBreadcrumbSchema,
     generateServiceSchema,
 } from "@/lib/structured-data";
+import { getPageImages } from "@/lib/sanity";
 
 const LOCATION = {
     name: "Enumclaw",
@@ -90,7 +91,7 @@ export function generateMetadata({ params }: PageProps): Metadata {
     );
 }
 
-export default function EnumclawServicePage({ params }: PageProps) {
+export default async function EnumclawServicePage({ params }: PageProps) {
     const serviceName = findServiceBySlug(params.service);
 
     // Return 404 if service not found or location services not published
@@ -118,8 +119,17 @@ export default function EnumclawServicePage({ params }: PageProps) {
 
     const serviceSchema = generateServiceSchema(serviceName, businessConfig);
 
-    // Get service image
-    const serviceImage = industry.servicePageImages?.[params.service];
+    // Fetch CMS images for this service page
+    const cmsImages = await getPageImages(`/services/${params.service}`);
+
+    // Config fallback image
+    const configImage = industry.servicePageImages?.[params.service];
+
+    // Hero uses CMS heroImage, falls back to config image, then default hero
+    const heroImage = cmsImages.heroImage || configImage || businessConfig.heroImage;
+
+    // Main content uses CMS mainImage, falls back to config image
+    const mainContentImage = cmsImages.mainImage || configImage;
 
     // Get all services (excluding current)
     const allServices = industry.allServices || industry.services;
@@ -131,7 +141,7 @@ export default function EnumclawServicePage({ params }: PageProps) {
             <StructuredData data={[breadcrumbSchema, serviceSchema]} />
             <main id="main-content" className="flex-grow">
                 <Hero
-                    backgroundImage={serviceImage || businessConfig.heroImage}
+                    backgroundImage={heroImage}
                     title={`${serviceName} in ${LOCATION.name}`}
                     subtitle={`Professional ${serviceName.toLowerCase()} at our ${LOCATION.name} dental office`}
                     priority={true}
@@ -157,10 +167,10 @@ export default function EnumclawServicePage({ params }: PageProps) {
                                 </div>
 
                                 {/* Service Image */}
-                                {serviceImage && (
+                                {mainContentImage && (
                                     <div className="mb-8 rounded-xl overflow-hidden shadow-lg">
                                         <Image
-                                            src={serviceImage}
+                                            src={mainContentImage}
                                             alt={`${serviceName} in ${LOCATION.name}`}
                                             width={800}
                                             height={400}

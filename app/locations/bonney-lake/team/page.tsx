@@ -34,9 +34,6 @@ export const metadata: Metadata = generateSEOMetadata(
     businessConfig
 );
 
-// Force dynamic rendering to always fetch fresh data from Sanity
-export const dynamic = "force-dynamic";
-
 export default async function BonneyLakeTeamPage() {
     const teamData = await getTeamData("bonney-lake");
 
