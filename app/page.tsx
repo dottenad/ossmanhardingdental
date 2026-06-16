@@ -22,6 +22,7 @@ import {
     generateFAQPageSchema,
 } from "@/lib/structured-data";
 import { generateMetadata as generateSEOMetadata } from "@/lib/seo";
+import { getPageHeroImage } from "@/lib/sanity";
 
 // Normalize image path helper
 function normalizeImagePath(path?: string): string | undefined {
@@ -43,9 +44,12 @@ export const metadata: Metadata = {
     ),
 };
 
-export default function Home() {
+export default async function Home() {
     const industry = industryConfig[businessConfig.industry];
     const services = industry.services.slice(0, 6);
+
+    // Fetch CMS hero image with fallback to config
+    const heroImage = await getPageHeroImage("/", businessConfig.heroImage || "/images/hero-dental.jpg");
 
     const breadcrumbSchema = generateBreadcrumbSchema([
         { name: "Home", url: businessConfig.website },
@@ -72,7 +76,7 @@ export default function Home() {
             <main id="main-content" className="flex-grow">
                 {/* Hero Section */}
                 <Hero
-                    backgroundImage={businessConfig.heroImage}
+                    backgroundImage={heroImage}
                     mobileBackgroundImage="/images/bonney-lake/building/office-3.jpg"
                     title={businessConfig.name}
                     subtitle={businessConfig.tagline}

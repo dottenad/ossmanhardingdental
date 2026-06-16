@@ -14,6 +14,7 @@ import {
     generateBreadcrumbSchema,
     generateAboutPageSchema,
 } from "@/lib/structured-data";
+import { getPageImages } from "@/lib/sanity";
 
 export const metadata: Metadata = generateSEOMetadata(
     {
@@ -24,7 +25,11 @@ export const metadata: Metadata = generateSEOMetadata(
     businessConfig
 );
 
-export default function AboutPage() {
+export default async function AboutPage() {
+    // Fetch CMS images with fallbacks
+    const pageImages = await getPageImages("/about");
+    const heroImage = pageImages.heroImage || businessConfig.pageHeroImages?.["/about"];
+    const doctorsImage = pageImages.mainImage || "/images/doctors.jpg";
     const breadcrumbSchema = generateBreadcrumbSchema([
         { name: "Home", url: businessConfig.website },
         { name: "About", url: `${businessConfig.website}/about` },
@@ -38,7 +43,7 @@ export default function AboutPage() {
             <main id="main-content" className="flex-grow">
                 {/* Hero Section */}
                 <Hero
-                    backgroundImage={businessConfig.pageHeroImages?.["/about"]}
+                    backgroundImage={heroImage}
                     title={`About ${businessConfig.name}`}
                     subtitle="Your smile, our passion"
                     priority={true}
@@ -61,7 +66,7 @@ export default function AboutPage() {
                                 <div className="mb-8">
                                     <div className="float-left mr-6 mb-2 w-full md:w-1/2 mt-0 pt-0">
                                         <Image
-                                            src="/images/doctors.jpg"
+                                            src={doctorsImage}
                                             alt="Our Doctors at Ossman Harding Dental"
                                             width={400}
                                             height={300}

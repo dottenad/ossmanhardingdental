@@ -14,6 +14,7 @@ import {
     generateBreadcrumbSchema,
     generateServiceSchema,
 } from "@/lib/structured-data";
+import { getPageImages } from "@/lib/sanity";
 
 interface PageProps {
     params: {
@@ -90,7 +91,7 @@ export function generateMetadata({ params }: PageProps): Metadata {
     );
 }
 
-export default function ServicePage({ params }: PageProps) {
+export default async function ServicePage({ params }: PageProps) {
     const serviceName = findServiceBySlug(params.service);
 
     if (!serviceName) {
@@ -99,6 +100,17 @@ export default function ServicePage({ params }: PageProps) {
 
     const industry = industryConfig[businessConfig.industry];
     const allServices = industry.allServices || industry.services;
+
+    // Fetch CMS images with fallbacks
+    const serviceHeroImageKey = `/services/${params.service}`;
+    const pageImages = await getPageImages(serviceHeroImageKey);
+
+    const serviceHeroImage = pageImages.heroImage ||
+        businessConfig.pageHeroImages?.[serviceHeroImageKey] ||
+        businessConfig.pageHeroImages?.["/services"];
+
+    const serviceMainImage = pageImages.mainImage ||
+        industryConfig[businessConfig.industry].servicePageImages?.[params.service];
 
     const breadcrumbSchema = generateBreadcrumbSchema([
         { name: "Home", url: businessConfig.website },
@@ -113,12 +125,6 @@ export default function ServicePage({ params }: PageProps) {
     ]);
 
     const serviceSchema = generateServiceSchema(serviceName, businessConfig);
-
-    // Get hero image for this service if available
-    const serviceHeroImageKey = `/services/${params.service}`;
-    const serviceHeroImage =
-        businessConfig.pageHeroImages?.[serviceHeroImageKey] ||
-        businessConfig.pageHeroImages?.["/services"];
 
     return (
         <div className="min-h-screen flex flex-col bg-white">
@@ -164,20 +170,11 @@ export default function ServicePage({ params }: PageProps) {
                                         experienced dental team is committed to
                                         exceptional care and your comfort.
                                     </p>
-                                    {industryConfig[
-                                        businessConfig.industry
-                                    ].servicePageImages?.[params.service] && (
+                                    {serviceMainImage && (
                                         <div className="w-full mt-0 mb-8 [&_img]:m-0">
                                             <div className="w-full aspect-video rounded-xl overflow-hidden shadow-lg relative">
                                                 <Image
-                                                    src={
-                                                        industryConfig[
-                                                            businessConfig
-                                                                .industry
-                                                        ].servicePageImages[
-                                                            params.service
-                                                        ]
-                                                    }
+                                                    src={serviceMainImage}
                                                     alt={`${serviceName} - ${businessConfig.name}`}
                                                     fill
                                                     className="object-cover !m-0"

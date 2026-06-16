@@ -82,3 +82,103 @@ export function groupTeamMembersByCategory(members: SanityTeamMember[]) {
         assistants: members.filter(m => m.category === "assistant"),
     };
 }
+
+// Types for page images from Sanity
+export interface SanityPageImage {
+    _id: string;
+    page: string;
+    heroImage?: SanityImageSource;
+    mainImage?: SanityImageSource;
+    secondaryImage?: SanityImageSource;
+}
+
+// Cache for page images to avoid repeated fetches
+let pageImagesCache: Map<string, SanityPageImage> | null = null;
+let pageImagesCacheTime: number = 0;
+const CACHE_TTL = 60000; // 1 minute cache
+
+// Fetch all page images from Sanity
+export async function getAllPageImages(): Promise<SanityPageImage[]> {
+    const query = `*[_type == "pageImage"] {
+        _id,
+        page,
+        heroImage,
+        mainImage,
+        secondaryImage
+    }`;
+
+    return sanityClient.fetch(query);
+}
+
+// Get page images map (cached)
+async function getPageImagesMap(): Promise<Map<string, SanityPageImage>> {
+    const now = Date.now();
+
+    // Return cached if still valid
+    if (pageImagesCache && (now - pageImagesCacheTime) < CACHE_TTL) {
+        return pageImagesCache;
+    }
+
+    try {
+        const images = await getAllPageImages();
+        pageImagesCache = new Map(images.map(img => [img.page, img]));
+        pageImagesCacheTime = now;
+        return pageImagesCache;
+    } catch (error) {
+        console.error("[Sanity] Failed to fetch page images:", error);
+        return new Map();
+    }
+}
+
+// Get hero image URL for a specific page
+export async function getPageHeroImage(pagePath: string, fallbackUrl: string): Promise<string> {
+    try {
+        const imagesMap = await getPageImagesMap();
+        const pageImage = imagesMap.get(pagePath);
+
+        if (pageImage?.heroImage) {
+            return urlFor(pageImage.heroImage).width(1920).height(600).url();
+        }
+    } catch (error) {
+        console.error(`[Sanity] Error fetching hero image for ${pagePath}:`, error);
+    }
+
+    return fallbackUrl;
+}
+
+// Get main content image URL for a specific page
+export async function getPageMainImage(pagePath: string, fallbackUrl: string): Promise<string> {
+    try {
+        const imagesMap = await getPageImagesMap();
+        const pageImage = imagesMap.get(pagePath);
+
+        if (pageImage?.mainImage) {
+            return urlFor(pageImage.mainImage).width(800).height(600).url();
+        }
+    } catch (error) {
+        console.error(`[Sanity] Error fetching main image for ${pagePath}:`, error);
+    }
+
+    return fallbackUrl;
+}
+
+// Get all images for a page at once
+export async function getPageImages(pagePath: string): Promise<{
+    heroImage: string | null;
+    mainImage: string | null;
+    secondaryImage: string | null;
+}> {
+    try {
+        const imagesMap = await getPageImagesMap();
+        const pageImage = imagesMap.get(pagePath);
+
+        return {
+            heroImage: pageImage?.heroImage ? urlFor(pageImage.heroImage).width(1920).height(600).url() : null,
+            mainImage: pageImage?.mainImage ? urlFor(pageImage.mainImage).width(800).height(600).url() : null,
+            secondaryImage: pageImage?.secondaryImage ? urlFor(pageImage.secondaryImage).width(800).height(600).url() : null,
+        };
+    } catch (error) {
+        console.error(`[Sanity] Error fetching images for ${pagePath}:`, error);
+        return { heroImage: null, mainImage: null, secondaryImage: null };
+    }
+}
