@@ -182,3 +182,25 @@ export async function getPageImages(pagePath: string): Promise<{
         return { heroImage: null, mainImage: null, secondaryImage: null };
     }
 }
+
+// Get all service main images as a map (slug -> imageUrl)
+// Used for service listing pages to show CMS images on cards
+export async function getServiceMainImages(): Promise<Record<string, string>> {
+    try {
+        const imagesMap = await getPageImagesMap();
+        const serviceImages: Record<string, string> = {};
+
+        imagesMap.forEach((pageImage, pagePath) => {
+            // Check if this is a service page
+            if (pagePath.startsWith("/services/") && pageImage.mainImage) {
+                const slug = pagePath.replace("/services/", "");
+                serviceImages[slug] = urlFor(pageImage.mainImage).width(600).height(400).url();
+            }
+        });
+
+        return serviceImages;
+    } catch (error) {
+        console.error("[Sanity] Error fetching service images:", error);
+        return {};
+    }
+}

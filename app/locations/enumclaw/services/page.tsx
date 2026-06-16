@@ -12,6 +12,7 @@ import { Hero } from "@/components/Hero";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { DentrixBooking } from "@/components/DentrixBooking";
 import { generateBreadcrumbSchema } from "@/lib/structured-data";
+import { getServiceMainImages } from "@/lib/sanity";
 
 const LOCATION = {
     name: "Enumclaw",
@@ -93,13 +94,16 @@ export const metadata: Metadata = generateSEOMetadata(
     businessConfig
 );
 
-export default function EnumclawServicesPage() {
+export default async function EnumclawServicesPage() {
     // Return 404 if location services are not published
     if (!siteConfig.publishLocationServices) {
         notFound();
     }
 
     const industry = industryConfig[businessConfig.industry];
+
+    // Fetch CMS service images
+    const cmsServiceImages = await getServiceMainImages();
 
     // Filter categories to only include services available at this location
     const filteredCategories = serviceCategories
@@ -167,7 +171,8 @@ export default function EnumclawServicesPage() {
                                             {/* Services Grid */}
                                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                                 {category.services.map((service, serviceIndex) => {
-                                                    const serviceImage = industry.servicePageImages?.[service.slug];
+                                                    // Use CMS image if available, fall back to config
+                                                    const serviceImage = cmsServiceImages[service.slug] || industry.servicePageImages?.[service.slug];
                                                     const href = `/locations/${LOCATION.slug}/services/${service.slug}`;
 
                                                     return (

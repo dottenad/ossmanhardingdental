@@ -13,6 +13,7 @@ import {
     generateServiceSchema,
     generateBreadcrumbSchema,
 } from "@/lib/structured-data";
+import { getServiceMainImages } from "@/lib/sanity";
 
 export const metadata: Metadata = generateSEOMetadata(
     {
@@ -83,9 +84,12 @@ const serviceCategories = [
     },
 ];
 
-export default function ServicesPage() {
+export default async function ServicesPage() {
     const industry = industryConfig[businessConfig.industry];
     const services = industry.allServices || industry.services;
+
+    // Fetch CMS service images (will override config images where available)
+    const cmsServiceImages = await getServiceMainImages();
 
     const breadcrumbSchema = generateBreadcrumbSchema([
         { name: "Home", url: businessConfig.website },
@@ -173,7 +177,8 @@ export default function ServicesPage() {
                                     {/* Services Grid */}
                                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                                         {category.services.map((service, serviceIndex) => {
-                                            const serviceImage = industry.servicePageImages?.[service.slug];
+                                            // Use CMS image if available, fall back to config
+                                            const serviceImage = cmsServiceImages[service.slug] || industry.servicePageImages?.[service.slug];
                                             const href = `/services/${service.slug}`;
 
                                             return (
