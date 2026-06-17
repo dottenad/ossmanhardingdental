@@ -1,4 +1,14 @@
-import { BusinessConfig, Review, GalleryProject, FAQ } from "./config";
+import { BusinessConfig, Review, GalleryProject, FAQ, industryConfig } from "./config";
+
+// Dental specialties for medicalSpecialty property
+const dentalSpecialties = [
+    "General Dentistry",
+    "Cosmetic Dentistry",
+    "Restorative Dentistry",
+    "Oral Surgery",
+    "Sedation Dentistry",
+    "Pediatric Dentistry",
+];
 
 export function generateLocalBusinessSchema(businessConfig: BusinessConfig) {
     const {
@@ -38,12 +48,22 @@ export function generateLocalBusinessSchema(businessConfig: BusinessConfig) {
         },
     };
 
+    // Build sameAs array including GBP URL
+    const sameAsLinks = [
+        ...Object.values(businessConfig.socialMedia).filter(Boolean) as string[],
+        address.gbpUrl,
+    ].filter(Boolean) as string[];
+
+    // Get services for availableService
+    const services = industryConfig[industry]?.allServices || industryConfig[industry]?.services || [];
+
     return {
         "@context": "https://schema.org",
         ...industryInfo[industry],
-        name,
+        "@id": `${website}/#enumclaw-office`,
+        name: `${name} - Enumclaw`,
         description,
-        url: website,
+        url: `${website}/locations/enumclaw`,
         telephone: phone,
         email,
         address: {
@@ -56,6 +76,13 @@ export function generateLocalBusinessSchema(businessConfig: BusinessConfig) {
             postalCode: address.zipCode,
             addressCountry: address.country || "US",
         },
+        ...(address.geo ? {
+            geo: {
+                "@type": "GeoCoordinates",
+                latitude: address.geo.latitude,
+                longitude: address.geo.longitude,
+            },
+        } : {}),
         areaServed: serviceAreas.map((area) => ({
             "@type": "City",
             name: area,
@@ -80,9 +107,21 @@ export function generateLocalBusinessSchema(businessConfig: BusinessConfig) {
                 closes: "14:00",
             },
         ],
-        sameAs: Object.values(businessConfig.socialMedia).filter(
-            Boolean
-        ) as string[],
+        sameAs: sameAsLinks,
+        // Medical/Dental specific properties
+        ...(industry === "dental" ? {
+            medicalSpecialty: dentalSpecialties,
+            availableService: services.map(service => ({
+                "@type": "MedicalProcedure",
+                name: service,
+            })),
+        } : {}),
+        // Parent organization reference
+        parentOrganization: {
+            "@type": "Organization",
+            "@id": `${website}/#organization`,
+            name: name,
+        },
         ...(businessConfig.reviews && businessConfig.reviews.length > 0
             ? {
                   aggregateRating: {
@@ -132,12 +171,22 @@ export function generateSecondaryLocationSchema(businessConfig: BusinessConfig) 
         dental: { "@type": "Dentist" },
     };
 
+    // Build sameAs array including GBP URL for this location
+    const sameAsLinks = [
+        ...Object.values(businessConfig.socialMedia).filter(Boolean) as string[],
+        secondaryAddress.gbpUrl,
+    ].filter(Boolean) as string[];
+
+    // Get services for availableService
+    const services = industryConfig[industry]?.allServices || industryConfig[industry]?.services || [];
+
     return {
         "@context": "https://schema.org",
         ...industryInfo[industry],
-        name: `${name} - ${secondaryAddress.name}`,
+        "@id": `${website}/#bonney-lake-office`,
+        name: `${name} - Bonney Lake`,
         description,
-        url: `${website}/bonney-lake`,
+        url: `${website}/locations/bonney-lake`,
         telephone: secondaryAddress.phone || phone,
         email,
         address: {
@@ -148,6 +197,13 @@ export function generateSecondaryLocationSchema(businessConfig: BusinessConfig) 
             postalCode: secondaryAddress.zipCode,
             addressCountry: "US",
         },
+        ...(secondaryAddress.geo ? {
+            geo: {
+                "@type": "GeoCoordinates",
+                latitude: secondaryAddress.geo.latitude,
+                longitude: secondaryAddress.geo.longitude,
+            },
+        } : {}),
         openingHoursSpecification: [
             {
                 "@type": "OpeningHoursSpecification",
@@ -159,7 +215,21 @@ export function generateSecondaryLocationSchema(businessConfig: BusinessConfig) 
         image: businessConfig.logo?.startsWith("http")
             ? businessConfig.logo
             : `${website}${businessConfig.logo || "/images/logo.png"}`,
-        sameAs: Object.values(businessConfig.socialMedia).filter(Boolean) as string[],
+        sameAs: sameAsLinks,
+        // Medical/Dental specific properties
+        ...(industry === "dental" ? {
+            medicalSpecialty: dentalSpecialties,
+            availableService: services.map(service => ({
+                "@type": "MedicalProcedure",
+                name: service,
+            })),
+        } : {}),
+        // Parent organization reference
+        parentOrganization: {
+            "@type": "Organization",
+            "@id": `${website}/#organization`,
+            name: name,
+        },
     };
 }
 
@@ -171,6 +241,7 @@ export function generateOrganizationSchema(businessConfig: BusinessConfig) {
     return {
         "@context": "https://schema.org",
         "@type": "Organization",
+        "@id": `${businessConfig.website}/#organization`,
         name: businessConfig.name,
         url: businessConfig.website,
         logo: logoUrl,
@@ -188,6 +259,11 @@ export function generateOrganizationSchema(businessConfig: BusinessConfig) {
         sameAs: Object.values(businessConfig.socialMedia).filter(
             Boolean
         ) as string[],
+        // Reference to both location entities
+        location: [
+            { "@id": `${businessConfig.website}/#enumclaw-office` },
+            { "@id": `${businessConfig.website}/#bonney-lake-office` },
+        ],
     };
 }
 

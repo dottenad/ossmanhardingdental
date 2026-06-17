@@ -12,6 +12,13 @@ export interface BusinessConfig {
         state: string;
         zipCode: string;
         country?: string;
+        /** Geo coordinates for schema.org */
+        geo?: {
+            latitude: number;
+            longitude: number;
+        };
+        /** Google Business Profile URL for this location */
+        gbpUrl?: string;
     };
     /** Secondary office location for multi-location businesses */
     secondaryAddress?: {
@@ -22,6 +29,13 @@ export interface BusinessConfig {
         zipCode: string;
         phone?: string;
         hours?: string;
+        /** Geo coordinates for schema.org */
+        geo?: {
+            latitude: number;
+            longitude: number;
+        };
+        /** Google Business Profile URL for this location */
+        gbpUrl?: string;
     };
     serviceAreas: string[];
     industry: Industry;
@@ -428,6 +442,11 @@ export const businessConfig: BusinessConfig = {
         state: "WA",
         zipCode: "98022",
         country: "US",
+        geo: {
+            latitude: 47.2018,
+            longitude: -121.9912,
+        },
+        gbpUrl: "https://www.google.com/maps/place/?q=place_id:ChIJk6_IqYgVkFQRqWqxFApSO2s",
     },
     secondaryAddress: {
         name: "Bonney Lake Office",
@@ -437,6 +456,11 @@ export const businessConfig: BusinessConfig = {
         zipCode: "98391",
         phone: "+1-360-825-5585",
         hours: "Mon-Thu: 7:00am - 4:00pm",
+        geo: {
+            latitude: 47.1776,
+            longitude: -122.1578,
+        },
+        gbpUrl: "https://www.google.com/maps/place/?q=place_id:ChIJRVqBZMJCkFQRYFdDwPwUrzM",
     },
     serviceAreas: serviceAreasList,
     googleMapsApiKey:
