@@ -7,9 +7,7 @@ import { SkipLink } from "@/components/SkipLink";
 import { Analytics } from "@/components/Analytics";
 import { getFont, getHeadingFont } from "@/lib/fonts";
 import {
-    generateLocalBusinessSchema,
     generateOrganizationSchema,
-    generateSecondaryLocationSchema,
 } from "@/lib/structured-data";
 
 // Force dynamic rendering site-wide so Sanity CMS changes appear without redeploy
@@ -44,9 +42,8 @@ export default function RootLayout({
 }: {
     children: React.ReactNode;
 }) {
-    const localBusinessSchema = generateLocalBusinessSchema(businessConfig);
+    // Only Organization schema in root layout - location schemas go on their specific pages
     const organizationSchema = generateOrganizationSchema(businessConfig);
-    const secondaryLocationSchema = generateSecondaryLocationSchema(businessConfig);
 
     return (
         <html lang="en">
@@ -62,7 +59,7 @@ export default function RootLayout({
                     <link rel="dns-prefetch" href="https://maps.googleapis.com" />
                 )}
                 <StructuredData
-                    data={[localBusinessSchema, organizationSchema, secondaryLocationSchema].filter(Boolean)}
+                    data={[organizationSchema]}
                 />
                 {/* Trusted Types Policy - must be loaded before any scripts */}
                 <script

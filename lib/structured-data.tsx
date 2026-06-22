@@ -122,37 +122,8 @@ export function generateLocalBusinessSchema(businessConfig: BusinessConfig) {
             "@id": `${website}/#organization`,
             name: name,
         },
-        ...(businessConfig.reviews && businessConfig.reviews.length > 0
-            ? {
-                  aggregateRating: {
-                      "@type": "AggregateRating",
-                      ratingValue: (
-                          businessConfig.reviews.reduce(
-                              (sum, review) => sum + review.rating,
-                              0
-                          ) / businessConfig.reviews.length
-                      ).toFixed(1),
-                      reviewCount: businessConfig.reviews.length,
-                      bestRating: "5",
-                      worstRating: "1",
-                  },
-                  review: businessConfig.reviews.map((review) => ({
-                      "@type": "Review",
-                      author: {
-                          "@type": "Person",
-                          name: review.author || "Patient",
-                      },
-                      datePublished: review.date,
-                      reviewBody: review.text,
-                      reviewRating: {
-                          "@type": "Rating",
-                          ratingValue: review.rating.toString(),
-                          bestRating: "5",
-                          worstRating: "1",
-                      },
-                  })),
-              }
-            : {}),
+        // Note: aggregateRating/review removed - Google guidelines state businesses
+        // should not mark up their own reviews on LocalBusiness schema
     };
 }
 

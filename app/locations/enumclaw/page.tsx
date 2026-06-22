@@ -65,6 +65,7 @@ export default function EnumclawPage() {
         },
     ]);
 
+    // Enumclaw-specific LocalBusiness schema
     const localBusinessSchema = generateLocalBusinessSchema(businessConfig);
 
     return (

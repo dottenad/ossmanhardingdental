@@ -20,6 +20,8 @@ import {
     generateBreadcrumbSchema,
     generateWebPageSchema,
     generateFAQPageSchema,
+    generateLocalBusinessSchema,
+    generateSecondaryLocationSchema,
 } from "@/lib/structured-data";
 import { generateMetadata as generateSEOMetadata } from "@/lib/seo";
 import { getPageHeroImage } from "@/lib/sanity";
@@ -36,7 +38,7 @@ function normalizeImagePath(path?: string): string | undefined {
 export const metadata: Metadata = {
     ...generateSEOMetadata(
         {
-            title: businessConfig.name,
+            title: `${businessConfig.name} - Community Rooted Dentistry`,
             description: businessConfig.description,
             url: businessConfig.website,
         },
@@ -64,7 +66,11 @@ export default async function Home() {
             ? generateFAQPageSchema(businessConfig.faqs)
             : null;
 
-    const structuredData: any[] = [breadcrumbSchema, webPageSchema];
+    // Both location schemas on homepage since it discusses both offices
+    const enumclawSchema = generateLocalBusinessSchema(businessConfig);
+    const bonneyLakeSchema = generateSecondaryLocationSchema(businessConfig);
+
+    const structuredData: any[] = [breadcrumbSchema, webPageSchema, enumclawSchema, bonneyLakeSchema].filter(Boolean);
     if (faqSchema) {
         structuredData.push(faqSchema);
     }

@@ -13,7 +13,7 @@ import { Hero } from "@/components/Hero";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import {
     generateBreadcrumbSchema,
-    generateLocalBusinessSchema,
+    generateSecondaryLocationSchema,
 } from "@/lib/structured-data";
 
 const LOCATION = {
@@ -65,12 +65,13 @@ export default function BonneyLakePage() {
         },
     ]);
 
-    const localBusinessSchema = generateLocalBusinessSchema(businessConfig);
+    // Bonney Lake-specific LocalBusiness schema
+    const localBusinessSchema = generateSecondaryLocationSchema(businessConfig);
 
     return (
         <div className="min-h-screen flex flex-col">
             <Header />
-            <StructuredData data={[breadcrumbSchema, localBusinessSchema]} />
+            <StructuredData data={[breadcrumbSchema, localBusinessSchema].filter(Boolean)} />
             <main id="main-content" className="flex-grow">
                 <Hero
                     backgroundImage={businessConfig.pageHeroImages?.[`/locations/${LOCATION.slug}`] || businessConfig.heroImage}
