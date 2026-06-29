@@ -268,7 +268,7 @@ export default async function EnumclawServicePage({ params }: PageProps) {
                                             Call {formatPhoneDisplay(businessConfig.phone)}
                                         </a>
                                         <a
-                                            href="https://bookit.dentrixascend.com/soe/new/dental?pid=ASC15000000000350&mode=externalLink"
+                                            href="https://schedule.jarvisanalytics.com/frame/ossman-harding-dental?location_id=10614"
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-black/20 backdrop-blur-sm border-2 border-white/50 rounded-xl hover:bg-white/10 hover:border-white transition-all duration-300 shadow-lg hover:shadow-xl"

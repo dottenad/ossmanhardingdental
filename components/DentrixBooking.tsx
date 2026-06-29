@@ -14,8 +14,8 @@ interface DentrixBookingProps {
 
 // Dentrix Ascend booking URLs per location
 const BOOKING_URLS: Record<string, string> = {
-    "bonney-lake": "https://bookit.dentrixascend.com/soe/new/dental?pid=ASC15000000000835&mode=externalLink",
-    "enumclaw": "https://bookit.dentrixascend.com/soe/new/dental?pid=ASC15000000000350&mode=externalLink",
+    "bonney-lake": "https://schedule.jarvisanalytics.com/frame/ossman-harding-dental?location_id=10615",
+    "enumclaw": "https://schedule.jarvisanalytics.com/frame/ossman-harding-dental?location_id=10614",
 };
 
 // Building images per location

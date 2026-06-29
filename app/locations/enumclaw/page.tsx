@@ -150,7 +150,7 @@ export default function EnumclawPage() {
                                             Call Now
                                         </a>
                                         <a
-                                            href="https://bookit.dentrixascend.com/soe/new/dental?pid=ASC15000000000350&mode=externalLink"
+                                            href="https://schedule.jarvisanalytics.com/frame/ossman-harding-dental?location_id=10614"
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             className="inline-flex items-center justify-center px-6 py-3 text-lg font-semibold text-primary-700 bg-white border-2 border-primary-600 rounded-lg hover:bg-primary-50 transition-colors"
