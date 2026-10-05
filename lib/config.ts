@@ -17,7 +17,7 @@ export interface BusinessConfig {
             latitude: number;
             longitude: number;
         };
-        /** Google Business Profile URL for this location */
+        /** Public Google Maps URL for this location's Business Profile. Single source for footer, /reviews, and schema sameAs. */
         gbpUrl?: string;
     };
     /** Secondary office location for multi-location businesses */
@@ -33,7 +33,7 @@ export interface BusinessConfig {
             latitude: number;
             longitude: number;
         };
-        /** Google Business Profile URL for this location */
+        /** Public Google Maps URL for this location's Business Profile. Single source for footer, /reviews, and schema sameAs. */
         gbpUrl?: string;
     };
     serviceAreas: string[];
@@ -479,7 +479,7 @@ export const businessConfig: BusinessConfig = {
             latitude: 47.2018,
             longitude: -121.9912,
         },
-        gbpUrl: "https://www.google.com/maps/place/?q=place_id:ChIJk6_IqYgVkFQRqWqxFApSO2s",
+        gbpUrl: "https://maps.google.com/?cid=8532782759567292928",
     },
     secondaryAddress: {
         name: "Bonney Lake Office",
@@ -492,7 +492,7 @@ export const businessConfig: BusinessConfig = {
             latitude: 47.1776,
             longitude: -122.1578,
         },
-        gbpUrl: "https://www.google.com/maps/place/?q=place_id:ChIJRVqBZMJCkFQRYFdDwPwUrzM",
+        gbpUrl: "https://maps.google.com/?cid=9941983244648185977",
     },
     serviceAreas: serviceAreasList,
     googleMapsApiKey:

@@ -100,7 +100,7 @@ export function Footer() {
                                 )}
                                 {/* Google Business - Enumclaw */}
                                 <a
-                                    href="https://business.google.com/n/17936783379730960938/profile?authuser=1&fid=8532782759567292928"
+                                    href={businessConfig.address.gbpUrl}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     aria-label="Google My Business - Enumclaw"
@@ -122,7 +122,7 @@ export function Footer() {
                                 </a>
                                 {/* Google Business - Bonney Lake */}
                                 <a
-                                    href="https://business.google.com/n/17228390079699619076/profile?authuser=1&fid=9941983244648185977"
+                                    href={businessConfig.secondaryAddress?.gbpUrl}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     aria-label="Google My Business - Bonney Lake"

@@ -134,7 +134,7 @@ export default function ReviewsPage() {
                                                                 <p className="text-sm text-gray-500 mt-4">
                                                                     Read more reviews:{" "}
                                                                     <a
-                                                                        href="https://search.google.com/local/reviews?placeid=ChIJg4d3apDlkFQReQAkDBYF-Yk"
+                                                                        href={businessConfig.secondaryAddress?.gbpUrl}
                                                                         target="_blank"
                                                                         rel="noopener noreferrer"
                                                                         className="text-primary-600 hover:text-primary-700 hover:underline"
@@ -143,7 +143,7 @@ export default function ReviewsPage() {
                                                                     </a>
                                                                     {" | "}
                                                                     <a
-                                                                        href="https://search.google.com/local/reviews?placeid=ChIJN_FVLATykFQRAPqVEbaIanY"
+                                                                        href={businessConfig.address.gbpUrl}
                                                                         target="_blank"
                                                                         rel="noopener noreferrer"
                                                                         className="text-primary-600 hover:text-primary-700 hover:underline"
@@ -340,7 +340,7 @@ export default function ReviewsPage() {
                                         <div className="space-y-4">
                                             {/* Bonney Lake */}
                                             <a
-                                                href="https://search.google.com/local/reviews?placeid=ChIJg4d3apDlkFQReQAkDBYF-Yk"
+                                                href={businessConfig.secondaryAddress?.gbpUrl}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                                 className="group block bg-gray-50 rounded-xl overflow-hidden hover:bg-gray-100 transition-colors border border-gray-200"
@@ -385,7 +385,7 @@ export default function ReviewsPage() {
                                             </a>
                                             {/* Enumclaw */}
                                             <a
-                                                href="https://search.google.com/local/reviews?placeid=ChIJN_FVLATykFQRAPqVEbaIanY"
+                                                href={businessConfig.address.gbpUrl}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                                 className="group block bg-gray-50 rounded-xl overflow-hidden hover:bg-gray-100 transition-colors border border-gray-200"
