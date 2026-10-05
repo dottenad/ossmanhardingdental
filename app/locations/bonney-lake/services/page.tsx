@@ -82,14 +82,6 @@ export const metadata: Metadata = generateSEOMetadata(
     {
         title: `${LOCATION.name} Dental Services`,
         description: `Explore our full range of dental services at our ${LOCATION.name} office. From routine cleanings to cosmetic dentistry, implants, and oral surgery.`,
-        keywords: [
-            `${LOCATION.name} dental services`,
-            `dentist services ${LOCATION.name}`,
-            "Tehaleh dentist",
-            "dental implants",
-            "cosmetic dentistry",
-            "teeth whitening",
-        ],
         url: `${businessConfig.website}/locations/${LOCATION.slug}/services`,
     },
     businessConfig

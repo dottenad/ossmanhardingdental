@@ -25,6 +25,7 @@ import {
 } from "@/lib/structured-data";
 import { generateMetadata as generateSEOMetadata } from "@/lib/seo";
 import { getPageHeroImage } from "@/lib/sanity";
+import { getHoursSummary } from "@/lib/hours";
 
 // Normalize image path helper
 function normalizeImagePath(path?: string): string | undefined {
@@ -38,7 +39,7 @@ function normalizeImagePath(path?: string): string | undefined {
 export const metadata: Metadata = {
     ...generateSEOMetadata(
         {
-            title: `${businessConfig.name} - Community Rooted Dentistry`,
+            absoluteTitle: `Dentist in Enumclaw & Bonney Lake, WA | ${businessConfig.name}`,
             description: businessConfig.description,
             url: businessConfig.website,
         },
@@ -343,7 +344,7 @@ export default async function Home() {
                                         <div className="sm:w-2/3 p-6">
                                             <h3 className="text-xl font-bold text-gray-900 mb-2">Enumclaw</h3>
                                             <p className="text-gray-700 mb-1">1705 Cole St., Enumclaw, WA 98022</p>
-                                            <p className="text-gray-600 text-sm mb-3">Mon-Thu: 7:00 AM - 4:00 PM</p>
+                                            <p className="text-gray-600 text-sm mb-3">{getHoursSummary("enumclaw")}</p>
                                             <a
                                                 href="https://schedule.jarvisanalytics.com/frame/ossman-harding-dental?location_id=10614"
                                                 target="_blank"
@@ -354,7 +355,7 @@ export default async function Home() {
                                             </a>
                                             <div className="flex flex-wrap gap-3">
                                                 <Link href="/locations/enumclaw" className="text-primary-600 hover:text-primary-700 font-semibold text-sm">
-                                                    Office Info →
+                                                    Dentist in Enumclaw →
                                                 </Link>
                                                 <Link href="/locations/enumclaw/team" className="text-primary-600 hover:text-primary-700 font-semibold text-sm">
                                                     Meet the Team →
@@ -382,7 +383,7 @@ export default async function Home() {
                                         <div className="sm:w-2/3 p-6">
                                             <h3 className="text-xl font-bold text-gray-900 mb-2">Bonney Lake</h3>
                                             <p className="text-gray-700 mb-1">19034 141st Street Ct E, Bonney Lake, WA 98391</p>
-                                            <p className="text-gray-600 text-sm mb-3">Mon-Thu: 7:00 AM - 4:00 PM</p>
+                                            <p className="text-gray-600 text-sm mb-3">{getHoursSummary("bonney-lake")}</p>
                                             <a
                                                 href="https://schedule.jarvisanalytics.com/frame/ossman-harding-dental?location_id=10615"
                                                 target="_blank"
@@ -393,7 +394,7 @@ export default async function Home() {
                                             </a>
                                             <div className="flex flex-wrap gap-3">
                                                 <Link href="/locations/bonney-lake" className="text-primary-600 hover:text-primary-700 font-semibold text-sm">
-                                                    Office Info →
+                                                    Dentist in Bonney Lake →
                                                 </Link>
                                                 <Link href="/locations/bonney-lake/team" className="text-primary-600 hover:text-primary-700 font-semibold text-sm">
                                                     Meet the Team →

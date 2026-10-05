@@ -1,10 +1,11 @@
 import { Metadata } from "next";
-import { BusinessConfig, industryConfig } from "./config";
+import { BusinessConfig } from "./config";
 
 export interface SEOProps {
     title?: string;
+    /** Use this exact string as the <title>, skipping the " | {brand}" suffix. */
+    absoluteTitle?: string;
     description?: string;
-    keywords?: string[];
     image?: string;
     url?: string;
     type?: "website" | "article";
@@ -18,8 +19,8 @@ export function generateMetadata(
 ): Metadata {
     const {
         title,
+        absoluteTitle,
         description,
-        keywords = [],
         image,
         url,
         type = "website",
@@ -31,7 +32,8 @@ export function generateMetadata(
     const defaultDescription = businessConfig.description;
     const pageTitle = title || siteName;
     const defaultTitle =
-        pageTitle === siteName ? siteName : `${pageTitle} | ${siteName}`;
+        absoluteTitle ||
+        (pageTitle === siteName ? siteName : `${pageTitle} | ${siteName}`);
     const metaDescription = description || defaultDescription;
     const siteUrl = url || businessConfig.website;
     // Use dedicated OG image, falling back to hero or logo
@@ -40,18 +42,9 @@ export function generateMetadata(
         ? (image.startsWith("http") ? image : `${businessConfig.website}${image}`)
         : `${businessConfig.website}${defaultImagePath}`;
 
-    // Combine industry keywords with provided keywords
-    const industryKeywords = industryConfig[businessConfig.industry].keywords;
-    const allKeywords = [
-        ...industryKeywords,
-        ...keywords,
-        ...businessConfig.serviceAreas,
-    ].join(", ");
-
     return {
         title: defaultTitle,
         description: metaDescription,
-        keywords: allKeywords,
         authors: [{ name: siteName }],
         creator: siteName,
         publisher: siteName,

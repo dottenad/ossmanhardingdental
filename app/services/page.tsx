@@ -19,7 +19,6 @@ export const metadata: Metadata = generateSEOMetadata(
     {
         title: `Services - ${industryConfig[businessConfig.industry].name}`,
         description: industryConfig[businessConfig.industry].description,
-        keywords: industryConfig[businessConfig.industry].keywords,
         url: `${businessConfig.website}/services`,
     },
     businessConfig

@@ -12,6 +12,7 @@ import { Breadcrumb } from "@/components/Breadcrumb";
 import { DentrixBooking } from "@/components/DentrixBooking";
 import { StructuredData } from "@/components/StructuredData";
 import { Lightbox } from "@/components/Lightbox";
+import { AvailableAtOffices } from "@/components/AvailableAtOffices";
 import { generateBreadcrumbSchema } from "@/lib/structured-data";
 
 // FAQ Accordion component
@@ -194,6 +195,7 @@ export function EmfaceExionContent() {
                         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                             {/* Main Content - 2/3 width */}
                             <div className="lg:col-span-2">
+                                <AvailableAtOffices serviceSlug="emface-exion" serviceName="EMFACE & EXION" />
                                 <div className="prose prose-lg max-w-none">
                                     {/* Intro */}
                                     <h2 className="text-3xl font-bold mb-4 mt-0 text-gray-900">

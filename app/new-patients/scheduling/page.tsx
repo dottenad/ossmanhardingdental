@@ -5,6 +5,7 @@ import { Calendar, Clock, FileText, Phone, CheckCircle2 } from "lucide-react";
 import { businessConfig } from "@/lib/config";
 import { generateMetadata as generateSEOMetadata } from "@/lib/seo";
 import { formatPhoneDisplay, formatPhoneLink } from "@/lib/phone";
+import { getHoursLines } from "@/lib/hours";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { StructuredData } from "@/components/StructuredData";
@@ -197,18 +198,12 @@ export default function SchedulingPage() {
                                             <h4 className="text-xl font-bold text-gray-900">Enumclaw Hours</h4>
                                         </div>
                                         <ul className="space-y-2 text-gray-600">
-                                            <li className="flex justify-between">
-                                                <span>Monday - Wednesday</span>
-                                                <span className="font-semibold">7:00 AM - 4:00 PM</span>
-                                            </li>
-                                            <li className="flex justify-between">
-                                                <span>Thursday</span>
-                                                <span className="font-semibold">7:00 AM - 2:00 PM</span>
-                                            </li>
-                                            <li className="flex justify-between">
-                                                <span>Friday - Sunday</span>
-                                                <span className="text-gray-400">Closed</span>
-                                            </li>
+                                            {getHoursLines("enumclaw").map((line) => (
+                                                <li key={line.days} className="flex justify-between">
+                                                    <span>{line.days}</span>
+                                                    <span className={line.hours === "Closed" ? "text-gray-400" : "font-semibold"}>{line.hours}</span>
+                                                </li>
+                                            ))}
                                         </ul>
                                     </div>
                                     <div className="bg-white border border-gray-200 rounded-xl p-6">
@@ -217,14 +212,12 @@ export default function SchedulingPage() {
                                             <h4 className="text-xl font-bold text-gray-900">Bonney Lake Hours</h4>
                                         </div>
                                         <ul className="space-y-2 text-gray-600">
-                                            <li className="flex justify-between">
-                                                <span>Monday - Thursday</span>
-                                                <span className="font-semibold">7:00 AM - 4:00 PM</span>
-                                            </li>
-                                            <li className="flex justify-between">
-                                                <span>Friday - Sunday</span>
-                                                <span className="text-gray-400">Closed</span>
-                                            </li>
+                                            {getHoursLines("bonney-lake").map((line) => (
+                                                <li key={line.days} className="flex justify-between">
+                                                    <span>{line.days}</span>
+                                                    <span className={line.hours === "Closed" ? "text-gray-400" : "font-semibold"}>{line.hours}</span>
+                                                </li>
+                                            ))}
                                         </ul>
                                     </div>
                                 </div>

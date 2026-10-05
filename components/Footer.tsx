@@ -7,6 +7,8 @@ import { businessConfig } from "@/lib/config";
 import { formatPhoneDisplay, formatPhoneLink } from "@/lib/phone";
 import { OfficeLocationsMap } from "@/components/OfficeLocationsMap";
 import { trackPhoneClick } from "@/lib/analytics";
+import { getHoursLines } from "@/lib/hours";
+import { getMapsUrl } from "@/lib/google-business";
 
 export function Footer() {
     const currentYear = new Date().getFullYear();
@@ -99,7 +101,7 @@ export function Footer() {
                                 )}
                                 {/* Google Business - Enumclaw */}
                                 <a
-                                    href="https://business.google.com/n/17936783379730960938/profile?authuser=1&fid=8532782759567292928"
+                                    href={getMapsUrl(businessConfig.address.placeId)}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     aria-label="Google My Business - Enumclaw"
@@ -121,7 +123,7 @@ export function Footer() {
                                 </a>
                                 {/* Google Business - Bonney Lake */}
                                 <a
-                                    href="https://business.google.com/n/17228390079699619076/profile?authuser=1&fid=9941983244648185977"
+                                    href={getMapsUrl(businessConfig.secondaryAddress?.placeId)}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     aria-label="Google My Business - Bonney Lake"
@@ -254,9 +256,9 @@ export function Footer() {
                                         Enumclaw
                                     </Link>
                                     <div className="text-sm text-gray-400 mt-1 space-y-0.5">
-                                        <p>Mon–Wed: 7 AM–12 PM, 1–4 PM</p>
-                                        <p>Thu: 7 AM–2 PM</p>
-                                        <p>Fri–Sun: Closed</p>
+                                        {getHoursLines("enumclaw", true).map((line) => (
+                                            <p key={line.days}>{line.days}: {line.hours}</p>
+                                        ))}
                                     </div>
                                 </div>
                                 {/* Bonney Lake */}
@@ -268,8 +270,9 @@ export function Footer() {
                                         Bonney Lake
                                     </Link>
                                     <div className="text-sm text-gray-400 mt-1 space-y-0.5">
-                                        <p>Mon–Thu: 7 AM–12 PM, 1–4 PM</p>
-                                        <p>Fri–Sun: Closed</p>
+                                        {getHoursLines("bonney-lake", true).map((line) => (
+                                            <p key={line.days}>{line.days}: {line.hours}</p>
+                                        ))}
                                     </div>
                                 </div>
                             </div>

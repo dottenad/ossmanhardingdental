@@ -17,8 +17,8 @@ export interface BusinessConfig {
             latitude: number;
             longitude: number;
         };
-        /** Google Business Profile URL for this location */
-        gbpUrl?: string;
+        /** Google Place ID for this location's Business Profile. Maps and reviews URLs derive from it (lib/google-business.ts). */
+        placeId?: string;
     };
     /** Secondary office location for multi-location businesses */
     secondaryAddress?: {
@@ -28,14 +28,13 @@ export interface BusinessConfig {
         state: string;
         zipCode: string;
         phone?: string;
-        hours?: string;
         /** Geo coordinates for schema.org */
         geo?: {
             latitude: number;
             longitude: number;
         };
-        /** Google Business Profile URL for this location */
-        gbpUrl?: string;
+        /** Google Place ID for this location's Business Profile. Maps and reviews URLs derive from it (lib/google-business.ts). */
+        placeId?: string;
     };
     serviceAreas: string[];
     industry: Industry;
@@ -89,10 +88,6 @@ export interface BusinessConfig {
     faqImage?: FAQImage; // Optional image for FAQ section
     /** Per-area local content (landmarks, intro/community copy) for service area pages. Keys = area slug. */
     serviceAreaLocalContent?: Record<string, ServiceAreaLocalContent>;
-    /** Business hours */
-    hours?: {
-        [key: string]: string; // e.g., "monday": "7:00 AM - 4:00 PM"
-    };
 }
 
 export interface Review {
@@ -101,6 +96,7 @@ export interface Review {
     text: string;
     date: string; // ISO date string or formatted date
     service?: string; // Optional service name
+    office?: OfficeSlug; // Optional office tag; location pages only show reviews tagged to that office
 }
 
 export interface NavigationItem {
@@ -194,6 +190,41 @@ export interface GeoServiceArea {
 export const siteConfig = {
     /** Whether to publish /locations/[city]/services/[service] pages */
     publishLocationServices: true,
+};
+
+export type OfficeSlug = "enumclaw" | "bonney-lake";
+
+export type DayOfWeek =
+    | "Monday"
+    | "Tuesday"
+    | "Wednesday"
+    | "Thursday"
+    | "Friday"
+    | "Saturday"
+    | "Sunday";
+
+/** One open interval. Split hours (e.g. a lunch closure) = two intervals for the same days. */
+export interface OfficeHoursInterval {
+    days: DayOfWeek[];
+    opens: string; // 24h "HH:MM"
+    closes: string; // 24h "HH:MM"
+}
+
+/**
+ * Single source of truth for office hours, confirmed against each Google Business Profile.
+ * Every on-page hours display and both LocalBusiness openingHoursSpecification blocks render
+ * from this (see lib/hours.ts). Days not listed render as "Closed".
+ */
+export const officeHours: Record<OfficeSlug, OfficeHoursInterval[]> = {
+    enumclaw: [
+        { days: ["Monday", "Tuesday", "Wednesday"], opens: "07:00", closes: "12:00" },
+        { days: ["Monday", "Tuesday", "Wednesday"], opens: "13:00", closes: "16:00" },
+        { days: ["Thursday"], opens: "07:00", closes: "14:00" },
+    ],
+    "bonney-lake": [
+        { days: ["Monday", "Tuesday", "Wednesday", "Thursday"], opens: "07:00", closes: "12:00" },
+        { days: ["Monday", "Tuesday", "Wednesday", "Thursday"], opens: "13:00", closes: "16:00" },
+    ],
 };
 
 /**
@@ -446,7 +477,7 @@ export const businessConfig: BusinessConfig = {
             latitude: 47.2018,
             longitude: -121.9912,
         },
-        gbpUrl: "https://www.google.com/maps/place/?q=place_id:ChIJk6_IqYgVkFQRqWqxFApSO2s",
+        placeId: "ChIJN_FVLATykFQRAPqVEbaIanY",
     },
     secondaryAddress: {
         name: "Bonney Lake Office",
@@ -455,12 +486,11 @@ export const businessConfig: BusinessConfig = {
         state: "WA",
         zipCode: "98391",
         phone: "+1-360-825-5585",
-        hours: "Mon-Thu: 7:00am - 4:00pm",
         geo: {
             latitude: 47.1776,
             longitude: -122.1578,
         },
-        gbpUrl: "https://www.google.com/maps/place/?q=place_id:ChIJRVqBZMJCkFQRYFdDwPwUrzM",
+        placeId: "ChIJg4d3apDlkFQReQAkDBYF-Yk",
     },
     serviceAreas: serviceAreasList,
     googleMapsApiKey:
@@ -548,15 +578,6 @@ export const businessConfig: BusinessConfig = {
         linkText: "Schedule Today",
         color: "#4A8282",
         colorDark: "#3D6B6B",
-    },
-    hours: {
-        monday: "7:00 AM - 4:00 PM",
-        tuesday: "7:00 AM - 4:00 PM",
-        wednesday: "7:00 AM - 4:00 PM",
-        thursday: "7:00 AM - 2:00 PM",
-        friday: "Closed",
-        saturday: "Closed",
-        sunday: "Closed",
     },
     navigation: [
         {
@@ -1030,6 +1051,7 @@ export const businessConfig: BusinessConfig = {
             text: "Ossman Harding Dental in Bonney Lake is nestled into a stunning new community, Tehaleh. The interior is stunning, modern, and so welcoming, as well as their staff being the most amazing group of women! Love being a patient for both dental and cosmetic needs. 12/10 recommend, always dropping their name to all of my friends and family!",
             date: "2026-02-05",
             service: "Cosmetic Dentistry",
+            office: "bonney-lake",
         },
         {
             rating: 5,

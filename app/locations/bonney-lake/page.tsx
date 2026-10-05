@@ -12,22 +12,28 @@ import { StructuredData } from "@/components/StructuredData";
 import { Hero } from "@/components/Hero";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import {
+    OfficeDentists,
+    OfficeReviews,
+    OfficeInsurance,
+    OfficeFAQ,
+    OfficeGettingHere,
+    getOfficeFaqs,
+} from "@/components/OfficeSections";
+import { getHoursLines } from "@/lib/hours";
+import {
     generateBreadcrumbSchema,
+    generateFAQPageSchema,
     generateSecondaryLocationSchema,
 } from "@/lib/structured-data";
 
 const LOCATION = {
     name: "Bonney Lake",
-    slug: "bonney-lake",
+    slug: "bonney-lake" as const,
     address: {
         street: "19034 141st Street Ct E",
         city: "Bonney Lake",
         state: "WA",
         zipCode: "98391",
-    },
-    hours: {
-        "Monday - Thursday": "7:00 AM - 4:00 PM",
-        "Friday - Sunday": "Closed",
     },
     description:
         "Our Bonney Lake office serves the growing communities of Bonney Lake, Tehaleh, and Lake Tapps. Conveniently located on 141st Street, we offer the same exceptional care as our Enumclaw location.",
@@ -39,15 +45,6 @@ export const metadata: Metadata = generateSEOMetadata(
     {
         title: `${LOCATION.name} Dentist`,
         description: `Visit our ${LOCATION.name} dental office for comprehensive care including cleanings, cosmetic dentistry, implants, and more. Accepting new patients.`,
-        keywords: [
-            `${LOCATION.name} dentist`,
-            `dentist in ${LOCATION.name}`,
-            `${LOCATION.name} dental office`,
-            "Tehaleh dentist",
-            "family dentist",
-            "cosmetic dentistry",
-            "dental implants",
-        ],
         url: `${businessConfig.website}/locations/${LOCATION.slug}`,
     },
     businessConfig
@@ -68,14 +65,16 @@ export default function BonneyLakePage() {
     // Bonney Lake-specific LocalBusiness schema
     const localBusinessSchema = generateSecondaryLocationSchema(businessConfig);
 
+    const faqSchema = generateFAQPageSchema(getOfficeFaqs(LOCATION.slug));
+
     return (
         <div className="min-h-screen flex flex-col">
             <Header />
-            <StructuredData data={[breadcrumbSchema, localBusinessSchema].filter(Boolean)} />
+            <StructuredData data={[breadcrumbSchema, localBusinessSchema, faqSchema].filter(Boolean)} />
             <main id="main-content" className="flex-grow">
                 <Hero
                     backgroundImage={businessConfig.pageHeroImages?.[`/locations/${LOCATION.slug}`] || businessConfig.heroImage}
-                    title={`${LOCATION.name} Dental Office`}
+                    title={`Dentist in ${LOCATION.name}, WA`}
                     subtitle={`Comprehensive dental care for the whole family in ${LOCATION.name}`}
                     priority={true}
                 />
@@ -131,7 +130,7 @@ export default function BonneyLakePage() {
                                             <div>
                                                 <h3 className="font-semibold text-gray-900 mb-2">Office Hours</h3>
                                                 <div className="space-y-1 text-gray-700">
-                                                    {Object.entries(LOCATION.hours).map(([day, hours]) => (
+                                                    {getHoursLines(LOCATION.slug).map(({ days: day, hours }) => (
                                                         <div key={day} className="flex justify-between gap-4">
                                                             <span>{day}:</span>
                                                             <span className="font-medium">{hours}</span>
@@ -225,16 +224,6 @@ export default function BonneyLakePage() {
                                                 .replace(/\s+/g, "-")
                                                 .replace(/[^a-z0-9-]/g, "")
                                                 .replace(/-+/g, "-");
-                                            // Hash-based anchor text variation for parent service links
-                                            const parentLinkAnchors = [
-                                                `Complete guide to ${service}`,
-                                                `All ${service} options at our practice`,
-                                                `How ${service} works`,
-                                                `${service} treatment overview`,
-                                                `What to expect with ${service}`,
-                                            ];
-                                            const hash = serviceSlug.split("").reduce((acc, char) => acc + char.charCodeAt(0), 0);
-                                            const anchorText = parentLinkAnchors[hash % parentLinkAnchors.length];
                                             return (
                                                 <div
                                                     key={service}
@@ -247,12 +236,6 @@ export default function BonneyLakePage() {
                                                         <CheckCircle2 className="w-5 h-5 text-primary-600 flex-shrink-0" />
                                                         <span className="text-gray-700 text-sm font-medium group-hover:text-primary-700">{service}</span>
                                                         <ArrowRight className="w-4 h-4 text-gray-400 ml-auto group-hover:text-primary-600 transition-colors" />
-                                                    </Link>
-                                                    <Link
-                                                        href={`/services/${serviceSlug}`}
-                                                        className="block mt-2 text-xs text-primary-600 hover:text-primary-700 pl-7"
-                                                    >
-                                                        {anchorText}
                                                     </Link>
                                                 </div>
                                             );
@@ -268,24 +251,11 @@ export default function BonneyLakePage() {
                                     </div>
                                 </div>
 
-                                {/* Meet Our Team */}
-                                <div className="mb-8">
-                                    <h2 className="text-3xl font-bold text-gray-900 mb-6">
-                                        Meet Our {LOCATION.name} Team
-                                    </h2>
-                                    <p className="text-gray-700 mb-6">
-                                        Our experienced dental professionals are dedicated to providing
-                                        exceptional care in a comfortable environment. From routine cleanings
-                                        to complex procedures, our team has the expertise to help you achieve
-                                        your best smile.
-                                    </p>
-                                    <Link
-                                        href={`/locations/${LOCATION.slug}/team`}
-                                        className="inline-flex items-center text-primary-600 hover:text-primary-700 font-semibold"
-                                    >
-                                        Meet our {LOCATION.name} team →
-                                    </Link>
-                                </div>
+                                <OfficeDentists office={LOCATION.slug} />
+
+                                <OfficeReviews office={LOCATION.slug} />
+
+                                <OfficeInsurance office={LOCATION.slug} />
 
                                 {/* Office Tour */}
                                 <div className="bg-primary-50 p-8 rounded-xl border border-primary-200 mb-8">
@@ -343,7 +313,8 @@ export default function BonneyLakePage() {
                                     </div>
                                 </div>
 
-                                {/* Map */}
+                                {/* Getting Here + Map */}
+                                <OfficeGettingHere office={LOCATION.slug} />
                                 <div className="mb-8">
                                     <h2 className="text-2xl font-bold text-gray-900 mb-4">
                                         Find Us in {LOCATION.name}
@@ -363,6 +334,8 @@ export default function BonneyLakePage() {
                                         />
                                     </div>
                                 </div>
+
+                                <OfficeFAQ office={LOCATION.slug} />
 
                                 {/* Other Location */}
                                 <div className="bg-button-50 p-6 rounded-xl border border-button-200">

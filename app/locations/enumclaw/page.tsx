@@ -12,23 +12,28 @@ import { StructuredData } from "@/components/StructuredData";
 import { Hero } from "@/components/Hero";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import {
+    OfficeDentists,
+    OfficeReviews,
+    OfficeInsurance,
+    OfficeFAQ,
+    OfficeGettingHere,
+    getOfficeFaqs,
+} from "@/components/OfficeSections";
+import { getHoursLines } from "@/lib/hours";
+import {
     generateBreadcrumbSchema,
+    generateFAQPageSchema,
     generateLocalBusinessSchema,
 } from "@/lib/structured-data";
 
 const LOCATION = {
     name: "Enumclaw",
-    slug: "enumclaw",
+    slug: "enumclaw" as const,
     address: {
         street: "1705 Cole St.",
         city: "Enumclaw",
         state: "WA",
         zipCode: "98022",
-    },
-    hours: {
-        "Monday - Wednesday": "7:00 AM - 4:00 PM",
-        Thursday: "7:00 AM - 2:00 PM",
-        "Friday - Sunday": "Closed",
     },
     description:
         "Our original Enumclaw location has been serving the community with quality dental care for years. Located on Cole Street, we're easily accessible from downtown Enumclaw and surrounding areas.",
@@ -40,14 +45,6 @@ export const metadata: Metadata = generateSEOMetadata(
     {
         title: `${LOCATION.name} Dentist`,
         description: `Visit our ${LOCATION.name} dental office for comprehensive care including cleanings, cosmetic dentistry, implants, and more. Accepting new patients.`,
-        keywords: [
-            `${LOCATION.name} dentist`,
-            `dentist in ${LOCATION.name}`,
-            `${LOCATION.name} dental office`,
-            "family dentist",
-            "cosmetic dentistry",
-            "dental implants",
-        ],
         url: `${businessConfig.website}/locations/${LOCATION.slug}`,
     },
     businessConfig
@@ -68,14 +65,16 @@ export default function EnumclawPage() {
     // Enumclaw-specific LocalBusiness schema
     const localBusinessSchema = generateLocalBusinessSchema(businessConfig);
 
+    const faqSchema = generateFAQPageSchema(getOfficeFaqs(LOCATION.slug));
+
     return (
         <div className="min-h-screen flex flex-col">
             <Header />
-            <StructuredData data={[breadcrumbSchema, localBusinessSchema]} />
+            <StructuredData data={[breadcrumbSchema, localBusinessSchema, faqSchema]} />
             <main id="main-content" className="flex-grow">
                 <Hero
                     backgroundImage={businessConfig.pageHeroImages?.[`/locations/${LOCATION.slug}`] || businessConfig.heroImage}
-                    title={`${LOCATION.name} Dental Office`}
+                    title={`Dentist in ${LOCATION.name}, WA`}
                     subtitle={`Comprehensive dental care for the whole family in ${LOCATION.name}`}
                     priority={true}
                 />
@@ -131,7 +130,7 @@ export default function EnumclawPage() {
                                             <div>
                                                 <h3 className="font-semibold text-gray-900 mb-2">Office Hours</h3>
                                                 <div className="space-y-1 text-gray-700">
-                                                    {Object.entries(LOCATION.hours).map(([day, hours]) => (
+                                                    {getHoursLines(LOCATION.slug).map(({ days: day, hours }) => (
                                                         <div key={day} className="flex justify-between gap-4">
                                                             <span>{day}:</span>
                                                             <span className="font-medium">{hours}</span>
@@ -214,16 +213,6 @@ export default function EnumclawPage() {
                                                     .replace(/\s+/g, "-")
                                                     .replace(/[^a-z0-9-]/g, "")
                                                     .replace(/-+/g, "-");
-                                                // Hash-based anchor text variation
-                                                const parentLinkAnchors = [
-                                                    `Complete guide to ${service}`,
-                                                    `All ${service} options at our practice`,
-                                                    `How ${service} works`,
-                                                    `${service} treatment overview`,
-                                                    `What to expect with ${service}`,
-                                                ];
-                                                const hash = serviceSlug.split("").reduce((acc, char) => acc + char.charCodeAt(0), 0);
-                                                const anchorText = parentLinkAnchors[hash % parentLinkAnchors.length];
                                                 return (
                                                     <div key={service} className="bg-gray-50 rounded-lg border border-transparent hover:border-primary-200 hover:bg-primary-50 transition-colors p-3">
                                                         <Link
@@ -233,12 +222,6 @@ export default function EnumclawPage() {
                                                             <CheckCircle2 className="w-5 h-5 text-primary-600 flex-shrink-0" />
                                                             <span className="text-gray-700 text-sm font-medium group-hover:text-primary-700">{service}</span>
                                                             <ArrowRight className="w-4 h-4 text-gray-400 ml-auto group-hover:text-primary-600 transition-colors" />
-                                                        </Link>
-                                                        <Link
-                                                            href={`/services/${serviceSlug}`}
-                                                            className="block mt-2 text-xs text-primary-600 hover:text-primary-700 pl-7"
-                                                        >
-                                                            {anchorText}
                                                         </Link>
                                                     </div>
                                                 );
@@ -254,24 +237,11 @@ export default function EnumclawPage() {
                                     </div>
                                 </div>
 
-                                {/* Meet Our Team */}
-                                <div className="mb-8">
-                                    <h2 className="text-3xl font-bold text-gray-900 mb-6">
-                                        Meet Our {LOCATION.name} Team
-                                    </h2>
-                                    <p className="text-gray-700 mb-6">
-                                        Our experienced dental professionals are dedicated to providing
-                                        exceptional care in a comfortable environment. From routine cleanings
-                                        to complex procedures, our team has the expertise to help you achieve
-                                        your best smile.
-                                    </p>
-                                    <Link
-                                        href={`/locations/${LOCATION.slug}/team`}
-                                        className="inline-flex items-center text-primary-600 hover:text-primary-700 font-semibold"
-                                    >
-                                        Meet our {LOCATION.name} team →
-                                    </Link>
-                                </div>
+                                <OfficeDentists office={LOCATION.slug} />
+
+                                <OfficeReviews office={LOCATION.slug} />
+
+                                <OfficeInsurance office={LOCATION.slug} />
 
                                 {/* Office Tour */}
                                 <div className="bg-primary-50 p-8 rounded-xl border border-primary-200 mb-8">
@@ -329,7 +299,8 @@ export default function EnumclawPage() {
                                     </div>
                                 </div>
 
-                                {/* Map */}
+                                {/* Getting Here + Map */}
+                                <OfficeGettingHere office={LOCATION.slug} />
                                 <div className="mb-8">
                                     <h2 className="text-2xl font-bold text-gray-900 mb-4">
                                         Find Us in {LOCATION.name}
@@ -349,6 +320,8 @@ export default function EnumclawPage() {
                                         />
                                     </div>
                                 </div>
+
+                                <OfficeFAQ office={LOCATION.slug} />
 
                                 {/* Other Location */}
                                 <div className="bg-button-50 p-6 rounded-xl border border-button-200">

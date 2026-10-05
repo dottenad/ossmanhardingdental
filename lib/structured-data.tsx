@@ -1,4 +1,6 @@
 import { BusinessConfig, Review, GalleryProject, FAQ, industryConfig } from "./config";
+import { getOpeningHoursSpecification } from "./hours";
+import { getMapsUrl } from "./google-business";
 
 // Dental specialties for medicalSpecialty property
 const dentalSpecialties = [
@@ -51,7 +53,7 @@ export function generateLocalBusinessSchema(businessConfig: BusinessConfig) {
     // Build sameAs array including GBP URL
     const sameAsLinks = [
         ...Object.values(businessConfig.socialMedia).filter(Boolean) as string[],
-        address.gbpUrl,
+        getMapsUrl(address.placeId),
     ].filter(Boolean) as string[];
 
     // Get services for availableService
@@ -93,20 +95,7 @@ export function generateLocalBusinessSchema(businessConfig: BusinessConfig) {
                 ? businessConfig.logo
                 : `${website}${businessConfig.logo || "/images/logo.png"}`,
         ...(businessConfig.tagline ? { slogan: businessConfig.tagline } : {}),
-        openingHoursSpecification: [
-            {
-                "@type": "OpeningHoursSpecification",
-                dayOfWeek: ["Monday", "Tuesday", "Wednesday"],
-                opens: "07:00",
-                closes: "16:00",
-            },
-            {
-                "@type": "OpeningHoursSpecification",
-                dayOfWeek: "Thursday",
-                opens: "07:00",
-                closes: "14:00",
-            },
-        ],
+        openingHoursSpecification: getOpeningHoursSpecification("enumclaw"),
         sameAs: sameAsLinks,
         // Medical/Dental specific properties
         ...(industry === "dental" ? {
@@ -145,7 +134,7 @@ export function generateSecondaryLocationSchema(businessConfig: BusinessConfig) 
     // Build sameAs array including GBP URL for this location
     const sameAsLinks = [
         ...Object.values(businessConfig.socialMedia).filter(Boolean) as string[],
-        secondaryAddress.gbpUrl,
+        getMapsUrl(secondaryAddress.placeId),
     ].filter(Boolean) as string[];
 
     // Get services for availableService
@@ -175,14 +164,7 @@ export function generateSecondaryLocationSchema(businessConfig: BusinessConfig) 
                 longitude: secondaryAddress.geo.longitude,
             },
         } : {}),
-        openingHoursSpecification: [
-            {
-                "@type": "OpeningHoursSpecification",
-                dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday"],
-                opens: "07:00",
-                closes: "16:00",
-            },
-        ],
+        openingHoursSpecification: getOpeningHoursSpecification("bonney-lake"),
         image: businessConfig.logo?.startsWith("http")
             ? businessConfig.logo
             : `${website}${businessConfig.logo || "/images/logo.png"}`,

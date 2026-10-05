@@ -5,6 +5,7 @@ import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import { businessConfig } from "@/lib/config";
 import { generateMetadata as generateSEOMetadata } from "@/lib/seo";
 import { formatPhoneDisplay, formatPhoneLink } from "@/lib/phone";
+import { getHoursLines } from "@/lib/hours";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { StructuredData } from "@/components/StructuredData";
@@ -104,9 +105,9 @@ export default function AppointmentsPage() {
                                                 <Clock className="w-5 h-5 text-primary-600" />
                                             </div>
                                             <div className="text-gray-700 text-sm">
-                                                <p>Mon - Wed: 7:00 AM - 4:00 PM</p>
-                                                <p>Thursday: 7:00 AM - 2:00 PM</p>
-                                                <p>Fri - Sun: Closed</p>
+                                                {getHoursLines("enumclaw", true).map((line) => (
+                                                    <p key={line.days}>{line.days}: {line.hours}</p>
+                                                ))}
                                             </div>
                                         </div>
                                     </div>
@@ -148,8 +149,9 @@ export default function AppointmentsPage() {
                                                     <Clock className="w-5 h-5 text-primary-600" />
                                                 </div>
                                                 <div className="text-gray-700 text-sm">
-                                                    <p>Mon - Thu: 7:00 AM - 4:00 PM</p>
-                                                    <p>Fri - Sun: Closed</p>
+                                                    {getHoursLines("bonney-lake", true).map((line) => (
+                                                        <p key={line.days}>{line.days}: {line.hours}</p>
+                                                    ))}
                                                 </div>
                                             </div>
                                         </div>
