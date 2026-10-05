@@ -211,21 +211,19 @@ export interface OfficeHoursInterval {
 }
 
 /**
- * Single source of truth for office hours. Every on-page hours display and both
- * LocalBusiness openingHoursSpecification blocks render from this (see lib/hours.ts).
- * Days not listed render as "Closed".
- *
- * TODO(hours): confirm against each Google Business Profile. These values are the ones the
- * location pages and schema already agreed on. The footer previously showed a 12-1 lunch
- * closure; if that is real, split each interval into 07:00-12:00 and 13:00-close.
+ * Single source of truth for office hours, confirmed against each Google Business Profile.
+ * Every on-page hours display and both LocalBusiness openingHoursSpecification blocks render
+ * from this (see lib/hours.ts). Days not listed render as "Closed".
  */
 export const officeHours: Record<OfficeSlug, OfficeHoursInterval[]> = {
     enumclaw: [
-        { days: ["Monday", "Tuesday", "Wednesday"], opens: "07:00", closes: "16:00" },
+        { days: ["Monday", "Tuesday", "Wednesday"], opens: "07:00", closes: "12:00" },
+        { days: ["Monday", "Tuesday", "Wednesday"], opens: "13:00", closes: "16:00" },
         { days: ["Thursday"], opens: "07:00", closes: "14:00" },
     ],
     "bonney-lake": [
-        { days: ["Monday", "Tuesday", "Wednesday", "Thursday"], opens: "07:00", closes: "16:00" },
+        { days: ["Monday", "Tuesday", "Wednesday", "Thursday"], opens: "07:00", closes: "12:00" },
+        { days: ["Monday", "Tuesday", "Wednesday", "Thursday"], opens: "13:00", closes: "16:00" },
     ],
 };
 
