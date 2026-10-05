@@ -79,12 +79,12 @@ const nextConfig = {
             },
             {
                 source: '/enumclawdentalimplants',
-                destination: '/services/dental-implants',
+                destination: '/locations/enumclaw/services/dental-implants',
                 permanent: true,
             },
             {
                 source: '/enumclawdentalveneers',
-                destination: '/services/veneers-esthetic-crowns',
+                destination: '/locations/enumclaw/services/veneers-esthetic-crowns',
                 permanent: true,
             },
             {

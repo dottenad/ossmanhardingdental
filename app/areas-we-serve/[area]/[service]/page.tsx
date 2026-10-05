@@ -79,7 +79,6 @@ export function generateMetadata({ params }: PageProps): Metadata {
     }
 
     const nearestOfficeName = area.nearestOffice === "enumclaw" ? "Enumclaw" : "Bonney Lake";
-    const industry = industryConfig[businessConfig.industry];
 
     return generateSEOMetadata(
         {
@@ -87,13 +86,6 @@ export function generateMetadata({ params }: PageProps): Metadata {
             description: area.isOfficeLocation
                 ? `${serviceName} at our ${nearestOfficeName} office, ${area.locationDescription || `located in ${area.name}`}. Experienced team, gentle care, accepting new patients.`
                 : `${serviceName} for ${area.name}, WA residents at our ${nearestOfficeName} dental office. Just ${area.driveTime} away. Experienced team, gentle care, accepting new patients.`,
-            keywords: [
-                ...industry.keywords,
-                serviceName,
-                `${serviceName} ${area.name}`,
-                `${area.name} ${serviceName.toLowerCase()}`,
-                `${serviceName} near ${area.name}`,
-            ],
             url: `${businessConfig.website}/areas-we-serve/${area.slug}/${params.service}`,
         },
         businessConfig

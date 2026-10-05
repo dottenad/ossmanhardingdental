@@ -5,6 +5,7 @@ import { MapPin, Phone, Clock, ArrowRight } from "lucide-react";
 import { businessConfig } from "@/lib/config";
 import { generateMetadata as generateSEOMetadata } from "@/lib/seo";
 import { formatPhoneDisplay, formatPhoneLink } from "@/lib/phone";
+import { getHoursSummary } from "@/lib/hours";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/Hero";
@@ -22,7 +23,7 @@ const LOCATIONS = [
             state: "WA",
             zipCode: "98022",
         },
-        hours: "Mon-Wed 7AM-4PM, Thu 7AM-2PM",
+        hours: getHoursSummary("enumclaw"),
         description:
             "Our original location serving Enumclaw, Buckley, and surrounding communities.",
         image: "/images/enumclaw/exterior-main.jpg",
@@ -38,7 +39,7 @@ const LOCATIONS = [
             state: "WA",
             zipCode: "98391",
         },
-        hours: "Mon-Thu 7AM-4PM",
+        hours: getHoursSummary("bonney-lake"),
         description:
             "Our newest location serving Bonney Lake, Tehaleh, Sumner, Orting, and surrounding communities.",
         image: "/images/bonney-lake/exterior-main.jpg",
@@ -51,13 +52,6 @@ export const metadata: Metadata = generateSEOMetadata(
     {
         title: "Our Locations",
         description: `Visit our dental offices in Enumclaw and Bonney Lake, WA. Two convenient locations offering comprehensive dental care, cosmetic dentistry, and more.`,
-        keywords: [
-            "dental office locations",
-            "Enumclaw dentist",
-            "Bonney Lake dentist",
-            "dentist near me",
-            "dental offices Washington",
-        ],
         url: `${businessConfig.website}/locations`,
     },
     businessConfig

@@ -7,17 +7,6 @@ export const metadata: Metadata = generateSEOMetadata(
     {
         title: "EMFACE & EXION Facial Treatments",
         description: "Experience the latest in non-invasive facial rejuvenation at Ossman Harding Dental. EMFACE, EXION, and RF Micro-Needling treatments for natural-looking results without surgery or downtime.",
-        keywords: [
-            "EMFACE",
-            "EXION",
-            "RF micro-needling",
-            "facial rejuvenation",
-            "non-invasive facelift",
-            "skin tightening",
-            "wrinkle reduction",
-            "Enumclaw facial esthetics",
-            "Bonney Lake facial treatments",
-        ],
         url: `${businessConfig.website}/services/emface-exion`,
     },
     businessConfig

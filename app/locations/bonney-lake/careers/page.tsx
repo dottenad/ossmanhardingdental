@@ -20,15 +20,6 @@ export const metadata: Metadata = generateSEOMetadata(
     {
         title: `Careers in ${LOCATION.name} | Join Our Team | ${businessConfig.name}`,
         description: `Join the ${businessConfig.name} team in ${LOCATION.name}/Tehaleh! We're hiring dental professionals who share our passion for patient care. View open positions and apply today.`,
-        keywords: [
-            `${LOCATION.name} dental jobs`,
-            `dental careers ${LOCATION.name}`,
-            `Tehaleh dental jobs`,
-            `dental hygienist jobs ${LOCATION.name}`,
-            `dental assistant jobs`,
-            "dental office careers",
-            "join dental team",
-        ],
         url: `${businessConfig.website}/locations/${LOCATION.slug}/careers`,
     },
     businessConfig

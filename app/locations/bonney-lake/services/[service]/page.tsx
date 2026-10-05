@@ -70,19 +70,11 @@ export function generateMetadata({ params }: PageProps): Metadata {
         return {};
     }
 
-    const industry = industryConfig[businessConfig.industry];
 
     return generateSEOMetadata(
         {
-            title: `${serviceName} in ${LOCATION.name}`,
+            title: `${serviceName} in ${LOCATION.name}, WA`,
             description: `Professional ${serviceName.toLowerCase()} at our ${LOCATION.name} dental office. Experienced team, gentle care, accepting new patients.`,
-            keywords: [
-                ...industry.keywords,
-                serviceName,
-                `${serviceName} ${LOCATION.name}`,
-                `${LOCATION.name} ${serviceName.toLowerCase()}`,
-                `${serviceName} Tehaleh`,
-            ],
             url: `${businessConfig.website}/locations/${LOCATION.slug}/services/${params.service}`,
         },
         businessConfig
@@ -132,7 +124,7 @@ export default async function BonneyLakeServicePage({ params }: PageProps) {
             <main id="main-content" className="flex-grow">
                 <Hero
                     backgroundImage={heroImage}
-                    title={`${serviceName} in ${LOCATION.name}`}
+                    title={`${serviceName} in ${LOCATION.name}, WA`}
                     subtitle={`Professional ${serviceName.toLowerCase()} at our ${LOCATION.name} dental office`}
                     priority={true}
                 />

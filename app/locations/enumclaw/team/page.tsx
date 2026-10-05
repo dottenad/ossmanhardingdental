@@ -20,15 +20,6 @@ export const metadata: Metadata = generateSEOMetadata(
     {
         title: `${LOCATION.name} Dental Team`,
         description: `Meet the experienced dental professionals at our ${LOCATION.name} office. Our caring team includes Dr. Ossman, Dr. Zander, Dr. Ornelas, Dr. Harding, and dedicated hygienists and assistants.`,
-        keywords: [
-            `${LOCATION.name} dentist`,
-            `${LOCATION.name} dental team`,
-            "Dr. Ossman",
-            "Dr. Harding",
-            "Dr. Ornelas",
-            "Dr. Zander",
-            "dental professionals",
-        ],
         url: `${businessConfig.website}/locations/${LOCATION.slug}/team`,
     },
     businessConfig

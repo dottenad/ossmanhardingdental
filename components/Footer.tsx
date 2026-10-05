@@ -7,6 +7,7 @@ import { businessConfig } from "@/lib/config";
 import { formatPhoneDisplay, formatPhoneLink } from "@/lib/phone";
 import { OfficeLocationsMap } from "@/components/OfficeLocationsMap";
 import { trackPhoneClick } from "@/lib/analytics";
+import { getHoursLines } from "@/lib/hours";
 
 export function Footer() {
     const currentYear = new Date().getFullYear();
@@ -254,9 +255,9 @@ export function Footer() {
                                         Enumclaw
                                     </Link>
                                     <div className="text-sm text-gray-400 mt-1 space-y-0.5">
-                                        <p>Mon–Wed: 7 AM–12 PM, 1–4 PM</p>
-                                        <p>Thu: 7 AM–2 PM</p>
-                                        <p>Fri–Sun: Closed</p>
+                                        {getHoursLines("enumclaw", true).map((line) => (
+                                            <p key={line.days}>{line.days}: {line.hours}</p>
+                                        ))}
                                     </div>
                                 </div>
                                 {/* Bonney Lake */}
@@ -268,8 +269,9 @@ export function Footer() {
                                         Bonney Lake
                                     </Link>
                                     <div className="text-sm text-gray-400 mt-1 space-y-0.5">
-                                        <p>Mon–Thu: 7 AM–12 PM, 1–4 PM</p>
-                                        <p>Fri–Sun: Closed</p>
+                                        {getHoursLines("bonney-lake", true).map((line) => (
+                                            <p key={line.days}>{line.days}: {line.hours}</p>
+                                        ))}
                                     </div>
                                 </div>
                             </div>

@@ -44,13 +44,6 @@ export const metadata: Metadata = generateSEOMetadata(
     {
         title: `${LOCATION.name} Office Gallery`,
         description: `Take a virtual tour of our ${LOCATION.name} dental office. View our modern facilities, comfortable treatment rooms, and state-of-the-art dental technology.`,
-        keywords: [
-            `${LOCATION.name} dental office`,
-            `${LOCATION.name} dentist office tour`,
-            "dental office photos",
-            "modern dental facility",
-            "dental office gallery",
-        ],
         url: `${businessConfig.website}/locations/${LOCATION.slug}/gallery`,
     },
     businessConfig

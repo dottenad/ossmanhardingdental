@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { notFound, redirect } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import { Phone, Calendar, MapPin, CheckCircle2, ArrowRight } from "lucide-react";
 import { businessConfig, industryConfig, siteConfig, isServiceAvailableAtLocation, getServiceLocation } from "@/lib/config";
 import { generateMetadata as generateSEOMetadata } from "@/lib/seo";
@@ -73,18 +73,11 @@ export function generateMetadata({ params }: PageProps): Metadata {
         return {};
     }
 
-    const industry = industryConfig[businessConfig.industry];
 
     return generateSEOMetadata(
         {
-            title: `${serviceName} in ${LOCATION.name}`,
+            title: `${serviceName} in ${LOCATION.name}, WA`,
             description: `Professional ${serviceName.toLowerCase()} at our ${LOCATION.name} dental office. Experienced team, gentle care, accepting new patients.`,
-            keywords: [
-                ...industry.keywords,
-                serviceName,
-                `${serviceName} ${LOCATION.name}`,
-                `${LOCATION.name} ${serviceName.toLowerCase()}`,
-            ],
             url: `${businessConfig.website}/locations/${LOCATION.slug}/services/${params.service}`,
         },
         businessConfig
@@ -103,7 +96,7 @@ export default async function EnumclawServicePage({ params }: PageProps) {
     if (!isServiceAvailableAtLocation(params.service, LOCATION.slug)) {
         const availableLocation = getServiceLocation(params.service);
         if (availableLocation) {
-            redirect(`/locations/${availableLocation}/services/${params.service}`);
+            permanentRedirect(`/locations/${availableLocation}/services/${params.service}`);
         }
     }
 
@@ -142,7 +135,7 @@ export default async function EnumclawServicePage({ params }: PageProps) {
             <main id="main-content" className="flex-grow">
                 <Hero
                     backgroundImage={heroImage}
-                    title={`${serviceName} in ${LOCATION.name}`}
+                    title={`${serviceName} in ${LOCATION.name}, WA`}
                     subtitle={`Professional ${serviceName.toLowerCase()} at our ${LOCATION.name} dental office`}
                     priority={true}
                 />

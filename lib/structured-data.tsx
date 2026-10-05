@@ -1,4 +1,5 @@
 import { BusinessConfig, Review, GalleryProject, FAQ, industryConfig } from "./config";
+import { getOpeningHoursSpecification } from "./hours";
 
 // Dental specialties for medicalSpecialty property
 const dentalSpecialties = [
@@ -93,20 +94,7 @@ export function generateLocalBusinessSchema(businessConfig: BusinessConfig) {
                 ? businessConfig.logo
                 : `${website}${businessConfig.logo || "/images/logo.png"}`,
         ...(businessConfig.tagline ? { slogan: businessConfig.tagline } : {}),
-        openingHoursSpecification: [
-            {
-                "@type": "OpeningHoursSpecification",
-                dayOfWeek: ["Monday", "Tuesday", "Wednesday"],
-                opens: "07:00",
-                closes: "16:00",
-            },
-            {
-                "@type": "OpeningHoursSpecification",
-                dayOfWeek: "Thursday",
-                opens: "07:00",
-                closes: "14:00",
-            },
-        ],
+        openingHoursSpecification: getOpeningHoursSpecification("enumclaw"),
         sameAs: sameAsLinks,
         // Medical/Dental specific properties
         ...(industry === "dental" ? {
@@ -175,14 +163,7 @@ export function generateSecondaryLocationSchema(businessConfig: BusinessConfig) 
                 longitude: secondaryAddress.geo.longitude,
             },
         } : {}),
-        openingHoursSpecification: [
-            {
-                "@type": "OpeningHoursSpecification",
-                dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday"],
-                opens: "07:00",
-                closes: "16:00",
-            },
-        ],
+        openingHoursSpecification: getOpeningHoursSpecification("bonney-lake"),
         image: businessConfig.logo?.startsWith("http")
             ? businessConfig.logo
             : `${website}${businessConfig.logo || "/images/logo.png"}`,

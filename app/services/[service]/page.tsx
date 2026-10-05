@@ -10,6 +10,7 @@ import { StructuredData } from "@/components/StructuredData";
 import { Hero } from "@/components/Hero";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { DentrixBooking } from "@/components/DentrixBooking";
+import { AvailableAtOffices } from "@/components/AvailableAtOffices";
 import {
     generateBreadcrumbSchema,
     generateServiceSchema,
@@ -71,20 +72,12 @@ export function generateMetadata({ params }: PageProps): Metadata {
         return {};
     }
 
-    const industry = industryConfig[businessConfig.industry];
     const description = getServiceShortDescription(params.service, serviceName);
 
     return generateSEOMetadata(
         {
             title: serviceName,
             description,
-            keywords: [
-                ...industry.keywords,
-                serviceName,
-                serviceName.toLowerCase(),
-                `${serviceName} ${businessConfig.address.city}`,
-                `${serviceName} ${businessConfig.address.state}`,
-            ],
             url: `${businessConfig.website}/services/${params.service}`,
         },
         businessConfig
@@ -154,6 +147,7 @@ export default async function ServicePage({ params }: PageProps) {
                         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                             {/* Main Content - 2/3 width */}
                             <div className="lg:col-span-2">
+                                <AvailableAtOffices serviceSlug={params.service} serviceName={serviceName} />
                                 <div className="prose prose-lg max-w-none mb-8">
                                     <h2 className="text-3xl font-bold mb-4 mt-0 text-gray-900">
                                         About {serviceName}
@@ -622,83 +616,6 @@ export default async function ServicePage({ params }: PageProps) {
                                             {serviceName.toLowerCase()} needs.
                                         </p>
                                     )}
-
-                                    {/* Location-specific or both locations */}
-                                    {(() => {
-                                        const serviceLocation = getServiceLocation(params.service);
-                                        if (serviceLocation === "bonney-lake") {
-                                            return (
-                                                <>
-                                                    <h3 className="text-2xl font-bold mt-10 mb-3 text-gray-900">
-                                                        {serviceName} in Bonney Lake
-                                                    </h3>
-                                                    <p className="text-gray-700 mb-4 leading-relaxed">
-                                                        We provide {serviceName.toLowerCase()} at our Bonney Lake office
-                                                        in Tehaleh, serving patients throughout Pierce and King counties.
-                                                    </p>
-                                                    <div className="flex flex-wrap gap-3 mb-6">
-                                                        <Link
-                                                            href={`/locations/bonney-lake/services/${params.service}`}
-                                                            className="inline-flex items-center px-4 py-2 bg-primary-50 text-primary-700 rounded-lg hover:bg-primary-100 transition-colors font-medium text-sm"
-                                                        >
-                                                            Learn More About {serviceName} in Bonney Lake
-                                                            <span className="ml-1">→</span>
-                                                        </Link>
-                                                    </div>
-                                                </>
-                                            );
-                                        } else if (serviceLocation === "enumclaw") {
-                                            return (
-                                                <>
-                                                    <h3 className="text-2xl font-bold mt-10 mb-3 text-gray-900">
-                                                        {serviceName} in Enumclaw
-                                                    </h3>
-                                                    <p className="text-gray-700 mb-4 leading-relaxed">
-                                                        We provide {serviceName.toLowerCase()} at our Enumclaw office,
-                                                        serving patients throughout King and Pierce counties.
-                                                    </p>
-                                                    <div className="flex flex-wrap gap-3 mb-6">
-                                                        <Link
-                                                            href={`/locations/enumclaw/services/${params.service}`}
-                                                            className="inline-flex items-center px-4 py-2 bg-primary-50 text-primary-700 rounded-lg hover:bg-primary-100 transition-colors font-medium text-sm"
-                                                        >
-                                                            Learn More About {serviceName} in Enumclaw
-                                                            <span className="ml-1">→</span>
-                                                        </Link>
-                                                    </div>
-                                                </>
-                                            );
-                                        } else {
-                                            return (
-                                                <>
-                                                    <h3 className="text-2xl font-bold mt-10 mb-3 text-gray-900">
-                                                        {serviceName} by Location
-                                                    </h3>
-                                                    <p className="text-gray-700 mb-4 leading-relaxed">
-                                                        We provide {serviceName.toLowerCase()}{" "}
-                                                        at both of our offices, serving patients throughout
-                                                        King and Pierce counties.
-                                                    </p>
-                                                    <div className="flex flex-wrap gap-3 mb-6">
-                                                        <Link
-                                                            href={`/locations/enumclaw/services/${params.service}`}
-                                                            className="inline-flex items-center px-4 py-2 bg-primary-50 text-primary-700 rounded-lg hover:bg-primary-100 transition-colors font-medium text-sm"
-                                                        >
-                                                            {serviceName} in Enumclaw
-                                                            <span className="ml-1">→</span>
-                                                        </Link>
-                                                        <Link
-                                                            href={`/locations/bonney-lake/services/${params.service}`}
-                                                            className="inline-flex items-center px-4 py-2 bg-primary-50 text-primary-700 rounded-lg hover:bg-primary-100 transition-colors font-medium text-sm"
-                                                        >
-                                                            {serviceName} in Bonney Lake
-                                                            <span className="ml-1">→</span>
-                                                        </Link>
-                                                    </div>
-                                                </>
-                                            );
-                                        }
-                                    })()}
 
                                     <div className="bg-button-50 p-6 rounded-lg mb-8 border border-primary-200">
                                         <h3 className="text-2xl font-bold mb-4 text-gray-900">
