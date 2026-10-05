@@ -17,8 +17,8 @@ export interface BusinessConfig {
             latitude: number;
             longitude: number;
         };
-        /** Public Google Maps URL for this location's Business Profile. Single source for footer, /reviews, and schema sameAs. */
-        gbpUrl?: string;
+        /** Google Place ID for this location's Business Profile. Maps and reviews URLs derive from it (lib/google-business.ts). */
+        placeId?: string;
     };
     /** Secondary office location for multi-location businesses */
     secondaryAddress?: {
@@ -33,8 +33,8 @@ export interface BusinessConfig {
             latitude: number;
             longitude: number;
         };
-        /** Public Google Maps URL for this location's Business Profile. Single source for footer, /reviews, and schema sameAs. */
-        gbpUrl?: string;
+        /** Google Place ID for this location's Business Profile. Maps and reviews URLs derive from it (lib/google-business.ts). */
+        placeId?: string;
     };
     serviceAreas: string[];
     industry: Industry;
@@ -479,7 +479,7 @@ export const businessConfig: BusinessConfig = {
             latitude: 47.2018,
             longitude: -121.9912,
         },
-        gbpUrl: "https://maps.google.com/?cid=8532782759567292928",
+        placeId: "ChIJN_FVLATykFQRAPqVEbaIanY",
     },
     secondaryAddress: {
         name: "Bonney Lake Office",
@@ -492,7 +492,7 @@ export const businessConfig: BusinessConfig = {
             latitude: 47.1776,
             longitude: -122.1578,
         },
-        gbpUrl: "https://maps.google.com/?cid=9941983244648185977",
+        placeId: "ChIJg4d3apDlkFQReQAkDBYF-Yk",
     },
     serviceAreas: serviceAreasList,
     googleMapsApiKey:

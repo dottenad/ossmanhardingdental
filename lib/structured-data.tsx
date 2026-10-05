@@ -1,5 +1,6 @@
 import { BusinessConfig, Review, GalleryProject, FAQ, industryConfig } from "./config";
 import { getOpeningHoursSpecification } from "./hours";
+import { getMapsUrl } from "./google-business";
 
 // Dental specialties for medicalSpecialty property
 const dentalSpecialties = [
@@ -52,7 +53,7 @@ export function generateLocalBusinessSchema(businessConfig: BusinessConfig) {
     // Build sameAs array including GBP URL
     const sameAsLinks = [
         ...Object.values(businessConfig.socialMedia).filter(Boolean) as string[],
-        address.gbpUrl,
+        getMapsUrl(address.placeId),
     ].filter(Boolean) as string[];
 
     // Get services for availableService
@@ -133,7 +134,7 @@ export function generateSecondaryLocationSchema(businessConfig: BusinessConfig) 
     // Build sameAs array including GBP URL for this location
     const sameAsLinks = [
         ...Object.values(businessConfig.socialMedia).filter(Boolean) as string[],
-        secondaryAddress.gbpUrl,
+        getMapsUrl(secondaryAddress.placeId),
     ].filter(Boolean) as string[];
 
     // Get services for availableService

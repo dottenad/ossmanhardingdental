@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { businessConfig } from "@/lib/config";
+import { getReviewsUrl } from "@/lib/google-business";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { DentrixBooking } from "@/components/DentrixBooking";
@@ -134,7 +135,7 @@ export default function ReviewsPage() {
                                                                 <p className="text-sm text-gray-500 mt-4">
                                                                     Read more reviews:{" "}
                                                                     <a
-                                                                        href={businessConfig.secondaryAddress?.gbpUrl}
+                                                                        href={getReviewsUrl(businessConfig.secondaryAddress?.placeId)}
                                                                         target="_blank"
                                                                         rel="noopener noreferrer"
                                                                         className="text-primary-600 hover:text-primary-700 hover:underline"
@@ -143,7 +144,7 @@ export default function ReviewsPage() {
                                                                     </a>
                                                                     {" | "}
                                                                     <a
-                                                                        href={businessConfig.address.gbpUrl}
+                                                                        href={getReviewsUrl(businessConfig.address.placeId)}
                                                                         target="_blank"
                                                                         rel="noopener noreferrer"
                                                                         className="text-primary-600 hover:text-primary-700 hover:underline"
@@ -340,7 +341,7 @@ export default function ReviewsPage() {
                                         <div className="space-y-4">
                                             {/* Bonney Lake */}
                                             <a
-                                                href={businessConfig.secondaryAddress?.gbpUrl}
+                                                href={getReviewsUrl(businessConfig.secondaryAddress?.placeId)}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                                 className="group block bg-gray-50 rounded-xl overflow-hidden hover:bg-gray-100 transition-colors border border-gray-200"
@@ -385,7 +386,7 @@ export default function ReviewsPage() {
                                             </a>
                                             {/* Enumclaw */}
                                             <a
-                                                href={businessConfig.address.gbpUrl}
+                                                href={getReviewsUrl(businessConfig.address.placeId)}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                                 className="group block bg-gray-50 rounded-xl overflow-hidden hover:bg-gray-100 transition-colors border border-gray-200"

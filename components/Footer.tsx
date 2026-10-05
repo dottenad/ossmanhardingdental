@@ -8,6 +8,7 @@ import { formatPhoneDisplay, formatPhoneLink } from "@/lib/phone";
 import { OfficeLocationsMap } from "@/components/OfficeLocationsMap";
 import { trackPhoneClick } from "@/lib/analytics";
 import { getHoursLines } from "@/lib/hours";
+import { getMapsUrl } from "@/lib/google-business";
 
 export function Footer() {
     const currentYear = new Date().getFullYear();
@@ -100,7 +101,7 @@ export function Footer() {
                                 )}
                                 {/* Google Business - Enumclaw */}
                                 <a
-                                    href={businessConfig.address.gbpUrl}
+                                    href={getMapsUrl(businessConfig.address.placeId)}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     aria-label="Google My Business - Enumclaw"
@@ -122,7 +123,7 @@ export function Footer() {
                                 </a>
                                 {/* Google Business - Bonney Lake */}
                                 <a
-                                    href={businessConfig.secondaryAddress?.gbpUrl}
+                                    href={getMapsUrl(businessConfig.secondaryAddress?.placeId)}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     aria-label="Google My Business - Bonney Lake"
